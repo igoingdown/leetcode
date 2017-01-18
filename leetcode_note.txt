@@ -163,7 +163,7 @@ https://leetcode.com/problems/same-tree/
 128. Longest Consecutive Sequence
 https://leetcode.com/problems/longest-consecutive-sequence/
 被hard标签吓住，确实也没想到好方法，要求O(N)的复杂度。先看的discuss区，discuss区的TOP1解法讲解非常好。大神用的是Python，我用C++实现的。比较简单，一刷end计数器退出循环时的数值搞错，WA。
-改正之后AC。二刷unordered_set的定义中没有将模板实例化。
+改正之后AC。二刷unordered_set的定义中没有将模板实例化。三刷一次AC。
  
 
  
