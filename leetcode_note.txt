@@ -160,10 +160,16 @@ https://leetcode.com/problems/reverse-linked-list/
 https://leetcode.com/problems/same-tree/
 使用递归，教简单，二刷改善了codestyle，逻辑也更清晰，一次AC。
 
+
 128. Longest Consecutive Sequence
 https://leetcode.com/problems/longest-consecutive-sequence/
 被hard标签吓住，确实也没想到好方法，要求O(N)的复杂度。先看的discuss区，discuss区的TOP1解法讲解非常好。大神用的是Python，我用C++实现的。比较简单，一刷end计数器退出循环时的数值搞错，WA。
 改正之后AC。二刷unordered_set的定义中没有将模板实例化。三刷一次AC。
+
+
+126. Word Ladder II
+https://leetcode.com/problems/word-ladder-ii/
+使用BFS，代码非常复杂，这道题确实很难，通过率仅13%！需要考虑的东西很多，看大神的代码看了3天才算弄明白怎么回事。还是要动笔自己跑几个demo，这样非常有助于了解算法的精妙之处。大神的代码是用java写的，我把它翻译成了C++，也挺有难度的！一刷在XCODE上写的，debug花了不少时间，不过这样一来对C++的容器的使用更熟练了。非常关键的一点在于不能重复向队列中插入元素！
  
 
  
