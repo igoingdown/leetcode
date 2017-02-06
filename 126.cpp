@@ -17,7 +17,7 @@
 using namespace std;
 
 vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList);
-void backTrace(string word, string start, list<string>& path, vector<vector<string>>& res, map<string, vector<string>> matrix);
+void backTrace(string word, string start, list<string>& path, map<string, vector<string>>& dict, vector<vector<string>>& res);
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -36,21 +36,22 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
-vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
-    vector<vector<string>> pathList;
-    queue<string> wordsToVisit;
-    unordered_set<string> visitedWords;
-    unordered_set<string> unvisitedWords(wordList.begin(), wordList.end());
-    map<string, vector<string>> word2Forwards;
-    unvisitedWords.insert(endWord);
-    wordsToVisit.push(beginWord);
 
-    bool foundFlag = false;
-    int cur_layer = 1, next_layer = 0;
-    while (!wordsToVisit.empty()) {
-        string word = wordsToVisit.front();
-        wordsToVisit.pop();
-        cur_layer--;
+vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
+    vector<vector<string>> res;
+    list<string> path;
+    unordered_set<string> visited;
+    unordered_set<string> unvisited(wordList.begin(), wordList.end());
+    map<string, vector<string>> word2forwards;
+    queue<string> q;
+    q.push(beginWord);
+    int cur = 1, next = 0;
+    bool found = false;
+    
+    while(!q.empty()) {
+        string word = q.front();
+        q.pop();
+        cur--;
         
         for (int i = 0; i < word.length(); i++) {
             for (char ch = 'a'; ch <= 'z'; ch++) {
@@ -58,72 +59,58 @@ vector<vector<string>> findLadders(string beginWord, string endWord, vector<stri
                 newWord[i] = ch;
                 
                 // newWord is in the dict.
-                if (unvisitedWords.find(newWord) != unvisitedWords.end()) {
-                    
-                    // newWord has not been visited before.
-                    if (visitedWords.find(newWord) == visitedWords.end()) {
-                        visitedWords.insert(newWord);
-                        next_layer++;
-                        wordsToVisit.push(newWord);
+                if (unvisited.find(newWord) != unvisited.end()) {
+                    if (visited.find(newWord) == visited.end()) {
+                        q.push(newWord);
+                        next++;
+                        visited.insert(newWord);
                     }
-                    
-                    if (word2Forwards.find(newWord) != word2Forwards.end()) {
-                        word2Forwards[newWord].push_back(word);
+                    if (word2forwards.find(newWord) != word2forwards.end()) {
+                        word2forwards[newWord].push_back(word);
                     } else {
-                        vector<string> temp_vec;
-                        temp_vec.push_back(word);
-                        word2Forwards[newWord] = temp_vec;
+                        vector<string> vec;
+                        vec.push_back(word);
+                        word2forwards[newWord] = vec;
                     }
-                    
                     if (newWord == endWord) {
-                        foundFlag = true;
+                        found = true;
                     }
                 }
-            }  // end iteration from 'a' to 'z'.
-        }  // end iteration from the first character to the last of the word.
+            }
+        }
         
-        if (cur_layer == 0) {
-            if (foundFlag) {
+        if (cur == 0) {
+            if (found) {
                 break;
             } else {
-                cur_layer = next_layer;
-                next_layer = 0;
-                for (auto visitedWord: visitedWords) {
-                    unvisitedWords.erase(visitedWord);
+                cur = next;
+                next = 0;
+                for (auto word: visited) {
+                    unvisited.erase(word);
                 }
-                visitedWords.clear();
+                visited.clear();
             }
         }
     }
-    
-    list<string> path;
-    backTrace(endWord, beginWord, path, pathList, word2Forwards);
-    return pathList;
+    backTrace(endWord, beginWord, path, word2forwards, res);
+    return res;
 }
 
-
-void backTrace(string word, string start, list<string>& path, vector<vector<string>>& res, map<string, vector<string>> matrix) {
+void backTrace(string word, string start, list<string>& path, map<string, vector<string>>& dict, vector<vector<string>>& res) {
     if (word == start) {
         path.push_front(word);
         vector<string> temp(path.begin(), path.end());
         res.push_back(temp);
         path.pop_front();
         return;
+    } else {
+        path.push_front(word);
+        for (auto w: dict[word]) {
+            backTrace(w, start, path, dict, res);
+        }
+        path.pop_front();
     }
-    
-    path.push_front(word);
-    for (auto w: matrix[word]) {
-        backTrace(w, start, path, res, matrix);
-    }
-    path.pop_front();
 }
-
-
-
-
-
-
-
 
 
 
