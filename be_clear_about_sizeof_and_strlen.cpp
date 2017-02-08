@@ -25,6 +25,32 @@ int main(int argc, const char * argv[]) {
     cout << "strlen(s): " << strlen(s) << endl;
     cout << "sizeof(q): " << sizeof(q) << endl;
     cout << "strlen(q): " << strlen(q) << endl;
-    std::cout << "Hello, World!\n";
+    cout << "Hello, World!\n" << endl;
+    cout << "what" << endl;
+    
+    unsigned char c = 0xff;
+    printf("%d\n", ++c);
+    
+    signed char c1 = 0x7f;
+    printf("%d\n", ++c1);
+    
+    signed char a = 0x7f;
+    signed char b = 0x05;
+    signed char d = a * b;
+    printf("%x\n", d);
+    
+    int i = 635;
+    printf("%x\n", i);
+    
+    unsigned int l = 0xfffffff;
+    printf("%x\n", l / 4);
+    
+    unsigned int m = 0xfffffffc;
+    unsigned int n = 0x104;
+    unsigned int o = m + n;
+    printf("%d\n", o);
+    printf("%x\n", o);
+    
+    printf("%x\n", UINT_MAX);
     return 0;
 }
