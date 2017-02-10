@@ -177,6 +177,10 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 比较简单，但是看了一会没什么思路，看了discuss区的答案。思路是遍历每天的股价，记录今日之前的最低价和最高收益，和今日股价比较更新最低价，最高收益和今天卖出的收益比较更新。一刷一次AC，但是思路不是自己的！
 
 
+120. Triangle
+https://leetcode.com/problems/triangle/
+又是DP，从底网上找。一刷for循环里面的变量名写错，也是醉。这种算法的空间复杂度为O(N)，还有一种空间复杂度为O(1)的算法，下次来的时候好好调研一下。
+
  
 
  
