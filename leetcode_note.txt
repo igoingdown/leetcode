@@ -184,7 +184,7 @@ https://leetcode.com/problems/triangle/
  
 106. Construct Binary Tree from Inorder and Postorder Traversal
 https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
-再次吊死在二叉树上！这个算法人来做不难，很好理解，但是翻译成机器能理解的算法就很困难！这就是人类和机器思维的区别吗？一刷在IDE上写的，没理解透彻。非递归算法确实不太好懂，明天再试试递归算法。
+再次吊死在二叉树上！这个算法人来做不难，很好理解，但是翻译成机器能理解的算法就很困难！这就是人类和机器思维的区别吗？一刷在IDE上写的，没理解透彻。非递归算法确实不太好懂，明天再试试递归算法。还是递归算法比较容易理解。
 
 
  
