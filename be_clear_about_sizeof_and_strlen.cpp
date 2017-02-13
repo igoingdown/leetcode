@@ -12,8 +12,21 @@ using namespace std;
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    char s[] = "hellodhaughuahudehweufhauiheuifa";
+    char s[] = "hello";
+    printf("s.strlen: %d\n", strlen(s));
+    printf("s.size: %d\n", sizeof(s));
+    for (int i = 0; i < sizeof(s); ++i)
+    {
+        printf("%x__", s[i]);
+    }
+    printf("\n");
     char* s_1 = s + 1;
+    printf("s_1 size: %d\n", sizeof(s_1));
+    for (int i = 0; i < sizeof(s_1); ++i)
+    {
+        printf("%x__", s_1[i]);
+    }
+    printf("\n");
     cout << s_1[-1] << endl;
     char* q = new char[10];
     char* p;
