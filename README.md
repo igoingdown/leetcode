@@ -1,3 +1,4 @@
+
 # LEETCODE
 
 Some codes are solutions of the algorithm problems on the leetcode website.
@@ -13,3 +14,9 @@ It's really exciting!
 
 # leetcode_note.txt
 This is a note recording the fight between me and the algorithms.
+
+# buddy_system_implement_and_test
+This is an implement of buddy system, which is used in the linux kernal for memmory management.
+Source code is copyed from https://github.com/wuwenbin/buddy2.
+I add some annotation to the source code.
+And i tested it in my local workspace.
