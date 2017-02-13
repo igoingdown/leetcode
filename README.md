@@ -16,7 +16,7 @@ It's really exciting!
 This is a note recording the fight between me and the algorithms.
 
 # buddy_system_implement_and_test
-This is an implement of buddy system, which is used in the linux kernal for memmory management.
-Source code is copyed from https://github.com/wuwenbin/buddy2.
+This is an implement of buddy system, which is used in the linux kernel for memory management.
+Source code is copied from https://github.com/wuwenbin/buddy2.
 I add some annotation to the source code.
-And i tested it in my local workspace.
+And I tested it in my local workspace.
