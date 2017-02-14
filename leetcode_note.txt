@@ -192,6 +192,10 @@ https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-tr
 和上一题的方法完全一样，我用的是递归方法，但是参数传递已经尽量少了，所以性能牺牲不是太多，因为牺牲在函数调用上。一刷函数签名少写了引用符号，导致运行时内存溢出。
 
 
+80. Remove Duplicates from Sorted Array II
+https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
+比较简单，将重复次数小于3的元素往前移动，其他元素不动，就得到了重复次数最多为2的元素的个数。一刷题目理解错误，看高手的解法理解错误，后来改正了。
+
  
 
  
