@@ -187,7 +187,10 @@ https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-t
 再次吊死在二叉树上！这个算法人来做不难，很好理解，但是翻译成机器能理解的算法就很困难！这就是人类和机器思维的区别吗？一刷在IDE上写的，没理解透彻。非递归算法确实不太好懂，明天再试试递归算法。还是递归算法比较容易理解。
 
 
- 
+105. Construct Binary Tree from Preorder and Inorder Traversal
+https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+和上一题的方法完全一样，我用的是递归方法，但是参数传递已经尽量少了，所以性能牺牲不是太多，因为牺牲在函数调用上。一刷函数签名少写了引用符号，导致运行时内存溢出。
+
 
  
 
