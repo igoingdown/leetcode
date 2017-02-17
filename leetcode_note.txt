@@ -201,8 +201,10 @@ https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
 https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
 适合用二分法，但是“十个二分九个错”！花了不少时间。本质是分类问题，关键在于选择分类标准，分不了走的步子小一点！画图是个解决问题的好办法。一刷分类标准选的不好，在XCODE上debug很长时间才AC。
 
- 
 
+78. Subsets 
+https://leetcode.com/problems/subsets/
+挺简单的一道题，很快就有思路了。对vector的一些成员函数不太熟悉，一刷没有AC。
  
 
  
