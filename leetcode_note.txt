@@ -204,7 +204,7 @@ https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
 
 78. Subsets 
 https://leetcode.com/problems/subsets/
-挺简单的一道题，很快就有思路了。对vector的一些成员函数不太熟悉，一刷没有AC。
+挺简单的一道题，很快就有思路了。对vector的一些成员函数不太熟悉，一刷没有AC。二刷一次AC，但是DISCUSS区有更好的解法，使用bitmap的思想做的，非常不错。对vector的多元素版本的构造函数格式不熟，没能AC。
  
 
 75. Sort Colors
