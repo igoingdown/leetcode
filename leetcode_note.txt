@@ -194,7 +194,7 @@ https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-tr
 
 80. Remove Duplicates from Sorted Array II
 https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
-比较简单，将重复次数小于3的元素往前移动，其他元素不动，就得到了重复次数最多为2的元素的个数。一刷题目理解不清，循环条件写错。二刷循环条件写错。
+比较简单，将重复次数小于3的元素往前移动，其他元素不动，就得到了重复次数最多为2的元素的个数。一刷题目理解不清，循环条件写错。二刷循环条件写错。三刷一次AC。
 
 
 81. Search in Rotated Sorted Array II
