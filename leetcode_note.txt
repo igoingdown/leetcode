@@ -214,8 +214,7 @@ https://leetcode.com/problems/sort-colors/
 
 74. Search a 2D Matrix
 https://leetcode.com/problems/search-a-2d-matrix/?tab=Description
-就是二分法的升级版，一刷选对应行的时候没考虑全，导致在[[1], [3]]找1这个case下死循环。
-
+就是二分法的升级版，一刷选对应行的时候没考虑全，导致在[[1], [3]]找1这个case下死循环。也将matrix视为一维数组，但是要找到一维数组的索引和二维数组索引的关系，对于m*n矩阵A，如果将其视为一维数组B，则B[x]=A[x / n][x%n]!!!
  
 
  
