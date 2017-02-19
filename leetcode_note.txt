@@ -212,6 +212,10 @@ https://leetcode.com/problems/sort-colors/
 看了半天这道题是让手写排序算法，当然是快排了！但是快排好像被我忘了！一刷没AC。二刷看了还不错的一个算法，用了5行解决问题，尝试了一下，没AC，注意循环终止条件，2的index代指的数也要进行判断！！
  
 
+74. Search a 2D Matrix
+https://leetcode.com/problems/search-a-2d-matrix/?tab=Description
+就是二分法的升级版，一刷选对应行的时候没考虑全，导致在[[1], [3]]找1这个case下死循环。
+
  
 
  
