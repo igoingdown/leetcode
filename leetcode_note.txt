@@ -215,6 +215,11 @@ https://leetcode.com/problems/sort-colors/
 74. Search a 2D Matrix
 https://leetcode.com/problems/search-a-2d-matrix/?tab=Description
 就是二分法的升级版，一刷选对应行的时候没考虑全，导致在[[1], [3]]找1这个case下死循环。也将matrix视为一维数组，但是要找到一维数组的索引和二维数组索引的关系，对于m*n矩阵A，如果将其视为一维数组B，则B[x]=A[x / n][x%n]!!!
+
+
+73. Set Matrix Zeroes
+https://leetcode.com/problems/set-matrix-zeroes/?tab=Description
+开始的思路是跟74题一样，视为一维数组，但是并不合适。讨论区第一名的算法，很好。将第一行第一列作为标志！第一列再另设标志。采用迂回的方式进行两次遍历。算法复杂度高些，但是好理解。一刷写错变量名，没AC。
  
 
  
