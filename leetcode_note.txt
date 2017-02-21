@@ -220,8 +220,11 @@ https://leetcode.com/problems/search-a-2d-matrix/?tab=Description
 73. Set Matrix Zeroes
 https://leetcode.com/problems/set-matrix-zeroes/?tab=Description
 开始的思路是跟74题一样，视为一维数组，但是并不合适。讨论区第一名的算法，很好。将第一行第一列作为标志！第一列再另设标志。采用迂回的方式进行两次遍历。算法复杂度高些，但是好理解。一刷写错变量名，没AC。
- 
 
+
+64. Minimum Path Sum
+https://leetcode.com/problems/minimum-path-sum/?tab=Description
+还是DP算法，Discuss区第一名将空间复杂度从O(N^2)缩减到O(N)，并且给出了完整的解析，但是看得还是比较吃力的，看了两个晚上，终于一刷AC，但是还要再刷！
  
 
  
