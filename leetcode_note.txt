@@ -204,12 +204,12 @@ https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
 
 78. Subsets 
 https://leetcode.com/problems/subsets/
-挺简单的一道题，很快就有思路了。对vector的一些成员函数不太熟悉，一刷没有AC。二刷一次AC，但是DISCUSS区有更好的解法，使用bitmap的思想做的，非常不错。对vector的多元素版本的构造函数格式不熟，没能AC。
+一刷由于对vector的一些成员函数不熟悉，没有AC。二刷一次AC。讨论区第一名的算法是基于bitmap做的，一刷由于对vector的多元素版本的构造函数格式不熟，没能AC。二刷一次AC。
  
 
 75. Sort Colors
 https://leetcode.com/problems/sort-colors/
-看了半天这道题是让手写排序算法，当然是快排了！但是快排好像被我忘了！一刷没AC。二刷看了还不错的一个算法，用了5行解决问题，尝试了一下，没AC，注意循环终止条件，2的index代指的数也要进行判断！！
+这道题是让手写排序，一刷手写快排没AC。二刷由于多次将左侧边界想当然地视为0（其实是l）没能AC。讨论区第一名的算法针对特殊情况（只有0， 1， 2三个数字）对普适的排序算法做了优化，一刷循环条件写错没AC。二刷思路不清晰，没AC，注意需要两层循环，内层循环只处理连续的符合条件的情况，外层需要等于因为该index对应的值谁也不知道是几。第二种算法的在时间效益上不如快排。
  
 
 74. Search a 2D Matrix
