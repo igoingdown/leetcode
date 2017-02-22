@@ -227,8 +227,9 @@ https://leetcode.com/problems/minimum-path-sum/?tab=Description
 还是DP算法，Discuss区第一名将空间复杂度从O(N^2)缩减到O(N)，并且给出了完整的解析，但是看得还是比较吃力的，看了两个晚上，终于一刷AC，但是还要再刷！
  
 
- 
-
+62. Unique Paths
+https://leetcode.com/problems/unique-paths/?tab=Description
+一种算法和64题相似,一刷变量名写错没能AC。另一种直接算C(N, k)，数学真是太美好了。算组合数的算法时间复杂度高于DP算法，是因为乘法远比加法费时间！一刷表达式写错没能AC。
  
 
  
