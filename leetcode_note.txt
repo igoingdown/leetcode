@@ -230,9 +230,13 @@ DP算法，Discuss区第一名将空间复杂度从O(N^2)缩减到O(N)，并且�
 62. Unique Paths
 https://leetcode.com/problems/unique-paths/?tab=Description
 一种算法和64题相似,一刷变量名写错没能AC。另一种直接算C(N, k)，数学真是太美好了。算组合数的算法时间复杂度高于DP算法，是因为乘法远比加法费时间！一刷表达式写错没能AC。二刷理解了思路，一次AC。
- 
 
- 
+
+63. Unique Paths II
+https://leetcode.com/problems/unique-paths-ii/?tab=Description
+和62，64题思路相似，区别在于初始化。循环过程也有小的差异。一刷叠式的vector的初始化写错没能AC，这个问题还没想清楚。
+
+
 
  
 
