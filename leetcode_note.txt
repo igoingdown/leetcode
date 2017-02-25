@@ -241,6 +241,37 @@ https://leetcode.com/problems/unique-paths-ii/?tab=Description
 https://leetcode.com/problems/spiral-matrix-ii/?tab=Description
 挺有意思的一道题，按照讨论区C++排名第一的算法做的。这道题一开始以为有两者分解方式。我以为前面一种充满几何的美感，结果这是个陷阱！！后者才是正确的分解！一刷再一次因为嵌套式vector的初始化语法错误没能AC！！
 
+
+56. Merge Intervals
+https://leetcode.com/problems/merge-intervals/?tab=Description
+比较简单，没太多技巧。我也有思路，但是远远达不到讨论区C++第一名的算法的简洁。第一名的算法在调用sort函数的时候重载了[]操作符，我不太理解这种方法，在函数外定义了自己的compare函数。有两个问题没搞清，一是为什么自己定义的compare函数无论是重载操作符形式还是一般的返回bool的形式，都只能用小于号，不能加等于号，加了就导致运行时错误！第二点就是重载操作符的理解又忘了！一刷没有AC。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
 
  
