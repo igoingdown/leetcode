@@ -237,6 +237,9 @@ https://leetcode.com/problems/unique-paths-ii/?tab=Description
 和62，64题思路相似，区别在于初始化。循环过程也有小的差异。一刷叠式的vector的初始化写错没能AC，这个问题还没想清楚。
 
 
+59. Spiral Matrix II
+https://leetcode.com/problems/spiral-matrix-ii/?tab=Description
+挺有意思的一道题，按照讨论区C++排名第一的算法做的。这道题一开始以为有两者分解方式。我以为前面一种充满几何的美感，结果这是个陷阱！！后者才是正确的分解！一刷再一次因为嵌套式vector的初始化语法错误没能AC！！
 
  
 
