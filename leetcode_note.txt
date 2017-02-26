@@ -257,10 +257,14 @@ https://leetcode.com/problems/spiral-matrix/?tab=Description
 按照59题相似的思路，出现了两个比较大的BUG，一是内层while循环索引没有递增/减，二是在两次反向遍历的时候要加一个判断条件，以免与正向遍历的是同一行/列。一刷没AC。
 
 
+53. Maximum Subarray
+https://leetcode.com/problems/maximum-subarray/?tab=Description
+还是DP算法，不好理解。画了个函数图像，感觉稍微好些。
 
 
-
-
+48. Rotate Image
+https://leetcode.com/problems/rotate-image/?tab=Description
+采用讨论区第一名的算法，效率不是很高，但是很容易明白。是一种普适的方法。对于旋转先将矩阵进行行逆序，然后对角互换。对于逆时针旋转则是先进行列逆序。一刷AC，但是还是要继续刷！！
 
 
 
