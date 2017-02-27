@@ -272,8 +272,14 @@ https://leetcode.com/problems/combination-sum-ii/?tab=Description
 讨论区第一名的算法先对候选排序，然后使用DFS，搜索路径。注意去除可能重复的路径和并进行必要的剪枝。一刷变量名写错没AC，对去重的理解也只限于想象，没有验证。讨论区第一名算法我添加了剪枝之后，算法执行时间缩短很多，还是挺有成就感的。
 
 
+39. Combination Sum
+https://leetcode.com/problems/combination-sum/?tab=Description
+做了第40题之后，做这道题就觉得比较简单了，可以画树状图来理解计算机的求解过程。一刷for循环中；写成了，没AC。
 
 
+35. Search Insert Position
+https://leetcode.com/problems/search-insert-position/?tab=Description
+非常简单，一次AC。
 
 
 
