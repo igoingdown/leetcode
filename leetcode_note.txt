@@ -282,6 +282,24 @@ https://leetcode.com/problems/search-insert-position/?tab=Description
 非常简单，一次AC。
 
 
+34. Search for a Range
+https://leetcode.com/problems/search-for-a-range/?tab=Description
+比较简单，一看就有思路。二分法，第一个版本是分别用两次二分查找查上界和下界，一次AC。终于明白了二分查找查找符合目标下界和符合目标上界的区别和联系，联系在于每次循环必须更新mid！区别在于求下界时mid要向下界靠拢，求上界的时候mid要向上界靠拢，这种看透彻的感觉很爽。就是算法效率不高。第二版先使用二分查找找到下界，然后从下界往后遍历找上界，然后就掉进了C++的坑里了。C++的[]操作是不检查[]中的index是否超出vector的size的，所以在使用[]进行遍历的时候，一定要加上size的限定条件。第二版没AC。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
