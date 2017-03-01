@@ -292,8 +292,9 @@ https://leetcode.com/problems/search-in-rotated-sorted-array/?tab=Description
 比81题简单一些，因为不用考虑重复。81题做完就扔了，也没来得及复习，分类标准理解了，但是分类细节还是没把握好，一刷没AC。算法的效率也不高。
 
 
-
-
+31. Next Permutation
+https://leetcode.com/problems/next-permutation/?tab=Description
+第一眼没思路，选择了讨论区一个比较好理解的算法，效率还不错。先从后将降序变为升序，然后找升序中前一个数字的上界与该数字替换。一次AC，对算法本身理解不深，还要再刷。
 
 
 
