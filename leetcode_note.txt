@@ -297,6 +297,9 @@ https://leetcode.com/problems/next-permutation/?tab=Description
 第一眼没思路，选择了讨论区一个比较好理解的算法，效率还不错。先从后将降序变为升序，然后找升序中前一个数字的上界与该数字替换。一次AC，对算法本身理解不深，还要再刷。
 
 
+18. 4Sum
+https://leetcode.com/problems/4sum/?tab=Description
+第一眼使用DFS，很快写出来了，debug了好久没成功。看了讨论区的前两名的算法，分别是JAVA版和C++版，JAVA版太长了，果断采取了C++版，一刷变量名写错，忘记对nums进行sort操作。没AC，根本在于理解不深。
 
 
 
