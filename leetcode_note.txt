@@ -302,7 +302,9 @@ https://leetcode.com/problems/4sum/?tab=Description
 第一眼使用DFS，很快写出来了，debug了很久没AC。选择了讨论区一个基于C++的算法，一刷没AC，变量名写错，忘记对nums进行sort操作，根本在于理解深刻。二刷没AC，变量名写错，更行left和right用于去重的操作的位置写错，还是理解不够。
 
 
-
+16. 3Sum Closest
+https://leetcode.com/problems/3sum-closest/?tab=Description
+和18题非常相近，而且要简单很多。仿照18题的思路写了大部分，结果最后一行更新left和right的时候走入弯道了，看了讨论区的算法有了想法。变量名写错，三目运算符写错，一刷没能AC。
 
 
 
