@@ -307,7 +307,9 @@ https://leetcode.com/problems/3sum-closest/?tab=Description
 和18题非常相近，而且要简单很多。仿照18题的思路写了大部分，结果最后一行更新left和right的时候走入弯道了，看了讨论区的算法有了想法。变量名写错，三目运算符写错，一刷没能AC。
 
 
-
+15. 3Sum
+https://leetcode.com/problems/3sum/?tab=Description
+15，16，18我用的是同一种思路，但是都没有一次AC，同样的套路，同样的算法，可能至少要写5次才能懂得每一步的精髓！！一刷去重条件写错，事实上还是不是很理解去重的思路，没能AC。
 
 
 
