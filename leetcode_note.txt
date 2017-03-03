@@ -312,6 +312,9 @@ https://leetcode.com/problems/3sum/?tab=Description
 15，16，18我用的是同一种思路，但是都没有一次AC，同样的套路，同样的算法，可能至少要写5次才能懂得每一步的精髓！！一刷去重条件写错，事实上还是不是很理解去重的思路，没能AC。
 
 
+11. Container With Most Water
+https://leetcode.com/problems/container-with-most-water/?tab=Description
+一开始理解错题意，把矩形当成梯形来算，看了讨论区算法的思路后，自己写出来的。一刷AC，但是还需要再刷。
 
 
 
