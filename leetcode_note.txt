@@ -259,17 +259,17 @@ https://leetcode.com/problems/spiral-matrix/?tab=Description
 
 53. Maximum Subarray
 https://leetcode.com/problems/maximum-subarray/?tab=Description
-还是DP算法，不好理解。画了个函数图像，感觉稍微好些。
+还是DP算法，不好理解。画了个函数图像，感觉稍微好些。序列中的每个数都是sum的导数，这么看的话就可以理解。DP算法好些可以解释连续的问题。很奇妙。一刷AC。二刷一次AC。
 
 
 48. Rotate Image
 https://leetcode.com/problems/rotate-image/?tab=Description
-采用讨论区第一名的算法，效率不是很高，但是很容易明白。是一种普适的方法。对于旋转先将矩阵进行行逆序，然后对角互换。对于逆时针旋转则是先进行列逆序。一刷AC，但是还是要继续刷！！
+采用讨论区第一名的算法，效率不是很高，但是很容易明白。是一种普适的方法。对于旋转先将矩阵进行行逆序，然后对角互换。对于逆时针旋转则是先进行列逆序。一刷AC。二刷一次AC。
 
 
 40. Combination Sum II
 https://leetcode.com/problems/combination-sum-ii/?tab=Description
-讨论区第一名的算法先对候选排序，然后使用DFS，搜索路径。注意去除可能重复的路径和并进行必要的剪枝。一刷变量名写错没AC，对去重的理解也只限于想象，没有验证。讨论区第一名算法我添加了剪枝之后，算法执行时间缩短很多，还是挺有成就感的。
+讨论区第一名的算法先对候选排序，然后使用DFS，搜索路径。注意去除可能重复的路径和并进行必要的剪枝。一刷变量名写错没AC，对去重的理解也只限于想象，没有验证。讨论区第一名算法我添加了剪枝之后，算法执行时间缩短很多，还是挺有成就感的。二刷一次AC。
 
 
 39. Combination Sum
