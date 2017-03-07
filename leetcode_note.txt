@@ -274,7 +274,7 @@ https://leetcode.com/problems/combination-sum-ii/?tab=Description
 
 39. Combination Sum
 https://leetcode.com/problems/combination-sum/?tab=Description
-做了第40题之后，做这道题就觉得比较简单了，可以画树状图来理解计算机的求解过程。一刷for循环中；写成了，没AC。
+做了第40题之后，做这道题就觉得比较简单了，可以画树状图来理解计算机的求解过程。一刷for循环中；写成了，没AC。二刷cand写成了res，没能AC。
 
 
 35. Search Insert Position
