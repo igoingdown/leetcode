@@ -219,7 +219,7 @@ https://leetcode.com/problems/search-a-2d-matrix/?tab=Description
 
 73. Set Matrix Zeroes
 https://leetcode.com/problems/set-matrix-zeroes/?tab=Description
-开始的思路是跟74题一样，视为一维数组，但是并不合适。讨论区第一名的算法，很好。将第一行第一列作为标志！第一列再另设标志。采用迂回的方式进行两次遍历。算法复杂度高些，但是好理解。一刷写错变量名，没AC。
+我套用74题的方法，将矩阵视为一维数组，发现并不合适。讨论区第一名的算法很好，将第一行第一列作为标志，第一列使用单独的标志。顺序遍历将标志置0，逆序遍历按标志将元素置0。算法复杂度高些，但是好理解。一刷写错变量名，没AC。二刷一次AC。
 
 
 64. Minimum Path Sum
@@ -229,22 +229,22 @@ DP算法，Discuss区第一名将空间复杂度从O(N^2)缩减到O(N)，并且�
 
 62. Unique Paths
 https://leetcode.com/problems/unique-paths/?tab=Description
-一种算法和64题相似,一刷变量名写错没能AC。另一种直接算C(N, k)，数学真是太美好了。算组合数的算法时间复杂度高于DP算法，是因为乘法远比加法费时间！一刷表达式写错没能AC。二刷理解了思路，一次AC。
+一种算法和64题相似,一刷变量名写错没能AC，二刷一次AC。另一种直接算C(N, k)，数学真是太美好了。算组合数的算法时间复杂度高于DP算法，是因为乘法远比加法费时间！一刷表达式写错没能AC。
 
 
 63. Unique Paths II
 https://leetcode.com/problems/unique-paths-ii/?tab=Description
-和62，64题思路相似，区别在于初始化。循环过程也有小的差异。一刷叠式的vector的初始化写错没能AC，这个问题还没想清楚。
+62，63， 64题思路都一样，初始化和循环过程稍有差异。先初始化cur，然后以内部遍历列外部遍历行的方式逐步更新cur，对于特殊的第一行和第一列单独处理。一刷vector的初始化写错没能AC。二刷一次AC，这种题算是真的理解了。
 
 
 59. Spiral Matrix II
 https://leetcode.com/problems/spiral-matrix-ii/?tab=Description
-挺有意思的一道题，按照讨论区C++排名第一的算法做的。这道题一开始以为有两者分解方式。我以为前面一种充满几何的美感，结果这是个陷阱！！后者才是正确的分解！一刷再一次因为嵌套式vector的初始化语法错误没能AC！！
+挺有意思的一道题，开始我以为矩阵有两种分解方式：第一种很有美感，结果这是个陷阱，n为偶数时可以正确返回结果，当n为奇数时，矩阵最中间的那个格会形成死循环；第二种才是正确的分解。一刷嵌套式vector的初始化语法写错，没能AC。二刷循环中更新j出错，没能AC。
 
 
 56. Merge Intervals
 https://leetcode.com/problems/merge-intervals/?tab=Description
-比较简单，没太多技巧。我也有思路，但是远远达不到讨论区C++第一名的算法的简洁。第一名的算法在调用sort函数的时候重载了[]操作符，我不太理解这种方法，在函数外定义了自己的compare函数。有两个问题没搞清，一是为什么自己定义的compare函数无论是重载操作符形式还是一般的返回bool的形式，都只能用小于号，不能加等于号，加了就导致运行时错误！第二点就是重载操作符的理解又忘了！一刷没有AC。
+比较简单，没太多技巧。我也有思路，但是远远达不到讨论区C++第一名的算法的简洁。第一名的算法在调用sort函数的时候重载了[]操作符，我不太理解这种方法，在函数外定义了自己的compare函数。有两个问题没搞清，一是为什么自己定义的compare函数无论是重载操作符形式还是一般的返回bool的形式，都只能用小于号，不能加等于号，加了就导致运行时错误！第二点就是重载操作符的理解又忘了！一刷没有AC。二刷vector的定义出错，myCompare函数没有设定为static，还自作聪明地使用引用类型！没能AC。注意更新end时，判断条件用<=。
 
 
 55. Jump Game
@@ -314,7 +314,7 @@ https://leetcode.com/problems/3sum/?tab=Description
 
 11. Container With Most Water
 https://leetcode.com/problems/container-with-most-water/?tab=Description
-一开始理解错题意，把矩形当成梯形来算，看了讨论区算法的思路后，自己写出来的。一刷AC，但是还需要再刷。
+一开始理解错题意，把矩形当成梯形来算，看了讨论区算法的思路后，自己写出来的。一刷AC，但是还需要再刷。二刷迭代时没有更新结果，没能AC。
 
 
 
