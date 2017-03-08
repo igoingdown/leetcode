@@ -294,7 +294,7 @@ https://leetcode.com/problems/search-in-rotated-sorted-array/?tab=Description
 
 31. Next Permutation
 https://leetcode.com/problems/next-permutation/?tab=Description
-第一眼没思路，选择了讨论区一个比较好理解的算法，效率还不错。先从后将降序变为升序，然后找升序中前一个数字的上界与该数字替换。一次AC，对算法本身理解不深，还要再刷。
+第一眼没思路，选择了讨论区一个比较好理解的算法，效率还不错。先从后将降序变为升序，然后找升序中前一个数字的上界与该数字替换。一次AC，但是理解不够。二刷查了API文档之后一次AC。
 
 
 18. 4Sum
