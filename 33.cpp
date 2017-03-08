@@ -17,10 +17,10 @@ public:
                     low = mid + 1;
                 }
             } else if (nums[mid] < nums[low]) {
-                if (nums[low] <= target) {
-                    high = mid - 1;
+                if (nums[mid] < target && nums[high] >= target) {
+                    low = mid + 1;
                 } else {
-                    low++;
+                    high = mid - 1;
                 }
             } else {
                 low++;
