@@ -304,7 +304,7 @@ https://leetcode.com/problems/4sum/?tab=Description
 
 16. 3Sum Closest
 https://leetcode.com/problems/3sum-closest/?tab=Description
-和18题非常相近，而且要简单很多。仿照18题的思路写了大部分，结果最后一行更新left和right的时候走入弯道了，看了讨论区的算法有了想法。变量名写错，三目运算符写错，一刷没能AC。
+和18题非常相近，而且要简单很多。仿照18题的思路写了大部分，结果最后一行更新left和right的时候走入弯道了，看了讨论区的算法有了想法。变量名写错，三目运算符写错，一刷没能AC。二刷变量n没有声明，没有AC。
 
 
 15. 3Sum
