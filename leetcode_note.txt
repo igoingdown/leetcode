@@ -299,7 +299,7 @@ https://leetcode.com/problems/next-permutation/?tab=Description
 
 18. 4Sum
 https://leetcode.com/problems/4sum/?tab=Description
-第一眼使用DFS，很快写出来了，debug了很久没AC。选择了讨论区一个基于C++的算法，一刷没AC，变量名写错，忘记对nums进行sort操作，根本在于理解深刻。二刷没AC，变量名写错，更行left和right用于去重的操作的位置写错，还是理解不够。
+第一眼使用DFS，很快写出来了，debug了很久没AC。选择了讨论区一个基于C++的算法，一刷没AC，变量名写错，忘记对nums进行sort操作，根本在于理解深刻。二刷没AC，变量名写错，最后更新l和r的过程写错。三刷没AC，还是最后更新l和r的操作写错！！
 
 
 16. 3Sum Closest
