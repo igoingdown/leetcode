@@ -299,7 +299,7 @@ https://leetcode.com/problems/next-permutation/?tab=Description
 
 18. 4Sum
 https://leetcode.com/problems/4sum/?tab=Description
-第一眼使用DFS，很快写出来了，debug了很久没AC。选择了讨论区一个基于C++的算法，一刷没AC，变量名写错，忘记对nums进行sort操作，根本在于理解深刻。二刷没AC，变量名写错，最后更新l和r的过程写错。三刷没AC，还是最后更新l和r的操作写错！！
+第一眼使用DFS，很快写出来了，debug了很久没AC。选择了讨论区一个基于C++的算法，一刷没AC，变量名写错，忘记对nums进行sort操作，根本在于理解深刻。二刷没AC，变量名写错，最后更新l和r的过程写错。三刷没AC，还是最后更新l和r的操作写错！！这个题可以视为一棵定深的树的遍历，剪枝规则也很简单，就是除当前层的第一个节点外，其余节点如果和前一个节点值相同就减掉。最后要注意的是处理2sum的时候，要先更新l和r然后再进行剪枝的操作，否则会陷入死循环。
 
 
 16. 3Sum Closest

@@ -17,7 +17,7 @@ void getPaths(vector<vector<int>>& res, vector<int>& path, vector<int>& nums, in
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    vector<int> nums = {-2, -1, 0, 0, 1, 2};
+    vector<int> nums = {1, 0, -1, 0, -2, 2};
     vector<vector<int>> res = fourSum(nums, 0);
     for (auto vec : res) {
         cout << "[ ";
@@ -27,7 +27,7 @@ int main(int argc, const char * argv[]) {
         cout << "]" << endl;
     }
     cout << endl;
-    std::cout << "Hello, World!\n";
+    // std::cout << "Hello, World!\n";
     return 0;
 }
 
@@ -60,9 +60,6 @@ vector<vector<int>> fourSum(vector<int>& nums, int target) {
             }
             int left = j + 1, right = n - 1;
             while (left < right) {
-                if ( left >= right) {
-                    break;
-                }
                 int sum = nums[i] + nums[j] + nums[left] + nums[right];
                 if (sum < target) {
                     left++;
