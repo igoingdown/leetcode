@@ -309,7 +309,7 @@ https://leetcode.com/problems/3sum-closest/?tab=Description
 
 15. 3Sum
 https://leetcode.com/problems/3sum/?tab=Description
-15，16，18我用的是同一种思路，但是都没有一次AC，同样的套路，同样的算法，可能至少要写5次才能懂得每一步的精髓！一刷去重条件写错，没能AC。二刷一次AC。
+15，16，18思路一样，但是都没有一次AC。一种算法，在不理解的情况下，至少要写5次才能懂得每一步的精髓！一刷去重条件写错，没能AC。二刷一次AC。
 
 
 11. Container With Most Water
