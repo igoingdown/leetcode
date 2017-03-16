@@ -317,7 +317,9 @@ https://leetcode.com/problems/container-with-most-water/?tab=Description
 一开始理解错题意，把矩形当成梯形来算，看了讨论区算法的思路后，自己写出来的。一刷AC，但是还需要再刷。二刷迭代时没有更新结果，没能AC。三刷连思路都没了，花了很长时间。我的思路是选可能留下的，而这种情况并不容易搞，答案是筛去不符合的！这样就简单很多。还要再刷！！
 
 
-
+535. Encode and Decode TinyURL
+https://leetcode.com/problems/encode-and-decode-tinyurl/#/description
+比较简单的一道题，但是就是没思路，好烦，可能我做的题还是不够多吧……，很多C++的STL操作都忘掉了，上周写了不少python之后，现在写C++老是忘记写；在不同的语言之间来回切换容易精神错乱！一刷没AC。
 
 
 
