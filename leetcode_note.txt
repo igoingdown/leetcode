@@ -314,7 +314,7 @@ https://leetcode.com/problems/3sum/?tab=Description
 
 11. Container With Most Water
 https://leetcode.com/problems/container-with-most-water/?tab=Description
-一开始理解错题意，把矩形当成梯形来算，看了讨论区算法的思路后，自己写出来的。一刷AC，但是还需要再刷。二刷迭代时没有更新结果，没能AC。
+一开始理解错题意，把矩形当成梯形来算，看了讨论区算法的思路后，自己写出来的。一刷AC，但是还需要再刷。二刷迭代时没有更新结果，没能AC。三刷连思路都没了，花了很长时间。我的思路是选可能留下的，而这种情况并不容易搞，答案是筛去不符合的！这样就简单很多。还要再刷！！
 
 
 
