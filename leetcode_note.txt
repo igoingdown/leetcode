@@ -327,6 +327,11 @@ https://leetcode.com/problems/most-frequent-subtree-sum/#/description
 不算难，现在衡量难与不难的标准是看了有没有思路。有思路但是花很长时间肉眼debug才A掉这个题。而且思路没有简化到极致。最大的那个count可以在遍历树的过程中找到，我是遍历完树之后再遍历map找的，map中的元素可以自动初始化，这种情况和python不一样，不用判断键是否存在！经过优化之后，代码非常简洁而且效率提高了一倍。一刷没有AC！
 
 
+500. Keyboard Row
+https://leetcode.com/problems/keyboard-row/#/description
+现在连easy级的题都没法一刷AC了，真是菜啊！再刷！！！
+
+
 
 
 
