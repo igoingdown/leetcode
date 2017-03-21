@@ -319,12 +319,12 @@ https://leetcode.com/problems/container-with-most-water/?tab=Description
 
 535. Encode and Decode TinyURL
 https://leetcode.com/problems/encode-and-decode-tinyurl/#/description
-比较简单的一道题，但是就是没思路，好烦，可能我做的题还是不够多吧……，很多C++的STL操作都忘掉了，上周写了不少python之后，现在写C++老是忘记写；在不同的语言之间来回切换容易精神错乱！一刷没AC。
+比较简单的一道题，但是就是没思路，好烦，做的题还是不够多，很多C++的STL操作都忘掉了，上周写了不少python之后，现在写C++老是忘记写；在不同的语言之间来回切换容易精神错乱！一刷没AC。
 
 
 508. Most Frequent Subtree Sum
 https://leetcode.com/problems/most-frequent-subtree-sum/#/description
-不算难，现在衡量难与不难的标准是看了有没有思路。有思路但是花很长时间肉眼debug才A掉这个题。而且思路没有简化到极致。最大的那个count可以在遍历树的过程中找到，我是遍历完树之后再遍历map找的，map中的元素可以自动初始化，这种情况和python不一样，不用判断键是否存在！经过优化之后，代码非常简洁而且效率提高了一倍。
+不算难，现在衡量难与不难的标准是看了有没有思路。有思路但是花很长时间肉眼debug才A掉这个题。而且思路没有简化到极致。最大的那个count可以在遍历树的过程中找到，我是遍历完树之后再遍历map找的，map中的元素可以自动初始化，这种情况和python不一样，不用判断键是否存在！经过优化之后，代码非常简洁而且效率提高了一倍。一刷没有AC！
 
 
 
