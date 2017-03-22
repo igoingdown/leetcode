@@ -337,6 +337,10 @@ https://leetcode.com/problems/4sum-ii/#/description
 没有思路，要再刷两遍！一刷没AC，res更新不是加1，而是加上map中的count！
 
 
+451. Sort Characters By Frequency
+https://leetcode.com/problems/sort-characters-by-frequency/#/description
+比较简单，但是比较考基本功，但是还是不明白为啥要用static关键字！！！一刷没AC，注意map使用[]操作查询时，不存在的键会自动生成！而值会调用相应的默认构造函数！这是c++的一大优点。
+
 
 
  
