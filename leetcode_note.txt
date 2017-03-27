@@ -352,6 +352,11 @@ https://leetcode.com/problems/insert-delete-getrandom-o1/#/description
 一刷没AC，注意get_random的时候index不能为0！
 
 
+274. H-Index
+https://leetcode.com/problems/h-index/#/description
+一刷没思路！注意vector和Hashmap的查找复杂度都是O(1)！开数组，多加一个元素用于存储引用数大于size的个数。
+
+
 
  
 
