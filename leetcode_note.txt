@@ -357,8 +357,11 @@ https://leetcode.com/problems/h-index/#/description
 一刷没思路！注意vector和Hashmap的查找复杂度都是O(1)！开数组，多加一个元素用于存储引用数大于size的个数。
 
 
+166. Fraction to Recurring Decimal
+https://leetcode.com/problems/fraction-to-recurring-decimal/#/description
+一刷没AC，磕磕碰碰，花了很长时间，但是最后肉眼debug成功了。再刷！ 注意极端情况如0，如负数，还有超出界限的问题。效率不高。
+discuss区c++第一名的算法非常简洁，和我思路一样。
 
- 
 
  
 
