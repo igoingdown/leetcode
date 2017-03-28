@@ -363,6 +363,10 @@ https://leetcode.com/problems/fraction-to-recurring-decimal/#/description
 discuss区c++第一名的算法非常简洁，和我思路一样。
 
 
+138. Copy List with Random Pointer
+https://leetcode.com/problems/copy-list-with-random-pointer/#/description
+一刷没AC，但是按照自己的思路最后还是debug成功了，再刷！！对链表的更新过程不熟悉，使用一个hash表记录已经访问过的节点。
+
  
 
  
