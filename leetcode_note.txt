@@ -367,9 +367,54 @@ discuss区c++第一名的算法非常简洁，和我思路一样。
 https://leetcode.com/problems/copy-list-with-random-pointer/#/description
 一刷没AC，但是按照自己的思路最后还是debug成功了，再刷！！对链表的更新过程不熟悉，使用一个hash表记录已经访问过的节点。
 
- 
 
- 
+94. Binary Tree Inorder Traversal
+https://leetcode.com/problems/binary-tree-inorder-traversal/#/description
+一刷没AC，忘完了！赶紧拾起来！二叉树的各种遍历的递归和非递归算法要烂熟于心！再刷！！！就像快排一样！！
+
+
+49. Group Anagrams
+https://leetcode.com/problems/anagrams/#/description
+一刷没有AC。一看就有思路，不清楚map和unordered_map的区别出错。map基于红黑树，是用树实现的hashmap，而unordered_map直接基于hash table，使用unordered_map的时候必须保证key的类型有hash()方法！容器类型除了string外默认是没有hash()方法的！另外map和unordered_map的key无论是何种类型，只要使用[]方法访问而且key不存在就会调用value的默认构造函数。因此不需要判断，对于value为容器的情况一样适用，我们要保证的是在访问value之前，先确保调用了[]方法。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  
 
