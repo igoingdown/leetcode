@@ -383,6 +383,10 @@ https://leetcode.com/problems/add-two-numbers-ii/#/description
 很简单，但是没有一次AC！而且我的方法时间和空间复杂度都比较高。
 
 
+328. Odd Even Linked List
+https://leetcode.com/problems/odd-even-linked-list/#/description
+很简单的一道题，题意理解错误，不过对于链表的题算是比较得心应手了。继续刷！！
+
 
 
 
