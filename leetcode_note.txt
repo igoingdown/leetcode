@@ -398,7 +398,9 @@ https://leetcode.com/problems/insertion-sort-list/#/description
 比较简单，一刷没AC，查找插入位置时应该从h->next开始，而不应该冲h开始！
 
 
-
+143. Reorder List
+https://leetcode.com/problems/reorder-list/#/description
+挺简单的，看了就有思路，算法还不错，没有一次AC，再刷！借用上一题的思路，用双指针分离，将后段逆序，之后merge。注意merge阶段保存的是插入进来的node！
 
 
 
