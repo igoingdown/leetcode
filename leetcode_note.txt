@@ -385,10 +385,17 @@ https://leetcode.com/problems/add-two-numbers-ii/#/description
 
 328. Odd Even Linked List
 https://leetcode.com/problems/odd-even-linked-list/#/description
-很简单的一道题，题意理解错误，不过对于链表的题算是比较得心应手了。继续刷！！
+很简单的一道题，题意理解错误，正确理解题意后一次AC。
 
 
+148. Sort List
+https://leetcode.com/problems/sort-list/#/description
+对排序还是有点怵，没思路，看了归并排序的思路自己写没有一次AC，漏掉了merge步骤更新h。再刷！！
 
+
+147. Insertion Sort List Add to List
+https://leetcode.com/problems/insertion-sort-list/#/description
+比较简单，一刷没AC，查找插入位置时应该从h->next开始，而不应该冲h开始！
 
 
 
