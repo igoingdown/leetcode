@@ -403,7 +403,14 @@ https://leetcode.com/problems/reorder-list/#/description
 挺简单的，看了就有思路，算法还不错，没有一次AC，再刷！借用上一题的思路，用双指针分离，将后段逆序，之后merge。注意merge阶段保存的是插入进来的node！
 
 
+142. Linked List Cycle II
+https://leetcode.com/problems/linked-list-cycle-ii/#/description
+一刷由于判断语句中“==”写成了“=”没能AC，链表成环还有不清楚的地方，就是为什么相遇时slow不可能完整遍历链表了？？注意使用新起的节点作为起始点，避免head指向head的情况。
 
+
+92. Reverse Linked List II
+https://leetcode.com/problems/reverse-linked-list-ii/#/description
+很简单，一刷AC。
 
 
 
