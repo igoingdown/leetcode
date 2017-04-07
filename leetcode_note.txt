@@ -423,7 +423,9 @@ https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/#/descriptio
 比较简单，一次AC。
 
 
-
+86. Partition List
+https://leetcode.com/problems/partition-list/#/description
+比较简单，一刷AC，注意用尾插法！
 
 
 
