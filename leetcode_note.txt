@@ -405,7 +405,7 @@ https://leetcode.com/problems/reorder-list/#/description
 
 142. Linked List Cycle II
 https://leetcode.com/problems/linked-list-cycle-ii/#/description
-一刷由于判断语句中“==”写成了“=”没能AC，链表成环还有不清楚的地方，就是为什么相遇时slow不可能完整遍历链表了？？注意使用新起的节点作为起始点，避免head指向head的情况。
+一刷由于判断语句中“==”写成了“=”没能AC，链表成环还有不清楚的地方，就是为什么相遇时slow不可能完整遍历链表了？？注意使用新起的节点作为起始点，避免head指向head的情况。二刷没有一次AC，添加新的头结点忘记和原链表连上了，精简了代码。
 
 
 92. Reverse Linked List II
