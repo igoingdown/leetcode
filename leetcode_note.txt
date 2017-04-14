@@ -433,8 +433,9 @@ https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/#/descri
 对平衡二分查找树不熟悉，很恐惧！思路不是自己的，自己在纸上写了一遍才算理解了算法，一刷AC，还要再刷！二刷一次AC。
 
 
-
-
+523. Continuous Subarray Sum
+https://leetcode.com/problems/continuous-subarray-sum/#/description
+思路不是自己的，一刷没AC，因为变量写错CE，因为没考虑K会是负数而WA，还要再刷！
 
 
 
