@@ -444,6 +444,9 @@ https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/#/descrip
 一次AC，但是思路不是自己的，还要再刷！
 
 
+441. Arranging Coins
+https://leetcode.com/problems/arranging-coins/#/description
+很简单的数学问题，就是个一元二次方程求解的问题，我忘记用公式了。用了个O(long N)的方法，用公式一次一次开方就OK了。一次AC。
 
 
 
