@@ -454,6 +454,9 @@ https://leetcode.com/problems/reconstruct-original-digits-from-english/#/descrip
 比较简单的多元方程组的问题，一刷没AC，因为string和int的互换方法不清CE了，算法效率也不是很高。
 
 
+415. Add Strings
+https://leetcode.com/problems/add-strings/#/description
+很简单，看了就有思路，一次AC。算法效率好像不太行。
 
 
 
