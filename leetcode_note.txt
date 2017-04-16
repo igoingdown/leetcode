@@ -469,4 +469,6 @@ https://leetcode.com/problems/arithmetic-slices/#/description
 比较简单，一刷没有AC，不用设置两个begin和end两个变量，只需一个middle就可以了，注意middle从1到A.size() - 2，因为这个WA。因为==写成=CE。
  
 
-
+372. Super Pow
+https://leetcode.com/problems/super-pow/#/description
+思路不是自己的，一刷AC，还要再刷！递归设计的很好！
