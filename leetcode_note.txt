@@ -479,6 +479,10 @@ https://leetcode.com/problems/largest-divisible-subset/#/description
 思路不好，有漏洞，看了讨论区的C++算法，一刷没AC。因为开始没对数组没排序得了WA。对大神的思路理解的不够深入，再刷！！
 
 
+367. Valid Perfect Square
+https://leetcode.com/problems/valid-perfect-square/#/description
+一道简单的二分查找，一刷没有AC。注意一个公式1 + 3 + 5 + 7 + 9 + …… = n^2!因为mid设为int，结果溢出得了WA。
+
 
 
 
