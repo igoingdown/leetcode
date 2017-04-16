@@ -464,6 +464,9 @@ https://leetcode.com/problems/nth-digit/#/description
 思路不是自己的。一刷没AC，因为base设为int类型越界导致WA。再刷！
 
 
+413. Arithmetic Slices
+https://leetcode.com/problems/arithmetic-slices/#/description
+比较简单，一刷没有AC，不用设置两个begin和end两个变量，只需一个middle就可以了，注意middle从1到A.size() - 2，因为这个WA。因为==写成=CE。
  
 
 
