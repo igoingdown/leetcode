@@ -484,7 +484,9 @@ https://leetcode.com/problems/valid-perfect-square/#/description
 一道简单的二分查找，一刷没有AC。注意一个公式1 + 3 + 5 + 7 + 9 + …… = n^2!因为mid设为int，结果溢出得了WA。
 
 
-
+365. Water and Jug Problem
+https://leetcode.com/problems/water-and-jug-problem/#/description
+巨硬笔试题，数论问题，挺难的！证明还挺复杂……。最大公约数GCD和最小公倍数LCM还不太会弄！一刷一次AC。但是思路理解起来还是挺费劲的！再刷！
 
 
 
