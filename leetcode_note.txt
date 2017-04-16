@@ -472,3 +472,15 @@ https://leetcode.com/problems/arithmetic-slices/#/description
 372. Super Pow
 https://leetcode.com/problems/super-pow/#/description
 思路不是自己的，一刷AC，还要再刷！递归设计的很好！
+
+
+368. Largest Divisible Subset
+https://leetcode.com/problems/largest-divisible-subset/#/description
+思路不好，有漏洞，看了讨论区的C++算法，一刷没AC。因为开始没对数组没排序得了WA。对大神的思路理解的不够深入，再刷！！
+
+
+
+
+
+
+
