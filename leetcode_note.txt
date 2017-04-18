@@ -489,4 +489,12 @@ https://leetcode.com/problems/water-and-jug-problem/#/description
 巨硬笔试题，数论问题，挺难的！证明还挺复杂……。最大公约数GCD和最小公倍数LCM还不太会弄！一刷一次AC。但是思路理解起来还是挺费劲的！再刷！
 
 
+343. Integer Break
+https://leetcode.com/problems/integer-break/#/description
+一道规律题，一刷没有AC，以为大于号写成小于号得了WA，需要用导数来推导，果然是数学题！
+
+
+319. Bulb Switcher
+https://leetcode.com/problems/bulb-switcher/#/description
+规律题，发现了一部分规律，但是没有继续深入，发现的规律还比较浅层。一刷一次AC。
 
