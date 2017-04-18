@@ -504,6 +504,20 @@ https://leetcode.com/problems/sqrtx/#/description
 不难，一刷没有AC。二分法判断条件用乘法溢出，导致WA。经典方法是Newton法，但是不太容易理解。再刷！
 
 
+313. Super Ugly Number
+https://leetcode.com/problems/super-ugly-number/#/description
+比较复杂，我有个思路，但是没有想到怎么实现。看了讨论区算法才搞明白，思路不是自己的，一次AC，还要再刷！
+
+
+
+
+
+
+
+
+
+
+
 
 
 
