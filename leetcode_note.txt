@@ -491,10 +491,45 @@ https://leetcode.com/problems/water-and-jug-problem/#/description
 
 343. Integer Break
 https://leetcode.com/problems/integer-break/#/description
-一道规律题，一刷没有AC，以为大于号写成小于号得了WA，需要用导数来推导，果然是数学题！
+一道规律题，一刷没有AC，以为大于号写成小于号得了WA，需要用导数来推导，果然是数学题！再刷！
 
 
 319. Bulb Switcher
 https://leetcode.com/problems/bulb-switcher/#/description
 规律题，发现了一部分规律，但是没有继续深入，发现的规律还比较浅层。一刷一次AC。
+
+
+69. Sqrt(x)
+https://leetcode.com/problems/sqrtx/#/description
+不难，一刷没有AC。二分法判断条件用乘法溢出，导致WA。经典方法是Newton法，但是不太容易理解。再刷！
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
