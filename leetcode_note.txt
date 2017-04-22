@@ -509,7 +509,9 @@ https://leetcode.com/problems/super-ugly-number/#/description
 比较复杂，我有个思路，但是没有想到怎么实现。看了讨论区算法才搞明白，思路不是自己的，一次AC，还要再刷！
 
 
-
+279. Perfect Squares
+https://leetcode.com/problems/perfect-squares/#/description
+没思路，讨论区使用的是DP算法，还有一种数学算法，不太懂，放弃了！一刷没有AC，变量没有定义拿了CE！再刷！
 
 
 
