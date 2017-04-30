@@ -519,7 +519,9 @@ https://leetcode.com/problems/ugly-number-ii/#/description
 和313题很像，我也是用的313题的方法，效率还不错，一刷AC。
 
 
-
+50. Pow(x, n)
+https://leetcode.com/problems/powx-n/#/description
+比较简单，但是思路不好，只想到O(N)的时间复杂度的算法，二分算法的时间复杂度可以达到O(log N)。有递归和非递归两种方式，没有一次AC，再刷！注意：INT_MIN和INT_MAX的绝对值不同，需要用long或者long long类型来暂时存储n！
 
 
 
