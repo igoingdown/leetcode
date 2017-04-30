@@ -524,7 +524,9 @@ https://leetcode.com/problems/powx-n/#/description
 比较简单，但是思路不好，只想到O(N)的时间复杂度的算法，二分算法的时间复杂度可以达到O(log N)。有递归和非递归两种方式，没有一次AC，再刷！注意：INT_MIN和INT_MAX的绝对值不同，需要用long或者long long类型来暂时存储n！
 
 
-
+60. Permutation Sequence
+https://leetcode.com/problems/permutation-sequence/#/description
+题目不简单，看别人的代码很难，对思路还不是很清晰，再刷！
 
 
 
