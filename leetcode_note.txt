@@ -529,6 +529,9 @@ https://leetcode.com/problems/permutation-sequence/#/description
 题目不简单，看别人的代码很难，对思路还不是很清晰，再刷！
 
 
+43. Multiply Strings
+https://leetcode.com/problems/multiply-strings/#/description
+大数乘法，自己写出来的，挺开心。一刷没有AC，res和进位计数c的更新应该写在第一层循环体，我写到了第二层循环体中。再刷！
 
 
 
