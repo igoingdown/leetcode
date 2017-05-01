@@ -549,6 +549,10 @@ https://leetcode.com/problems/permutation-in-string/#/description
 一个简单的滑动窗口的题目，没思路，真是菜！一刷AC，还要再刷！
 
 
+532. K-diff Pairs in an Array
+https://leetcode.com/problems/k-diff-pairs-in-an-array/#/description
+很简单，没有一次AC，再刷！
+
 
 
 
