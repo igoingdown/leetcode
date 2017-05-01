@@ -544,6 +544,9 @@ https://leetcode.com/problems/integer-to-roman/#/description
 思维局限在一次产生一个字母上了，看了讨论区的思路才豁然开朗。一刷AC，但是思路不是自己的，还要再刷！连同其逆过程也要再刷！
 
 
+567. Permutation in String
+https://leetcode.com/problems/permutation-in-string/#/description
+一个简单的滑动窗口的题目，没思路，真是菜！一刷AC，还要再刷！
 
 
 
