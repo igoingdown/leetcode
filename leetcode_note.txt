@@ -534,10 +534,14 @@ https://leetcode.com/problems/multiply-strings/#/description
 大数乘法，自己写出来的，挺开心。一刷没有AC，res和进位计数c的更新应该写在第一层循环体，我写到了第二层循环体中。再刷！
 
 
+29. Divide Two Integers
+https://leetcode.com/problems/divide-two-integers/#/description
+一刷AC，思路不是自己的，再刷！思路很棒，用二进制的方式做的，时间复杂度是O(log N)，其实看题目的要求就知道需要用二进制的移位运算。
 
 
-
-
+12. Integer to Roman
+https://leetcode.com/problems/integer-to-roman/#/description
+思维局限在一次产生一个字母上了，看了讨论区的思路才豁然开朗。一刷AC，但是思路不是自己的，还要再刷！连同其逆过程也要再刷！
 
 
 
