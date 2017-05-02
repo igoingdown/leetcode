@@ -569,6 +569,10 @@ https://leetcode.com/problems/reverse-words-in-a-string-iii/#/description
 面试被难倒的一个问题，一刷没有AC，真是辣鸡！再刷！
 
 
+520. Detect Capital
+https://leetcode.com/problems/detect-capital/#/description
+一次AC。注意判断逻辑顺序。
+
 
 
 
