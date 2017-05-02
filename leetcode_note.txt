@@ -554,8 +554,14 @@ https://leetcode.com/problems/k-diff-pairs-in-an-array/#/description
 很简单，没有一次AC，再刷！
 
 
+524. Longest Word in Dictionary through Deleting
+https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/#/description
+思路不是自己的。一刷因为多个变量在同一行中定义写法出错拿个CE！对于pj的增长方式还是没办法提出比较容易理解的模型。再刷！！
 
 
+3. Longest Substring Without Repeating Characters
+https://leetcode.com/problems/longest-substring-without-repeating-characters/#/description
+挺难的，虽然标注的是easy级别！没能完全领会解法的妙处，再刷！
 
 
 
