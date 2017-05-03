@@ -589,6 +589,10 @@ https://leetcode.com/problems/student-attendance-record-i/#/description
 一刷AC。
 
 
+459. Repeated Substring Pattern
+https://leetcode.com/problems/repeated-substring-pattern/#/description
+不难，但是我的解法时间复杂度比较高，一刷没AC.解答区有时间复杂度为O(N)的DP算法。
+
 
 
 
