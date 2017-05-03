@@ -574,6 +574,19 @@ https://leetcode.com/problems/detect-capital/#/description
 一次AC。注意判断逻辑顺序。
 
 
+541. Reverse String II
+https://leetcode.com/problems/reverse-string-ii/#/description
+一刷AC。
+
+
+434. Number of Segments in a String Add to List
+https://leetcode.com/problems/number-of-segments-in-a-string/#/description
+一刷临界情况没写准，没AC。
+
+
+551. Student Attendance Record I
+https://leetcode.com/problems/student-attendance-record-i/#/description
+一刷AC。
 
 
 
