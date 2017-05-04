@@ -594,6 +594,9 @@ https://leetcode.com/problems/repeated-substring-pattern/#/description
 不难，但是我的解法时间复杂度比较高，一刷没AC.解答区有时间复杂度为O(N)的DP算法。
 
 
+521. Longest Uncommon Subsequence I
+https://leetcode.com/problems/longest-uncommon-subsequence-i/#/description
+一行完事，但是很绕！再刷！
 
 
 
