@@ -599,6 +599,9 @@ https://leetcode.com/problems/longest-uncommon-subsequence-i/#/description
 一行完事，但是很绕！再刷！
 
 
+5. Longest Palindromic Substring
+https://leetcode.com/problems/longest-palindromic-substring/#/description
+解法比较朴素，遍历每个字符，沿两侧展开，更新起始点和最大长度。一刷没AC，再刷！
 
 
 
