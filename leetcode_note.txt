@@ -614,7 +614,9 @@ https://leetcode.com/problems/zigzag-conversion/#/description
 比较简单，一刷没AC，没有认真考虑边界条件。numRows为0直接返回原串即可。
 
 
-
+556. Next Greater Element III
+https://leetcode.com/problems/next-greater-element-iii/#/description
+不难，但是忘记怎么求下一个排列的算法了。标准库有api可以用！
 
 
 
