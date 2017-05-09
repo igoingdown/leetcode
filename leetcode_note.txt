@@ -616,7 +616,12 @@ https://leetcode.com/problems/zigzag-conversion/#/description
 
 556. Next Greater Element III
 https://leetcode.com/problems/next-greater-element-iii/#/description
-不难，但是忘记怎么求下一个排列的算法了。标准库有api可以用！
+不难，但是忘记怎么求下一个排列的算法了。标准库有api可以用！再刷！
+
+
+227. Basic Calculator II
+https://leetcode.com/problems/basic-calculator-ii/#/description
+算法不是自己的！一刷n的更新写到if语句里导致WA，没能AC。再刷！
 
 
 
