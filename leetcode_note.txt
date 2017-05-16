@@ -2,13 +2,13 @@
 https://leetcode.com/problems/island-perimeter/
 就是逐一遍历所有的cell，用分离的cell总的的边数减去重叠的边的数目即可。在查找重叠的边的数目的时候有一点小技巧，就是沿着其中两个方向就好，这种题目都有类似的规律，就是可以沿着上三角或者下三角形的方向来做。一刷一次ac，但是还没开始注意codestyle的问题，需要再刷一遍。
 
- 
+
 
 455. Assign Cookies
 https://leetcode.com/problems/assign-cookies/
 给出两个序列，一个序列中的元素代表cookie的size，另外一个序列代表能满足孩子要求的最小cookie的size，问如何分配使得到的满意的孩子最多。先将两个序列都按从小到大顺序排序，然后按双路指针的方式解决。一刷一次ac，但是对于C++默认的sort函数的排序方式（从小到大还是从大大小）并不是很清楚。
 算法库中的sort(beg, end, comp)函数实际使用快排，其中的comp是函数或者函数指针，签名是 bool comp(elem_type first_arg, elem_type second_arg)，返回的bool值的含义是第一个参数是否应该排在第二个参数的前面。而且默认参数会将较小的参数排在前面，即sort函数默认是从小到大排序！
- 
+
 
 453： Minimum Moves to Equal Array Elements
 https://leetcode.com/problems/minimum-moves-to-equal-array-elements/
@@ -16,31 +16,31 @@ https://leetcode.com/problems/minimum-moves-to-equal-array-elements/
 注意看题目！一刷由于c++的api用的不熟，调用了min这个api，发现c++是没有这个api的，还有很多codestyle的问题，二刷注意了一下codestyle，一次ac，代码如下：
 
 python版的代码一行完事：
- 
+
 
 383. Ransom Note
 https://leetcode.com/problems/ransom-note/
 就是用后一个串合成前一个串，条件是后一个串的每个字符只能用一次，这种题都可以利用c++的字符和int型转换来构建一个长为26度数组，每个数组表示一个key（前提是全大写或者全小写）。
 一刷for循环中的计数器i没有声明类型（int），编译错误。二刷一次ac。
 
- 
 
-404. Sum of Left Leaves 
+
+404. Sum of Left Leaves
 https://leetcode.com/problems/sum-of-left-leaves/
 看到这种题知道用递归，但是自己的思路很长时间没有理清。递归算法只要想明白一个节点的情况，其他节点都一样。对于每个节点如果指针为空，返回0；如果该节点飞空且左子树为叶子节点，则返回左叶子节点和右子树递归结果的和，否则返回左右子树的递归结果的和。一刷在处理左子树为叶子节点的情况时少写了val，二刷一次ac。
 
 还有一种写了两个函数的算法，其实差不多。一刷第一次调用dfs函数参数给错了，只有一个root节点不算左叶子结点。二刷出现不明bug……没解决！
 
 递归算法虽然简单明了，缺点是低效。尝试非递归算法，但是效率并没有提升，可能是因为递归与非递归算法用的是相同的原理：栈。一刷没有处理root为空的情况，忘记写返回语句。二刷也没有处理root为空的情况，另外没有声明类型，并且把变量名混淆。三刷处理了root为空的情况，但是处理栈顶元素的时候直接处理栈顶元素，其实应该处理栈顶元素的左右结点。四刷一次ac。
- 
+
 
 409. Longest Palindrome
 https://leetcode.com/problems/longest-palindrome/
 比较简单，如果字母个数为偶数，直接加，字母个数为奇数，加上减一后的值，由于回文串中间可以放一个长度为一的子串，因此如果有个数为奇数的字母，最后结果要加一。
 一刷统计小写字母的出现次数时，条件写反了。计算最后结果时注意处理出现次数为奇数的字符。二刷一次ac。
- 
 
-448. Find All Numbers Disappeared in an Array 
+
+448. Find All Numbers Disappeared in an Array
 https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
 要求不能使用额外空间，只能在原数组上进行改动，将提到的元素对应的索引上的值加上负号，对后续的遍历操作影响不大（取绝对值就行）。由于在遍历到i之前已经将i后到元素置为负值，因此要在遍历到时候就加上绝对值。一刷中括号写成了小括号（取数组元素写成了函数调用，这两者的区别大了），在加入结果的时候少写了if语句。二刷一次ac。
 
@@ -54,22 +54,22 @@ https://leetcode.com/problems/find-all-duplicates-in-an-array/
 https://leetcode.com/problems/third-maximum-number/
 找出n个数中的第m（m < n）大的数，这是个经典问题，我去望京面试的时候就被问到，我当时真菜，不然暑假可以拿好多钱，哼！当m不太大（m<4）时，都可以按同一种思路解决 ，就是同时设置多个max，遍历数组元素，分条件更新max。注意两点，一是max的初始化一定要比当前数组元素类型的最小值要小；二是max更新条件要写全，“=”的情况要排除。
 一刷各max的更新顺序写反了，max更新条件没写全，没有用更大范围的数据类型。二刷一次ac。
- 
+
 
 289. Game of Life
 https://leetcode.com/problems/game-of-life/
 一刷判断自身的条件写错，死而复生的判断条件写错，代码效率不高。二刷代码结构有优化，但是效率还是不高，判断语句中==写成赋值号=，cell周环遍历数列写错（1写成-1）。三刷没有ac是因为不理解c++_11新特性。(auto n : vec)中的n是临时变量，修改n不能改变原来vector中的元素，因此在不需要修改vector中元素时遍历可以用auto，但是要修改vector中的元素，还是需要迭代器或者下标。
- 
+
 
 287. Find the Duplicate Number
 https://leetcode.com/problems/find-the-duplicate-number/
 一刷使用二分法，但是对二分法中low和high的更新细节不清楚，多个同类型的变量一起声明时应该用逗号隔离。二分法中low与high的更新过程和后面的返回值是low还是mid又有什么关系，还需要一点时间来理解。看了大神的博客知道发现更高效的算法，就是转化为链表内部环检测的问题。链表成环检测的问题是一个经典问题，大神的博客分析非常精彩，核心思想是用快慢指针走过的路程和环长等进行推理和证明，最后一个恒等式的利用非常精彩。大神博客地址为：http://www.cnblogs.com/ccdev/archive/2012/09/06/2673618.html,二刷使用该方法一次ac。
- 
+
 
 268. Missing Number
 https://leetcode.com/problems/missing-number/
 一开始掉进了前面的解法的坑里，老想着把元素当作索引，将正值变负值，然后找改变后的数组中的正值对应的元素，由于同时有n和0，这两种情况不能有效区分，而且也没说可以改动数组，故抛弃了这种解法。求和再做减法更方便，由于担心溢出，用了范围更大的数据结构，好像没什么用。
- 
+
 
 229. Majority Element II
 https://leetcode.com/problems/majority-element-ii/
@@ -181,7 +181,7 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 https://leetcode.com/problems/triangle/
 又是DP，从底网上找。一刷for循环里面的变量名写错，也是醉。这种算法的空间复杂度为O(N)，还有一种空间复杂度为O(1)的算法，下次来的时候好好调研一下。
 
- 
+
 106. Construct Binary Tree from Inorder and Postorder Traversal
 https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
 再次吊死在二叉树上！这个算法人来做不难，很好理解，但是翻译成机器能理解的算法就很困难！这就是人类和机器思维的区别吗？一刷在IDE上写的，没理解透彻。非递归算法确实不太好懂，明天再试试递归算法。还是递归算法比较容易理解。
@@ -202,15 +202,15 @@ https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
 适合用二分法，但是“十个二分九个错”！花了不少时间。本质是分类问题，关键在于选择分类标准，分不了走的步子小一点！画图是个解决问题的好办法。一刷分类标准选的不好，在XCODE上debug很长时间才AC。
 
 
-78. Subsets 
+78. Subsets
 https://leetcode.com/problems/subsets/
 一刷由于对vector的一些成员函数不熟悉，没有AC。二刷一次AC。讨论区第一名的算法是基于bitmap做的，一刷由于对vector的多元素版本的构造函数格式不熟，没能AC。二刷一次AC。
- 
+
 
 75. Sort Colors
 https://leetcode.com/problems/sort-colors/
 这道题是让手写排序，一刷手写快排没AC。二刷由于多次将左侧边界想当然地视为0（其实是l）没能AC。讨论区第一名的算法针对特殊情况（只有0， 1， 2三个数字）对普适的排序算法做了优化，一刷循环条件写错没AC。二刷思路不清晰，没AC，注意需要两层循环，内层循环只处理连续的符合条件的情况，外层需要等于因为该index对应的值谁也不知道是几。第二种算法的在时间效益上不如快排。
- 
+
 
 74. Search a 2D Matrix
 https://leetcode.com/problems/search-a-2d-matrix/?tab=Description
@@ -225,7 +225,7 @@ https://leetcode.com/problems/set-matrix-zeroes/?tab=Description
 64. Minimum Path Sum
 https://leetcode.com/problems/minimum-path-sum/?tab=Description
 DP算法，Discuss区第一名将空间复杂度从O(N^2)缩减到O(N)，并且给出了完整的解析，看了两个晚上，才有点明白。一刷AC，但是还要再刷！二刷一次AC。
- 
+
 
 62. Unique Paths
 https://leetcode.com/problems/unique-paths/?tab=Description
@@ -467,7 +467,7 @@ https://leetcode.com/problems/nth-digit/#/description
 413. Arithmetic Slices
 https://leetcode.com/problems/arithmetic-slices/#/description
 比较简单，一刷没有AC，不用设置两个begin和end两个变量，只需一个middle就可以了，注意middle从1到A.size() - 2，因为这个WA。因为==写成=CE。
- 
+
 
 372. Super Pow
 https://leetcode.com/problems/super-pow/#/description
@@ -634,14 +634,6 @@ https://leetcode.com/problems/palindrome-pairs/#/description
 想有个好点的算法比较难，还不太理解讨论区大神的算法，一刷没AC。忘记边界拿了WA，再刷！
 
 
-
-
-
-
-
-
-
-
-
-
-
+539. Minimum Time Difference
+https://leetcode.com/problems/minimum-time-difference/#/description
+一刷没AC，一开始没看懂题意导致WA。看了解答区的算法手写各种CE！再刷！
