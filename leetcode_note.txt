@@ -637,3 +637,8 @@ https://leetcode.com/problems/palindrome-pairs/#/description
 539. Minimum Time Difference
 https://leetcode.com/problems/minimum-time-difference/#/description
 一刷没AC，一开始没看懂题意导致WA。看了解答区的算法手写各种CE！再刷！
+
+
+583. Delete Operation for Two Strings Add to List
+https://leetcode.com/problems/delete-operation-for-two-strings/#/description
+一刷没有AC，min函数只能比较两个数，编译错误。DP算法不太懂！再刷！！
