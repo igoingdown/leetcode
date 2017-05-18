@@ -642,3 +642,8 @@ https://leetcode.com/problems/minimum-time-difference/#/description
 583. Delete Operation for Two Strings Add to List
 https://leetcode.com/problems/delete-operation-for-two-strings/#/description
 一刷没有AC，min函数只能比较两个数，编译错误。DP算法不太懂！再刷！！二刷没有一次AC，j初始化错误。还是没完全理解算法，DP真是难懂！再刷！
+
+
+468. Validate IP Address
+https://leetcode.com/problems/validate-ip-address/#/description
+一刷没AC，getline在这个题目中有妙用！题目不难，但是边界条件非常多！坑很多！再刷！

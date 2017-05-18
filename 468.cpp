@@ -1,96 +1,78 @@
-#include <iostream>
-#include <string>
-#include <algorithm>
-
-using namespace std;
-
-string validIPAddress(string IP);
-
-int main(int argc, char const *argv[]) {
-  /* code */
-  string s("1.1.1.01");
-  cout << validIPAddress(s) << endl;
-  return 0;
-}
-
-
-string validIPAddress(string IP) {
-    int dotCount = count(IP.begin(), IP.end(), '.');
-    int echoCount = count(IP.begin(), IP.end(), ':');
-    if (dotCount > 0) {
-        if (dotCount != 3) {
-            return "Neither";
+class Solution {
+private:
+    bool validIPv4(string &s) {
+        if (!isdigit(s.back())) {
+            return false;
         }
-        int begin = 0, end = IP.find(".", 0, 1);
-        while (end != string::npos) {
-          cout << begin << " " << end << endl;
-          // cout << begin << endl;
-            if (end - begin > 3 || end - begin == 0) {
-                return "Neither";
+        stringstream ss(s);
+        string buf;
+        int count = 0;
+        while (getline(ss, buf, '.')) {
+            if (buf.size() == 0) {
+                return false;
             }
-            for (int i = begin; i < end; i++) {
-                if (IP[i] < '0' || IP[i] > '9') {
-                    return "Neither";
+            if ((buf[0] == '0' && buf.size() > 1) || buf.size() > 3) {
+                return false;
+            }
+            for (auto c: buf) {
+                if (!isdigit(c)) {
+                    return false;
                 }
             }
-            int num = stoi(IP.substr(begin, end - begin));
-            int len = to_string(num).size();
-            printf("len: %d\n", len);
-            if (num > 255 || num < 0 || len < end - begin) {
-                return "Neither";
+            int n = stoi(buf);
+            if (n > 255 || n < 0) {
+                return false;
             }
-            begin = end + 1;
-            if (begin == IP.size()) {
-              return "Neither";
-            }
-            end = IP.find(".", end + 1, 1);
+            count++;
         }
-        end = IP.size();
-        if (end - begin > 3 || end - begin == 0) {
-            return "Neither";
-        }
-        for (int i = begin; i < end; i++) {
-            if (IP[i] < '0' || IP[i] > '9') {
-                return "Neither";
-            }
-        }
-        int num = stoi(IP.substr(begin, end - begin));
-        int len = to_string(num).size();
-        printf("len: %d\n", len);
-        if (num > 255 || num < 0 || len < end - begin) {
-            return "Neither";
-        }
-        return "IPv4";
-
-    } else if (echoCount > 0) {
-        if (echoCount < 7) {
-            if (IP.find("::", 0, 2) != string::npos) {
-                int begin = 0, end = IP.find(":", 0, 1);
-                while (end != string::npos) {
-                    if (end - begin > 4) {
-                        return "Neither";
-                    }
-                    begin = end + 1;
-                    end = IP.find(":", end + 1, 1);
-                }
-                return "IPv6";
-            } else {
-                return "Neither";
-            }
-        } else if (echoCount == 7) {
-            int begin = 0, end = IP.find(":", 0, 1);
-            while (end != string::npos) {
-                if (end - begin > 4) {
-                    return "Neither";
-                }
-                begin = end + 1;
-                end = IP.find(":", end + 1, 1);
-            }
-            return "IPv6";
-        } else {
-            return "Neither";
-        }
-    } else {
-        return "Neither";
+        return count == 4;
     }
-}
+
+    bool validIPv6(string &s) {
+        if (s.back() == ':') {
+            return false;
+        }
+        stringstream ss(s);
+        int count = 0;
+        string buf;
+        while (getline(ss, buf, ':')) {
+            if(buf.size() == 0 || buf.size() > 4) {
+                return false;
+            }
+            for (auto c: buf) {
+                c = tolower(c);
+                if (!isalnum(c)) {
+                    return false;
+                } else if (!isdigit(c) && !(c <= 'f' && c >= 'a')) {
+                    return false;
+                }
+            }
+            count++;
+        }
+        return count == 8;
+    }
+
+public:
+    string validIPAddress(string IP) {
+        string res;
+        if (IP.size() == 0) {
+            return "Neither";
+        }
+        bool isv4 = false, isv6 = false;
+        int firstDot = IP.find_first_of('.');
+        int firstCol = IP.find_first_of(':');
+        if (firstDot > 0) {
+            isv4 = validIPv4(IP);
+        } else if (firstCol > 0) {
+            isv6 = validIPv6(IP);
+        }
+        if (!isv4 && !isv6) {
+            res = "Neither";
+        } else if (isv4) {
+            res = "IPv4";
+        } else {
+            res = "IPv6";
+        }
+        return res;
+    }
+};
