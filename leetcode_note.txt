@@ -652,3 +652,8 @@ https://leetcode.com/problems/validate-ip-address/#/description
 522. Longest Uncommon Subsequence II
 https://leetcode.com/problems/longest-uncommon-subsequence-ii/#/description
 思路不是自己的，一刷废了很大劲没AC。用了两种方法，直接构造带有cmp函数的map失效，还没弄明白原因！再刷！
+
+
+91. Decode Ways
+https://leetcode.com/problems/decode-ways/#/description
+思路不是自己的，一刷没AC。因为函数返回值类型写错拿了CE！这是致命的错误！DP算法还不是很理解，再刷！
