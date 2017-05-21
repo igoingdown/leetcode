@@ -641,7 +641,7 @@ https://leetcode.com/problems/minimum-time-difference/#/description
 
 583. Delete Operation for Two Strings Add to List
 https://leetcode.com/problems/delete-operation-for-two-strings/#/description
-一刷没有AC，min函数只能比较两个数，编译错误。DP算法不太懂！再刷！！二刷没有一次AC，j初始化错误。还是没完全理解算法，DP真是难懂！再刷！
+一刷没有AC，min函数只能比较两个数，编译错误。DP算法不太懂，再刷！！二刷没有一次AC，j初始化错误。没完全理解算法，再刷！自己手动运行了几遍代码，终于搞懂了。dp的元素矩阵表示应该删除的字符个数，最外围那一行和列表示一个串为子串，而另外一个串为空串！但是没动手再刷一次！再刷！三刷一次AC。
 
 
 468. Validate IP Address
