@@ -657,3 +657,30 @@ https://leetcode.com/problems/longest-uncommon-subsequence-ii/#/description
 91. Decode Ways
 https://leetcode.com/problems/decode-ways/#/description
 思路不是自己的，一刷没AC。因为函数返回值类型写错拿了CE！这是致命的错误！DP算法还不是很理解，再刷！
+
+
+71. Simplify Path
+https://leetcode.com/problems/simplify-path/#/description
+比较简单一道string和stack结构结合的题目，一刷没有AC，由于判断语句写错CE。再刷！
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
