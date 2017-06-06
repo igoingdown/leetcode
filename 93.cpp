@@ -28,7 +28,7 @@ void restoreIpAddresses(vector<string>& res, string can, int idx, int count, str
             break;
         }
         string temp = ip.substr(idx, i);
-        if ((temp.size() > 1 && temp[0] == '0') || (temp.size() == 3 && stoi(temp) > 255)) {
+        if ((i > 1 && temp[0] == '0') || (temp.size() == 3 && stoi(temp) > 255)) {
             continue;
         }
         restoreIpAddresses(res, can + temp + (count == 3 ? "" : "."), idx + i, count + 1, ip);
