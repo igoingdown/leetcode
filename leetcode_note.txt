@@ -669,6 +669,11 @@ https://leetcode.com/problems/restore-ip-addresses/#/description
 DFS的题，不是很难，但是没思路。一刷废了很大劲没AC。思路也没太理清楚，再刷！二刷没有一次AC，DFS理解的还是不透彻，循环结构中不应该改变can参数，只在向更深层传递参数的时候改变参数！再刷！
 
 
+22. Generate Parentheses
+https://leetcode.com/problems/generate-parentheses/#/description
+一道简单的递归题，但是没想出来。一刷AC，但是思路不是自己的，再刷！
+
+
 
 
 
