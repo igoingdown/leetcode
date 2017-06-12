@@ -676,7 +676,7 @@ https://leetcode.com/problems/generate-parentheses/#/description
 
 475. Heaters
 https://leetcode.com/problems/heaters/#/description
-比较简单，但是没有好的思路。一刷没有一次AC，而是各种CE！再刷！从解答区选择的思路也不是最好的！
+比较简单，但是没有好的思路。一刷没有一次AC，而是各种CE！再刷！从解答区选择的思路也不是最好的！二刷没有一次AC，不太懂upper_bound和lower_bound的区别拿了WA，再刷！
 
 
 
