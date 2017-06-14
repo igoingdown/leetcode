@@ -679,6 +679,9 @@ https://leetcode.com/problems/heaters/#/description
 比较简单，但是没有好的思路。一刷没有一次AC，而是各种CE！再刷！从解答区选择的思路也不是最好的！二刷没有一次AC，不太懂upper_bound和lower_bound的区别拿了WA，再刷！三刷一次AC。
 
 
+436. Find Right Interval
+https://leetcode.com/problems/find-right-interval/#/description
+比较简单，很久没刷，手很生，一刷没AC，各种CE，WA和RE，思路是对的，但是时间复杂度太高。解答区的算法很好，值得借鉴，但是思路不是自己的，再刷！
 
 
 
