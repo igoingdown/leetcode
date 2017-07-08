@@ -686,7 +686,7 @@ https://leetcode.com/problems/find-right-interval/#/description
 
 300. Longest Increasing Subsequence
 https://leetcode.com/problems/longest-increasing-subsequence/#/description
-不简单，不太会做这种题，很难受。一刷AC了但是看不懂大神的代码！再好好理解一遍吧，还是要自己手动运行一遍才能理解算法的精妙之处。
+不简单，不太会做这种题，很难受。一刷AC了但是看不懂大神的代码！再好好理解一遍吧，还是要自己手动运行一遍才能理解算法的精妙之处。二刷一次AC，但是仍然没法完全领会算法的精妙之处，很烦。
 
 
 
