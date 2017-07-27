@@ -689,8 +689,9 @@ https://leetcode.com/problems/longest-increasing-subsequence/#/description
 不简单，不太会做这种题，很难受。一刷AC了但是看不懂大神的代码！再好好理解一遍吧，还是要自己手动运行一遍才能理解算法的精妙之处。二刷一次AC，但是仍然没法完全领会算法的精妙之处，很烦。
 
 
-
-
+275. H-Index II
+https://leetcode.com/problems/h-index-ii/#/description
+是274的附加题。题意很难懂，真的很难懂！很久没刷，找找感觉先！一刷各种错误，有CE也有WA，再刷！
 
 
 
