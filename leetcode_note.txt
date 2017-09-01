@@ -704,6 +704,9 @@ https://leetcode.com/problems/is-subsequence/description/
 不难，一刷AC,O(N)复杂度。Follow up需要二分查找，discuss区有java代码可以研究一下！以后刷可以直接看follow up！
 
 
+658. Find K Closest Elements
+https://leetcode.com/problems/find-k-closest-elements/description/
+不太难，一刷没AC，思路大致正确但是实现有些细节错误！对lower_bound和upper_bound理解不太对，导致WA。lower_bound得到第一个不小于val的元素的迭代器，而upper_bound得到第一个大于val的元素的迭代器。判断条件有精妙，没能完全理解，再刷！
 
 
 
