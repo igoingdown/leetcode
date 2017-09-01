@@ -699,6 +699,9 @@ https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/descriptio
 不算难，但是要找到二分查找中间的判定条件比较困难！看了一遍大神解法之后，一刷AC，但是对算法了解其实没那么深，尤其是如何将一个不在matrix中的值逼近到在matrix中的值。再刷！
 
 
+392. Is Subsequence
+https://leetcode.com/problems/is-subsequence/description/
+不难，一刷AC,O(N)复杂度。Follow up需要二分查找，discuss区有java代码可以研究一下！以后刷可以直接看follow up！
 
 
 
