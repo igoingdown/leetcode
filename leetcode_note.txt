@@ -694,6 +694,9 @@ https://leetcode.com/problems/h-index-ii/#/description
 是274的附加题。题意很难懂，真的很难懂！很久没刷，找找感觉先！一刷各种错误，有CE也有WA，再刷！
 
 
+378. Kth Smallest Element in a Sorted Matrix
+https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/description/
+不算难，但是要找到二分查找中间的判定条件比较困难！看了一遍大神解法之后，一刷AC，但是对算法了解其实没那么深，尤其是如何将一个不在matrix中的值逼近到在matrix中的值。再刷！
 
 
 
