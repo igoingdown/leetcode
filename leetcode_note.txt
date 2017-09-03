@@ -727,3 +727,34 @@ https://leetcode.com/contest/leetcode-weekly-contest-48/problems/maximum-swap/
 672. Bulb Switcher II
 https://leetcode.com/contest/leetcode-weekly-contest-48/problems/bulb-switcher-ii/
 一道规律题，挺难的，没思路，也没有发现规律，讨论区算法很简单，但是不是很理解！需要再理解一下！
+
+
+222. Count Complete Tree Nodes
+https://leetcode.com/problems/count-complete-tree-nodes/description/
+不难，很快有思路了，但是折腾了2小时，遇到各种错误，而且算法效率非常低！再刷！但是通过这道题更深的理解了二分查找算法。判断条件是更新high还是low只跟mid的计算方式有关，还要继续想二分查找，尤其是终止情况，low会不会比high小？？？
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
