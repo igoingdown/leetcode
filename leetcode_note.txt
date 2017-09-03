@@ -709,4 +709,18 @@ https://leetcode.com/problems/find-k-closest-elements/description/
 不太难，一刷没AC，思路大致正确但是实现有些细节错误！对lower_bound和upper_bound理解不太对，导致WA。lower_bound得到第一个不小于val的元素的迭代器，而upper_bound得到第一个大于val的元素的迭代器。判断条件有精妙，没能完全理解。二刷代码不需要写，试着解释了一个问题就是为什么要去掉low，保留high，因为low是有问题的，相当于数轴上的空心点！一定是high离得近，所以最后舍弃了low！注意考虑边界问题，感觉现在有种做高中物理题的节奏了！再刷！！
 
 
+671. Second Minimum Node In a Binary Tree
+https://leetcode.com/contest/leetcode-weekly-contest-48/problems/second-minimum-node-in-a-binary-tree/
+不算难，是数组求第N大元素的变形，只是使用的数据结构变了，核心算法思想没变，不难，递归解决，但是花了很长时间！
+
+
+669. Trim a Binary Search Tree
+https://leetcode.com/contest/leetcode-weekly-contest-48/problems/trim-a-binary-search-tree/
+不难，简单的递归题。怪自己总是把问题忘难了想。
+
+
+670. Maximum Swap
+https://leetcode.com/contest/leetcode-weekly-contest-48/problems/maximum-swap/
+不难，但是我的方法不太好，应该有很好很简单的方法，可以专门研究一下discuss区的好方法！
+
 
