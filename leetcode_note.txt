@@ -724,3 +724,6 @@ https://leetcode.com/contest/leetcode-weekly-contest-48/problems/maximum-swap/
 不难，但是我的方法不太好，应该有很好很简单的方法，可以专门研究一下discuss区的好方法！
 
 
+672. Bulb Switcher II
+https://leetcode.com/contest/leetcode-weekly-contest-48/problems/bulb-switcher-ii/
+一道规律题，挺难的，没思路，也没有发现规律，讨论区算法很简单，但是不是很理解！需要再理解一下！
