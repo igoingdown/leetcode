@@ -741,9 +741,14 @@ https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/
 一刷计算比mid值小的节点个数时逻辑出错，得了WA，再刷！用VS在本地debug就是方便，终于不用自己写很多cout了，而且快了很多！算法效率不高，follow up没看，后面再刷要注意这两个问题！
 
 
+240. Search a 2D Matrix II
+https://leetcode.com/problems/search-a-2d-matrix-ii/description/
+一刷AC，但是算法效率不高，下次刷要注意这个问题！
 
 
-
+401. Binary Watch
+https://leetcode.com/problems/binary-watch/description/
+一刷没好的思路，看了discuss区之后，发现真的是直接遍历解空间！由于不理解表的的实际运行换算进制搞错得了WA，再刷！
 
 
 
