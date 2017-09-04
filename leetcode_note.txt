@@ -731,7 +731,9 @@ https://leetcode.com/contest/leetcode-weekly-contest-48/problems/bulb-switcher-i
 
 222. Count Complete Tree Nodes
 https://leetcode.com/problems/count-complete-tree-nodes/description/
-不难，很快有思路了，但是折腾了2小时，遇到各种错误，而且算法效率非常低！再刷！但是通过这道题更深的理解了二分查找算法。判断条件是更新high还是low只跟mid的计算方式有关，还要继续想二分查找，尤其是终止情况，low会不会比high小？？？
+不难，很快有思路了，但是折腾了2小时，遇到各种错误，而且算法效率非常低！再刷！但是通过这道题更深的理解了二分查找算法。判断条件是更新high还是low只跟mid的计算方式有关，无论什么时候，区间一定要包含答案，这是原则！按照我的书写习惯，low不会比high大，终止情况是low = high = mid！
+
+看了discuss区的算法，就是简单的递归，竟然在效率上打败了50%的算法！！惊呆了！
 
 
 
