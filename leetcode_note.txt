@@ -206,6 +206,8 @@ https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
 https://leetcode.com/problems/subsets/
 一刷由于对vector的一些成员函数不熟悉，没有AC。二刷一次AC。讨论区第一名的算法是基于bitmap做的，一刷由于对vector的多元素版本的构造函数格式不熟，没能AC。二刷一次AC。
 
+三刷使用backtracing方法刷这类题，效率无损失。递归参数设置错误得了WA，再刷！
+
 
 75. Sort Colors
 https://leetcode.com/problems/sort-colors/
@@ -751,9 +753,21 @@ https://leetcode.com/problems/binary-watch/description/
 一刷没好的思路，看了discuss区之后，发现真的是直接遍历解空间！由于不理解表的的实际运行换算进制搞错得了WA，再刷！
 
 
+46. Permutations
+https://leetcode.com/problems/permutations/description/
+看了新的tag，backtracing不太懂什么意思，查了一下是“回溯”，还是摸不着头脑，直到看了下面的discuss区的总结！原来78，90，46，47，39，40以及131都是同一类题！都可以用回溯法解决！！内行的门道真是神奇！
+https://discuss.leetcode.com/topic/46162/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partioning
+
+
+47. Permutations II
+https://leetcode.com/problems/permutations-ii/description/
+一刷为了去重想了很久，结合树的结构可以很清晰地理解，原来这就是回溯法中描述的求解树！再刷！
 
 
 
+90. Subsets II
+https://leetcode.com/problems/subsets-ii/description/
+一刷去重条件写错，WA。再刷！
 
 
 
