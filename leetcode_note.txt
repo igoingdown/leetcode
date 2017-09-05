@@ -271,12 +271,12 @@ https://leetcode.com/problems/rotate-image/?tab=Description
 
 40. Combination Sum II
 https://leetcode.com/problems/combination-sum-ii/?tab=Description
-讨论区第一名的算法先对候选排序，然后使用DFS，搜索路径。注意去除可能重复的路径和并进行必要的剪枝。一刷变量名写错没AC，对去重的理解也只限于想象，没有验证。讨论区第一名算法我添加了剪枝之后，算法执行时间缩短很多，还是挺有成就感的。二刷一次AC。
+讨论区第一名的算法先对候选排序，然后使用DFS，搜索路径。注意去除可能重复的路径和并进行必要的剪枝。一刷变量名写错没AC，对去重的理解也只限于想象，没有验证。讨论区第一名算法我添加了剪枝之后，算法执行时间缩短很多，还是挺有成就感的。二刷一次AC。三刷把求解树和递归过程对应上了，理解更简单；剪枝逻辑写错导致剪多了，再刷！
 
 
 39. Combination Sum
 https://leetcode.com/problems/combination-sum/?tab=Description
-做了第40题之后，做这道题就觉得比较简单了，可以画树状图来理解计算机的求解过程。一刷for循环中；写成了，没AC。二刷cand写成了res，没能AC。
+做了第40题之后，做这道题就觉得比较简单了，可以画树状图来理解计算机的求解过程。一刷for循环中；写成了，没AC。二刷cand写成了res，没能AC。三刷写错了递归过程的i参数，好在理解中间加了本来以为可以用来剪枝的判断语句效率却变得低下的原因，因为那个语句并没有达到剪枝的效果！再刷！
 
 
 35. Search Insert Position
@@ -755,7 +755,7 @@ https://leetcode.com/problems/binary-watch/description/
 
 46. Permutations
 https://leetcode.com/problems/permutations/description/
-看了新的tag，backtracing不太懂什么意思，查了一下是“回溯”，还是摸不着头脑，直到看了下面的discuss区的总结！原来78，90，46，47，39，40以及131都是同一类题！都可以用回溯法解决！！内行的门道真是神奇！
+看了新的tag，backtracing不太懂什么意思，查了一下是“回溯”，还是摸不着头脑，直到看了下面的discuss区的总结！原来78，90，46，47，39，40以及131，132，77都是同一类题！都可以用回溯法解决！！内行的门道真是神奇！
 https://discuss.leetcode.com/topic/46162/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partioning
 
 
@@ -764,12 +764,19 @@ https://leetcode.com/problems/permutations-ii/description/
 一刷为了去重想了很久，结合树的结构可以很清晰地理解，原来这就是回溯法中描述的求解树！再刷！
 
 
-
 90. Subsets II
 https://leetcode.com/problems/subsets-ii/description/
 一刷去重条件写错，WA。再刷！
 
 
+131. Palindrome Partitioning
+https://leetcode.com/problems/palindrome-partitioning/description/
+一刷AC，爽！
+
+
+77. Combinations
+https://leetcode.com/problems/combinations/description/
+一刷用backtracing模板AC。算法效率低，再刷！再刷可以先研究讨论区优质算法！
 
 
 
