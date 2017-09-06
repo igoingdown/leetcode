@@ -779,11 +779,19 @@ https://leetcode.com/problems/combinations/description/
 一刷用backtracing模板AC。算法效率低，再刷！再刷可以先研究讨论区优质算法！
 
 
+132. Palindrome Partitioning II
+https://leetcode.com/problems/palindrome-partitioning-ii/description/
+没想到是个hard级别的，一刷使用backtracing方法超时了，再刷！再刷研究一下讨论区算法。
 
 
+79. Word Search
+https://leetcode.com/problems/word-search/description/
+跟前面的题不太一样，然后就不会做了！一刷返回语句位置不对，WA。理解不够深入，再刷！一个疑点在VS上debug之后排除了。（*w+1）== '\0'就可以判断是否应该返回true，因为在这之前进行了其他判断，保证了(*w)一定等于board[r][c]，所以只要判断下一个是否结束就行了！很奇妙。
 
 
-
+89. Gray Code
+https://leetcode.com/problems/gray-code/description/
+用backtracing的方法没想通，原来这就是格雷码！数字电路里大名鼎鼎的格雷码，格雷码和二进制码之间的相互转换要注意！一刷AC，理解不透彻。再刷！再刷要拓展到格雷码转二进制码，并继续尝试用backtracing的方法。又看了一个更容易理解的算法，一刷循环初始值设置错误，WA。
 
 
 
