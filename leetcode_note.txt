@@ -781,7 +781,7 @@ https://leetcode.com/problems/combinations/description/
 
 132. Palindrome Partitioning II
 https://leetcode.com/problems/palindrome-partitioning-ii/description/
-没想到是个hard级别的，一刷使用backtracing方法超时了，再刷！再刷研究一下讨论区算法。
+没想到是个hard级别的，一刷使用backtracing方法超时了，再刷！再刷研究一下讨论区算法。二刷使用DP算法一次AC，对着代码看了很长时间，DP的核心是数学递推公式，手不够熟，再刷！
 
 
 79. Word Search
@@ -796,7 +796,7 @@ https://leetcode.com/problems/gray-code/description/
 
 211. Add and Search Word - Data structure design
 https://leetcode.com/problems/add-and-search-word-data-structure-design/description/
-挺难！一刷调试了4个小时才AC！理解严重不够！多刷！
+挺难！一刷调试了4个小时才AC！理解严重不够！多刷！还不能完整地写出来，再刷！二刷没有AC，对外层for循环和run的更新有了更深的理解。但是对于返回值的判定还是理解不够，再刷！
 
 
 
