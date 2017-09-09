@@ -781,7 +781,7 @@ https://leetcode.com/problems/combinations/description/
 
 132. Palindrome Partitioning II
 https://leetcode.com/problems/palindrome-partitioning-ii/description/
-没想到是个hard级别的，一刷使用backtracing方法超时了，再刷！再刷研究一下讨论区算法。二刷使用DP算法一次AC，对着代码看了很长时间，DP的核心是数学递推公式，手不够熟，再刷！
+没想到是个hard级别的，一刷使用backtracing方法超时了，再刷！再刷研究一下讨论区算法。二刷使用DP算法一次AC，对着代码看了很长时间，DP的核心是数学递推公式，手不够熟，再刷！三刷没AC，过程理解深入了一些。
 
 
 79. Word Search
