@@ -799,4 +799,21 @@ https://leetcode.com/problems/add-and-search-word-data-structure-design/descript
 挺难！一刷调试了4个小时才AC！理解严重不够！多刷！还不能完整地写出来，再刷！二刷没有AC，对外层for循环和run的更新有了更深的理解。但是对于返回值的判定还是理解不够，再刷！
 
 
+674. Longest Continuous Increasing Subsequence My SubmissionsBack to Contest
+https://leetcode.com/contest/leetcode-weekly-contest-49/problems/longest-continuous-increasing-subsequence/
+比较简单，但是这种题我是比较害怕的！还要继续总结！多总结！这才是进步的捷径！
+
+
+676. Implement Magic Dictionary
+https://leetcode.com/contest/leetcode-weekly-contest-49/problems/implement-magic-dictionary/
+一开始想用set或者vector实现，发现效率太低，就改为用字典树实现，字典树实现太难调试了！之后使用set实现，舒服多了！
+
+
+675. Cut Off Trees for Golf Event
+https://leetcode.com/contest/leetcode-weekly-contest-49/problems/cut-off-trees-for-golf-event/
+挺难的一道BFS的题目，对于树而言BFS就是层序遍历，DFS就是后续遍历！代码我到最后都不知道为什么AC了！垃圾！这份代码非常经典，要拿出来再刷，再总结！
+
+
+
+
 
