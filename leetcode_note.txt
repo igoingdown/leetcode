@@ -803,6 +803,10 @@ https://leetcode.com/problems/add-and-search-word-data-structure-design/descript
 https://leetcode.com/contest/leetcode-weekly-contest-49/problems/longest-continuous-increasing-subsequence/
 比较简单，但是这种题我是比较害怕的！还要继续总结！多总结！这才是进步的捷径！
 
+673. Number of Longest Increasing Subsequence
+https://leetcode.com/problems/number-of-longest-increasing-subsequence/description/
+跟上一题很像！怪不得邓邓把上一道题看成这道题！DP难在算法的理解。看了半天没理解，看了大神的注释之后豁然开朗！一刷AC，但是理解不够，再刷！
+
 
 676. Implement Magic Dictionary
 https://leetcode.com/contest/leetcode-weekly-contest-49/problems/implement-magic-dictionary/
@@ -811,7 +815,37 @@ https://leetcode.com/contest/leetcode-weekly-contest-49/problems/implement-magic
 
 675. Cut Off Trees for Golf Event
 https://leetcode.com/contest/leetcode-weekly-contest-49/problems/cut-off-trees-for-golf-event/
-挺难的一道BFS的题目，对于树而言BFS就是层序遍历，DFS就是后续遍历！代码我到最后都不知道为什么AC了！垃圾！这份代码非常经典，要拿出来再刷，再总结！
+不太难的一道BFS的题目，但是非常繁琐！DEBUG了非常长的时间！对于树而言BFS就是层序遍历，DFS就是后续遍历！代码我到最后都不知道为什么AC了！这份代码非常经典，要拿出来再刷，再总结！
+
+
+198. House Robber
+https://leetcode.com/problems/house-robber/description/
+比较简单，DP一刷AC。
+
+
+96. Unique Binary Search Trees
+https://leetcode.com/problems/unique-binary-search-trees/description/
+没想出来地推公式，看大神的注释豁然开朗，思路是：将1到n分别作为根，左右两侧都是一个规模更小的子问题，左右两侧结果相乘就是一种情况，枚举所有情况求和，就是答案！一刷AC，但是还要再刷！
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
