@@ -805,7 +805,7 @@ https://leetcode.com/contest/leetcode-weekly-contest-49/problems/longest-continu
 
 673. Number of Longest Increasing Subsequence
 https://leetcode.com/problems/number-of-longest-increasing-subsequence/description/
-跟上一题很像！怪不得邓邓把上一道题看成这道题！DP难在算法的理解。看了半天没理解，看了大神的注释之后豁然开朗！一刷AC，但是理解不够，再刷！
+跟上一题很像！怪不得邓邓把上一道题看成这道题！DP难在算法的理解。看了半天没理解，看了大神的注释之后豁然开朗！一刷AC，但是理解不够，再刷！二刷DEBUG了很久，还是理解不够，心不在焉漏洞百出！再刷！
 
 
 676. Implement Magic Dictionary
@@ -825,10 +825,12 @@ https://leetcode.com/problems/house-robber/description/
 
 96. Unique Binary Search Trees
 https://leetcode.com/problems/unique-binary-search-trees/description/
-没想出来地推公式，看大神的注释豁然开朗，思路是：将1到n分别作为根，左右两侧都是一个规模更小的子问题，左右两侧结果相乘就是一种情况，枚举所有情况求和，就是答案！一刷AC，但是还要再刷！
+没想出来地推公式，看大神的注释豁然开朗，思路是：将1到n分别作为根，左右两侧都是一个规模更小的子问题，左右两侧结果相乘就是一种情况，枚举所有情况求和，就是答案！一刷AC，但是还要再刷！二刷没AC，思路熟悉，但是代码写的不完美。
 
 
-
+95. Unique Binary Search Trees II
+https://leetcode.com/problems/unique-binary-search-trees-ii/description/
+一刷AC，递归算法，算法复杂度：（？？？很高）,再刷！二刷使用DP，没有AC。算法复杂度：（？），处理nodeI非root时，把nodeJ改变了！nodeJ不应该变化，只应该逐层遍历nodeJ的最right节点。
 
 
 
