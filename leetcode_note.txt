@@ -830,7 +830,30 @@ https://leetcode.com/problems/unique-binary-search-trees/description/
 
 95. Unique Binary Search Trees II
 https://leetcode.com/problems/unique-binary-search-trees-ii/description/
-一刷AC，递归算法，算法复杂度：（？？？很高）,再刷！二刷使用DP，没有AC。算法复杂度：（？），处理nodeI非root时，把nodeJ改变了！nodeJ不应该变化，只应该逐层遍历nodeJ的最right节点。
+一刷AC，递归算法，算法复杂度：（？？？很高）,再刷！二刷使用DP，没有AC。算法复杂度：（？），处理nodeI非root时，把nodeJ改变了！nodeJ不应该变化，只应该逐层遍历nodeJ的最right节点。三刷使用DP算法AC，但是算法时间复杂度不会算！
+
+
+647. Palindromic Substrings
+https://leetcode.com/problems/palindromic-substrings/description/
+一刷使用DP算法AC，时间复杂度和空间复杂度都是O(N^2)。讨论区应该有更好的解法，再刷尝试！讨论区有一个经典的解决字符串中回文子串的算法叫“曼彻斯特算法”，后面要对这种类型进行总结！
+
+
+416. Partition Equal Subset Sum
+https://leetcode.com/problems/partition-equal-subset-sum/description/
+一刷没AC，使用时间复杂度为O(N!)的backtracing算法，出现很多CE！最后TLE。也有人说时间复杂度为O(pow(2, N))的！这是个典型的0/1背包问题，0/1背包问题的特点是从一组数中选取某些数达到一定的值。对0/1背包问题的一个很好的解释在下面的链接中：
+
+https://discuss.leetcode.com/topic/67539/0-1-knapsack-detailed-explanation
+
+这一题使用的DP解法对标准0/1背包算法进行了优化，因为题目不需要知道更多的信息，数组开一维就可以。数组开二维也可以，但是比较麻烦，需要更多的初始化，操作！
+
+最优化方法是使用bitset的方法，时间复杂度为O(N)，空间复杂度为O(1)!
+
+
+
+
+
+
+
 
 
 
