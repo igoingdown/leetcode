@@ -854,7 +854,9 @@ https://leetcode.com/problems/word-break/description/
 一刷没思路，使用DP算法一刷AC，时间复杂度O(N^2*M)，空间复杂度O(N)。不难理解，再刷一次！
 
 
-
+464. Can I Win
+https://leetcode.com/problems/can-i-win/description/
+自己没思路，大神思路不太理解。一刷dfs的循环次数写错WA。再刷！
 
 
 
