@@ -856,10 +856,12 @@ https://leetcode.com/problems/word-break/description/
 
 464. Can I Win
 https://leetcode.com/problems/can-i-win/description/
-自己没思路，大神思路不太理解。一刷dfs的循环次数写错WA。再刷！
+自己没思路，大神思路不太理解。时间复杂度为（dfs导致递归，时间复杂度不会分析），空间复杂度为O(2^N)。一刷dfs的循环次数写错WA。再刷！
 
 
-
+467. Unique Substrings in Wraparound String
+https://leetcode.com/problems/unique-substrings-in-wraparound-string/description/
+大神思路理解不透彻，时间复杂度O(N)，空间复杂度O(1)。一刷理解大神思路的基础上自己实现一次AC。再刷一次！
 
 
 
