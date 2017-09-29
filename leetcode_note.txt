@@ -851,7 +851,7 @@ https://discuss.leetcode.com/topic/67539/0-1-knapsack-detailed-explanation
 
 139. Word Break
 https://leetcode.com/problems/word-break/description/
-一刷没思路，使用DP算法一刷AC，时间复杂度O(N^2*M)，空间复杂度O(N)。不难理解，再刷一次！
+一刷没思路，使用DP算法一刷AC，时间复杂度O(N^2*M)，空间复杂度O(N),理解起来不难，二刷一次AC。
 
 
 464. Can I Win
