@@ -875,7 +875,9 @@ https://leetcode.com/problems/out-of-boundary-paths/description/
 一刷按照自己的思路初始时没判断参数有可能的异常，RE。思路正确，效率不高，时间复杂度和空间复杂度均为O(N*n*m)。再刷！二刷使用大神的高效解法。
 
 
-
+650. 2 Keys Keyboard
+https://leetcode.com/problems/2-keys-keyboard/description/
+一刷没思路，使用大神的思路AC。大神没有用DP，时间复杂度最好为O(logN),最差O(N)，比DP算法效率高，但是比较难以理解。再刷，注意理解！
 
 
 
