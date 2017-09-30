@@ -866,7 +866,14 @@ https://leetcode.com/problems/unique-substrings-in-wraparound-string/description
 
 221. Maximal Square
 https://leetcode.com/problems/maximal-square/description/
-一刷AC，自己的思路和大神的思路相似，我的思路不够对于DP更新过程思考不透彻，大神的DP更新过程不是很好理解。再刷！
+一刷AC，自己的思路和大神的思路相似，我的思路不够简洁，大神使用square的边长表示square。二刷初始化参数写错，RE。
+状态方程的理解：(i, j)是square,则(i-1, j-1), (i-1, j),(i, j-1)必定是size的square！如果三者的size不同，则(i, j)取三者最小的加1。时间复杂度和空间复杂度都是O(M*N)。
+
+
+576. Out of Boundary Paths
+https://leetcode.com/problems/out-of-boundary-paths/description/
+一刷按照自己的思路初始时没判断参数有可能的异常，RE。思路正确，效率不高，时间复杂度和空间复杂度均为O(N*n*m)。再刷！二刷使用大神的高效解法。
+
 
 
 
