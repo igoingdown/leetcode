@@ -901,6 +901,12 @@ https://leetcode.com/problems/longest-palindromic-subsequence/description/
 暴力递归导致重复计算，于是有了带memo的递归。而随着递归深度增大，栈空间消耗过大，于是有了DP。递归是top-down的思路，而DP则是bottom-up的思路。这道题的关键的状态方程不易理解，需要举个例子，如“bbbab”, 状态方程为("bbbab") = 'b' == 'b' ? 2 + ("bba") ? max("bbba", "bbab")。可以清楚看到"bba"三者都有，而后面两个最大只是("bba") + 1。
 
 
+322. Coin Change
+https://leetcode.com/problems/coin-change/description/
+一刷使用暴力递归，WA，没想明白为什么会WA！继续想。二刷使用DP算法，DP更新关键过程写错WA。这个DP算法比较简单，状态方程也好想，只是初始化略不同，怎么就没想起来呢！再刷！
+
+
+
 
 
 
