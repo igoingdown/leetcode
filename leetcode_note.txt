@@ -880,12 +880,25 @@ https://leetcode.com/problems/2-keys-keyboard/description/
 一刷没思路，使用大神的思路AC。大神没有用DP，时间复杂度最好为O(logN),最差O(N)，比DP算法效率高，但是比较难以理解。再刷，注意理解！
 
 
+377. Combination Sum IV
+https://leetcode.com/problems/combination-sum-iv/description/
+一刷没思路，DFS都忘了。大神的top-down的DFS超时，加入memo实现DP后，AC。这个题很经典，和之前整理的回溯法有强关联！注意理解DP的含义，我现在仍然不知道这样做是不是就叫做DP。再刷！注意整理！
+除了上一种top-down的DP方法，还有一种bottom-up的DP方法，这种方法在我看来更像DP。一刷dp空间分配不够，RE。错误在本地没复现，猜测是因为本地使用伙伴内存管理，dp配额有冗余，而网页后端对内存的检测更严格。
+两种方法的空间复杂度都是O(N)，时间复杂度均为O(MN)，top-down方法虽然使用递归，但是这个时间复杂度容易分析。
 
 
+376. Wiggle Subsequence
+https://leetcode.com/problems/wiggle-subsequence/description/
+一刷没思路，大神解法集中在贪心和DP两类。贪心算法一刷AC，不好理解，意思是每次选山峰的最高点和最低点，为什么这样就可以保证序列最长？
+DP算法一刷初始化变量名写错，WA。再刷！
+两种算法的区别和联系是什么？
 
 
+516. Longest Palindromic Subsequence
+https://leetcode.com/problems/longest-palindromic-subsequence/description/
+一刷没思路，大神总结了从暴力递归到简化版DP的四种方法，一刷使用暴力递归发现TLE。二刷使用带memo的递归，由于递归深度与字符串长度相同，字符串过长导致栈空间溢出得到MLE。三刷使用DP,一次AC。空间复杂度为O(N^2)，时间复杂度为O(N^2)。四刷使用更高效的DP，一次AC，时间复杂度为O(N^2)，空间复杂度为O(N)。不用再刷，但是可以回顾，这个题目很经典。
 
-
+暴力递归导致重复计算，于是有了带memo的递归。而随着递归深度增大，栈空间消耗过大，于是有了DP。递归是top-down的思路，而DP则是bottom-up的思路。这道题的关键的状态方程不易理解，需要举个例子，如“bbbab”, 状态方程为("bbbab") = 'b' == 'b' ? 2 + ("bba") ? max("bbba", "bbab")。可以清楚看到"bba"三者都有，而后面两个最大只是("bba") + 1。
 
 
 
