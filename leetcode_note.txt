@@ -906,8 +906,15 @@ https://leetcode.com/problems/coin-change/description/
 一刷使用暴力递归，WA，没想明白为什么会WA！继续想。二刷使用DP算法，DP更新关键过程写错WA。这个DP算法比较简单，状态方程也好想，只是初始化略不同，怎么就没想起来呢！再刷！
 
 
+494. Target Sum
+https://leetcode.com/problems/target-sum/description/
+一刷没有好思路，看了大神的解析，将问题转化为一个之前解决过的相似问题，自己使用DFS解决了，但是过程不够顺畅，对于set的计数不能再t=0时直接返回，而应该结果+1。时间复杂度为O(N^2)再刷！二刷使用DP没AC，对vector::resize()理解不对，resize并不会对vector原有的数据进行重置，只会将其截断或者在后端补充，应该先用clear。再刷！
 
-
+DFS思路：将num分为正集合P和负集合N，于是有下面的推导：
+                  sum(P) - sum(N) = target
+sum(P) + sum(N) + sum(P) - sum(N) = target + sum(P) + sum(N)
+                       2 * sum(P) = target + sum(nums)
+现在问题也就变成了寻求满足条件的P的个数，可以用DFS。官方给每道题都给了答案，而且每道题的答案不止一种，再刷可以重点看看官方答案。
 
 
 
