@@ -917,6 +917,9 @@ sum(P) + sum(N) + sum(P) - sum(N) = target + sum(P) + sum(N)
 现在问题也就变成了寻求满足条件的P的个数，可以用DFS。官方给每道题都给了答案，而且每道题的答案不止一种，再刷可以重点看看官方答案。
 
 
+309. Best Time to Buy and Sell Stock with Cooldown
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/
+一刷没思路，使用基于有限状态机的DP，一刷AC，时间复杂度和空间复杂度均为O(N)。s0,s1,s2三个状态分别表示最后一个操作为rest, buy, sell的当天maxprofit。再刷！
 
 
 
