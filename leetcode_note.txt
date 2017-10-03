@@ -926,3 +926,36 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/desc
 https://leetcode.com/problems/range-sum-query-2d-immutable/description/
 一刷没有对二维数组的维度进行初始判断，没AC。使用DP，时间复杂度和空间复杂度均为O(M*N)，效率不高，二刷关键是调研更优秀的解法。
 
+
+474. Ones and Zeroes
+https://leetcode.com/problems/ones-and-zeroes/description/
+一刷使用暴力DFS，TLE。bitset的使用得到了锻炼，bitset使用set和reset进行赋值，使用test测试位，使用count度量位。二刷使用DP，出了bug，没调通。三刷使用大神的空间复杂度O(M*N)，时间复杂度O(M*N*L)的DP算法，一次AC。大神的思路并不好理解，再刷！注意理解！
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
