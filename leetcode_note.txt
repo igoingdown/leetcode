@@ -820,7 +820,12 @@ https://leetcode.com/contest/leetcode-weekly-contest-49/problems/cut-off-trees-f
 
 198. House Robber
 https://leetcode.com/problems/house-robber/description/
-比较简单，DP一刷AC。
+比较简单，DP一刷AC。时间复杂度和空间复杂度都是O(N)，可以将空间复杂度降至O(1)。二刷使用时间复杂度O(N)，空间复杂度为O(1)的DP算法，一次AC。
+
+
+213. House Robber II
+https://leetcode.com/problems/house-robber-ii/description/
+一刷没思路，使用大神的DP思路没有对nums的长度为1时的场景进行判断，WA。关键是将该题转化到上面一题。再刷的时候注意理解，思考留出一个house不rob从而破环的合理性。
 
 
 96. Unique Binary Search Trees
@@ -932,7 +937,9 @@ https://leetcode.com/problems/ones-and-zeroes/description/
 一刷使用暴力DFS，TLE。bitset的使用得到了锻炼，bitset使用set和reset进行赋值，使用test测试位，使用count度量位。二刷使用DP，出了bug，没调通。三刷使用大神的空间复杂度O(M*N)，时间复杂度O(M*N*L)的DP算法，一次AC。大神的思路并不好理解，再刷！注意理解！
 
 
-
+375. Guess Number Higher or Lower II
+https://leetcode.com/problems/guess-number-higher-or-lower-ii/description/
+一刷使用dp思路不对，问题没想清楚，总想着用二分法，事实上二分法的结果并非最优！二刷使用大神的bottom-up的DP，没有一次AC，对DP的更新过程理解不够，再刷，注意理解。
 
 
 
