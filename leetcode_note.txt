@@ -922,5 +922,7 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/desc
 一刷没思路，使用基于有限状态机的DP，一刷AC，时间复杂度和空间复杂度均为O(N)。s0,s1,s2三个状态分别表示最后一个操作为rest, buy, sell的当天maxprofit。再刷！
 
 
-
+304. Range Sum Query 2D - Immutable
+https://leetcode.com/problems/range-sum-query-2d-immutable/description/
+一刷没有对二维数组的维度进行初始判断，没AC。使用DP，时间复杂度和空间复杂度均为O(M*N)，效率不高，二刷关键是调研更优秀的解法。
 
