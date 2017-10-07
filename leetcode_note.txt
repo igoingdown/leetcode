@@ -958,7 +958,9 @@ https://leetcode.com/problems/find-bottom-left-tree-value/description/
 
 
 
-
+108. Convert Sorted Array to Binary Search Tree
+https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/
+一刷使用DFS，二分查找想使用移位操作装逼，结果写错了！右移1位写成右移2位，WA。再来一次。时间和空间复杂度都是O(log N)。效率还可以，再刷找找更高效的算法。
 
 
 
