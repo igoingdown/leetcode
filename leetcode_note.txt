@@ -952,7 +952,9 @@ https://leetcode.com/problems/employee-importance/description/
 一刷使用DFS暴力递归AC。效率低，时间复杂度为O(LN)，空间复杂度为O(L)，L为下属员工总个数（包括非直接下属），N为员工总数。再刷尝试高效解法。
 
 
-
+513. Find Bottom Left Tree Value
+https://leetcode.com/problems/find-bottom-left-tree-value/description/
+一刷使用DFS暴力递归AC，效率低。时、空间复杂度O(L^2)，因为递归深度为L，查深度和查最左下元素都要递归到最底层。再刷要使用高效解法。二刷使用大神的DFS解法，不太理解，再刷！
 
 
 
