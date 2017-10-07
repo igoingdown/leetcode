@@ -942,9 +942,14 @@ https://leetcode.com/problems/guess-number-higher-or-lower-ii/description/
 一刷使用dp思路不对，问题没想清楚，总想着用二分法，事实上二分法的结果并非最优！二刷使用大神的bottom-up的DP，没有一次AC，对DP的更新过程理解不够，再刷，注意理解。
 
 
+638. Shopping Offers
+https://leetcode.com/problems/shopping-offers/description/
+一刷使用自己设计的DP方法，WA。二刷使用带memo的dfs，这是top-down的dp，但是我更熟悉bottom-up的dp。由于把变量k写成key（这也是变量名设计问题），一直WA，debug很久。思路比较清晰，我自己两个思路都想明白了，但是手生。再刷！
 
 
-
+690. Employee Importance
+https://leetcode.com/problems/employee-importance/description/
+一刷使用DFS暴力递归AC。效率低，时间复杂度为O(LN)，空间复杂度为O(L)，L为下属员工总个数（包括非直接下属），N为员工总数。再刷尝试高效解法。
 
 
 
