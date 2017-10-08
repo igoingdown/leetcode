@@ -957,18 +957,29 @@ https://leetcode.com/problems/find-bottom-left-tree-value/description/
 一刷使用DFS暴力递归AC，效率低。时、空间复杂度O(L^2)，因为递归深度为L，查深度和查最左下元素都要递归到最底层。再刷要使用高效解法。二刷使用大神的DFS解法，不太理解，再刷！
 
 
-
 108. Convert Sorted Array to Binary Search Tree
 https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/
 一刷使用DFS，二分查找想使用移位操作装逼，结果写错了！右移1位写成右移2位，WA。再来一次。时间和空间复杂度都是O(log N)。效率还可以，再刷找找更高效的算法。
 
 
+693. Binary Number with Alternating Bits
+https://leetcode.com/problems/binary-number-with-alternating-bits/description/
+一刷没AC，忘记更新ex。时间复杂度为O(log N)，空间复杂度为O(1)。没有再刷的必要。
 
 
+691. Stickers to Spell Word
+https://leetcode.com/problems/stickers-to-spell-word/description/
+一刷没思路，套用大神的思路是带memo的DFS，思路很清晰，一刷AC。时、空间复杂度为O(N)，递归深度也是N。手生，再刷。
 
 
+695. Max Area of Island
+https://leetcode.com/problems/max-area-of-island/description/
+一刷AC，关键思想是算法核心使用dfs,利用queue存储中间结果，原地更改数组。时间复杂度为O(M*N)，空间复杂度为O(1)。
 
 
+694. Number of Distinct Islands
+https://leetcode.com/contest/leetcode-weekly-contest-53/problems/number-of-distinct-islands/
+一刷没有想到怎么表示多个岛之间的“translation”的关系，题意不太理解，跟上题很像，只需要用set记录编码之后的island的所有node，最后返回set的长度即可。还学到了访问matrix一个元素四周邻居的更省空间的方式，数组bias设置为[1, 0, -1, 0, 1]即可，每次访问row的bias为bias[i],column的bias为bias[i + 1]，非常巧妙！这个题目对于非付费用户依据封锁了，尽快再刷一次。
 
 
 
