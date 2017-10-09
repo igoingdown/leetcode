@@ -982,6 +982,38 @@ https://leetcode.com/contest/leetcode-weekly-contest-53/problems/number-of-disti
 一刷没有想到怎么表示多个岛之间的“translation”的关系，题意不太理解，跟上题很像，只需要用set记录编码之后的island的所有node，最后返回set的长度即可。还学到了访问matrix一个元素四周邻居的更省空间的方式，数组bias设置为[1, 0, -1, 0, 1]即可，每次访问row的bias为bias[i],column的bias为bias[i + 1]，非常巧妙！这个题目对于非付费用户依据封锁了，尽快再刷一次。
 
 
+496. Next Greater Element I
+https://leetcode.com/problems/next-greater-element-i/description/
+一刷没思路，借鉴大神基于stack的思路AC。思路很奇妙，还需深入理解。二刷简化了代码，思路更清晰了。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
