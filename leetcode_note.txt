@@ -992,7 +992,9 @@ https://leetcode.com/problems/next-greater-element-ii/description/
 一刷使用和上题相似的思路，没想清楚，WA。本题中有重复元素，stack和map都要保存index，和上题的区别在于要进行两次遍历，算法效率还可以继续提升。时间和空间复杂度为O(N)。再刷。
 
 
-
+144. Binary Tree Preorder Traversal
+https://leetcode.com/problems/binary-tree-preorder-traversal/description/
+二叉树先序遍历，一刷递归AC。二刷使用非递归算法一次AC，注意入栈的时先对右子树入栈，再对左子树入栈，从而保证左子树优先访问。
 
 
 
