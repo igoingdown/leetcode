@@ -984,9 +984,12 @@ https://leetcode.com/contest/leetcode-weekly-contest-53/problems/number-of-disti
 
 496. Next Greater Element I
 https://leetcode.com/problems/next-greater-element-i/description/
-一刷没思路，借鉴大神基于stack的思路AC。思路很奇妙，还需深入理解。二刷简化了代码，思路更清晰了。
+一刷没思路，借鉴大神基于stack的思路AC。思路很奇妙，还需深入理解。二刷AC，简化了代码。
 
 
+503. Next Greater Element II
+https://leetcode.com/problems/next-greater-element-ii/description/
+一刷使用和上题相似的思路，没想清楚，WA。本题中有重复元素，stack和map都要保存index，和上题的区别在于要进行两次遍历，算法效率还可以继续提升。时间和空间复杂度为O(N)。再刷。
 
 
 
