@@ -1027,7 +1027,9 @@ https://leetcode.com/problems/evaluate-reverse-polish-notation/description/
 一刷AC，注意先出栈的第二个操作数，后出栈的是第一个操作数。
 
 
-
+456. 132 Pattern
+https://leetcode.com/problems/132-pattern/description/
+一刷没思路，使用大神的算法，一次AC，但是理解不透彻。关键不太理解为什么要用while循环，是为了使用更大的中间值？再刷。
 
 
 
