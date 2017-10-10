@@ -1022,7 +1022,9 @@ https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/descripti
 一刷用queue实现，WA。二刷使用双stack分别存储本层和下层，同时使用level记录层数用于决策左右子树入下一层栈的顺序AC，再看看。
 
 
-
+150. Evaluate Reverse Polish Notation
+https://leetcode.com/problems/evaluate-reverse-polish-notation/description/
+一刷AC，注意先出栈的第二个操作数，后出栈的是第一个操作数。
 
 
 
