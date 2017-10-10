@@ -1004,7 +1004,7 @@ https://leetcode.com/problems/flatten-nested-list-iterator/description/
 
 173. Binary Search Tree Iterator
 https://leetcode.com/problems/binary-search-tree-iterator/description/
-一刷按照和上题相似的思路，初始化时，遍历查找最左节点没有更新root，导致内存溢出。时间复杂度为O(N)，空间复杂度为O(H)。比较简单，再刷一次。
+一刷按照和上题相似的思路，初始化时，遍历查找最左节点没有更新root，导致内存溢出。时间复杂度为O(N)，空间复杂度为O(H)。二刷一次AC，精简了代码。
 
 
 

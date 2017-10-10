@@ -8,15 +8,14 @@
  * };
  */
 class BSTIterator {
-private: 
+private:
     stack<TreeNode*> s;
 public:
     BSTIterator(TreeNode *root) {
         if (root) {
             s.push(root);
-            while (root->left) {
-                s.push(root->left);
-                root = root->left;
+            while (s.top()->left) {
+                s.push(s.top()->left);
             }
         }
     }
@@ -28,7 +27,6 @@ public:
 
     /** @return the next smallest number */
     int next() {
-        int res = s.top()->val;
         auto node = s.top();
         s.pop();
         if (node->right) {
@@ -37,7 +35,7 @@ public:
                 s.push(s.top()->left);
             }
         }
-        return res;
+        return node->val;
     }
 };
 
