@@ -1009,12 +1009,12 @@ https://leetcode.com/problems/binary-search-tree-iterator/description/
 
 394. Decode String
 https://leetcode.com/problems/decode-string/description/
-一刷使用自己的算法WA。二刷使用大神的算法AC，使用两个stack分别存放“[x]”出现时之前的num和应该加到num * "[x]"之前的string，每个元素只表示一层，跟上层无关。思路理解了，但是还不熟，再刷。
+一刷使用自己的算法WA。二刷使用大神的算法AC，使用两个stack分别存放“[x]”出现时之前的num和应该加到num * "[x]"之前的string，每个元素只表示一层，跟上层无关。思路理解了，但是还不熟，再刷。三刷使用递归算法，运行时间少于非递归算法，没有AC，思路不是很清楚，再刷。
 
 
-
-
-
+331. Verify Preorder Serialization of a Binary Tree
+https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/description/
+一刷使用自己的算法，没AC，看了讨论区，有大佬和我的算法相同，稍微修改了自己的代码AC。注意考虑两点，数的长度不止为1，中间过程如果stack为空，直接返回false即可。再刷一次。
 
 
 
