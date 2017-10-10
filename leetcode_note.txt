@@ -1017,7 +1017,9 @@ https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/des
 一刷使用自己的算法，没AC，看了讨论区，有大佬和我的算法相同，稍微修改了自己的代码AC。注意考虑两点，数的长度不止为1，中间过程如果stack为空，直接返回false即可。再刷一次。
 
 
-
+103. Binary Tree Zigzag Level Order Traversal
+https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/
+一刷用queue实现，WA。二刷使用双stack分别存储本层和下层，同时使用level记录层数用于决策左右子树入下一层栈的顺序AC，再看看。
 
 
 
