@@ -997,7 +997,14 @@ https://leetcode.com/problems/binary-tree-preorder-traversal/description/
 二叉树先序遍历，一刷递归AC。二刷使用非递归算法一次AC，注意入栈的时先对右子树入栈，再对左子树入栈，从而保证左子树优先访问。
 
 
+341. Flatten Nested List Iterator
+https://leetcode.com/problems/flatten-nested-list-iterator/description/
+一刷思路不对，使用大神的思路一刷没有AC，跟我的思路相似。再刷，深入理解大神的算法。
 
+
+173. Binary Search Tree Iterator
+https://leetcode.com/problems/binary-search-tree-iterator/description/
+一刷按照和上题相似的思路，初始化时，遍历查找最左节点没有更新root，导致内存溢出。时间复杂度为O(N)，空间复杂度为O(H)。比较简单，再刷一次。
 
 
 
