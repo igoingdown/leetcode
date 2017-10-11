@@ -1037,6 +1037,22 @@ https://leetcode.com/problems/remove-k-digits/description/
 一刷没思路，使用大神的算法，因为没注意循环过程中k会更新导致WA，debug很久。再刷！
 
 
+636. Exclusive Time of Functions
+https://leetcode.com/problems/exclusive-time-of-functions/description/
+一刷没有想清楚怎么将中间退栈时得到的中间时间段存下来WA。二刷使用大神的算法，和我的算法相似，但是使用了stringstream，并且自己设计了新的struct，效率可能会受影响，但是非常清晰。中间没对stack判空RE。再刷。
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
