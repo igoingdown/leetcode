@@ -1042,7 +1042,9 @@ https://leetcode.com/problems/exclusive-time-of-functions/description/
 一刷没有想清楚怎么将中间退栈时得到的中间时间段存下来WA。二刷使用大神的算法，和我的算法相似，但是使用了stringstream，并且自己设计了新的struct，效率可能会受影响，但是非常清晰。中间没对stack判空RE。再刷。
 
 
-
+215. Kth Largest Element in an Array
+https://leetcode.com/problems/kth-largest-element-in-an-array/description/
+一刷使用快排AC，快排的partition函数不止可以用挖坑填坑的方式写，还可以按照这个算法写，但是有bug，再刷！
 
 
 
