@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void hill_sort(vector<int>& s);
+void shell_sort(vector<int>& s);
 
 int main(int argc, char const *argv[])
 {
@@ -18,7 +18,7 @@ int main(int argc, char const *argv[])
 }
 
 
-void hill_sort(vector<int>& s) {
+void shell_sort(vector<int>& s) {
 	int n = s.size();
 	for (int i = 0; i < n; i++) {
 		for (int j = 1; j < n - i; j++) {
