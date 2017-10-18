@@ -1047,7 +1047,9 @@ https://leetcode.com/problems/kth-largest-element-in-an-array/description/
 一刷使用快排AC，快排的partition函数不止可以用挖坑填坑的方式写，还可以按照这个算法写，但是有bug，再刷！
 
 
-
+347. Top K Frequent Elements
+https://leetcode.com/problems/top-k-frequent-elements/description/
+一刷直接完全排序，取前k个，AC，时间复杂度为O(NlogN)，空间复杂度为O(N)。现在会了新的工具，二刷使用堆排序算法AC，时间复杂度为O(NlogN)，空间复杂度为O(N)。
 
 
 
