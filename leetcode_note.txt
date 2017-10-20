@@ -791,7 +791,7 @@ https://leetcode.com/problems/word-search/description/
 
 89. Gray Code
 https://leetcode.com/problems/gray-code/description/
-用backtracing的方法没想通，原来这就是格雷码！数字电路里大名鼎鼎的格雷码，格雷码和二进制码之间的相互转换要注意！一刷AC，理解不透彻。再刷！再刷要拓展到格雷码转二进制码，并继续尝试用backtracing的方法。又看了一个更容易理解的算法，一刷循环初始值设置错误，WA。
+用backtracing的方法没想通，一刷AC，理解不透彻。再刷！并继续尝试用backtracing的方法。又看了一个更容易理解的算法，一刷循环初始值设置错误，WA。三刷使用递归，移位参数设置出错WA，再刷。四刷使用基于DP的bottom-up方法AC。
 
 
 211. Add and Search Word - Data structure design
