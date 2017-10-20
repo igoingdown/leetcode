@@ -1057,7 +1057,9 @@ https://leetcode.com/problems/top-k-frequent-words/description/
 一刷暴力解决，AC。二刷使用基于heap sort的方法，WA。有一点不太理解，为什么最后的结果的顺序和我想的相反？
 
 
-
+355. Design Twitter
+https://leetcode.com/problems/design-twitter/description/
+一刷使用基于堆排序的方法AC，效率并不是很高。明白了为什么有时候会和结果反序，这是因为我写的堆排序的结果是升序，而这种题目一般要求要降序输出结果。
 
 
 
