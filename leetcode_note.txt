@@ -673,7 +673,7 @@ DFS的题，不是很难，但是没思路。一刷废了很大劲没AC。思路
 
 22. Generate Parentheses
 https://leetcode.com/problems/generate-parentheses/#/description
-一道简单的递归题，但是没想出来。一刷AC，但是思路不是自己的，再刷！二刷一次AC，但是并不能缓解心中的焦虑。
+一刷AC，但是思路不是自己的。二刷一次AC。三刷一次AC，思路清晰了，每次只能选择两种符号的一种，都可以选，只要设定好条件即可。
 
 
 475. Heaters
@@ -1062,7 +1062,9 @@ https://leetcode.com/problems/design-twitter/description/
 一刷使用基于堆排序的方法AC，效率并不是很高。明白了为什么有时候会和结果反序，这是因为我写的堆排序的结果是升序，而这种题目一般要求要降序输出结果。
 
 
-
+490. Maze
+锁定了，写不了。
+但是比较简单，至少有两种写法。
 
 
 
