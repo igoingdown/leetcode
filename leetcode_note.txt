@@ -1065,7 +1065,18 @@ https://leetcode.com/problems/design-twitter/description/
 490. Maze
 锁定了，写不了。
 但是比较简单，至少有两种写法。
+一是使用visited，而是将访问过的区域设置为阻隔，有个非常相似的题目，但是我给忘了。
 
+
+110. Balanced Binary Tree
+https://leetcode.com/problems/balanced-binary-tree/description/
+可以使用DFS和BFS，一刷使用BFS，效率非常低。二刷使用优化过的DFS，快了很多，用depth=-1表示不满足平衡性，从而实现短路计算，效率很高。
+
+
+
+373. Find K Pairs with Smallest Sums
+https://leetcode.com/problems/find-k-pairs-with-smallest-sums/description/
+一刷基于heap来做的，一次AC。效率并不高，要先把所有可能的组合都存下了，然后再用堆排序找出前k个，再刷要注意提升效率。
 
 
 
