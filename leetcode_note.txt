@@ -740,7 +740,7 @@ https://leetcode.com/problems/count-complete-tree-nodes/description/
 
 230. Kth Smallest Element in a BST
 https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/
-一刷计算比mid值小的节点个数时逻辑出错，得了WA，再刷！用VS在本地debug就是方便，终于不用自己写很多cout了，而且快了很多！算法效率不高，follow up没看，后面再刷要注意这两个问题！
+一刷计算比mid值小的节点个数时逻辑出错，得了WA，再刷！用VS在本地debug就是方便，终于不用自己写很多cout了，而且快了很多！算法效率不高，follow up没看，后面再刷要注意这两个问题！二刷使用非递归的基于树的中序遍历的方法一次AC，效率高出很多，再刷一次，深入理解BST的中序遍历过程，尤其是非递归方法。
 
 
 240. Search a 2D Matrix II
@@ -1088,7 +1088,9 @@ https://leetcode.com/problems/same-tree/description/
 递归，一次AC。
 
 
-
+98. Validate Binary Search Tree
+https://leetcode.com/problems/validate-binary-search-tree/description/
+一刷使用递归，AC。二刷使用基于非递归中序遍历二叉树的方法AC，思路还不是很熟，再刷！
 
 
 
