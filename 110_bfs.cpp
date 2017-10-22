@@ -10,7 +10,6 @@
 class Solution {
 public:
     bool isBalanced(TreeNode* root) {
-        
     if(!root)
         return true;
     else if(abs(get_depth(root->left) - get_depth(root->right)) < 2)
@@ -19,9 +18,7 @@ public:
         return false;
         
     }
-    
-    
-    
+
     int get_depth(TreeNode * n)
     {
     if(!n)
@@ -49,7 +46,6 @@ public:
             ++ d;
         }
     }
-
     return d;
     }
     
