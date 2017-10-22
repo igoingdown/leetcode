@@ -1070,8 +1070,7 @@ https://leetcode.com/problems/design-twitter/description/
 
 110. Balanced Binary Tree
 https://leetcode.com/problems/balanced-binary-tree/description/
-可以使用DFS和BFS，一刷使用BFS，效率非常低。二刷使用优化过的DFS，快了很多，用depth=-1表示不满足平衡性，从而实现短路计算，效率很高。
-
+可以使用DFS和BFS，一刷使用BFS，效率非常低。二刷使用优化过的DFS，快了很多，用depth=-1表示不满足平衡性，从而实现短路计算，效率很高。三刷使用没有优化的递归算法，计算树深大量重复。四刷使用带memo的recursion，效率不如用depth=-1表示不平衡的算法高。
 
 
 373. Find K Pairs with Smallest Sums
