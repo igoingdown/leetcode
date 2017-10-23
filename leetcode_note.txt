@@ -1093,9 +1093,19 @@ https://leetcode.com/problems/validate-binary-search-tree/description/
 一刷使用递归，AC。二刷使用基于非递归中序遍历二叉树的方法AC，思路还不是很熟，再刷！
 
 
+230. Kth Smallest Element in a BST
+https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/
+一刷使用基于非递归中序遍历二叉树的方法AC。
 
 
+114. Flatten Binary Tree to Linked List
+https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/
+一刷使用递归没有AC，没考虑全！垃圾！再刷！
 
+
+113. Path Sum II
+https://leetcode.com/problems/path-sum-ii/description/
+一刷递归没考虑到节点的值可以使负的，自以为地剪枝WA，去掉之后AC。再来一次。
 
 
 
