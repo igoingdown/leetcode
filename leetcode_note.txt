@@ -628,7 +628,7 @@ https://leetcode.com/problems/basic-calculator-ii/#/description
 
 17. Letter Combinations of a Phone Number Add to List
 https://leetcode.com/problems/letter-combinations-of-a-phone-number/#/description
-算法自己写的，但是很多天不刷，已经没感觉了！一刷没AC，还各种CE！再刷！！！
+一刷没AC，CE很多，再刷！二刷优化了代码，相当于层序遍历，O(N^2)的时间复杂度，O(N)空间复杂度，应该有更好的解法。再刷注意使用更高效的算法。
 
 
 336. Palindrome Pairs
@@ -1108,8 +1108,14 @@ https://leetcode.com/problems/path-sum-ii/description/
 一刷递归没考虑到节点的值可以使负的，自以为地剪枝WA，去掉之后AC。再来一次。
 
 
+200. Number of Islands
+https://leetcode.com/problems/number-of-islands/description/
+一刷递归没AC，小错误不断，再来一次。效率不高，再想想怎么提高效率。
 
 
+473. Matchsticks to Square
+https://leetcode.com/problems/matchsticks-to-square/description/
+一刷递归，效率低，有大量重复计算，自己的逻辑不清晰，TLE。二刷发现大神的DFS思路和我一致，按照大神的思路改完之后效率提高很多，但是仍然有优化的空间，重复计算问题并没有完全解决。
 
 
 

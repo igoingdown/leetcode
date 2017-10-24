@@ -1,32 +1,21 @@
 class Solution {
-private:
-    map<int, string> m{{2, "abc"}, {3, "def"}, {4, "ghi"}, {5, "jkl"}, {6, "mno"}, {7, "pqrs"}, {8, "tuv"}, {9, "wxyz"}};
 public:
     vector<string> letterCombinations(string digits) {
-        vector<string> res;
-        for (int i = 0; i < digits.size(); i++) {
-            int d = digits[i] - '0';
-            int original_size = res.size();
-            if (original_size == 0) {
-                res.resize(m[d].size());
-                for (int j = 0; j < m[d].size(); j++) {
-                    res[j].push_back(m[d][j]);
+        if (digits.size() == 0) return vector<string> ();
+        unordered_map<int, string> m({{2, "abc"}, {3, "def"}, {4, "ghi"}, {5, "jkl"}, {6, "mno"}, {7, "pqrs"}, {8, "tuv"}, {9, "wxyz"}});
+        vector<string> res(1, "");
+        string tmp;
+        for (char c : digits) {
+            int s = res.size();
+            for (int i = 0; i < m[c - '0'].size() - 1; i++) {
+                for (int j = 0; j < s; j++) {
+                    tmp = res[j];
+                    tmp.push_back(m[c - '0'][i + 1]);
+                    res.push_back(tmp);
                 }
-                continue;
-            } else {
-                res.resize(original_size * m[d].size());
             }
-            // res.resize((i + 1) * m[d].size());
-            for (int j = 0; j < m[d].size(); j++) {
-                if (j == 0) {
-                    for (int k = 0; k < original_size; k++) {
-                        res[k].push_back(m[d][j]);
-                    }
-                } else {
-                    for (int k = 0; k < original_size; k++) {
-                        res[j * original_size + k] = res[k].substr(0, res[k].size() - 1) + m[d][j];
-                    }
-                }
+            for (int j = 0; j < s; j++) {
+                res[j].push_back(m[c - '0'][0]);
             }
         }
         return res;
