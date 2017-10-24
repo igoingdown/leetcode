@@ -204,9 +204,7 @@ https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
 
 78. Subsets
 https://leetcode.com/problems/subsets/
-一刷由于对vector的一些成员函数不熟悉，没有AC。二刷一次AC。讨论区第一名的算法是基于bitmap做的，一刷由于对vector的多元素版本的构造函数格式不熟，没能AC。二刷一次AC。
-
-三刷使用backtracing方法刷这类题，效率无损失。递归参数设置错误得了WA，再刷！
+一刷由于对vector的一些成员函数不熟悉，没有AC。二刷一次AC。讨论区第一名的算法是基于bitmap做的，一刷由于对vector的多元素版本的构造函数格式不熟，没能AC。二刷一次AC。三刷使用backtracing方法刷这类题，效率无损失。递归参数设置错误得了WA，再刷！四刷使用backtracing，没AC，应该存入第i个元素但是存了第start个元素，这个错误好几次了！
 
 
 75. Sort Colors
