@@ -1127,7 +1127,9 @@ https://leetcode.com/problems/matchsticks-to-square/description/
 一刷递归，效率低，有大量重复计算，自己的逻辑不清晰，TLE。二刷发现大神的DFS思路和我一致，按照大神的思路改完之后效率提高很多，但是仍然有优化的空间，重复计算问题并没有完全解决。
 
 
-
+37. Sudoku Solver
+https://leetcode.com/problems/sudoku-solver/description/
+一刷使用DFS能AC，不太理解后2个return值设置的含义。
 
 
 
