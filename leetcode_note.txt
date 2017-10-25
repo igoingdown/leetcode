@@ -749,7 +749,7 @@ https://leetcode.com/problems/permutations-ii/description/
 
 90. Subsets II
 https://leetcode.com/problems/subsets-ii/description/
-一刷去重条件写错，WA。再刷！二刷去重条件写错，原数组未排序，WA。，再刷！
+一刷去重条件写错，WA。二刷去重条件写错，原数组未排序，WA。
 
 
 131. Palindrome Partitioning
