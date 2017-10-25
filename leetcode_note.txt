@@ -202,11 +202,6 @@ https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
 适合用二分法，但是“十个二分九个错”！花了不少时间。本质是分类问题，关键在于选择分类标准，分不了走的步子小一点！画图是个解决问题的好办法。一刷分类标准选的不好，在XCODE上debug很长时间才AC。
 
 
-78. Subsets
-https://leetcode.com/problems/subsets/
-一刷由于对vector的一些成员函数不熟悉，没有AC。二刷一次AC。讨论区第一名的算法是基于bitmap做的，一刷由于对vector的多元素版本的构造函数格式不熟，没能AC。二刷一次AC。三刷使用backtracing方法刷这类题，效率无损失。递归参数设置错误得了WA，再刷！四刷使用backtracing，没AC，应该存入第i个元素但是存了第start个元素，这个错误好几次了！
-
-
 75. Sort Colors
 https://leetcode.com/problems/sort-colors/
 这道题是让手写排序，一刷手写快排没AC。二刷由于多次将左侧边界想当然地视为0（其实是l）没能AC。讨论区第一名的算法针对特殊情况（只有0， 1， 2三个数字）对普适的排序算法做了优化，一刷循环条件写错没AC。二刷思路不清晰，没AC，注意需要两层循环，内层循环只处理连续的符合条件的情况，外层需要等于因为该index对应的值谁也不知道是几。第二种算法的在时间效益上不如快排。
@@ -265,16 +260,6 @@ https://leetcode.com/problems/maximum-subarray/?tab=Description
 48. Rotate Image
 https://leetcode.com/problems/rotate-image/?tab=Description
 采用讨论区第一名的算法，效率不是很高，但是很容易明白。是一种普适的方法。对于旋转先将矩阵进行行逆序，然后对角互换。对于逆时针旋转则是先进行列逆序。一刷AC。二刷一次AC。
-
-
-40. Combination Sum II
-https://leetcode.com/problems/combination-sum-ii/?tab=Description
-讨论区第一名的算法先对候选排序，然后使用DFS，搜索路径。注意去除可能重复的路径和并进行必要的剪枝。一刷变量名写错没AC，对去重的理解也只限于想象，没有验证。讨论区第一名算法我添加了剪枝之后，算法执行时间缩短很多，还是挺有成就感的。二刷一次AC。三刷把求解树和递归过程对应上了，理解更简单；剪枝逻辑写错导致剪多了，再刷！
-
-
-39. Combination Sum
-https://leetcode.com/problems/combination-sum/?tab=Description
-做了第40题之后，做这道题就觉得比较简单了，可以画树状图来理解计算机的求解过程。一刷for循环中；写成了，没AC。二刷cand写成了res，没能AC。三刷写错了递归过程的i参数，好在理解中间加了本来以为可以用来剪枝的判断语句效率却变得低下的原因，因为那个语句并没有达到剪枝的效果！再刷！
 
 
 35. Search Insert Position
@@ -769,12 +754,38 @@ https://leetcode.com/problems/subsets-ii/description/
 
 131. Palindrome Partitioning
 https://leetcode.com/problems/palindrome-partitioning/description/
-一刷AC，爽！
+一刷使用dfs，一次AC。二刷使用dfs，AC。三刷使用带memo的dfs，AC。
 
 
 77. Combinations
 https://leetcode.com/problems/combinations/description/
 一刷用backtracing模板AC。算法效率低，再刷！再刷可以先研究讨论区优质算法！
+
+
+78. Subsets
+https://leetcode.com/problems/subsets/
+一刷由于对vector的一些成员函数不熟悉，没有AC。二刷一次AC。讨论区第一名的算法是基于bitmap做的，一刷由于对vector的多元素版本的构造函数格式不熟，没能AC。二刷一次AC。三刷使用backtracing方法刷这类题，效率无损失。递归参数设置错误得了WA，再刷！四刷使用backtracing，没AC，应该存入第i个元素但是存了第start个元素，这个错误好几次了！
+
+
+39. Combination Sum
+https://leetcode.com/problems/combination-sum/?tab=Description
+做了第40题之后，做这道题就觉得比较简单了，可以画树状图来理解计算机的求解过程。一刷for循环中；写成了，没AC。二刷cand写成了res，没能AC。三刷写错了递归过程的i参数，好在理解中间加了本来以为可以用来剪枝的判断语句效率却变得低下的原因，因为那个语句并没有达到剪枝的效果！再刷！
+
+
+40. Combination Sum II
+https://leetcode.com/problems/combination-sum-ii/?tab=Description
+讨论区第一名的算法先对候选排序，然后使用DFS，搜索路径。注意去除可能重复的路径和并进行必要的剪枝。一刷变量名写错没AC，对去重的理解也只限于想象，没有验证。讨论区第一名算法我添加了剪枝之后，算法执行时间缩短很多，还是挺有成就感的。二刷一次AC。三刷把求解树和递归过程对应上了，理解更简单；剪枝逻辑写错导致剪多了，再刷！
+
+
+
+51. N-Queens
+https://leetcode.com/problems/n-queens/description/
+一刷递归，各种CE，思路对了，但是效率低TLE。二刷查看讨论区发现自己做复杂了，path可以按行或列的顺序添加，这样就可以极大地减少递归深度，而且可以略却重复计算，AC。再刷！
+
+
+52. N-Queens II
+https://leetcode.com/problems/n-queens-ii/description/
+一刷递归，思路正确，但是效率低TLE。和51类似，可以使用相同的方式（按行的顺序逐个添加path中的节点）进行优化，二刷AC。应该还有优化空间。
 
 
 132. Palindrome Partitioning II
@@ -1088,7 +1099,7 @@ https://leetcode.com/problems/same-tree/description/
 
 98. Validate Binary Search Tree
 https://leetcode.com/problems/validate-binary-search-tree/description/
-一刷使用递归，AC。二刷使用基于非递归中序遍历二叉树的方法AC，思路还不是很熟，再刷！
+一刷使用递归，AC。二刷使用基于非递归中序遍历二叉树的方法AC，思路还不是很熟，再刷！对递归的理解的关键是max和min两个参数，这两个参数分别限制了子树的上下界，访问左子树更新上界，访问右子树更新下界。
 
 
 230. Kth Smallest Element in a BST
@@ -1114,6 +1125,7 @@ https://leetcode.com/problems/number-of-islands/description/
 473. Matchsticks to Square
 https://leetcode.com/problems/matchsticks-to-square/description/
 一刷递归，效率低，有大量重复计算，自己的逻辑不清晰，TLE。二刷发现大神的DFS思路和我一致，按照大神的思路改完之后效率提高很多，但是仍然有优化的空间，重复计算问题并没有完全解决。
+
 
 
 
