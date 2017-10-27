@@ -20,7 +20,5 @@ public:
             root = root->right;
         }
         root->right = t;
-        
-        
     }
 };
