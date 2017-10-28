@@ -795,7 +795,7 @@ https://leetcode.com/problems/palindrome-partitioning-ii/description/
 
 79. Word Search
 https://leetcode.com/problems/word-search/description/
-略复杂的递归题，一刷使用in-place递归算法，用'\0'表示已经遍历过的格子，返回语句写错，WA。需要注意对查找成功的判断。二刷使用visited记录已经走过的节点，一开始没设置visited，WA。三刷把in-place算法改造成符合我自己风格的代码，AC。
+略复杂的递归题，一刷使用in-place递归算法，用'\0'表示已经遍历过的格子，返回语句写错，WA。需要注意对查找成功的判断。二刷使用visited记录已经走过的节点，一开始没设置visited，WA。三刷把in-place算法改造成符合我自己风格的代码，AC。这个题和maze那道题结合起来就能想明白为什么要恢复原状态，事实不是李春跃说的那样，恢复原状态不会造成死循环！
 
 
 89. Gray Code
