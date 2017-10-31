@@ -3,7 +3,6 @@ https://leetcode.com/problems/island-perimeter/
 就是逐一遍历所有的cell，用分离的cell总的的边数减去重叠的边的数目即可。在查找重叠的边的数目的时候有一点小技巧，就是沿着其中两个方向就好，这种题目都有类似的规律，就是可以沿着上三角或者下三角形的方向来做。一刷一次ac，但是还没开始注意codestyle的问题，需要再刷一遍。
 
 
-
 455. Assign Cookies
 https://leetcode.com/problems/assign-cookies/
 给出两个序列，一个序列中的元素代表cookie的size，另外一个序列代表能满足孩子要求的最小cookie的size，问如何分配使得到的满意的孩子最多。先将两个序列都按从小到大顺序排序，然后按双路指针的方式解决。一刷一次ac，但是对于C++默认的sort函数的排序方式（从小到大还是从大大小）并不是很清楚。
@@ -1132,7 +1131,9 @@ https://leetcode.com/problems/sudoku-solver/description/
 一刷使用DFS能AC，不太理解后2个return值设置的含义。
 
 
-
+127. Word Ladder
+https://leetcode.com/problems/word-ladder/description/
+BFS，一刷WA，题意理解错误，要求目的词必须在候选dict中。注意更新dist和last_level。
 
 
 
