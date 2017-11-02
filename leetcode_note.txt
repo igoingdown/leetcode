@@ -1151,7 +1151,9 @@ https://leetcode.com/problems/surrounded-regions/description/
 有点小弯，不能从所有单元出发进行dfs或者bfs，只要从四条边界出发使用dfs或者bfs即可。一刷dfs,AC。二刷使用bfs，mle。用了c++和java都是相同的结果。
 
 
-
+301. Remove Invalid Parentheses
+https://leetcode.com/problems/remove-invalid-parentheses/description/
+一刷使用DFS,注意从左向右走，分三种情况考虑，左括号，右括号和字母。
 
 
 
