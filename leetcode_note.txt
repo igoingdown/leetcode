@@ -1153,7 +1153,7 @@ https://leetcode.com/problems/surrounded-regions/description/
 
 301. Remove Invalid Parentheses
 https://leetcode.com/problems/remove-invalid-parentheses/description/
-一刷使用DFS,注意从左向右走，分三种情况考虑，左括号，右括号和字母。
+一刷使用DFS,注意从左向右走，分三种情况考虑，左括号，右括号和字母。二刷使用BFS，没有更新max导致WA。
 
 
 
