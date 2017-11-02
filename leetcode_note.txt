@@ -670,7 +670,7 @@ https://leetcode.com/problems/find-right-interval/#/description
 
 300. Longest Increasing Subsequence
 https://leetcode.com/problems/longest-increasing-subsequence/#/description
-不简单，不太会做这种题，很难受。一刷AC了但是看不懂大神的代码！再好好理解一遍吧，还是要自己手动运行一遍才能理解算法的精妙之处。二刷一次AC，但是仍然没法完全领会算法的精妙之处，很烦。
+一刷AC，使用patient sort算法，时间复杂度为O(NLOGN)，但是不太理解。二刷一次AC，仍然不太理解。三刷使用java刷，算法使用一维DP，时间复杂度为O(N^2)，效率略低，思路很简单，没AC，要注意重复数字不能计入length，再刷一次。patient sort是专门应对这个题的算法！
 
 
 275. H-Index II
@@ -1136,6 +1136,19 @@ https://leetcode.com/problems/word-ladder/description/
 BFS，一刷WA，题意理解错误，要求目的词必须在候选dict中。注意更新dist和last_level。
 
 
+515. Find Largest Value in Each Tree Row
+https://leetcode.com/problems/find-largest-value-in-each-tree-row/description/
+BFS，一刷AC。
+
+
+199. Binary Tree Right Side View
+https://leetcode.com/problems/binary-tree-right-side-view/description/
+BFS，一刷AC。
+
+
+130. Surrounded Regions
+https://leetcode.com/problems/surrounded-regions/description/
+有点小弯，不能从所有单元出发进行dfs或者bfs，只要从四条边界出发使用dfs或者bfs即可。一刷dfs,AC。二刷使用bfs，mle。用了c++和java都是相同的结果。
 
 
 
