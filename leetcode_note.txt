@@ -843,7 +843,7 @@ https://leetcode.com/problems/unique-binary-search-trees/description/
 
 95. Unique Binary Search Trees II
 https://leetcode.com/problems/unique-binary-search-trees-ii/description/
-一刷AC，递归算法，算法复杂度：（？？？很高）,再刷！二刷使用DP，没有AC。算法复杂度：（？），处理nodeI非root时，把nodeJ改变了！nodeJ不应该变化，只应该逐层遍历nodeJ的最right节点。三刷使用DP算法AC，但是算法时间复杂度不会算！
+一刷递归AC，算法复杂度？？二刷使用DP，没AC，因为向n-1子树添加右子后没改回原状态。算法复杂度？？三刷使用DP算法AC。四刷使用DP没AC。思路不熟，再刷。
 
 
 647. Palindromic Substrings
@@ -1098,7 +1098,7 @@ https://leetcode.com/problems/same-tree/description/
 
 98. Validate Binary Search Tree
 https://leetcode.com/problems/validate-binary-search-tree/description/
-一刷使用递归，AC。二刷使用基于非递归中序遍历二叉树的方法AC，思路还不是很熟，再刷！对递归的理解的关键是max和min两个参数，这两个参数分别限制了子树的上下界，访问左子树更新上界，访问右子树更新下界。
+一刷使用递归，AC。二刷使用基于非递归中序遍历二叉树的方法AC！三刷使用基于中序遍历的方式判定BST的合法性，思路很清晰，利用的是BST的中序遍历一定是递增序列的性质。四刷递归AC。递归方式理解的关键是max和min两个参数，这两个参数分别限制了子树的上下界，访问左子树更新上界，访问右子树更新下界。
 
 
 230. Kth Smallest Element in a BST

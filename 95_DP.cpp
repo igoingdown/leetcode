@@ -31,10 +31,8 @@ public:
                 TreeNode* nodeJ = preResult[j];
                 r->left = copy(nodeJ);
                 result.push_back(r);
-                
                 TreeNode* root = preResult[j];
                 while (nodeJ) {
-                    
                     TreeNode* nodeI = new TreeNode(i);
                     TreeNode* old_right = nodeJ->right;
                     nodeJ->right = nodeI;
@@ -43,7 +41,6 @@ public:
                     nodeJ->right = old_right;
                     nodeJ = old_right;
                 }  
-                    
             }
             swap(result, preResult);
             result.clear();
