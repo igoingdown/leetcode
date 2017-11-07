@@ -838,7 +838,7 @@ https://leetcode.com/problems/house-robber-ii/description/
 
 96. Unique Binary Search Trees
 https://leetcode.com/problems/unique-binary-search-trees/description/
-没想出来地推公式，看大神的注释豁然开朗，思路是：将1到n分别作为根，左右两侧都是一个规模更小的子问题，左右两侧结果相乘就是一种情况，枚举所有情况求和，就是答案！一刷AC，但是还要再刷！二刷没AC，思路熟悉，但是代码写的不完美。
+DP思路是：将1到n分别作为根，左右两侧都是一个规模更小的子问题，左右两侧结果相乘就是一种情况，枚举所有情况求和即可。一刷AC，二刷没AC，思路不够熟。三刷没思路，看了一遍注释AC。
 
 
 95. Unique Binary Search Trees II
@@ -1156,7 +1156,9 @@ https://leetcode.com/problems/remove-invalid-parentheses/description/
 一刷使用DFS,注意从左向右走，分三种情况考虑，左括号，右括号和字母。二刷使用BFS，没有更新max导致WA。
 
 
-
+297. Serialize and Deserialize Binary Tree
+https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/
+一刷使用基于先序遍历的递归方法没AC，没有将val转为string。思路就是先用pre_order遍历，生成字符串，再按pre_order顺序还原二叉树。
 
 
 
