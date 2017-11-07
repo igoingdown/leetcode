@@ -1161,6 +1161,9 @@ https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/
 一刷使用基于先序遍历的递归方法没AC，没有将val转为string。思路就是先用pre_order遍历，生成字符串，再按pre_order顺序还原二叉树。
 
 
+99. Recover Binary Search Tree
+https://leetcode.com/problems/recover-binary-search-tree/description/
+一刷使用递归中序遍历的方式没有AC，不理解first更新为pre和second更新为root的过程。再刷！
 
 
 
