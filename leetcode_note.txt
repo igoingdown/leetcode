@@ -668,11 +668,6 @@ https://leetcode.com/problems/find-right-interval/#/description
 比较简单，很久没刷，手很生，一刷没AC，各种CE，WA和RE，思路是对的，但是时间复杂度太高。解答区的算法很好，值得借鉴，但是思路不是自己的，再刷！
 
 
-300. Longest Increasing Subsequence
-https://leetcode.com/problems/longest-increasing-subsequence/#/description
-一刷AC，使用patient sort算法，时间复杂度为O(NLOGN)，但是不太理解。二刷一次AC，仍然不太理解。三刷使用java刷，算法使用一维DP，时间复杂度为O(N^2)，效率略低，思路很简单，没AC，要注意重复数字不能计入length，再刷一次。patient sort是专门应对这个题的算法！
-
-
 275. H-Index II
 https://leetcode.com/problems/h-index-ii/#/description
 是274的附加题。题意很难懂，真的很难懂！很久没刷，找找感觉先！一刷各种错误，有CE也有WA，再刷！
@@ -838,12 +833,17 @@ https://leetcode.com/problems/house-robber-ii/description/
 
 96. Unique Binary Search Trees
 https://leetcode.com/problems/unique-binary-search-trees/description/
-DP思路是：将1到n分别作为根，左右两侧都是一个规模更小的子问题，左右两侧结果相乘就是一种情况，枚举所有情况求和即可。一刷AC，二刷没AC，思路不够熟。三刷没思路，看了一遍注释AC。
+DP思路是：将1到n分别作为根，左右两侧都是一个规模更小的子问题，左右两侧结果相乘就是一种情况，枚举所有情况求和即可。一刷AC，二刷没AC，思路不够熟。三刷没思路，看了注释之后AC。四刷使用数组没有初始化WA，应该使用vector。这道题和矩阵相乘的那道题很类似，都是从序列中间取一个元素，分割序列将问题转化为规模更小的子问题，同时分割元素可以是序列中的任意一个元素，这类的递推函数很常见。DP问题的解不仅可以由一个小规模子问题的解得到，还可以由多个甚至所有小规模子问题的解的组合得到。
 
 
 95. Unique Binary Search Trees II
 https://leetcode.com/problems/unique-binary-search-trees-ii/description/
-一刷递归AC，算法复杂度？？二刷使用DP，没AC，因为向n-1子树添加右子后没改回原状态。算法复杂度？？三刷使用DP算法AC。四刷使用DP没AC。思路不熟，再刷。
+一刷递归AC，算法复杂度？？二刷使用DP，没AC，因为向n-1子树添加右子后没改回原状态。算法复杂度？？三刷使用DP算法AC。四刷使用DP没AC,思路不熟。五刷没AC，n=0边界忘记处理。
+
+
+300. Longest Increasing Subsequence
+https://leetcode.com/problems/longest-increasing-subsequence/#/description
+一刷AC，使用patient sort算法，时间复杂度为O(NLOGN)，但是不太理解。二刷一次AC，仍然不太理解。三刷使用java刷，算法使用一维DP，时间复杂度为O(N^2)，效率略低，思路很简单，没AC，要注意重复数字不能计入length。patient sort是专门应对这个题的算法！和95相似，这两个问题的DP算法都有一点弯。四刷一次AC。
 
 
 647. Palindromic Substrings
@@ -1164,6 +1164,49 @@ https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/
 99. Recover Binary Search Tree
 https://leetcode.com/problems/recover-binary-search-tree/description/
 一刷使用递归中序遍历的方式没有AC，不理解first更新为pre和second更新为root的过程。再刷！
+
+
+87. Scramble String
+https://leetcode.com/problems/scramble-string/description/
+一刷递归TLE，没有先sort判断字符串是否相同减少递归深度。二刷使用sort之后AC，不是很理解思路，再刷。三刷使用java刷AC。四刷使用DP，思路和递归差别不大，边界参数错了好几个WA。使用if进行短路优化时间比不用短路优化还要长，猜是因为if破坏了流水线结构。
+
+
+546. Remove Boxes
+https://leetcode.com/problems/remove-boxes/description/
+一刷递归思路有漏洞，二刷使用DFS，代码看了很久才理解，主要是k参数表示的是起始元素（第i个元素）的重复次数。数据的删除过程很精妙，将两个相同元素之间的子序列进行递归，起始元素就是k记录的重复元素。参数设置出错WA。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
