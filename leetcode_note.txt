@@ -1173,7 +1173,7 @@ https://leetcode.com/problems/scramble-string/description/
 
 546. Remove Boxes
 https://leetcode.com/problems/remove-boxes/description/
-一刷递归思路有漏洞，二刷使用DFS，代码看了很久才理解，主要是k参数表示的是起始元素（第i个元素）的重复次数。数据的删除过程很精妙，将两个相同元素之间的子序列进行递归，起始元素就是k记录的重复元素。参数设置出错WA。
+一刷递归思路有漏洞，二刷使用DFS，代码看了很久才理解，主要是k参数表示的是起始元素（第i个元素）的重复次数。数据的删除过程很精妙，将两个相同元素之间的子序列进行递归，起始元素就是k记录的重复元素。参数设置出错WA。三刷使用DP参数设置错了好多WA，代码看了好久才明白，看了  https://discuss.leetcode.com/topic/84687/java-top-down-and-bottom-up-dp-solutions 链接里的解释，写的非常详细，非常感谢！
 
 
 
