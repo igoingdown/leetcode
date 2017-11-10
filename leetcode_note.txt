@@ -1176,10 +1176,19 @@ https://leetcode.com/problems/remove-boxes/description/
 一刷递归思路有漏洞，二刷使用DFS，代码看了很久才理解，主要是k参数表示的是起始元素（第i个元素）的重复次数。数据的删除过程很精妙，将两个相同元素之间的子序列进行递归，起始元素就是k记录的重复元素。参数设置出错WA。三刷使用DP参数设置错了好多WA，代码看了好久才明白，看了  https://discuss.leetcode.com/topic/84687/java-top-down-and-bottom-up-dp-solutions 链接里的解释，写的非常详细，非常感谢！
 
 
+452. Minimum Number of Arrows to Burst Balloons
+https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/description/
+贪心算法，自己陷入了一个有多种解需要遍历的怪圈，其实不需要。按终点大小排序后直接从直径终点射出就可以了！再刷！我的思路是每次找到重合最多的坐标点，刺破覆盖该位置的所有气球。重复以上步骤直到气球全部被刺破，这个方法一定奏效，但是复杂度极高。为什么贪心算法能work呢？
 
 
+435. Non-overlapping Intervals
+https://leetcode.com/problems/non-overlapping-intervals/description/
+与452非常相似，但是并没有想到怎么做，看Wikipedia（https://en.wikipedia.org/wiki/Interval_scheduling#Interval_Scheduling_Maximization）也没看懂，真菜！对于贪心还是不太理解，再刷。
 
 
+621. Task Scheduler
+https://leetcode.com/problems/task-scheduler/description/
+一刷没思路，讨论区使用的算法没有看出什么门道，就是找出最频繁的字母，按公式给出结果。公式是：循环体size * 循环次数(频繁字母频率-1) + 剩余的频繁字母个数。公式有特例如3个A，3个B，3个C，1个D，n=2时就不对，此时res=tasks.size()。再刷！
 
 
 
