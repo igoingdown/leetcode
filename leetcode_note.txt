@@ -930,11 +930,6 @@ sum(P) + sum(N) + sum(P) - sum(N) = target + sum(P) + sum(N)
 现在问题也就变成了寻求满足条件的P的个数，可以用DFS。官方给每道题都给了答案，而且每道题的答案不止一种，再刷可以重点看看官方答案。
 
 
-309. Best Time to Buy and Sell Stock with Cooldown
-https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/
-一刷没思路，使用基于有限状态机的DP，一刷AC，时间复杂度和空间复杂度均为O(N)。s0,s1,s2三个状态分别表示最后一个操作为rest, buy, sell的当天maxprofit。再刷！
-
-
 304. Range Sum Query 2D - Immutable
 https://leetcode.com/problems/range-sum-query-2d-immutable/description/
 一刷没有对二维数组的维度进行初始判断，没AC。使用DP，时间复杂度和空间复杂度均为O(M*N)，效率不高，二刷关键是调研更优秀的解法。
@@ -1191,7 +1186,24 @@ https://leetcode.com/problems/task-scheduler/description/
 一刷没思路，讨论区使用的算法没有看出什么门道，就是找出最频繁的字母，按公式给出结果。公式是：循环体size * 循环次数(频繁字母频率-1) + 剩余的频繁字母个数。公式有特例如3个A，3个B，3个C，1个D，n=2时就不对，此时res=tasks.size()。再刷！
 
 
+122. Best Time to Buy and Sell Stock II
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
+一刷使用贪心算法，不涨就买，涨就卖。理解还是不够深入。
 
+
+714. Best Time to Buy and Sell Stock with Transaction Fee
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/description/
+一刷使用自己设计的贪心算法：先买，涨了就卖，这样是不对的！[1,3,7,5,10,3]这个case就不对。二刷使用s0和s1分别记录两种状态，这是有限状态自动机的概念，s0是手里没有股票的收益，s1是手里有一支股票的收益，在两个状态之间切换，和309很像。
+
+
+309. Best Time to Buy and Sell Stock with Cooldown
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/
+一刷没思路，使用基于有限状态机的DP，一刷AC，时间复杂度和空间复杂度均为O(N)。s0,s1,s2三个状态分别表示最后一个操作为rest, buy, sell的当天maxprofit。再刷！
+
+
+649. Dota2 Senate
+https://leetcode.com/problems/dota2-senate/description/
+一刷使用自己设计的贪心算法，反复改了好几次，WA！总计81个case，第78个卡住了！很气，那个case还特别长，没想明白怎么回事。二刷使用基于queue的贪心算法，思路是抵消每对R和D（互Ban），抵消时靠前的那个有一种后继优势，投票的时候多出来一张票，但是不能再参与Ban的行为了！
 
 
 
