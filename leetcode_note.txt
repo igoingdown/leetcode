@@ -1203,8 +1203,12 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/desc
 
 649. Dota2 Senate
 https://leetcode.com/problems/dota2-senate/description/
-一刷使用自己设计的贪心算法，反复改了好几次，WA！总计81个case，第78个卡住了！很气，那个case还特别长，没想明白怎么回事。二刷使用基于queue的贪心算法，思路是抵消每对R和D（互Ban），抵消时靠前的那个有一种后继优势，投票的时候多出来一张票，但是不能再参与Ban的行为了！
+一刷使用自己设计的贪心算法，反复改了好几次，WA！总计81个case，第78个卡住了！很气，那个case还特别长，没想明白怎么回事。二刷使用基于queue的贪心算法，思路是抵消每对R和D（互Ban），抵消时靠前的那个有一种后继优势，投票的时候多出来一张票，但是不能再参与Ban的行为了！二刷AC。
 
+
+134. Gas Station
+https://leetcode.com/problems/gas-station/description/
+一刷贪心算法没写好，WA。注意遍历i过程中，用j更新i时更新到j - 1即可,for循环最后还要进行i++。效率不够高，时间空间复杂度都是O(N)。
 
 
 
