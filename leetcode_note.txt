@@ -1211,7 +1211,9 @@ https://leetcode.com/problems/gas-station/description/
 一刷贪心算法没写好，WA。注意遍历i过程中，用j更新i时更新到j - 1即可,for循环最后还要进行i++。效率不够高，时间空间复杂度都是O(N)。
 
 
-
+179. Largest Number
+https://leetcode.com/problems/largest-number/description/
+一刷基于sort做，AC。可以直接对数字排序，然后逐个加进来。要更深入地理解为什么这样能work！
 
 
 
