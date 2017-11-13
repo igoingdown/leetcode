@@ -1216,8 +1216,9 @@ https://leetcode.com/problems/largest-number/description/
 一刷基于sort做，AC。可以直接对数字排序，然后逐个加进来。要更深入地理解为什么这样能work！
 
 
-
-
+324. Wiggle Sort II
+https://leetcode.com/problems/wiggle-sort-ii/description/
+一刷使用笨方法，没AC，完全招架不住Follow up。再刷。
 
 
 
