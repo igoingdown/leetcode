@@ -645,7 +645,7 @@ https://leetcode.com/problems/decode-ways/#/description
 
 71. Simplify Path
 https://leetcode.com/problems/simplify-path/#/description
-比较简单一道string和stack结构结合的题目，一刷没有AC，由于判断语句写错CE。再刷！二刷没有一次AC，本来觉得挺简单的，还是各种漏洞！getline函数的第三个大叔是一个char型，表示分隔符，因为这个写错导致CE；因为逻辑出错导致RE。三刷一次AC。
+string和stack相结合，面试非常容易考！一刷算法没理解透彻WA。二刷没AC，getline函数的第三个参数是一个char，表示分隔符。三刷AC。四刷自己写WA，要注意边界，每种情况的后续操作都有条件：".."要判断栈空；非"."且非".."时要判断字符串是否为空。
 
 
 93. Restore IP Addresses
