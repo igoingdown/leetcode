@@ -1231,6 +1231,8 @@ https://leetcode.com/problems/trapping-rain-water/description/
 递减栈，出栈情况下不用入栈，WA。需要深入理解。
 
 
+296. Best Meeting Point
+这是一道锁定题。横轴纵轴互不影响，可以将两个维度直接拆开，每个维度排序之后去掉单个的中间节点，加上剩余配对的节点直接的距离即可。一刷没AC，计算sum的时候横轴和纵轴分到两个循环了，在一个循环就可以了，因为长度都一样，注意end初始应该设为posList.size() - 1。
 
 
 
