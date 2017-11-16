@@ -1221,9 +1221,14 @@ https://leetcode.com/problems/wiggle-sort-ii/description/
 一刷使用笨方法，没AC，完全招架不住Follow up。再刷。
 
 
+225. Implement Stack using Queues
+https://leetcode.com/problems/implement-stack-using-queues/submissions/1
+用deque很简单。一刷没AC，pop函数和普通的stack的pop不同，要返回栈顶元素。
 
 
-
+42. Trapping Rain Water
+https://leetcode.com/problems/trapping-rain-water/description/
+递减栈，出栈情况下不用入栈，WA。需要深入理解。
 
 
 
