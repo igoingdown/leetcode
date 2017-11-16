@@ -238,7 +238,7 @@ https://leetcode.com/problems/spiral-matrix-ii/?tab=Description
 
 56. Merge Intervals
 https://leetcode.com/problems/merge-intervals/?tab=Description
-比较简单，没太多技巧。我也有思路，但是远远达不到讨论区C++第一名的算法的简洁。第一名的算法在调用sort函数的时候重载了[]操作符，我不太理解这种方法，在函数外定义了自己的compare函数。有两个问题没搞清，一是为什么自己定义的compare函数无论是重载操作符形式还是一般的返回bool的形式，都只能用小于号，不能加等于号，加了就导致运行时错误！第二点就是重载操作符的理解又忘了！一刷没有AC。二刷vector的定义出错，myCompare函数没有设定为static，还自作聪明地使用引用类型！没能AC。注意更新end时，判断条件用<=。
+按interval的start从小到大排序，遍历interval，每次或者增加res的最后一个interval的end，或者向res新加一个interval。sort的第三个参数(函数指针)可以重载[]，也可以在外部定义myCompare函数，注意声明为static。注意myCompare只能使用小于号或大于号，不能加等于号，原因还没理解透彻，重载操作符理解不深。跟greedy的题很像，但是greedy的题目均根据interval的end从小到大排序。四刷仿greedy方法失败，再刷。
 
 
 55. Jump Game

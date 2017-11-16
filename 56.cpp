@@ -8,21 +8,21 @@
  * };
  */
 class Solution {
+private:
+    static bool myCompare(Interval a, Interval b) {
+        return a.start < b.start;
+    }
 public:
     vector<Interval> merge(vector<Interval>& intervals) {
-        if (intervals.size() == 0) {
-            return vector<Interval>(0);
-        }
-        sort(
-             intervals.begin(),
-             intervals.end(),
-             [] (Interval a, Interval b) {return a.start < b.start;});
+        int n = intervals.size();
+        if (n < 2) return intervals;
+        sort(intervals.begin(), intervals.end(), myCompare);
         vector<Interval> res(1, intervals[0]);
-        for (int i = 1; i < intervals.size(); i++) {
-            if (res.back().end < intervals[i].start) {
-                res.push_back(intervals[i]);
+        for (Interval i : intervals) {
+            if (i.start > res.back().end) {
+                res.push_back(i);
             } else {
-                res.back().end = max(res.back().end, intervals[i].end);
+                res.back().end = max(res.back().end, i.end);
             }
         }
         return res;
