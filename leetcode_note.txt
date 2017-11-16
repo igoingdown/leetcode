@@ -241,6 +241,11 @@ https://leetcode.com/problems/merge-intervals/?tab=Description
 按interval的start从小到大排序，遍历interval，每次或者增加res的最后一个interval的end，或者向res新加一个interval。sort的第三个参数(函数指针)可以重载[]，也可以在外部定义myCompare函数，注意声明为static。注意myCompare只能使用小于号或大于号，不能加等于号，原因还没理解透彻，重载操作符理解不深。跟greedy的题很像，但是greedy的题目均根据interval的end从小到大排序。四刷仿greedy方法失败，再刷。
 
 
+57. Insert Interval
+https://leetcode.com/problems/insert-interval/description/
+同56，先将要新Interval插入列表，然后merge。应该有更高效的算法。
+
+
 55. Jump Game
 https://leetcode.com/problems/jump-game/?tab=Description
 看了讨论区的两个算法，一个很简洁，4行完事，思路是遍历每个元素，看每个元素当前能达到的最远处是否包括当前元素（本质是0能不能跳过），一刷AC。另一个效率高些，思路更清晰，就是看0元素能不能跳过去，一刷没AC，注意循环从倒数第二个元素开始，因为最后一个元素的值是不用考虑的。二刷思路错了，不应该比较sum和dis，而应该比较dis和相应位的num，没能AC。但是这次刷理解了中间cur为什么可以直接减。
