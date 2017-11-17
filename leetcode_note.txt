@@ -1250,6 +1250,9 @@ https://leetcode.com/problems/merge-k-sorted-lists/description/
 使用优先级队列，时间复杂度为O(NKlogK)。一刷没AC，函数操作符重载不理解，构建小根堆和大根堆的理解和代码实际表现是反着的，我以为会构建小根堆，结果构建的却是大根堆！跟sort中需要的compare函数不太一样，不理解两者的区别。
 
 
+239. Sliding Window Maximum
+https://leetcode.com/problems/sliding-window-maximum/description/
+一刷使用java优先级队列（因为c++中的优先级队列没有remove接口）没有判空CE，时间复杂度为O(NlogK)，时间复杂度不够好，最好的算法是递归。
 
 
 
