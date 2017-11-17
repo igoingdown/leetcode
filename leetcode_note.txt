@@ -1240,11 +1240,14 @@ https://leetcode.com/problems/trapping-rain-water/description/
 这是一道锁定题。横轴纵轴互不影响，可以将两个维度直接拆开，每个维度排序之后去掉单个的中间节点，加上剩余配对的节点直接的距离即可。一刷没AC，计算sum的时候横轴和纵轴分到两个循环了，在一个循环就可以了，因为长度都一样，注意end初始应该设为posList.size() - 1。
 
 
+164. Maximum Gap
+https://leetcode.com/problems/maximum-gap/description/
+一刷使用暴力算法，先sort然后遍历，O(NlogN)的时间复杂度。题目要求O(N)的时间和空间复杂度，桶排序可以满足要求。
 
 
-
-
-
+23. Merge k Sorted Lists
+https://leetcode.com/problems/merge-k-sorted-lists/description/
+使用优先级队列，时间复杂度为O(NKlogK)。一刷没AC，函数操作符重载不理解，构建小根堆和大根堆的理解和代码实际表现是反着的，我以为会构建小根堆，结果构建的却是大根堆！跟sort中需要的compare函数不太一样，不理解两者的区别。
 
 
 
