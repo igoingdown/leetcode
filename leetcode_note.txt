@@ -1255,4 +1255,36 @@ https://leetcode.com/problems/sliding-window-maximum/description/
 一刷使用java优先级队列（因为c++中的优先级队列没有remove接口）没有判空CE，时间复杂度为O(NlogK)，时间复杂度不够好，最好的算法是递归。
 
 
+295. Find Median from Data Stream
+https://leetcode.com/problems/find-median-from-data-stream/description/
+分别使用小根堆和大根堆存储较大的部分和较小的部分，控制大根堆的size = 小根堆的size或者小根堆的size + 1。一刷没处理好插入元素的大小和大根堆小根堆的size的限制关系，WA。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
