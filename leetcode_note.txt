@@ -1242,7 +1242,7 @@ https://leetcode.com/problems/trapping-rain-water/description/
 
 164. Maximum Gap
 https://leetcode.com/problems/maximum-gap/description/
-一刷使用暴力算法，先sort然后遍历，O(NlogN)的时间复杂度。题目要求O(N)的时间和空间复杂度，桶排序可以满足要求。
+一刷使用暴力算法，先sort然后遍历，O(NlogN)的时间复杂度。题目要求O(N)的时间和空间复杂度，桶排序可以满足要求。二刷使用桶排序算法，时间和空间复杂度都是O(N)。由于bucket size设置不当（应该再加1），导致运行时出现除零操作RE。bucket size并不是非常重要的参数，bucket的个数也不需要非常严格，但是一定要保证大于需要的桶的个数。
 
 
 23. Merge k Sorted Lists
@@ -1265,7 +1265,9 @@ https://leetcode.com/problems/reconstruct-itinerary/description/
 dfs和heap结合，效率很高，忘记DFS解法了！要重新看看DFS那部分的题目。注意path先添加无路可走的节点，使用链表的头插法。c++的list数据结构基于链表实现，接口很多，非常方便，相当于java中的LinkedList。分别使用c++和java刷过，但是都没有一次AC。
 
 
-
+290. Word Pattern
+https://leetcode.com/problems/word-pattern/description/
+双map，一次AC。
 
 
 
