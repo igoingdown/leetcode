@@ -1270,8 +1270,9 @@ https://leetcode.com/problems/word-pattern/description/
 双map，一次AC。
 
 
-
-
+291. Word Pattern II
+https://www.programcreek.com/2014/07/leetcode-word-pattern-ii-java/
+双map和dfs结合，一刷没AC，strStart应该更新为i + 1而不是i。
 
 
 
