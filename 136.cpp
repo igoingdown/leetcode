@@ -1,10 +1,8 @@
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        int res = 0;
-        for (auto n : nums) {
-            res ^= n;
-        }
-        return res;
+        int n = nums.size();
+        for (int i = 1; i < n; i++) nums[i] = nums[i] ^ nums[i - 1];
+        return nums[n - 1];
     }
 };

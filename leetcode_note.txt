@@ -127,7 +127,7 @@ https://leetcode.com/problems/reverse-string/
 
 136. Single Number
 https://leetcode.com/problems/single-number/
-用亦或进行位运算。可以想象为一个多层公寓，每个公寓住着0或者1，亦或运算就是所有圆柱体内的数字进行亦或。一次AC。
+位运算（异或）经典题目。想象一个多层公寓，每个公寓住着0或者1，异或像如来神掌一样将每一位从上而下压缩。
 
 
 104. Maximum Depth of Binary Tree
