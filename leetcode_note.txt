@@ -364,8 +364,7 @@ https://leetcode.com/problems/binary-tree-inorder-traversal/#/description
 
 49. Group Anagrams
 https://leetcode.com/problems/anagrams/#/description
-一刷没有AC。一看就有思路，不清楚map和unordered_map的区别出错。map基于红黑树，是用树实现的hashmap，而unordered_map直接基于hash table，使用unordered_map的时候必须保证key的类型有hash()方法！容器类型除了string外默认是没有hash()方法的！另外map和unordered_map的key无论是何种类型，只要使用[]方法访问而且key不存在就会调用value的默认构造函数。因此不需要判断，对于value为容器的情况一样适用，我们要保证的是在访问value之前，先确保调用了[]方法。
-
+一刷没有AC。map底层使用红黑树实现，而unordered_map基于hash table，使用hash型数据结构必须保证key的类型有hash()方法，容器类型除了string外默认是没有hash()方法的，但是非hash型数据结构没有限制！c++中对于map和unordered_map，使用[]方法访问且key不存在就会调用value的默认构造函数，我们要保证访问value之前调用了[]方法。二刷没AC，不敢用vector作为key，被python和java迷惑了。三刷没AC，构造vector没初始化。
 
 445. Add Two Numbers II
 https://leetcode.com/problems/add-two-numbers-ii/#/description
