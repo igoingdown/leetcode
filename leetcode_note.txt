@@ -130,10 +130,23 @@ https://leetcode.com/problems/single-number/
 位运算（异或）经典题目。想象一个多层公寓，每个公寓住着0或者1，异或像如来神掌一样将每一位从上而下压缩。
 
 
+137. Single Number II
+https://leetcode.com/problems/single-number-ii/description/
+每一位都有规律，仍然可以按照上题的思路思考，每一位上都是这样的规律sum = x_1 * 3 + x_2 * 3 + ... + x_n-1 * 3 + y，要得到y对sum模3即可。
+
 461. Hamming Distance
 https://leetcode.com/problems/hamming-distance/description/
 位运算，与和异或。
 
+
+190. Reverse Bits
+https://leetcode.com/problems/reverse-bits/description/
+位运算。一刷边界设置错误没AC。
+
+
+7. Reverse Integer
+https://leetcode.com/problems/reverse-integer/description/
+和190相似，一刷没AC。注意考虑极限情况，包括INT_MAX和INT_MIN。
 
 
 104. Maximum Depth of Binary Tree

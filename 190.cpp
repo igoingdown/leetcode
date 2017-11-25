@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+
+uint32_t reverseBits(uint32_t n);
+
+int main() {
+    cout << reverseBits(1) << endl;
+    return 0;
+}
+
+uint32_t reverseBits(uint32_t n) {
+    uint32_t res = 0;
+    for (int i = 0; i < 32; i++) {
+        res = (res << 1) + (n >> i & 1);
+    }
+    return res;
+}
