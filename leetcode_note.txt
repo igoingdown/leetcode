@@ -134,6 +134,12 @@ https://leetcode.com/problems/single-number/
 https://leetcode.com/problems/single-number-ii/description/
 每一位都有规律，仍然可以按照上题的思路思考，每一位上都是这样的规律sum = x_1 * 3 + x_2 * 3 + ... + x_n-1 * 3 + y，要得到y对sum模3即可。
 
+
+260. Single Number III
+https://leetcode.com/problems/single-number-iii/description/
+位操作，按第一个不同的位将nums分为两派即可。思路同前两道题。
+
+
 461. Hamming Distance
 https://leetcode.com/problems/hamming-distance/description/
 位运算，与和异或。
