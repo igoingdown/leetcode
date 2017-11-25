@@ -782,7 +782,7 @@ https://leetcode.com/problems/palindrome-partitioning/description/
 
 77. Combinations
 https://leetcode.com/problems/combinations/description/
-一刷用backtracing模板AC。算法效率低，再刷！再刷可以先研究讨论区优质算法！
+一刷用backtracing模板AC。
 
 
 78. Subsets
