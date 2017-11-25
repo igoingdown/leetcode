@@ -549,7 +549,7 @@ https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/#/desc
 
 3. Longest Substring Without Repeating Characters
 https://leetcode.com/problems/longest-substring-without-repeating-characters/#/description
-挺难的，虽然标注的是easy级别！没能完全领会解法的妙处，再刷！
+滑动窗口，双指针。遇到重复的时候更新小指针，注意开始时设置map为全-1，小指针也设置为-1。二刷没AC。
 
 
 557. Reverse Words in a String III
@@ -1274,10 +1274,14 @@ https://www.programcreek.com/2014/07/leetcode-word-pattern-ii-java/
 双map和dfs结合，一刷没AC，strStart应该更新为i + 1而不是i。
 
 
+525. Contiguous Array
+https://leetcode.com/problems/contiguous-array/description/
+核心公式diff[i, j] = diff[0,j] - diff[0,i]，diff表示1比0多的个数，数组的一小段的diff等于整个数组的起始位置到段结尾的diff减去全数组起始位置到段起始的diff。当两个diff相等，表示中间的小段0和1的个数相同，更新结果。一刷没AC，注意处理空数组（diff要多加一个空位，map也要！）。
 
 
-
-
+76. Minimum Window Substring
+https://leetcode.com/problems/minimum-window-substring/description/
+双指针，难以理解。一刷Debug很久。注意前指针和后指针的更新以及极限情况（字符串为空或者长度为1）。start和end分别表示窗口的起始和末尾，window这个map就是start到end这段子串的符号及频数。二刷书写错误没AC。
 
 
 
