@@ -1024,6 +1024,11 @@ https://leetcode.com/problems/max-area-of-island/description/
 一刷AC，关键思想是算法核心使用dfs,利用queue存储中间结果，原地更改数组。时间复杂度为O(M*N)，空间复杂度为O(1)。
 
 
+733. Flood Fill
+https://leetcode.com/contest/weekly-contest-60/problems/flood-fill/
+dfs, 注意将访问过的节点设置为特殊字符，然后再变回来，防止死循环。
+
+
 694. Number of Distinct Islands
 https://leetcode.com/contest/leetcode-weekly-contest-53/problems/number-of-distinct-islands/
 一刷没有想到怎么表示多个岛之间的“translation”的关系，题意不太理解，跟上题很像，只需要用set记录编码之后的island的所有node，最后返回set的长度即可。还学到了访问matrix一个元素四周邻居的更省空间的方式，数组bias设置为[1, 0, -1, 0, 1]即可，每次访问row的bias为bias[i],column的bias为bias[i + 1]，非常巧妙！这个题目对于非付费用户依据封锁了，尽快再刷一次。
@@ -1275,6 +1280,12 @@ https://leetcode.com/problems/trapping-rain-water/description/
 递减栈，出栈情况下不用入栈，WA。需要深入理解。
 
 
+
+735. Asteroid Collision
+https://leetcode.com/contest/weekly-contest-60/problems/asteroid-collision/
+利用stack的特性，注意分类，debug很久！
+
+
 296. Best Meeting Point
 这是一道锁定题。横轴纵轴互不影响，可以将两个维度直接拆开，每个维度排序之后去掉单个的中间节点，加上剩余配对的节点直接的距离即可。一刷没AC，计算sum的时候横轴和纵轴分到两个循环了，在一个循环就可以了，因为长度都一样，注意end初始应该设为posList.size() - 1。
 
@@ -1314,6 +1325,11 @@ https://www.programcreek.com/2014/07/leetcode-word-pattern-ii-java/
 双map和dfs结合，一刷没AC，strStart应该更新为i + 1而不是i。
 
 
+734. Sentence Similarity
+https://leetcode.com/contest/weekly-contest-60/problems/sentence-similarity/
+map的题，不知道哪里错了！难受。
+
+
 525. Contiguous Array
 https://leetcode.com/problems/contiguous-array/description/
 核心公式diff[i, j] = diff[0,j] - diff[0,i]，diff表示1比0多的个数，数组的一小段的diff等于整个数组的起始位置到段结尾的diff减去全数组起始位置到段起始的diff。当两个diff相等，表示中间的小段0和1的个数相同，更新结果。一刷没AC，注意处理空数组（diff要多加一个空位，map也要！）。
@@ -1322,6 +1338,7 @@ https://leetcode.com/problems/contiguous-array/description/
 76. Minimum Window Substring
 https://leetcode.com/problems/minimum-window-substring/description/
 双指针，难以理解。一刷Debug很久。注意前指针和后指针的更新以及极限情况（字符串为空或者长度为1）。start和end分别表示窗口的起始和末尾，window这个map就是start到end这段子串的符号及频数。二刷书写错误没AC。
+
 
 
 
