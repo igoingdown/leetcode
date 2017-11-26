@@ -1327,7 +1327,7 @@ https://www.programcreek.com/2014/07/leetcode-word-pattern-ii-java/
 
 734. Sentence Similarity
 https://leetcode.com/contest/weekly-contest-60/problems/sentence-similarity/
-map的题，不知道哪里错了！难受。
+map，没理解题意，sentence相似要求每个位置的word都相似！第一次用python刷题，比c++快多了，在数据结构涉及set，string等结构时，python非常方便。
 
 
 525. Contiguous Array
