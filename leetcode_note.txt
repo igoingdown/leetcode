@@ -145,6 +145,11 @@ https://leetcode.com/problems/hamming-distance/description/
 位运算，与和异或。
 
 
+477. Total Hamming Distance
+https://leetcode.com/problems/total-hamming-distance/description/
+位运算，分两派，该位为0和该位为1，分别记录每派的count，相乘加到结果上即可。
+
+
 190. Reverse Bits
 https://leetcode.com/problems/reverse-bits/description/
 位运算。一刷边界设置错误没AC。
@@ -153,6 +158,16 @@ https://leetcode.com/problems/reverse-bits/description/
 7. Reverse Integer
 https://leetcode.com/problems/reverse-integer/description/
 和190相似，一刷没AC。注意考虑极限情况，包括INT_MAX和INT_MIN。
+
+
+476. Number Complement
+https://leetcode.com/problems/number-complement/description/
+位运算，求补码，从符号位开始0变为1，然后取反。
+
+
+342. Power of Four
+https://leetcode.com/problems/power-of-four/description/
+位运算，搞了很久，没抓住主要性质。
 
 
 104. Maximum Depth of Binary Tree
