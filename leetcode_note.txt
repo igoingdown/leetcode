@@ -160,6 +160,11 @@ https://leetcode.com/problems/bitwise-and-of-numbers-range/description/
 位运算
 
 
+421. Maximum XOR of Two Numbers in an Array
+https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/description/
+位运算比较难的题，没太明白关键一步异或的操作的含义。再刷。
+
+
 7. Reverse Integer
 https://leetcode.com/problems/reverse-integer/description/
 和190相似，一刷没AC。注意考虑极限情况，包括INT_MAX和INT_MIN。
@@ -1345,9 +1350,14 @@ https://leetcode.com/problems/minimum-window-substring/description/
 双指针，难以理解。一刷Debug很久。注意前指针和后指针的更新以及极限情况（字符串为空或者长度为1）。start和end分别表示窗口的起始和末尾，window这个map就是start到end这段子串的符号及频数。二刷书写错误没AC。
 
 
+207. Course Schedule
+https://leetcode.com/problems/course-schedule/description/
+graph拓扑排序，算法复杂度有点高，可继续优化！一次AC。
 
 
-
+133. Clone Graph
+https://leetcode.com/problems/clone-graph/description/
+graph的dfs, 注意图中可能有环。
 
 
 
