@@ -1360,9 +1360,14 @@ https://leetcode.com/problems/clone-graph/description/
 graph的dfs, 注意图中可能有环。
 
 
+269. Alien Dictionary
+http://blog.csdn.net/qq508618087/article/details/50981000
+这是一道有锁题，graph的拓扑排序。
 
 
-
+310. Minimum Height Trees
+https://leetcode.com/problems/minimum-height-trees/description/
+graph的拓扑排序。
 
 
 

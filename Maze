@@ -1,7 +1,0 @@
-Maze
-Given a maze and a start point and a target point, return whether the target can be reached.
-Example Input:
-Start Point: (0, 0); Target Point (5, 5); Maze: char[][] = {
-{'.', 'X', '.', '.', '.', 'X'}, {'.', '.', '.', 'X', '.', 'X'}, {'X', 'X', '.', 'X', '.', '.'}, {'.', 'X', 'X', 'X', '.', 'X'}, {'.', '.', '.', '.', '.', 'X'}, {'.', '.', '.', '.', '.', '.'}
-}
-Example Output: True

@@ -8,13 +8,10 @@
  */
 class Solution {
 private:
-    UndirectedGraphNode* dfs(UndirectedGraphNode* node, map<UndirectedGraphNode* , UndirectedGraphNode* >& m) {
+    UndirectedGraphNode* dfs(UndirectedGraphNode* node, map<UndirectedGraphNode*, UndirectedGraphNode*>& m) {
         if (m.find(node) == m.end()) {
-            UndirectedGraphNode* root = new UndirectedGraphNode(node->label);
-            m[node] = root;
-            for (auto neighbor : node->neighbors) {
-                root->neighbors.push_back(dfs(neighbor, m));
-            }
+            m[node] = new UndirectedGraphNode(node->label);
+            for (auto neighbor : node->neighbors) m[node]->neighbors.push_back(dfs(neighbor, m));
         }
         return m[node];
     }
