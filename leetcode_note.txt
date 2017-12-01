@@ -1375,6 +1375,12 @@ https://leetcode.com/problems/minimum-height-trees/description/
 graph的拓扑排序。
 
 
+399. Evaluate Division
+https://leetcode.com/problems/evaluate-division/description/
+图的dfs,一刷虽然有些typo，但是一次AC！我感觉自己刷题真的变厉害了，套路题我不怕了！
+
+
+
 
 
 
