@@ -160,6 +160,11 @@ https://leetcode.com/problems/bitwise-and-of-numbers-range/description/
 位运算
 
 
+405. Convert a Number to Hexadecimal
+https://leetcode.com/problems/convert-a-number-to-hexadecimal/description/
+位运算，注意0的问题，算术右移和逻辑右移的区别。
+
+
 421. Maximum XOR of Two Numbers in an Array
 https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/description/
 位运算比较难的题，没太明白关键一步异或的操作的含义。再刷。
