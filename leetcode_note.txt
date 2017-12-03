@@ -185,6 +185,11 @@ https://leetcode.com/problems/power-of-four/description/
 位运算，搞了很久，没抓住主要性质。
 
 
+318. Maximum Product of Word Lengths
+https://leetcode.com/problems/maximum-product-of-word-lengths/description/
+位运算，一刷做的不是最优解！
+
+
 104. Maximum Depth of Binary Tree
 https://leetcode.com/problems/maximum-depth-of-binary-tree/
 一刷使用层序遍历（BFS），一次AC，效率不高。二刷使用DFS，一行解决问题，效率也非常高，一次AC。
@@ -1295,6 +1300,10 @@ https://leetcode.com/problems/trapping-rain-water/description/
 递减栈，出栈情况下不用入栈，WA。需要深入理解。
 
 
+739. Daily Temperatures
+https://leetcode.com/contest/weekly-contest-61/problems/daily-temperatures/
+非严格递减栈，比较简单，但是还是debug很久！注意存的是index，注意循环可以用for也可以用while，这题用while比较好！
+
 
 735. Asteroid Collision
 https://leetcode.com/contest/weekly-contest-60/problems/asteroid-collision/
@@ -1383,6 +1392,16 @@ graph的拓扑排序。
 399. Evaluate Division
 https://leetcode.com/problems/evaluate-division/description/
 图的dfs,一刷虽然有些typo，但是一次AC！我感觉自己刷题真的变厉害了，套路题我不怕了！
+
+
+738. Monotone Increasing Digits
+https://leetcode.com/contest/weekly-contest-61/problems/monotone-increasing-digits/
+数学题，没认真想，思路不好，不要怕开空间！
+
+
+740. Delete and Earn
+https://leetcode.com/contest/weekly-contest-61/problems/delete-and-earn/
+DP，看出题型有点像DP，但是没想出来递推公式。
 
 
 
