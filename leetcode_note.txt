@@ -1404,7 +1404,21 @@ https://leetcode.com/contest/weekly-contest-61/problems/delete-and-earn/
 DP，看出题型有点像DP，但是没想出来递推公式。
 
 
+393. UTF-8 Validation
+https://leetcode.com/problems/utf-8-validation/description/
+dfs和位运算，注意位运算的优先级没有判断符号优先级高！位运算的优先级很低！
 
 
+617. Merge Two Binary Trees
+https://leetcode.com/problems/merge-two-binary-trees/description/
+简单递归
 
 
+637. Average of Levels in Binary Tree
+https://leetcode.com/problems/average-of-levels-in-binary-tree/description/
+双queue层序遍历
+
+
+653. Two Sum IV - Input is a BST
+https://leetcode.com/problems/two-sum-iv-input-is-a-bst/description/
+递归，BST查找，想复杂了！
