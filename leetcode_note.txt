@@ -1431,5 +1431,36 @@ https://leetcode.com/problems/convert-bst-to-greater-tree/description/
 
 563. Binary Tree Tilt
 https://leetcode.com/problems/binary-tree-tilt/description/
-自己的思路RE，想破头没想明白，大佬的思路比我的简洁，只用了一个递归！我的用了两个递归！
+BST的递归，自己的思路RE，想破头没想明白，大佬的思路比我的简洁，只用了一个递归！我的用了两个递归！
+
+
+572. Subtree of Another Tree
+https://leetcode.com/problems/subtree-of-another-tree/description/
+两个递归，效率略低。
+
+
+437. Path Sum III
+https://leetcode.com/problems/path-sum-iii/description/
+双递归，注意空节点的处理。不能靠子节点判断父节点的值的情况，因为子节点有两个，这样容易导致重复。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
