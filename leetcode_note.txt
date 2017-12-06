@@ -1444,6 +1444,9 @@ https://leetcode.com/problems/path-sum-iii/description/
 双递归，注意空节点的处理。不能靠子节点判断父节点的值的情况，因为子节点有两个，这样容易导致重复。
 
 
+501. Find Mode in Binary Search Tree
+https://leetcode.com/problems/find-mode-in-binary-search-tree/description/
+双递归，子递归设计要注意Mode中的数字对应节点不一定都连着，利用BST的性质！
 
 
 
