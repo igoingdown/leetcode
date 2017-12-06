@@ -1449,8 +1449,14 @@ https://leetcode.com/problems/find-mode-in-binary-search-tree/description/
 双递归，子递归设计要注意Mode中的数字对应节点不一定都连着，利用BST的性质！
 
 
+687. Longest Univalue Path
+https://leetcode.com/problems/longest-univalue-path/description/
+双递归。
 
 
+654. Maximum Binary Tree
+https://leetcode.com/problems/maximum-binary-tree/description/
+树的递归。
 
 
 
