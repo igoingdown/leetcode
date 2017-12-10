@@ -1479,7 +1479,8 @@ https://leetcode.com/problems/house-robber-iii/description/
 递归，有点0-1背包的意思。
 
 
-
-
+662. Maximum Width of Binary Tree
+https://leetcode.com/problems/maximum-width-of-binary-tree/description/
+一刷使用BFS，当树的高度过大时，内存溢出。二刷基于BFS，利用满二叉树的性质（子节点和父节点index之间的关系，左子index = 父节点index * 2， 右子index = 父节点index * 2 + 1）AC。
 
 
