@@ -1464,11 +1464,19 @@ https://leetcode.com/problems/binary-tree-postorder-traversal/description/
 二叉树后续遍历递归与非递归实现。多做是有用的，非常有用，做这个题的时候深有体会！
 
 
+655. Print Binary Tree
+https://leetcode.com/problems/print-binary-tree/description/
+合并左右子树的时候思路要清晰，分情况，不是两边一直用空串填充，而是每个元素两侧都使用空串填充！一步步简化代码，对容器的insert函数用熟了！
 
 
+623. Add One Row to Tree
+https://leetcode.com/problems/add-one-row-to-tree/description/
+树的层序遍历（双queue），注意要保存更上一层的节点，添加子树时不必考虑子树是否为空！
 
 
-
+337. House Robber III
+https://leetcode.com/problems/house-robber-iii/description/
+递归，有点0-1背包的意思。
 
 
 
