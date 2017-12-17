@@ -980,7 +980,9 @@ https://leetcode.com/problems/longest-palindromic-subsequence/description/
 
 322. Coin Change
 https://leetcode.com/problems/coin-change/description/
-一刷使用暴力递归，WA，没想明白为什么会WA！继续想。二刷使用DP算法，DP更新关键过程写错WA。这个DP算法比较简单，状态方程也好想，只是初始化略不同，怎么就没想起来呢！再刷！
+一刷使用贪心剪枝的递归，WA，错在使用贪心算法剪枝并不一定得到最优解！如([10, 25, 30], 50)这个反例，因为问题要找最短的，这相当于提示用BFS。二刷使用一维DP和二维DP，二维DP并不是最优解。三刷使用DFS和BFS，均TLE。
+
+一般面试能碰到的DP可以分为3类，第一类是一维DP（LCS， final_term 第4题），第二类和第三类都是二维DP，其中第二类的下标i和j表示的含义相同，是对称的 (Longest Palindromic Substring, Unique Binary Search Tree, Triangle) ，第三类是下表i和j的含义是不同的，不是对称的 (0-1背包问题，Best Time to Buy and Sell Stock IV)，其实还有三维DP（87. Scramble String）。刷题要精刷，每道题做完都要看discuss区找最优解！
 
 
 494. Target Sum
