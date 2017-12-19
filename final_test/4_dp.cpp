@@ -22,7 +22,7 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-
+// O(N^3 * K)
 int removeCharacters(string str, vector<string>& dict) {
     int l = str.size();
     vector<int> dp(l + 1, INT_MAX);
@@ -42,8 +42,8 @@ int removeCharacters(string str, vector<string>& dict) {
 int calculateMaxMatch(string str, std::vector<string>& dict) {
     int res = 0;
     for (string word : dict) {
-        int m = 0, i = 0, j = 0;
-        do {
+        int m = 0;
+        for (int i = 0, j = 0; j < str.size(); j++) {
             if (word[i] == str[j]) {
                 i++;
                 if (i == word.size()) {
@@ -51,8 +51,7 @@ int calculateMaxMatch(string str, std::vector<string>& dict) {
                     break;
                 }
             }
-            j++;
-        } while (j < str.size());
+        }
         res = max(res, m);
     }
     return res;

@@ -984,6 +984,13 @@ https://leetcode.com/problems/coin-change/description/
 
 一般面试能碰到的DP可以分为3类，第一类是一维DP（LCS， final_term 第4题），第二类和第三类都是二维DP，其中第二类的下标i和j表示的含义相同，是对称的 (Longest Palindromic Substring, Unique Binary Search Tree, Triangle) ，第三类是下表i和j的含义是不同的，不是对称的 (0-1背包问题，Best Time to Buy and Sell Stock IV)，其实还有三维DP（87. Scramble String）。刷题要精刷，每道题做完都要看discuss区找最优解！
 
+DP问题首先看问题能否降为子问题，如果能将问题分解为规模更小的问题，那就很可能用Buttom-up的DP方法。子问题可能是两个（Climb Stairs, Unique Paths, Minimum Path Sum, Delete and Earn），三个及多个（Coin Change）或者全部更小规模子问题（final term第4道题）。
+
+
+740. Delete and Earn
+https://leetcode.com/contest/weekly-contest-61/problems/delete-and-earn/
+DP，可以降为子问题，典型的0-1背包问题。要继续思考，细嚼慢咽还是很有收获的。
+
 
 494. Target Sum
 https://leetcode.com/problems/target-sum/description/
@@ -1403,7 +1410,7 @@ https://leetcode.com/contest/weekly-contest-61/problems/monotone-increasing-digi
 
 740. Delete and Earn
 https://leetcode.com/contest/weekly-contest-61/problems/delete-and-earn/
-DP，看出题型有点像DP，但是没想出来递推公式。
+DP，可以降为子问题，典型的0-1背包问题。要继续思考，细嚼慢咽还是很有收获的。
 
 
 393. UTF-8 Validation
