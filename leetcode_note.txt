@@ -1505,7 +1505,10 @@ https://leetcode.com/problems/delete-node-in-a-bst/description/
 
 116. Populating Next Right Pointers in Each Node
 https://leetcode.com/problems/populating-next-right-pointers-in-each-node/description/
-树的层序遍历
+树的层序遍历，有更好的解法就要借鉴！题目中的条件没用好，直接双queue就层序遍历了，next是有用的。
 
 
+117. Populating Next Right Pointers in Each Node II
+https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/description/
+与116类似，均可以用双queue层序遍历的方式做，但是不是最优解，最优解是使用next指针优化层序遍历的空间复杂度。
 
