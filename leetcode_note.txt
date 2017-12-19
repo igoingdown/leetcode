@@ -1498,3 +1498,14 @@ https://leetcode.com/problems/sum-root-to-leaf-numbers/description/
 树的dfs
 
 
+450. Delete Node in a BST
+https://leetcode.com/problems/delete-node-in-a-bst/description/
+好题！删除BST中的节点，上课讲过，自己做还是废了不少时间。递归删除节点，找到节点后分情况讨论，找左子树的最大值或者右子树的最小值作为新的根的值，并删除原节点，findAndDelete函数要注意删除节点不能直接将父节点的右子树设为NULL，要设为删除节点的左子树！
+
+
+116. Populating Next Right Pointers in Each Node
+https://leetcode.com/problems/populating-next-right-pointers-in-each-node/description/
+树的层序遍历
+
+
+
