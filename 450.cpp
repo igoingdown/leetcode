@@ -16,32 +16,31 @@ private:
             node->left = node->left->left;
             return res;
         }
-        TreeNode* p = node->left;
-        node = node->left->right;
+        auto p = node;
+        node = node->left;
         while (node->right) {
             p = node;
             node = node->right;
         }
+        res = node->val;
         p->right = node->left;
-        return node->val;
+        return res;
     }
 public:
     TreeNode* deleteNode(TreeNode* root, int key) {
         if (!root) return root;
         if (root->val == key) {
-            if (root->right && root->left) {
+            if (root->left && root->right) {
                 int val = findAndDelete(root);
                 root->val = val;
-            }
-            else if (!root->right && !root->left) return NULL;
+            } else if (!root->left && !root->right) return NULL;
             else {
                 TreeNode* tmp;
-                if (root->right) tmp = root->right;
-                else tmp = root->left;
+                tmp = root->left ? root->left : root->right;
                 root->val = tmp->val;
                 root->left = tmp->left;
                 root->right = tmp->right;
-            } 
+            }
         } else if (root->val < key) root->right = deleteNode(root->right, key);
         else root->left = deleteNode(root->left, key);
         return root;
