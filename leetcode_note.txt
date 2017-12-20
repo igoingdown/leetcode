@@ -1512,3 +1512,12 @@ https://leetcode.com/problems/populating-next-right-pointers-in-each-node/descri
 https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/description/
 与116类似，均可以用双queue层序遍历的方式做，但是不是最优解，最优解是使用next指针优化层序遍历的空间复杂度,使用pre记录前一个节点，也用pre判断是否结束循环。
 
+
+236. Lowest Common Ancestor of a Binary Tree
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/
+LCA，非常经典，一次AC。O(N)时间复杂度，递归找path，选出最后一个相同节点。
+
+
+
+
+
