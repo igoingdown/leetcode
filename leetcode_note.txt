@@ -1518,6 +1518,8 @@ https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/descriptio
 LCA，非常经典，一次AC。O(N)时间复杂度，递归找path，选出最后一个相同节点。
 
 
-
+297. Serialize and Deserialize Binary Tree
+https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/
+树的序列化与反序列化，非常经典！先序遍历的递归。
 
 
