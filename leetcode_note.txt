@@ -1523,3 +1523,6 @@ https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/
 树的序列化与反序列化，非常经典！先序遍历的递归。
 
 
+449. Serialize and Deserialize BST
+https://leetcode.com/problems/serialize-and-deserialize-bst/description/
+BST的序列化与反序列化，和上题使用完全相同的思路AC，应该可以结合BST的特征进行简化！
