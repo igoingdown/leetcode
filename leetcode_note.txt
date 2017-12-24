@@ -1003,6 +1003,11 @@ sum(P) + sum(N) + sum(P) - sum(N) = target + sum(P) + sum(N)
 现在问题也就变成了寻求满足条件的P的个数，可以用DFS。官方给每道题都给了答案，而且每道题的答案不止一种，再刷可以重点看看官方答案。
 
 
+491. Increasing Subsequences
+https://leetcode.com/problems/increasing-subsequences/description/
+dfs，有点小trick，去重时要遍历之前的所有元素，查看是否有重复，因为题目不允许sort。
+
+
 304. Range Sum Query 2D - Immutable
 https://leetcode.com/problems/range-sum-query-2d-immutable/description/
 一刷没有对二维数组的维度进行初始判断，没AC。使用DP，时间复杂度和空间复杂度均为O(M*N)，效率不高，二刷关键是调研更优秀的解法。
@@ -1541,5 +1546,6 @@ BFS，很简单，比赛的时候网站报的出问题case不对，出问题的�
 747. Largest Number Greater Than Twice of Others
 https://leetcode.com/contest/weekly-contest-64/problems/largest-number-greater-than-twice-of-others/
 数组最大值，简单题
+
 
 
