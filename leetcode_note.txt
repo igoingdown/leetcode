@@ -1526,3 +1526,13 @@ https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/
 449. Serialize and Deserialize BST
 https://leetcode.com/problems/serialize-and-deserialize-bst/description/
 BST的序列化与反序列化，和上题使用完全相同的思路AC，应该可以结合BST的特征进行简化！
+
+
+752. Open the Lock
+https://leetcode.com/contest/weekly-contest-64/problems/open-the-lock/
+BFS，很简单，比赛的时候网站报的出问题case不对，出问题的原因是没有对"0000"这一状态进行检测就加入了队列，但是网站上给的提示case不是这个。
+
+
+747. Largest Number Greater Than Twice of Others
+https://leetcode.com/contest/weekly-contest-64/problems/largest-number-greater-than-twice-of-others/
+数组最大值，简单题
