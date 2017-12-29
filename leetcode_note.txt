@@ -87,7 +87,28 @@ https://leetcode.com/problems/summary-ranges/
 https://leetcode.com/problems/combination-sum-iii/
 一刷使用dfs解决。我总是不太会构造递归，要注意这种题型！用递归解决问题，只要关注解决本层次的问题就好，通过条件筛选和循环将本层解决完，调用本身进入下一层。这种说法很简单，其实不容易做到！
 注意剪枝条件，比如left可能等于i，每步循环中，需先将元素插入列表尾部，在下一层递归结束后，要将插入的元素从尾部取出！
-二刷将“,”写成“;”，一定要注意书写！
+
+
+547. Friend Circles
+https://leetcode.com/problems/friend-circles/description/
+一刷使用DFS，也可以使用并查集解决。
+
+
+721. Accounts Merge
+https://leetcode.com/problems/accounts-merge/description/
+一刷使用DFS，C++版debug很久，用python写debug方便很多，但是超时了。二刷使用并查集。上面那道题是并查集的简单题，这道属于并查集比较难的题。
+
+
+
+743. Network Delay Time
+https://leetcode.com/problems/network-delay-time/description/
+一刷使用DFS没AC，debug很久,没理解错哪了，二刷使用BFS就AC了。三刷使用Dijkstra算法，效率不如BFS，实现效率不高，可以继续改进。BFS是Dijkstra的降级。
+原来leetcode后端是用python写的！以后用pycharm写python或者intelij idea写java来debug也不错！
+
+
+417. Pacific Atlantic Water Flow
+https://leetcode.com/problems/pacific-atlantic-water-flow/description/
+一刷使用相反的方式，从内到外查看一个节点是否能到达P或者A，终止条件不对，debug很久。二刷使用由外到内的方式，没理解终止条件中的mark参数的意义。
 
 209. Minimum Size Subarray Sum
 https://leetcode.com/problems/minimum-size-subarray-sum/
@@ -1350,7 +1371,7 @@ https://leetcode.com/problems/find-median-from-data-stream/description/
 
 332. Reconstruct Itinerary
 https://leetcode.com/problems/reconstruct-itinerary/description/
-dfs和heap结合，效率很高，忘记DFS解法了！要重新看看DFS那部分的题目。注意path先添加无路可走的节点，使用链表的头插法。c++的list数据结构基于链表实现，接口很多，非常方便，相当于java中的LinkedList。分别使用c++和java刷过，但是都没有一次AC。
+dfs和heap结合，时间复杂度？思想是path先添加无路可走的节点，使用链表的头插法。c++的list数据结构基于链表实现，接口很多，非常方便，相当于java中的LinkedList。分别使用c++和java刷过，但是都没有一次AC。三刷忘记了基于heap的方法，使用纯DFS加排序。两种算法的时间复杂度在搜索解空间时有较大区别，还需要认真分析。
 
 
 290. Word Pattern
@@ -1546,6 +1567,8 @@ BFS，很简单，比赛的时候网站报的出问题case不对，出问题的�
 747. Largest Number Greater Than Twice of Others
 https://leetcode.com/contest/weekly-contest-64/problems/largest-number-greater-than-twice-of-others/
 数组最大值，简单题
+
+
 
 
 
