@@ -106,6 +106,11 @@ https://leetcode.com/problems/network-delay-time/description/
 原来leetcode后端是用python写的！以后用pycharm写python或者intelij idea写java来debug也不错！
 
 
+542. 01 Matrix
+https://leetcode.com/problems/01-matrix/description/
+一刷使用朴素的BFS一次AC，二刷加了一点trick，in-place的方式，题目要找到所有格到0格的最短距离，从0格出发不断修改到达非0格的距离，这种转换在DFS和BFS类的题目中非常常见！时间复杂度？？
+
+
 417. Pacific Atlantic Water Flow
 https://leetcode.com/problems/pacific-atlantic-water-flow/description/
 一刷使用相反的方式，从内到外查看一个节点是否能到达P或者A，终止条件不对，debug很久。二刷使用由外到内的方式，没理解终止条件中的mark参数的意义。
