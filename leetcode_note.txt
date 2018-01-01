@@ -104,6 +104,10 @@ https://leetcode.com/problems/longest-word-in-dictionary/description/
 Trie和DFS结合，一次AC。
 
 
+677. Map Sum Pairs
+https://leetcode.com/problems/map-sum-pairs/description/
+Trie和BFS结合，一次AC。
+
 
 743. Network Delay Time
 https://leetcode.com/problems/network-delay-time/description/
