@@ -1574,6 +1574,9 @@ https://leetcode.com/contest/weekly-contest-64/problems/largest-number-greater-t
 数组最大值，简单题
 
 
+284. Peeking Iterator
+https://leetcode.com/problems/peeking-iterator/description/
+不难，考的是拷贝构造函数的应用。
 
 
 
