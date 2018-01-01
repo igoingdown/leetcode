@@ -1576,7 +1576,11 @@ https://leetcode.com/contest/weekly-contest-64/problems/largest-number-greater-t
 
 284. Peeking Iterator
 https://leetcode.com/problems/peeking-iterator/description/
-不难，考的是拷贝构造函数的应用。
+系统设计题，考的是拷贝构造函数的应用。
 
+
+208. Implement Trie (Prefix Tree)
+https://leetcode.com/problems/implement-trie-prefix-tree/description/
+系统设计题，实现前缀树。注意要用c - 'a'而不是直接用c来索引后继节点！
 
 
