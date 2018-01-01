@@ -1593,3 +1593,6 @@ https://leetcode.com/problems/implement-trie-prefix-tree/description/
 系统设计题，实现前缀树。注意要用c - 'a'而不是直接用c来索引后继节点！
 
 
+648. Replace Words
+https://leetcode.com/problems/replace-words/description/
+Trie
