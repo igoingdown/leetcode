@@ -99,6 +99,11 @@ https://leetcode.com/problems/accounts-merge/description/
 一刷使用DFS，C++版debug很久，用python写debug方便很多，但是超时了。二刷使用并查集。上面那道题是并查集的简单题，这道属于并查集比较难的题。
 
 
+720. Longest Word in Dictionary
+https://leetcode.com/problems/longest-word-in-dictionary/description/
+Trie和DFS结合，一次AC。
+
+
 
 743. Network Delay Time
 https://leetcode.com/problems/network-delay-time/description/
