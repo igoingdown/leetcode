@@ -1601,3 +1601,33 @@ Trie
 307. Range Sum Query - Mutable
 https://leetcode.com/problems/range-sum-query-mutable/description/
 一刷使用暴力解法AC，时间复杂度为O(N)。用线段树和二分索引树做时间复杂度可以降到O(log N)。
+
+
+530. Minimum Absolute Difference in BST
+https://leetcode.com/problems/minimum-absolute-difference-in-bst/description/
+一刷递归一次AC。
+
+
+729. My Calendar I
+https://leetcode.com/problems/my-calendar-i/description/
+线段交集，感觉跟线段树或者二分索引书有关，不清楚！要继续思考，一刷AC。
+
+
+731. My Calendar II
+https://leetcode.com/problems/my-calendar-ii/description/
+这是一道什么类型的题？还有什么其他方法？这类interval的题目还是比较多的。一刷使用逐一重叠并记录的方法。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
