@@ -245,11 +245,6 @@ https://leetcode.com/problems/majority-element/
 二刷使用BM投票算法，因为初始化错误没能AC，深层原因在于没能透彻理解BM算法。
 
 
-206. Reverse Linked List
-https://leetcode.com/problems/reverse-linked-list/
-比较简单，但是非常常考！二刷比较注意codestyle，一次AC。
-
-
 100. Same Tree
 https://leetcode.com/problems/same-tree/
 使用递归，教简单，二刷改善了codestyle，逻辑也更清晰，一次AC。
@@ -494,6 +489,10 @@ https://leetcode.com/problems/reorder-list/#/description
 142. Linked List Cycle II
 https://leetcode.com/problems/linked-list-cycle-ii/#/description
 一刷由于判断语句中“==”写成了“=”没能AC，链表成环还有不清楚的地方，就是为什么相遇时slow不可能完整遍历链表了？？注意使用新起的节点作为起始点，避免head指向head的情况。二刷没有一次AC，添加新的头结点忘记和原链表连上了，精简了代码。三刷第一步判断head之后返回写错，应该直接返回NULL，没有AC。
+
+
+206. Reverse Linked List
+链表反转
 
 
 92. Reverse Linked List II
