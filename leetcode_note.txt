@@ -326,6 +326,11 @@ https://leetcode.com/problems/unique-paths-ii/?tab=Description
 62，63， 64题思路都一样，初始化和循环过程稍有差异。先初始化cur，然后以内部遍历列外部遍历行的方式逐步更新cur，对于特殊的第一行和第一列单独处理。一刷vector的初始化写错没能AC。二刷一次AC，这种题算是真的理解了。
 
 
+486. Predict the Winner
+https://leetcode.com/problems/predict-the-winner/description/
+DP,一刷没思路。二维DP，一维也能解决，但是没有二维DP易于理解。两个维度坐标含义相同，填表方式是沿对角线填表，这取决于子问题的结构。
+
+
 59. Spiral Matrix II
 https://leetcode.com/problems/spiral-matrix-ii/?tab=Description
 挺有意思的一道题，开始我以为矩阵有两种分解方式：第一种很有美感，结果这是个陷阱，n为偶数时可以正确返回结果，当n为奇数时，矩阵最中间的那个格会形成死循环；第二种才是正确的分解。一刷嵌套式vector的初始化语法写错，没能AC。二刷循环中更新j出错，没能AC。
@@ -1629,7 +1634,9 @@ https://leetcode.com/problems/random-pick-index/description/
 概率题，这个题之前ACM校赛还考过了！
 
 
-
+560. Subarray Sum Equals K
+https://leetcode.com/problems/subarray-sum-equals-k/description/
+一刷使用二维DP内存超了，改为一维DP就AC了，这两种方法都是O(N)时间复杂度，空间复杂度一个为O(N^2)，一个为O(N)。二刷使用基于map的方式，存储sum[0:i]，根据sum[0,k - 1]和sum[0, l]就容易计算sum[k, l]了，时、空间复杂度均为O(N)。
 
 
 

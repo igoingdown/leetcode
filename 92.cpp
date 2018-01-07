@@ -9,31 +9,25 @@
 class Solution {
 public:
     ListNode* reverseBetween(ListNode* head, int m, int n) {
-        if (m >= n) {
-            return head;
-        }
-        if (!head || !head->next) {
-            return head;
-        }
-        ListNode *temp = new ListNode(0);
-        temp->next = head;
-        ListNode *cur = temp, *pre = temp, *const_pre = temp;
+        if (m >= n || !head || !head->next) return head;
+        ListNode* new_head = new ListNode(0);
+        new_head->next = head;
+        ListNode* cur = new_head, * part_pre = new_head, * part_end = new_head;
         for (int i = 0; i < n + 1 && cur; i++) {
             if (i < m) {
-                pre = cur;
-                const_pre = cur;
+                part_pre = part_end = cur;
                 cur = cur->next;
             } else if (i > m) {
-                ListNode *t = cur->next;
-                cur->next = const_pre->next;
-                const_pre->next = cur;
-                pre->next = t;
-                cur = t;
+                ListNode* tmp = cur->next;
+                cur->next = part_pre->next;
+                part_pre->next = cur;
+                part_end->next = tmp;
+                cur = tmp;
             } else {
-                pre = cur;
+                part_end = cur;
                 cur = cur->next;
             }
         }
-        return temp->next;
+        return new_head->next;
     }
 };
