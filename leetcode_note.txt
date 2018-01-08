@@ -1628,9 +1628,14 @@ https://leetcode.com/problems/contains-duplicate-iii/description/
 一刷暴力法，O(NK)的时间复杂度，TLE。二刷使用基于bucket的方法AC。
 
 
+382. Linked List Random Node
+https://leetcode.com/problems/linked-list-random-node/description/
+概率题，ACM校赛考过类似题型。
+
+
 398. Random Pick Index
 https://leetcode.com/problems/random-pick-index/description/
-概率题，这个题之前ACM校赛还考过了！
+同上
 
 
 560. Subarray Sum Equals K
