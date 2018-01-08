@@ -2,11 +2,11 @@ class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
         map<int, int> m;
-        m[0] = 1;
-        int sum = 0, res = 0;
-        for (auto n : nums) {
+        int res = 0, sum = 0;
+        m[0]++;
+        for (int n : nums) {
             sum += n;
-            if (m.find(sum - k) != m.end()) res += m[sum - k];
+            res += m[sum - k];
             m[sum]++;
         }
         return res;

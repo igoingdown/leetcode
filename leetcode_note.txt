@@ -1635,7 +1635,7 @@ https://leetcode.com/problems/random-pick-index/description/
 
 560. Subarray Sum Equals K
 https://leetcode.com/problems/subarray-sum-equals-k/description/
-一刷使用二维DP内存超了，改为一维DP就AC了，这两种方法都是O(N)时间复杂度，空间复杂度一个为O(N^2)，一个为O(N)。二刷使用基于map的方式，存储sum[0:i]，根据sum[0,k - 1]和sum[0, l]就容易计算sum[k, l]了，时、空间复杂度均为O(N)。
+一刷使用二维DP内存超了，改为一维DP之后AC，这两种方法都是O(N^2)时间复杂度，空间复杂度一个为O(N^2)，一个为O(N)。二刷三刷用map存储累积和，map的查找替换了vector的查找，时间复杂度从O(N^2)降到了O(N)。仍然不太理解初始时"m[0]=1"的设置！
 
 
 760. Find Anagram Mappings
