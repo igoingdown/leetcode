@@ -1638,7 +1638,18 @@ https://leetcode.com/problems/subarray-sum-equals-k/description/
 一刷使用二维DP内存超了，改为一维DP就AC了，这两种方法都是O(N)时间复杂度，空间复杂度一个为O(N^2)，一个为O(N)。二刷使用基于map的方式，存储sum[0:i]，根据sum[0,k - 1]和sum[0, l]就容易计算sum[k, l]了，时、空间复杂度均为O(N)。
 
 
+760. Find Anagram Mappings
+https://leetcode.com/contest/weekly-contest-66/problems/find-anagram-mappings/
+map，key为元素值，value为vector的iterator。
 
 
+758. Bold Words in String
+https://leetcode.com/contest/weekly-contest-66/problems/bold-words-in-string/
+转化为合并interval
+
+
+759. Employee Free Time
+https://leetcode.com/contest/weekly-contest-66/problems/employee-free-time/
+同上题，转化为合并interval。
 
 
