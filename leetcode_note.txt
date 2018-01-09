@@ -1179,8 +1179,7 @@ https://leetcode.com/problems/kth-largest-element-in-an-array/description/
 
 347. Top K Frequent Elements
 https://leetcode.com/problems/top-k-frequent-elements/description/
-一刷使用map统计频率，按频率倒排，使用lambda表达式简化代码，O(NlogN)。二刷使用堆排序算法AC，O(NlogN)。三刷使用基于快排的方法，O(NlogN)。
-
+一刷使用map统计频率，按频率倒排，使用lambda表达式简化代码，O(NlogN)。二刷使用堆排，O(NlogN)。三刷使用快搜，O(N)。四刷使用priority_queue，O(NlogN),其实就是完全堆排。五刷简化四刷使用的方法，不再使用函数对象。
 
 
 692. Top K Frequent Words
@@ -1380,7 +1379,7 @@ https://leetcode.com/problems/maximum-gap/description/
 
 23. Merge k Sorted Lists
 https://leetcode.com/problems/merge-k-sorted-lists/description/
-使用优先级队列，时间复杂度为O(NKlogK)。一刷没AC，函数操作符重载不理解，构建小根堆和大根堆的理解和代码实际表现是反着的，我以为会构建小根堆，结果构建的却是大根堆！跟sort中需要的compare函数不太一样，不理解两者的区别。
+优先级队列，时间复杂度为O(NKlogK)，一刷没AC。头条喜欢考！
 
 
 239. Sliding Window Maximum
