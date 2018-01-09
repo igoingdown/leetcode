@@ -323,7 +323,7 @@ https://leetcode.com/problems/unique-paths-ii/?tab=Description
 
 486. Predict the Winner
 https://leetcode.com/problems/predict-the-winner/description/
-DP,一刷没思路。二维DP，一维也能解决，但是没有二维DP易于理解。两个维度坐标含义相同，填表方式是沿对角线填表，这取决于子问题的结构。
+二维DP，一维亦可，二维DP易于理解。两个维度坐标含义相同，填表方式是沿对角线填表，这取决于子问题的结构。子问题比较容易看出来，对于dp[i][j],取头剩dp[i+1][j],取尾剩dp[i][j-1]，但是剩下的是对手的盘，因此要将dp中存储的元素设置为一手比二手玩家多得的分，这样对手的盘就是负值！
 
 
 59. Spiral Matrix II
@@ -708,7 +708,12 @@ https://leetcode.com/problems/next-greater-element-iii/#/description
 
 227. Basic Calculator II
 https://leetcode.com/problems/basic-calculator-ii/#/description
-算法不是自己的！一刷n的更新写到if语句里导致WA，没能AC。再刷！
+istringstream非常好用，可以从中直接读取任意数据类型，读取字符串直接用getline操作。注意用op来对term进行正负修饰，只有第一次读入加号或者减号的时候需要。一刷没思路，二刷term的正负没写对位置。
+
+
+224. Basic Calculator
+https://leetcode.com/problems/basic-calculator/description/
+和227相似，稍难主要是括号的处理。使用signs的栈存储当前括号计算结果应该乘上的符号，sign只存储一个数字的符号。上题适合使用stringstream，本题不适合使用stringstream。
 
 
 17. Letter Combinations of a Phone Number Add to List
@@ -1174,7 +1179,8 @@ https://leetcode.com/problems/kth-largest-element-in-an-array/description/
 
 347. Top K Frequent Elements
 https://leetcode.com/problems/top-k-frequent-elements/description/
-一刷直接完全排序，取前k个，AC，时间复杂度为O(NlogN)，空间复杂度为O(N)。二刷使用堆排序算法AC，时间复杂度为O(NlogN)，空间复杂度为O(N)。三刷使用基于快排的方法AC，时间复杂度为O(NlogN)，空间复杂度为O(N)。但是都不满足题目的要求！题目要求时间复杂度低于O(NlogN)。
+一刷使用map统计频率，按频率倒排，使用lambda表达式简化代码，O(NlogN)。二刷使用堆排序算法AC，O(NlogN)。三刷使用基于快排的方法，O(NlogN)。
+
 
 
 692. Top K Frequent Words
