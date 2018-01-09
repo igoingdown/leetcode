@@ -1179,7 +1179,7 @@ https://leetcode.com/problems/kth-largest-element-in-an-array/description/
 
 347. Top K Frequent Elements
 https://leetcode.com/problems/top-k-frequent-elements/description/
-一刷使用map统计频率，按频率倒排，使用lambda表达式简化代码，O(NlogN)。二刷使用堆排，O(NlogN)。三刷使用快搜，O(N)。四刷使用priority_queue，O(NlogN),其实就是完全堆排。五刷简化四刷使用的方法，不再使用函数对象。
+一刷使用map统计频率，按频率倒排，使用lambda表达式简化代码，O(NlogN)。二刷使用堆排，O(NlogN)。三刷使用快搜，O(N)。四刷使用priority_queue，O(NlogN),其实就是完全堆排。五刷简化四刷使用的方法，不再使用函数对象。五刷使用桶排序，bucket_size为1，将每个可能的频率都视为一个bucket，O(N)。
 
 
 692. Top K Frequent Words
