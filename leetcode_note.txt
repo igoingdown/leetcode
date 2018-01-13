@@ -333,7 +333,7 @@ https://leetcode.com/problems/spiral-matrix-ii/?tab=Description
 
 56. Merge Intervals
 https://leetcode.com/problems/merge-intervals/?tab=Description
-按interval的start从小到大排序，遍历interval，每次或者增加res的最后一个interval的end，或者向res新加一个interval。sort的第三个参数(函数指针)可以重载[]，也可以在外部定义myCompare函数，注意声明为static。注意myCompare只能使用小于号或大于号，不能加等于号，原因还没理解透彻，重载操作符理解不深。跟greedy的题很像，但是greedy的题目均根据interval的end从小到大排序。四刷仿greedy方法失败，再刷。
+sort的第三个参数为重载了"<"的函数，可以自己写myCompare函数实现"<"逻辑，也可以写函数类用于构建函数对象。也可以利用C++11新特性lambda表达式实现，编译器会根据lambda表达式生成函数对象。
 
 
 57. Insert Interval
@@ -613,7 +613,7 @@ https://leetcode.com/problems/ugly-number-ii/#/description
 
 50. Pow(x, n)
 https://leetcode.com/problems/powx-n/#/description
-比较简单，但是思路不好，只想到O(N)的时间复杂度的算法，二分算法的时间复杂度可以达到O(log N)。有递归和非递归两种方式，没有一次AC，再刷！注意：INT_MIN和INT_MAX的绝对值不同，需要用long或者long long类型来暂时存储n！
+使用进制计算，计算n的2进制表示下的每一位的权值并相乘。注意将n由负转为正时，需要使用long long类型。
 
 
 60. Permutation Sequence
@@ -1680,4 +1680,9 @@ dfs + bfs。
 2018.1.11.1 Round Robin
 轮询调度，带权重的轮询调度
 最大公约数、多个数的最大公约数、轮询调度
+
+
+28. Implement strStr()
+https://leetcode.com/problems/implement-strstr/description/
+暴力匹配和KMP算法，KMP算法关键在于求解next数组。求解next数组和模式匹配过程相似，只是求解过程需要修改next数组。
 
