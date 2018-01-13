@@ -14,13 +14,8 @@ public:
 		i = -1;
 	}
 	int* choose_server() {
-		int j = i;
-		do {
-			j = (j + 1) % servers.size();
-			i = j;
-			return servers[i]; 
-		} while (i != j);
-		return NULL;
+		i = (i + 1) % servers.size();
+		return servers[i];
 	}
 };
 
@@ -87,8 +82,7 @@ int main() {
 	Scheduler s(v);
 	for (int i = 0; i < 10; i++) cout << *(s.choose_server()) << " ";
 	cout << endl;
-	int a[5] = {2, 1, 1, 2, 1};
-	vector<int> w(a, a + 5);
+	vector<int> w = {2, 1, 1, 2, 1};
 	WeightedScheduler w_s(v, w);
 	for (int i = 0; i < 40; i++) cout << *(w_s.choose_server()) << " ";
 	cout << endl;
