@@ -10,16 +10,12 @@
 class Solution {
 public:
     vector<Interval> insert(vector<Interval>& intervals, Interval newInterval) {
-        int n = intervals.size();
         intervals.push_back(newInterval);
-        sort(intervals.begin(), intervals.end(), [](Interval a, Interval b) {return a.start < b.start;});
+        sort(intervals.begin(), intervals.end(), [](const Interval& a, const Interval& b) {return a.start < b.start;});
         vector<Interval> res(1, intervals[0]);
-        for (Interval i : intervals) {
-            if (res.back().end < i.start) {
-                res.push_back(i);
-            } else {
-                res.back().end = max(res.back().end, i.end);
-            }
+        for (auto i : intervals) {
+            if (i.start <= res.back().end) res.back().end = max(i.end, res.back().end);
+            else res.push_back(i);
         }
         return res;
     }

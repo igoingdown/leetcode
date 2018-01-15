@@ -303,7 +303,7 @@ https://leetcode.com/problems/search-a-2d-matrix/?tab=Description
 
 73. Set Matrix Zeroes
 https://leetcode.com/problems/set-matrix-zeroes/?tab=Description
-我套用74题的方法，将矩阵视为一维数组，发现并不合适。讨论区第一名的算法很好，将第一行第一列作为标志，第一列使用单独的标志。顺序遍历将标志置0，逆序遍历按标志将元素置0。算法复杂度高些，但是好理解。一刷写错变量名，没AC。二刷一次AC。
+将第一行第一列作为标志，第一行第一列用其他标志。顺序遍历将标志置0，逆序遍历按标志将元素置0。算法复杂度高些，但是好理解。
 
 
 64. Minimum Path Sum
@@ -1686,3 +1686,27 @@ dfs + bfs。
 https://leetcode.com/problems/implement-strstr/description/
 暴力匹配和KMP算法，KMP算法关键在于求解next数组。求解next数组和模式匹配过程相似，只是求解过程需要修改next数组。
 
+
+762. Prime Number of Set Bits in Binary Representation
+给定一个范围，判断范围内的每个数的二进制表示中1的个数是否为质数
+bitset
+
+
+763. Partition Labels
+将仅含有小写字母的字符串，要求划分后子串尽可能多而且每个字母最多出现在一个划分中。
+DFS超时，贪心AC。
+
+
+764. Largest Plus Sign
+判断仅含有0和1的矩阵中，1的位置能够组成的最大“十字架”的形状大小。
+DP。
+
+
+65. Valid Number
+https://leetcode.com/problems/valid-number/description/
+正则表达式，注意trim之后再进行正则表达式匹配。
+
+
+70. Climbing Stairs
+https://leetcode.com/problems/climbing-stairs/description/
+DP和递归，递归超时，可以使用迭代替换递归
