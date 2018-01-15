@@ -8,18 +8,14 @@
  * };
  */
 class Solution {
-private:
-    bool isValidBST(TreeNode* root, TreeNode* min_node, TreeNode* max_node) {
-        if (!root) {
-            return true;
-        }
-        if ((min_node && root->val <= min_node->val) || (max_node && root->val >= max_node->val)) {
-            return false;
-        }
-        return isValidBST(root->left, min_node, root) && isValidBST(root->right, root, max_node);
-    }
 public:
     bool isValidBST(TreeNode* root) {
-        return isValidBST(root, NULL, NULL);
+        return valid(root, LLONG_MIN, LLONG_MAX);
+    }
+    
+    bool valid(TreeNode* root, long long min, long long max) {
+        if (!root) return true;
+        if (min >= root->val || max <= root->val) return false;
+        return valid(root->left, min, root->val) && valid(root->right, root->val, max);
     }
 };

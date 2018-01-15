@@ -1225,7 +1225,7 @@ https://leetcode.com/problems/same-tree/description/
 
 98. Validate Binary Search Tree
 https://leetcode.com/problems/validate-binary-search-tree/description/
-一刷使用递归，AC。二刷使用基于非递归中序遍历二叉树的方法AC！三刷使用基于中序遍历的方式判定BST的合法性，思路很清晰，利用的是BST的中序遍历一定是递增序列的性质。四刷递归AC。递归方式理解的关键是max和min两个参数，这两个参数分别限制了子树的上下界，访问左子树更新上界，访问右子树更新下界。
+递归使用min和max限定子树范围。非递归利用BST的中序遍历一定是递增序列的性质。
 
 
 230. Kth Smallest Element in a BST
@@ -1710,3 +1710,8 @@ https://leetcode.com/problems/valid-number/description/
 70. Climbing Stairs
 https://leetcode.com/problems/climbing-stairs/description/
 DP和递归，递归超时，可以使用迭代替换递归
+
+
+88. Merge Sorted Array
+https://leetcode.com/problems/merge-sorted-array/description/
+合并两个排好序的数组。我用了堆，用了temp，空间复杂度过高。最优解是将较长的数组扩充，然后倒着插入，思路类似快排，挖坑填坑。
