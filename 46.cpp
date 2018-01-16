@@ -2,24 +2,24 @@ class Solution {
 public:
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>> res;
-        vector<int> tmp;
-        backtrace(res, tmp, nums);
+        vector<int> path;
+        map<int, int> visit;
+        dfs(nums, res, path, visit);
         return res;
     }
     
-    void backtrace(vector<vector<int>> &res, vector<int>& tmp, vector<int>& nums) {
-        if (tmp.size() == nums.size()) {
-            res.push_back(tmp);
-        } else {
-            for (int i = 0; i < nums.size(); i++) {
-                auto iter = find(tmp.begin(), tmp.end(), nums[i]);
-                if (iter != tmp.end()) {
-                    continue;
-                } else {
-                    tmp.push_back(nums[i]);
-                    backtrace(res, tmp, nums);
-                    tmp.pop_back();
-                }
+    void dfs(vector<int>& nums, vector<vector<int>>& res, vector<int>& path, map<int, int>& visit) {
+        if (path.size() == nums.size()) {
+            res.push_back(path);
+            return;
+        }
+        for (int n : nums) {
+            if (!visit[n] > 0) {
+                path.push_back(n);
+                visit[n] = 1;
+                dfs(nums, res, path, visit);
+                path.pop_back();
+                visit[n] = 0;
             }
         }
     }
