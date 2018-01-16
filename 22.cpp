@@ -1,22 +1,17 @@
 class Solution {
-private:
-    void addPar(vector<string>& res, string can, int n, int m) {
-        if (n == 0 && m == 0) {
-            res.push_back(can);
-            return;
-        }
-        if (m > 0) {
-            addPar(res, can + ")", n, m - 1);
-        }
-        if (n > 0) {
-            addPar(res, can + "(", n - 1, m + 1);
-        }
-    }
-    
 public:
     vector<string> generateParenthesis(int n) {
         vector<string> res;
-        addPar(res, "", n, 0);
+        string path;
+        dfs(res, path, n, n);
         return res;
+    }
+    void dfs(vector<string>& res, string path, int l, int r) {
+        if (!l && !r) {
+            res.push_back(path);
+            return;
+        }
+        if (l > 0) dfs(res, path + "(", l - 1, r);
+        if (l < r) dfs(res, path + ")", l, r - 1);
     }
 };

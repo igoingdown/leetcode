@@ -65,6 +65,16 @@ https://leetcode.com/problems/find-the-duplicate-number/
 一刷使用二分法，但是对二分法中low和high的更新细节不清楚，多个同类型的变量一起声明时应该用逗号隔离。二分法中low与high的更新过程和后面的返回值是low还是mid又有什么关系，还需要一点时间来理解。看了大神的博客知道发现更高效的算法，就是转化为链表内部环检测的问题。链表成环检测的问题是一个经典问题，大神的博客分析非常精彩，核心思想是用快慢指针走过的路程和环长等进行推理和证明，最后一个恒等式的利用非常精彩。大神博客地址为：http://www.cnblogs.com/ccdev/archive/2012/09/06/2673618.html,二刷使用该方法一次ac。
 
 
+2. Add Two Numbers
+https://leetcode.com/problems/add-two-numbers/description/
+链表。
+
+
+24. Swap Nodes in Pairs
+https://leetcode.com/problems/swap-nodes-in-pairs/description/
+一次走两步。注意原链表只有一个元素时新链表为空，要对这种情况进行判别。
+
+
 268. Missing Number
 https://leetcode.com/problems/missing-number/
 一开始掉进了前面的解法的坑里，老想着把元素当作索引，将正值变负值，然后找改变后的数组中的正值对应的元素，由于同时有n和0，这两种情况不能有效区分，而且也没说可以改动数组，故抛弃了这种解法。求和再做减法更方便，由于担心溢出，用了范围更大的数据结构，好像没什么用。
@@ -491,6 +501,11 @@ https://leetcode.com/problems/reorder-list/#/description
 挺简单的，看了就有思路，算法还不错，没有一次AC，再刷！借用上一题的思路，用双指针分离，将后段逆序，之后merge。注意merge阶段保存的是插入进来的node！
 
 
+27. Remove Element
+原地操作，删除数组中的固定值的元素。
+双指针。
+
+
 142. Linked List Cycle II
 https://leetcode.com/problems/linked-list-cycle-ii/#/description
 一刷由于判断语句中“==”写成了“=”没能AC，链表成环还有不清楚的地方，就是为什么相遇时slow不可能完整遍历链表了？？注意使用新起的节点作为起始点，避免head指向head的情况。二刷没有一次AC，添加新的头结点忘记和原链表连上了，精简了代码。三刷第一步判断head之后返回写错，应该直接返回NULL，没有AC。
@@ -633,8 +648,11 @@ https://leetcode.com/problems/divide-two-integers/#/description
 
 12. Integer to Roman
 https://leetcode.com/problems/integer-to-roman/#/description
-思维局限在一次产生一个字母上了，看了讨论区的思路才豁然开朗。一刷AC，但是思路不是自己的，还要再刷！连同其逆过程也要再刷！
+自己建立map，将阿拉伯数字与罗马数字字符串对应起来。
 
+13. Roman to Integer
+https://leetcode.com/problems/roman-to-integer/description/
+是12题的逆过程。
 
 567. Permutation in String
 https://leetcode.com/problems/permutation-in-string/#/description
@@ -768,7 +786,7 @@ DFS的题，不是很难，但是没思路。一刷废了很大劲没AC。思路
 
 22. Generate Parentheses
 https://leetcode.com/problems/generate-parentheses/#/description
-一刷AC，但是思路不是自己的。二刷一次AC。三刷一次AC，思路清晰了，每次只能选择两种符号的一种，都可以选，只要设定好条件即可。
+dfs，左括号只要有剩余就可以选，右括号只有在已生成的串中左括号多于右括号才可以选。
 
 
 475. Heaters
@@ -1260,7 +1278,7 @@ https://leetcode.com/problems/sudoku-solver/description/
 
 127. Word Ladder
 https://leetcode.com/problems/word-ladder/description/
-BFS，一刷WA，题意理解错误，要求目的词必须在候选dict中。注意更新dist和last_level。
+双queue实现BFS。
 
 
 515. Find Largest Value in Each Tree Row
@@ -1384,7 +1402,7 @@ https://leetcode.com/problems/maximum-gap/description/
 
 23. Merge k Sorted Lists
 https://leetcode.com/problems/merge-k-sorted-lists/description/
-优先级队列，时间复杂度为O(NKlogK)，一刷没AC。头条喜欢考！
+优先级队列，时间复杂度为O(NKlogK)，一刷没AC。头条喜欢考！priority_queue的构造函数中第三个参数不可以使用lambda表达式。
 
 
 239. Sliding Window Maximum
@@ -1715,3 +1733,8 @@ DP和递归，递归超时，可以使用迭代替换递归
 88. Merge Sorted Array
 https://leetcode.com/problems/merge-sorted-array/description/
 合并两个排好序的数组。我用了堆，用了temp，空间复杂度过高。最优解是将较长的数组扩充，然后倒着插入，思路类似快排，挖坑填坑。
+
+
+125. Valid Palindrome
+https://leetcode.com/problems/valid-palindrome/description/
+字符相关API如：isdigit,isalpha,isalnum,isupper,islower要用熟。
