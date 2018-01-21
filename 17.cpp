@@ -7,16 +7,14 @@ public:
         string tmp;
         for (char c : digits) {
             int s = res.size();
-            for (int i = 0; i < m[c - '0'].size() - 1; i++) {
+            for (int i = 0; i + 1 < m[c - '0'].size(); i++) {
                 for (int j = 0; j < s; j++) {
                     tmp = res[j];
                     tmp.push_back(m[c - '0'][i + 1]);
                     res.push_back(tmp);
                 }
             }
-            for (int j = 0; j < s; j++) {
-                res[j].push_back(m[c - '0'][0]);
-            }
+            for (int j = 0; j < s; j++) res[j].push_back(m[c - '0'][0]);
         }
         return res;
     }

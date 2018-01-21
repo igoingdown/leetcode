@@ -12,14 +12,12 @@ https://leetcode.com/problems/assign-cookies/
 453： Minimum Moves to Equal Array Elements
 https://leetcode.com/problems/minimum-moves-to-equal-array-elements/
 一开始自己对题目的理解出错了，浪费了不少时间。每次移动要求同时将n-1个元素加1，我看成了每次移动将其中2个元素加1。搞清楚题目真正含义之后，不太会做，参考了一下其他人的解题思路：给数组中的n-1个元素加1的操作等价于数组中“不加1的那个元素“减去1，然后数组中的所有元素都加1。我们知道，给所有的元素都加1并不能改变原数组中的数之间的差值。所以这题就转化为求最少的减1操作。而要使数组中的元素全部相等，又要使用减法。那么最少的次数就是让这些元素全部都等于数组中最小的数。所以得到的结果就是sum（所有元素和）-n*数组中最小元素。
-注意看题目！一刷由于c++的api用的不熟，调用了min这个api，发现c++是没有这个api的，还有很多codestyle的问题，二刷注意了一下codestyle，一次ac，代码如下：
-
-python版的代码一行完事：
+注意看题目！一刷由于c++的api用的不熟。
 
 
 383. Ransom Note
 https://leetcode.com/problems/ransom-note/
-就是用后一个串合成前一个串，条件是后一个串的每个字符只能用一次，这种题都可以利用c++的字符和int型转换来构建一个长为26度数组，每个数组表示一个key（前提是全大写或者全小写）。
+就是用后一个串合成前一个串，条件是后一个串的每个字符只能用一次，这种题都可以利用c++的字符和int型转换来构建一个长为26的数组，每个数组表示一个key（前提是全大写或者全小写）。
 一刷for循环中的计数器i没有声明类型（int），编译错误。二刷一次ac。
 
 
@@ -296,11 +294,6 @@ https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
 比较简单，将重复次数小于3的元素往前移动，其他元素不动，就得到了重复次数最多为2的元素的个数。一刷题目理解不清，循环条件写错。二刷循环条件写错。三刷一次AC。
 
 
-81. Search in Rotated Sorted Array II
-https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
-适合用二分法，但是“十个二分九个错”！花了不少时间。本质是分类问题，关键在于选择分类标准，分不了走的步子小一点！画图是个解决问题的好办法。一刷分类标准选的不好，在XCODE上debug很长时间才AC。
-
-
 75. Sort Colors
 https://leetcode.com/problems/sort-colors/
 这道题是让手写排序，一刷手写快排没AC。二刷由于多次将左侧边界想当然地视为0（其实是l）没能AC。讨论区第一名的算法针对特殊情况（只有0， 1， 2三个数字）对普适的排序算法做了优化，一刷循环条件写错没AC。二刷思路不清晰，没AC，注意需要两层循环，内层循环只处理连续的符合条件的情况，外层需要等于因为该index对应的值谁也不知道是几。第二种算法的在时间效益上不如快排。
@@ -378,12 +371,17 @@ https://leetcode.com/problems/search-insert-position/?tab=Description
 
 34. Search for a Range
 https://leetcode.com/problems/search-for-a-range/?tab=Description
-比较简单，一看就有思路。二分法，第一个版本是分别用两次二分查找查上界和下界，一次AC。终于明白了二分查找查找符合目标下界和符合目标上界的区别和联系，联系在于每次循环必须更新要招的那个界限（low或者high）！区别在于求下界时mid要跟随下界变化，求上界的时候mid要跟着上界变化，这样就不会出现死循环的状况了，这种看透彻的感觉很爽。算法效率不高。第二版先使用二分查找找到下界，然后从下界往后遍历找上界，然后就掉进了C++的坑里了。C++的[]操作是不检查[]中的index是否超出vector的size的，所以在使用[]进行遍历的时候，一定要加上size的限定条件。第二版没AC。二刷没有AC，题意理解错误，代码开始没有判空。
+BS。BS查找下界和上界两类问题存在区别，区别在于求下界时mid要靠近low，求上界的时候mid要靠近high；这种区别决定在每次循环更新要找的那个界限（low或者high）。也可以借助STL的upper_bound和lower_bound函数实现。
 
 
 33. Search in Rotated Sorted Array
 https://leetcode.com/problems/search-in-rotated-sorted-array/?tab=Description
-比81题简单一些，因为不用考虑重复。81题做完就扔了，也没来得及复习，分类标准理解了，但是分类细节还是没把握好，一刷没AC。算法的效率也不高。二刷没AC，没有处理好low=mid的情况，这种情况不能和任何一种情况合并，因为在更新high的时候会把high更新到mid - 1，这问题就大了！而实际上这个时候应该更新low（low++）。
+BS
+
+
+81. Search in Rotated Sorted Array II
+https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
+BS。33的升级版，数组中存在重复元素。选择分类标准，分不了走的步子小一点，画图是个解决问题的好办法。
 
 
 31. Next Permutation
@@ -474,7 +472,8 @@ https://leetcode.com/problems/binary-tree-inorder-traversal/#/description
 
 49. Group Anagrams
 https://leetcode.com/problems/anagrams/#/description
-一刷没有AC。map底层使用红黑树实现，而unordered_map基于hash table，使用hash型数据结构必须保证key的类型有hash()方法，容器类型除了string外默认是没有hash()方法的，但是非hash型数据结构没有限制！c++中对于map和unordered_map，使用[]方法访问且key不存在就会调用value的默认构造函数，我们要保证访问value之前调用了[]方法。二刷没AC，不敢用vector作为key，被python和java迷惑了。三刷没AC，构造vector没初始化。
+map使用红黑树实现，而unordered_map基于hash table，使用hash型数据结构必须保证key的类型有hash()方法，容器类型除了string外默认是没有hash()方法的，而非hash型数据结构没有限制！c++中对于map和unordered_map，使用[]方法访问当key不存在时调用value的默认构造函数。
+
 
 445. Add Two Numbers II
 https://leetcode.com/problems/add-two-numbers-ii/#/description
@@ -501,6 +500,15 @@ https://leetcode.com/problems/reorder-list/#/description
 挺简单的，看了就有思路，算法还不错，没有一次AC，再刷！借用上一题的思路，用双指针分离，将后段逆序，之后merge。注意merge阶段保存的是插入进来的node！
 
 
+19. Remove Nth Node From End of List
+https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/
+双指针，先将快指针定位到n + 1处，维持快慢指针的间隔，直到快指针到了fast处，将慢指针后面的节点删除。注意要使用dummy节点作为新的头结点。
+
+
+26. Remove Duplicates from Sorted Array
+https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
+双指针。
+
 27. Remove Element
 原地操作，删除数组中的固定值的元素。
 双指针。
@@ -508,7 +516,7 @@ https://leetcode.com/problems/reorder-list/#/description
 
 142. Linked List Cycle II
 https://leetcode.com/problems/linked-list-cycle-ii/#/description
-一刷由于判断语句中“==”写成了“=”没能AC，链表成环还有不清楚的地方，就是为什么相遇时slow不可能完整遍历链表了？？注意使用新起的节点作为起始点，避免head指向head的情况。二刷没有一次AC，添加新的头结点忘记和原链表连上了，精简了代码。三刷第一步判断head之后返回写错，应该直接返回NULL，没有AC。
+链表成环检测。快慢指针，快指针每次走两步，慢指针每次走一步，如果两者相遇则有环。此时令快指针从头开始走，快慢指针一次走一步，知道两者相遇，相遇点就是环的起点。
 
 
 206. Reverse Linked List
@@ -608,7 +616,7 @@ https://leetcode.com/problems/bulb-switcher/#/description
 
 69. Sqrt(x)
 https://leetcode.com/problems/sqrtx/#/description
-不难，一刷没有AC。二分法判断条件用乘法溢出，导致WA。经典方法是Newton法，但是不太容易理解。再刷！
+二分法注意0和mid * mid == x的情况。经典方法是Newton法。
 
 
 313. Super Ugly Number
@@ -643,7 +651,7 @@ https://leetcode.com/problems/multiply-strings/#/description
 
 29. Divide Two Integers
 https://leetcode.com/problems/divide-two-integers/#/description
-一刷AC，思路不是自己的，再刷！思路很棒，用二进制的方式做的，时间复杂度是O(log N)，其实看题目的要求就知道需要用二进制的移位运算。
+二进制，位运算。时间复杂度是O(logN)。
 
 
 12. Integer to Roman
@@ -741,7 +749,7 @@ https://leetcode.com/problems/basic-calculator/description/
 
 17. Letter Combinations of a Phone Number Add to List
 https://leetcode.com/problems/letter-combinations-of-a-phone-number/#/description
-一刷没AC，CE很多，再刷！二刷优化了代码，相当于层序遍历，O(N^2)的时间复杂度，O(N)空间复杂度，应该有更好的解法。再刷注意使用更高效的算法。
+BFS和DFS都可以做，我更喜欢用bfs.
 
 
 336. Palindrome Pairs
@@ -771,7 +779,7 @@ https://leetcode.com/problems/longest-uncommon-subsequence-ii/#/description
 
 91. Decode Ways
 https://leetcode.com/problems/decode-ways/#/description
-思路不是自己的，一刷没AC。因为函数返回值类型写错拿了CE！这是致命的错误！DP算法还不是很理解，再刷！
+DP,注意处理非法输入。
 
 
 71. Simplify Path
@@ -868,7 +876,7 @@ dfs, 78，90，46，47，39，40，131，132，77都是简单套路题。面试�
 
 47. Permutations II
 https://leetcode.com/problems/permutations-ii/description/
-比46要难，去重可以使用frequency，将重复元素的weight转移到重复的第一个元素上。
+比46要难，去重可以使用frequency，将重复元素的个数作为重复的第一个元素的访问次数。
 
 
 90. Subsets II
@@ -878,12 +886,12 @@ https://leetcode.com/problems/subsets-ii/description/
 
 131. Palindrome Partitioning
 https://leetcode.com/problems/palindrome-partitioning/description/
-一刷使用dfs，一次AC。二刷使用dfs，AC。三刷使用带memo的dfs，AC。
+先用dp计算任意子串是否为回文，再使用dfs收集合法的partition。
 
 
 77. Combinations
 https://leetcode.com/problems/combinations/description/
-一刷用backtracing模板AC。
+dfs。
 
 
 78. Subsets
@@ -919,7 +927,7 @@ https://leetcode.com/problems/palindrome-partitioning-ii/description/
 
 79. Word Search
 https://leetcode.com/problems/word-search/description/
-略复杂的递归题，一刷使用in-place递归算法，用'\0'表示已经遍历过的格子，返回语句写错，WA。需要注意对查找成功的判断。二刷使用visited记录已经走过的节点，一开始没设置visited，WA。三刷把in-place算法改造成符合我自己风格的代码，AC。这个题和maze那道题结合起来就能想明白为什么要恢复原状态，事实不是李春跃说的那样，恢复原状态不会造成死循环！
+dfs。和maze那道题对比，思考想为什么要恢复原状态(回溯)，回溯会不会造成死循环？
 
 
 89. Gray Code
@@ -1275,6 +1283,11 @@ https://leetcode.com/problems/sudoku-solver/description/
 一刷使用DFS能AC，不太理解后2个return值设置的含义。
 
 
+102. Binary Tree Level Order Traversal
+https://leetcode.com/problems/binary-tree-level-order-traversal/description/
+双queue实现bfs。
+
+
 127. Word Ladder
 https://leetcode.com/problems/word-ladder/description/
 双queue实现BFS。
@@ -1566,7 +1579,7 @@ https://leetcode.com/problems/maximum-width-of-binary-tree/description/
 
 129. Sum Root to Leaf Numbers
 https://leetcode.com/problems/sum-root-to-leaf-numbers/description/
-树的dfs
+dfs，遇到叶子节点就把num(表示path)加到res上。如果follow up将节点的数只有1位的限制去掉，可以使用vector表示path。
 
 
 450. Delete Node in a BST
@@ -1737,3 +1750,43 @@ https://leetcode.com/problems/merge-sorted-array/description/
 125. Valid Palindrome
 https://leetcode.com/problems/valid-palindrome/description/
 字符相关API如：isdigit,isalpha,isalnum,isupper,islower要用熟。
+
+
+4. Median of Two Sorted Arrays
+https://leetcode.com/problems/median-of-two-sorted-arrays/description/
+二分查找。查找两个有序数组总的中位数，要求O(log(m+n))的时间复杂度。基于归并排序的方式O(m+n)的复杂度，基于递归的二分查找可以达到复杂度要求。
+
+
+10. Regular Expression Matching
+https://leetcode.com/problems/regular-expression-matching/description/
+正则表达式匹配，非常容易考，与之频率相近的还有四则运算表达式的计算！递归，分情况讨论，只有两种情况，那就是(char和‘.’，之后在内部讨论后面是否有'*')。这题做的非常爽。
+
+
+766. Toeplitz Matrix
+查看矩阵的每条斜向下对角线上的元素是否相同
+
+
+767. Reorganize String
+将字符串重排，要求相邻的两个字母不同，dfs超时，应该用优先级队列。
+
+
+769. Max Chunks To Make Sorted (ver. 1)
+给定数组为下标的一种排列，将数组进行partition，要求每个子数组排序后整个数组也有序，给出合法的partition后最多的子数组个数。
+
+
+768. Max Chunks to Make Sorted (ver. 2)
+与上题不同的地方在于数组中元素可以有重复。
+
+
+
+
+
+
+
+
+
+
+
+
+
+

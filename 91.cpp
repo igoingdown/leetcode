@@ -1,44 +1,16 @@
-#include <iostream>
-#include <string>
-
-
-using namespace std;
-
-int numDecodings(string s);
-bool valid(char c);
-bool valid(char a, char b);
-
-int main(void) {
-    string s("100");
-    cout << numDecodings(s) << endl;
-    return 0;
-}
-
-int numDecodings(string s) {
-    if (s.size() == 0 || s[0] == '0') {
-        return 0;
+class Solution {
+public:
+    int numDecodings(string s) {
+        if (s.size() < 1) return 0;
+        vector<int> dp(s.size() + 1, 0);
+        dp[0] = 1;
+        for (int i = 1; i <= s.size(); i++) {
+            if (dp[i - 1] == 0) return 0;
+            dp[i] += s[i - 1] == '0' ? 0 : dp[i - 1];
+            if (i < 2) continue;
+            int sum = (s[i - 2] - '0') * 10 + s[i - 1] - '0';
+            dp[i] +=  (sum <= 26 && sum >= 10) ? dp[i - 2] : 0;
+        }
+        return dp[s.size()];
     }
-    if (s.size() == 1) {
-        return 1;
-    }
-    int m = s.size(), fn_1 = 1, fn_2 = 1;
-    for (int i = 1; i < m; i++) {
-        int temp = fn_1;
-        if (valid(s[i]) && valid(s[i - 1], s[i])) {
-            fn_1 += fn_2;
-        } else if (!valid(s[i]) && !valid(s[i - 1], s[i])) {
-            return 0;
-        } else if (!valid(s[i]) && valid(s[i - 1], s[i])) {
-            fn_1 = fn_2;
-        } 
-        fn_2 = temp;
-    }
-    return fn_1;
-}
-
-bool valid(char c) {
-    return c != '0';
-}
-bool valid(char a, char b) {
-    return a == '1' || (a == '2' && b <= '6');
-}
+};

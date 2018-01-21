@@ -8,32 +8,18 @@
  * };
  */
 class Solution {
-private:
-    void dfs(int& sum, vector<TreeNode*>& p, TreeNode* root) {
-        if (root->left) {
-            p.push_back(root->left);
-            dfs(sum, p, root->left);
-            p.pop_back();
-        }
-        if (root->right) {
-            p.push_back(root->right);
-            dfs(sum, p, root->right);
-            p.pop_back();
-        }
-        if (!root->left && !root->right) {
-            int tmp = 0;
-            for (int i = 0; i < p.size(); i++) {
-                tmp = tmp * 10 + p[i]->val;
-            }
-            sum += tmp;
-        }
-    }
 public:
     int sumNumbers(TreeNode* root) {
-        int sum = 0;
-        if (!root) return sum;
-        vector<TreeNode*> path(1, root);
-        dfs(sum, path, root);
-        return sum;
+        int res = 0, num = 0;
+        dfs(root, res, num);
+        return res;
+    }
+    void dfs(TreeNode* root, int& res, int& num) {
+        if (!root) return;
+        num = num * 10 + root->val;
+        if (!root->left && !root->right) res += num;
+        if (root->left) dfs(root->left, res, num);
+        if (root->right) dfs(root->right, res, num);
+        num /= 10;
     }
 };
