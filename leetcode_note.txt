@@ -646,7 +646,7 @@ https://leetcode.com/problems/permutation-sequence/#/description
 
 43. Multiply Strings
 https://leetcode.com/problems/multiply-strings/#/description
-大数乘法，自己写出来的，挺开心。一刷没有AC，res和进位计数c的更新应该写在第一层循环体，我写到了第二层循环体中。再刷！
+大数乘法。从低位到高位，对于结果的每一位都跑一次循环，得到该位的数字并设置全局变量记录进位。初始化结果全零，之后再将高位的0抹去，当结果为0要补个0。
 
 
 29. Divide Two Integers
@@ -901,7 +901,7 @@ https://leetcode.com/problems/subsets/
 
 39. Combination Sum
 https://leetcode.com/problems/combination-sum/?tab=Description
-做了第40题之后，做这道题就觉得比较简单了，可以画树状图来理解计算机的求解过程。一刷for循环中；写成了，没AC。二刷cand写成了res，没能AC。三刷写错了递归过程的i参数，好在理解中间加了本来以为可以用来剪枝的判断语句效率却变得低下的原因，因为那个语句并没有达到剪枝的效果！再刷！
+dfs。可以画出解空间来理解解题过程。
 
 
 40. Combination Sum II
