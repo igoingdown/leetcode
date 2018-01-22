@@ -316,12 +316,12 @@ DP算法，Discuss区第一名将空间复杂度从O(N^2)缩减到O(N)，并且�
 
 62. Unique Paths
 https://leetcode.com/problems/unique-paths/?tab=Description
-一种算法和64题相似,一刷变量名写错没能AC，二刷一次AC。另一种直接算C(N, k)，数学真是太美好了。算组合数的算法时间复杂度高于DP算法，是因为乘法远比加法费时间！一刷表达式写错没能AC。
+DP。
 
 
 63. Unique Paths II
 https://leetcode.com/problems/unique-paths-ii/?tab=Description
-62，63， 64题思路都一样，初始化和循环过程稍有差异。先初始化cur，然后以内部遍历列外部遍历行的方式逐步更新cur，对于特殊的第一行和第一列单独处理。一刷vector的初始化写错没能AC。二刷一次AC，这种题算是真的理解了。
+DP。同62。
 
 
 486. Predict the Winner
@@ -356,7 +356,7 @@ https://leetcode.com/problems/spiral-matrix/?tab=Description
 
 53. Maximum Subarray
 https://leetcode.com/problems/maximum-subarray/?tab=Description
-还是DP算法，不好理解。画了个函数图像，感觉稍微好些。序列中的每个数都是sum的导数，这么看的话就可以理解。DP算法好些可以解释连续的问题。很奇妙。一刷AC。二刷一次AC。
+DP，可以降为0维DP。累加，当加到a[i]时候如果当前sum小于0。就把[0-i]都扔掉 重新加起。画了个函数图像，感觉稍微好些。序列中的每个数都是sum的导数，这么看的话就可以理解。DP算法好些可以解释连续的问题。和LCS很相似，DP解法构造子问题形式的思路相同，DP[i]表示以[i]结尾的sub序列。
 
 
 48. Rotate Image
@@ -912,12 +912,12 @@ https://leetcode.com/problems/combination-sum-ii/?tab=Description
 
 51. N-Queens
 https://leetcode.com/problems/n-queens/description/
-一刷递归，各种CE，思路对了，但是效率低TLE。二刷查看讨论区发现自己做复杂了，path可以按行或列的顺序添加，这样就可以极大地减少递归深度，而且可以略却重复计算，AC。再刷！
+dfs时让col递增，逐个选择合法的row，存储path，之后将合法path转为棋局排列。注意判断冲突有三个条件（1）row1 ！= row2（2）row1 + col1 != row2 + col2 （3）row1 - col1 != row2 - col2。 
 
 
 52. N-Queens II
 https://leetcode.com/problems/n-queens-ii/description/
-一刷递归，思路正确，但是效率低TLE。和51类似，可以使用相同的方式（按行的顺序逐个添加path中的节点）进行优化，二刷AC。应该还有优化空间。
+dfs，思路同上。
 
 
 132. Palindrome Partitioning II
