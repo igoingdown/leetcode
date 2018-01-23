@@ -1759,9 +1759,8 @@ https://leetcode.com/problems/median-of-two-sorted-arrays/description/
 
 10. Regular Expression Matching
 https://leetcode.com/problems/regular-expression-matching/description/
-正则表达式匹配，非常容易考，与之频率相近的还有四则运算表达式的计算！递归，分情况讨论，只有两种情况，那就是(char和‘.’，之后在内部讨论后面是否有'*')。有更简单的理解，就是只要考虑'*'，重复0次，重复一次或多次，这时等价于x*x,可以将后面的x去掉。
-http://xiaohuiliucuriosity.blogspot.com/2014/12/regular-expression-matching.html
-
+正则表达式匹配，频率超高！同频的还有四则运算表达式的计算，前、中、后缀表达式切换和运算！
+递归方法分char和‘.’，之后在内部讨论后面是否有'*'。DP考虑是否为'*'，是'*'分不重复和重复重复，重复时'x*x'只需判断s把x去掉之后的情况，不是'*'可以归于一类。
 
 
 44. Wildcard Matching

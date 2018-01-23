@@ -37,7 +37,7 @@ public:
 		for (int weight : weights) max_weight = max(max_weight, weight);
 	}
 	// 使用cw记录当前请求应该分配给weight多大的server，
-	// 将cw逐渐减小直到最后所有server在接受请求后权重都一样
+	// 将cw逐渐减小直到最后所有server在接收请求后权重都一样
 	int* choose_server() {
 		while(1) {
 			i = (i + 1) % (servers.size());
