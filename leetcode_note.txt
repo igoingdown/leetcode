@@ -473,7 +473,7 @@ https://leetcode.com/problems/copy-list-with-random-pointer/#/description
 
 94. Binary Tree Inorder Traversal
 https://leetcode.com/problems/binary-tree-inorder-traversal/#/description
-一刷没AC，忘完了！赶紧拾起来！二叉树的各种遍历的递归和非递归算法要烂熟于心！再刷！！！就像快排一样！！
+二叉树的前、中、后遍历的递归和非递归算法都要很熟悉。
 
 
 49. Group Anagrams
@@ -800,7 +800,7 @@ string和stack相结合，面试非常容易考！一刷算法没理解透彻WA�
 
 93. Restore IP Addresses
 https://leetcode.com/problems/restore-ip-addresses/#/description
-DFS的题，不是很难，但是没思路。一刷废了很大劲没AC。思路也没太理清楚，再刷！二刷没有一次AC，DFS理解的还是不透彻，循环结构中不应该改变can参数，只在向更深层传递参数的时候改变参数！再刷！三刷一次AC，但是理解还是不够深入，很难受。
+DFS。count记录ip段数，start记录起始位。
 
 
 22. Generate Parentheses
@@ -1190,7 +1190,7 @@ https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/des
 
 103. Binary Tree Zigzag Level Order Traversal
 https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/
-一刷用queue实现，WA。二刷使用双stack分别存储本层和下层，同时使用level记录层数用于决策左右子树入下一层栈的顺序AC，再看看。
+BFS，deque。
 
 
 150. Evaluate Reverse Polish Notation

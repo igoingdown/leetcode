@@ -1,42 +1,21 @@
-#include <iostream>
-#include <vector>
-#include <string>
-
-using namespace std;
-
-void restoreIpAddresses(vector<string>& res, string can, int idx, int count, string& ip);
-vector<string> restoreIpAddresses(string s);
-
-int main(void) {
-  string s("0000");
-  vector<string> res = restoreIpAddresses(s);
-  for (auto s: res) {
-    cout << s << endl;
-  }
-  return 0;
-}
-
-void restoreIpAddresses(vector<string>& res, string can, int idx, int count, string& ip) {
-    if (count > 4) {
-        return;
+class Solution {
+public:
+    vector<string> restoreIpAddresses(string s) {
+        vector<string> res;
+        string path = "";
+        dfs(s, res, 0, path, 0);
+        return res;
     }
-    if (count == 4 && idx == ip.size()) {
-        res.push_back(can);
-    }
-    for (int i = 1; i < 4; i++) {
-        if (idx + i > ip.size()) {
-            break;
+    void dfs(string& s, vector<string>& res, int c, string p, int start) {
+        if (start > s.size() || c > 4) return;
+        if (c == 4 && start == s.size()) {
+            res.push_back(p);
+            return;
         }
-        string temp = ip.substr(idx, i);
-        if ((i > 1 && temp[0] == '0') || (temp.size() == 3 && stoi(temp) > 255)) {
-            continue;
+        for (int i = 1; i < 4 && i + start <= s.size(); i++) {
+            string a = s.substr(start, i);
+            if ((i > 1 && a[0] == '0') || (stoi(a) > 255)) break;
+            dfs(s, res, c + 1, p + a + (c == 3 ? "" : "."), start + i);
         }
-        restoreIpAddresses(res, can + temp + (count == 3 ? "" : "."), idx + i, count + 1, ip);
     }
-}
-
-vector<string> restoreIpAddresses(string s) {
-    vector<string> res;
-    restoreIpAddresses(res, "", 0, 0, s);
-    return res;
-}
+};

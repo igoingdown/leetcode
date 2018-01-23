@@ -10,40 +10,29 @@
 class Solution {
 public:
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
-        vector< vector<int> > res(0, vector<int> (0, 0));
-        if (!root) {
-            return res;
-        }
-        int level = 0;
-        stack<TreeNode*> s;
-        s.push(root);
-        vector<int> tmp;
-        stack<TreeNode*> next;
-        while (!s.empty()) {
-            while (!s.empty()) {
-                auto node = s.top();
-                tmp.push_back(node->val);
-                s.pop();
-                if (level % 2 == 0) {
-                    if (node->left) {
-                        next.push(node->left);
-                    }
-                    if (node->right) {
-                        next.push(node->right);
-                    }
+        vector<vector<int>> res;
+        if (!root) return res;
+        deque<TreeNode*> q, next;
+        q.push_back(root);
+        int layer = 1;
+        while (!q.empty()) {
+            vector<int> v;
+            while (!q.empty()) {
+                TreeNode* cur = NULL;
+                if ((layer & 1) == 0) {
+                    cur = q.front(); q.pop_front();
+                    if (cur->right) next.push_back(cur->right); 
+                    if (cur->left) next.push_back(cur->left);
                 } else {
-                    if (node->right) {
-                        next.push(node->right);
-                    }
-                    if (node->left) {
-                        next.push(node->left);
-                    }
+                    cur = q.back(); q.pop_back();
+                    if (cur->left) next.push_front(cur->left);
+                    if (cur->right) next.push_front(cur->right); 
                 }
+                v.push_back(cur->val);
             }
-            res.push_back(tmp);
-            tmp.clear();
-            swap(s, next);
-            level++;
+            swap(q, next);
+            res.push_back(v);
+            layer++;
         }
         return res;
     }
