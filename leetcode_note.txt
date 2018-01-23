@@ -309,11 +309,6 @@ https://leetcode.com/problems/set-matrix-zeroes/?tab=Description
 将第一行第一列作为标志，第一行第一列用其他标志。顺序遍历将标志置0，逆序遍历按标志将元素置0。算法复杂度高些，但是好理解。
 
 
-64. Minimum Path Sum
-https://leetcode.com/problems/minimum-path-sum/?tab=Description
-DP算法，Discuss区第一名将空间复杂度从O(N^2)缩减到O(N)，并且给出了完整的解析，看了两个晚上，才有点明白。一刷AC，但是还要再刷！二刷一次AC。
-
-
 62. Unique Paths
 https://leetcode.com/problems/unique-paths/?tab=Description
 DP。
@@ -321,6 +316,11 @@ DP。
 
 63. Unique Paths II
 https://leetcode.com/problems/unique-paths-ii/?tab=Description
+DP。同62。
+
+
+64. Minimum Path Sum
+https://leetcode.com/problems/minimum-path-sum/?tab=Description
 DP。同62。
 
 
