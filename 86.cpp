@@ -9,26 +9,21 @@
 class Solution {
 public:
     ListNode* partition(ListNode* head, int x) {
-        if (!head || !head->next) {
-            return head;
-        }
-        ListNode *h1 = new ListNode(0);
-        ListNode *h2 = new ListNode(0);
-        ListNode *tail1 = h1, *tail2 = h2;;
+        if (!head || !head->next) return head;
+        ListNode *head1 = new ListNode(0), *head2 = new ListNode(0), *tail1 = head1, *tail2 = head2;
         while (head) {
-            ListNode *temp = head->next;
+            auto tmp = head->next;
             if (head->val < x) {
-                head->next = tail1->next;
                 tail1->next = head;
-                tail1 = head;
+                tail1 = tail1->next;
             } else {
-                head->next = tail2->next;
                 tail2->next = head;
-                tail2 = head;
+                tail2 = tail2->next;
             }
-            head = temp;
+            head = tmp;
         }
-        tail1->next = h2->next;
-        return h1->next;
+        tail1->next = head2->next;
+        tail2->next = NULL;
+        return head1->next;
     }
 };
