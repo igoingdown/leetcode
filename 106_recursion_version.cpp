@@ -39,24 +39,16 @@ int main(int argc, const char * argv[]) {
 
 
 TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
-    if (inorder.size() == 0) {
-        return NULL;
-    }
-    if (inorder.size() == 1) {
-        return new TreeNode(inorder.back());
-    }
+    if (inorder.size() == 0) return NULL;
+    if (inorder.size() == 1) return new TreeNode(inorder.back());
     map<int, int> value2index;
-    for (int i = 0; i < inorder.size(); i++) {
-        value2index[inorder[i]] = i;
-    }
+    for (int i = 0; i < inorder.size(); i++) value2index[inorder[i]] = i;
     return buildTree(inorder, 0, inorder.size() - 1, postorder, 0, postorder.size() - 1, value2index);
 }
 
 
 TreeNode* buildTree(vector<int>& inorder, int in_start, int in_end, vector<int>& postorder, int post_start, int post_end, map<int, int> & v2i) {
-    if (in_start > in_end || post_start > post_end) {
-        return NULL;
-    }
+    if (in_start > in_end || post_start > post_end) return NULL;
     TreeNode * root = new TreeNode(postorder[post_end]);
     int root_index = v2i[root->val];
     root->left = buildTree(inorder, in_start, root_index - 1, postorder, post_start, post_start + root_index - in_start - 1, v2i);

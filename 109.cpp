@@ -18,27 +18,18 @@
 class Solution {
 public:
     TreeNode* sortedListToBST(ListNode* head) {
-        return sortedListToBST(head, NULL);
+        return dfs(head, NULL);
     }
-    
-private:
-    TreeNode *sortedListToBST(ListNode *head, ListNode *tail) {
-        if (head == tail) {
-            return NULL;
-        }
-        if (head->next == tail) {
-            TreeNode *root = new TreeNode(head->val);
-            return root;
-        }
+    TreeNode* dfs(ListNode* head, ListNode* tail) {
+        if (head == tail) return NULL;
         ListNode *slow = head, *fast = head;
         while (fast != tail && fast->next != tail) {
             slow = slow->next;
             fast = fast->next->next;
         }
         TreeNode *root = new TreeNode(slow->val);
-        root->left = sortedListToBST(head, slow);
-        root->right = sortedListToBST(slow->next, tail);
+        root->left = dfs(head, slow);
+        root->right = dfs(slow->next, tail);
         return root;
     }
-    
 };

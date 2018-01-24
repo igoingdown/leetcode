@@ -260,8 +260,7 @@ https://leetcode.com/problems/same-tree/
 
 128. Longest Consecutive Sequence
 https://leetcode.com/problems/longest-consecutive-sequence/
-被hard标签吓住，确实也没想到好方法，要求O(N)的复杂度。先看的discuss区，discuss区的TOP1解法讲解非常好。大神用的是Python，我用C++实现的。比较简单，一刷end计数器退出循环时的数值搞错，WA。
-改正之后AC。二刷unordered_set的定义中没有将模板实例化。三刷一次AC。
+HashMap，空间换时间。可以使用师姐的思路，每次遇到没访问过的元素，访问之，并查看该元素所在最长连续序列的长度，更新结果，O(N^2)。使用unordered_map记录访问元素的最大长度。当n-1和n+1都访问过后，将序列两端的元素对应的最大长度更新。因为之后序列内部的元素就不考虑了，只会考虑序列外的元素，而序列外的元素跟该序列可能链接的地方只有左右两端，这个题很像DP，注意要将该元素设为访问过的状态，要向map中添加pair，O(N)。
 
 
 126. Word Ladder II
@@ -276,17 +275,32 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
 120. Triangle
 https://leetcode.com/problems/triangle/
-又是DP，从底网上找。一刷for循环里面的变量名写错，也是醉。这种算法的空间复杂度为O(N)，还有一种空间复杂度为O(1)的算法，下次来的时候好好调研一下。
-
-
-106. Construct Binary Tree from Inorder and Postorder Traversal
-https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
-再次吊死在二叉树上！这个算法人来做不难，很好理解，但是翻译成机器能理解的算法就很困难！这就是人类和机器思维的区别吗？一刷在IDE上写的，没理解透彻。非递归算法确实不太好懂，明天再试试递归算法。还是递归算法比较容易理解。
+DP，从底向上找。一刷for循环里面的变量名写错，也是醉。这种算法的空间复杂度为O(N)，还有一种空间复杂度为O(1)的算法，下次来的时候好好调研一下。
 
 
 105. Construct Binary Tree from Preorder and Inorder Traversal
 https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
-和上一题的方法完全一样，我用的是递归方法，但是参数传递已经尽量少了，所以性能牺牲不是太多，因为牺牲在函数调用上。一刷函数签名少写了引用符号，导致运行时内存溢出。二刷AC。
+递归。
+
+
+106. Construct Binary Tree from Inorder and Postorder Traversal
+https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
+递归。同105，由于树中无重复元素，可以用map记录inorder中元素到index的映射，这样就不用在生成树时遍历inorder查找元素了，这样可以把时间复杂度降为O(N^2)。
+
+
+108. Convert Sorted Array to Binary Search Tree
+https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/
+递归，二分查找。
+
+
+109. Convert Sorted List to Binary Search Tree
+https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/#/description
+同108，只是这里mid要通过快慢指针来找。
+
+
+114. Flatten Binary Tree to Linked List
+https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/
+递归，将左右分别flattern之后，将左侧链接到右侧。
 
 
 80. Remove Duplicates from Sorted Array II
@@ -552,11 +566,6 @@ https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/#/descriptio
 86. Partition List
 https://leetcode.com/problems/partition-list/#/description
 双指针。设置两个dummy node对于两部分分别进行尾插法，形成两个链表然后接上。
-
-
-109. Convert Sorted List to Binary Search Tree
-https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/#/description
-对平衡二分查找树不熟悉，很恐惧！思路不是自己的，自己在纸上写了一遍才算理解了算法，一刷AC，还要再刷！二刷一次AC。
 
 
 523. Continuous Subarray Sum
@@ -1123,11 +1132,6 @@ https://leetcode.com/problems/find-bottom-left-tree-value/description/
 一刷使用DFS暴力递归AC，效率低。时、空间复杂度O(L^2)，因为递归深度为L，查深度和查最左下元素都要递归到最底层。再刷要使用高效解法。二刷使用大神的DFS解法，不太理解，再刷！
 
 
-108. Convert Sorted Array to Binary Search Tree
-https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/
-一刷使用DFS，二分查找想使用移位操作装逼，结果写错了！右移1位写成右移2位，WA。再来一次。时间和空间复杂度都是O(log N)。效率还可以，再刷找找更高效的算法。
-
-
 693. Binary Number with Alternating Bits
 https://leetcode.com/problems/binary-number-with-alternating-bits/description/
 一刷没AC，忘记更新ex。时间复杂度为O(log N)，空间复杂度为O(1)。没有再刷的必要。
@@ -1220,7 +1224,9 @@ https://leetcode.com/problems/kth-largest-element-in-an-array/description/
 
 347. Top K Frequent Elements
 https://leetcode.com/problems/top-k-frequent-elements/description/
-一刷使用map统计频率，按频率倒排，使用lambda表达式简化代码，O(NlogN)。二刷使用堆排，O(NlogN)。三刷使用快搜，O(N)。四刷使用priority_queue，O(NlogN),其实就是完全堆排。五刷简化四刷使用的方法，不再使用函数对象。五刷使用桶排序，bucket_size为1，将每个可能的频率都视为一个bucket，O(N)。
+一刷使用map统计频率，按频率倒排，使用lambda表达式简化代码，O(NlogN)。二刷使用堆排，O(NlogN)。三刷使用快搜，O(N)。四刷使用priority_queue，O(NlogN),其实就是完全堆排。五刷简化四刷使用的方法，不再使用函数对象。五刷使用桶排序，bucket_size为1，将每个可能的频率都视为一个bucket，O(N)。建堆时间复杂度证明：http://blog.csdn.net/anonymalias/article/details/8807895
+
+
 
 
 692. Top K Frequent Words
@@ -1269,11 +1275,6 @@ https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/
 一刷使用基于非递归中序遍历二叉树的方法AC。
 
 
-114. Flatten Binary Tree to Linked List
-https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/
-一刷使用递归没有AC，没考虑全！垃圾！再刷！
-
-
 113. Path Sum II
 https://leetcode.com/problems/path-sum-ii/description/
 一刷递归没考虑到节点的值可以使负的，自以为地剪枝WA，去掉之后AC。再来一次。
@@ -1316,7 +1317,7 @@ BFS，一刷AC。
 
 130. Surrounded Regions
 https://leetcode.com/problems/surrounded-regions/description/
-有点小弯，不能从所有单元出发进行dfs或者bfs，只要从四条边界出发使用dfs或者bfs即可。一刷dfs,AC。二刷使用bfs，mle。用了c++和java都是相同的结果。
+dfs。不能从所有单元格出发进行dfs或者bfs，而是从四条边界出发使用dfs或者bfs即可。、
 
 
 301. Remove Invalid Parentheses
@@ -1600,7 +1601,7 @@ https://leetcode.com/problems/delete-node-in-a-bst/description/
 
 116. Populating Next Right Pointers in Each Node
 https://leetcode.com/problems/populating-next-right-pointers-in-each-node/description/
-树的层序遍历，有更好的解法就要借鉴！题目中的条件没用好，直接双queue就层序遍历了，next是有用的。
+双queue的BFS不是最优解，利用next指针空间复杂度可以降到O(1)。
 
 
 117. Populating Next Right Pointers in Each Node II

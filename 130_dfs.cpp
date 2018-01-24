@@ -5,9 +5,7 @@ private:
     void dfs(vector<vector<char>>& board, int i, int j) {
         if (i < 0 || i >= m || j < 0 || j >= n || board[i][j] != 'O') return;
         board[i][j] = 'F';
-        for (int k = 0; k < 4; k++) {
-            dfs(board, i + bias[k], j + bias[k + 1]);
-        }
+        for (int k = 0; k < 4; k++) dfs(board, i + bias[k], j + bias[k + 1]);
     }
 public:
     void solve(vector<vector<char>>& board) {
