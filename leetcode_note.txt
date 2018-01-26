@@ -411,7 +411,7 @@ https://leetcode.com/problems/next-permutation/?tab=Description
 
 18. 4Sum
 https://leetcode.com/problems/4sum/?tab=Description
-第一眼使用DFS，很快写出来了，debug了很久没AC。选择了讨论区一个基于C++的算法，一刷没AC，变量名写错，忘记对nums进行sort操作，根本在于理解深刻。二刷没AC，变量名写错，最后更新l和r的过程写错。三刷没AC，还是最后更新l和r的操作写错！！这个题可以视为一棵定深的树的遍历，剪枝规则也很简单，就是除当前层的第一个节点外，其余节点如果和前一个节点值相同就减掉。最后要注意的是处理2sum的时候，要先更新l和r然后再进行剪枝的操作，否则会陷入死循环。
+双指针。先进行sort，然后逐个确定i,j,l,r四个指针，注意去重和剪枝(非必须)。
 
 
 16. 3Sum Closest
@@ -699,7 +699,7 @@ https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/#/desc
 
 3. Longest Substring Without Repeating Characters
 https://leetcode.com/problems/longest-substring-without-repeating-characters/#/description
-滑动窗口，双指针。遇到重复的时候更新小指针，注意开始时设置map为全-1，小指针也设置为-1。二刷没AC。
+滑动窗口，双指针。使用一个长为256的vector记录每个char上次出现的位置，用start记录当前无重复元素子串的起始位置，窗口右侧遇到一个已经访问过的char，窗口左侧（start）移到改char上次出现位置的后一位。
 
 
 557. Reverse Words in a String III
@@ -739,7 +739,12 @@ https://leetcode.com/problems/longest-uncommon-subsequence-i/#/description
 
 5. Longest Palindromic Substring
 https://leetcode.com/problems/longest-palindromic-substring/#/description
-解法比较朴素，遍历每个字符，沿两侧展开，更新起始点和最大长度。一刷没AC，再刷！
+DP解法,先判断是否为回文串，然后更新起始点，O(N^2)。另一种解法遍历每个字符，沿两侧展开，更新起始点和最大长度，O(N^2)。
+
+
+9. Palindrome Number
+https://leetcode.com/problems/palindrome-number/description/
+双指针或者看逆数与原数是否相等，注意本题中负数不合法。
 
 
 385. Mini Parser
@@ -929,7 +934,6 @@ https://leetcode.com/problems/combination-sum-ii/?tab=Description
 讨论区第一名的算法先对候选排序，然后使用DFS，搜索路径。注意去除可能重复的路径和并进行必要的剪枝。一刷变量名写错没AC，对去重的理解也只限于想象，没有验证。讨论区第一名算法我添加了剪枝之后，算法执行时间缩短很多，还是挺有成就感的。二刷一次AC。三刷把求解树和递归过程对应上了，理解更简单；剪枝逻辑写错导致剪多了，再刷！
 
 
-
 51. N-Queens
 https://leetcode.com/problems/n-queens/description/
 dfs时让col递增，逐个选择合法的row，存储path，之后将合法path转为棋局排列。注意判断冲突有三个条件（1）row1 ！= row2（2）row1 + col1 != row2 + col2 （3）row1 - col1 != row2 - col2。 
@@ -942,7 +946,7 @@ dfs，思路同上。
 
 132. Palindrome Partitioning II
 https://leetcode.com/problems/palindrome-partitioning-ii/description/
-没想到是个hard级别的，一刷使用backtracing方法超时了，再刷！再刷研究一下讨论区算法。二刷使用DP算法一次AC，对着代码看了很长时间，DP的核心是数学递推公式，手不够熟，再刷！三刷没AC，过程理解深入了一些。
+dfs超时,DP一次AC。partition的DP递推公式和判断回文的递推公式不同，[i,j]不满足回文的时候，不能只考虑[i+1,j]和[i,j-1]令其较小值+1，因为[i+1,j]和[i,j-1]虽然可能组成最长的回文子串，也可能partition次数很多！因此要再用一个minCut数组存储最小的cut.
 
 
 79. Word Search

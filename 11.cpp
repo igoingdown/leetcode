@@ -21,23 +21,17 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
-
 int maxArea(vector<int>& height) {
-    int i = 0, j = height.size() - 1, water = 0;
-    while (i < j) {
-        int h = min(height[i], height[j]);
-        water = max(water, h * (j - i));
-        while (i < j && height[i] <= h) {
-            i++;
-        }
-        while (i < j && height[j] <= h) {
-            j--;
-        }
+    int l = 0, r = height.size() - 1, water = 0, h = 0, res = 0;
+    while (l < r) {
+        h = min(height[l], height[r]);
+        water = (r - l) * h;
+        res = max(water, res);
+        while (l < r && height[l] <= h) l++;
+        while (l < r && height[r] <= h) r--;
     }
-    return water;
+    return res;
 }
-
-
 
 
 
