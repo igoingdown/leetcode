@@ -386,7 +386,7 @@ https://leetcode.com/problems/rotate-image/?tab=Description
 
 35. Search Insert Position
 https://leetcode.com/problems/search-insert-position/?tab=Description
-非常简单，一次AC。
+BS。可以直接用upper_bound或者lower_bound来做。
 
 
 34. Search for a Range
@@ -406,7 +406,7 @@ BS。同33，只是数组中存在重复元素，[mid] = [low]时分类不明显
 
 31. Next Permutation
 https://leetcode.com/problems/next-permutation/?tab=Description
-第一眼没思路，选择了讨论区一个比较好理解的算法，效率还不错。先从后将降序变为升序，然后找升序中前一个数字的上界与该数字替换。一次AC，但是理解不够。二刷查了API文档之后一次AC。
+math。先从后将降序变为升序，然后找升序中前一个数字的上界与该数字替换。
 
 
 18. 4Sum
@@ -540,12 +540,17 @@ https://leetcode.com/problems/linked-list-cycle-ii/#/description
 
 
 206. Reverse Linked List
-链表反转
+链表反转，头插法。
 
 
 92. Reverse Linked List II
 https://leetcode.com/problems/reverse-linked-list-ii/#/description
-很简单，一刷AC。
+链表部分反转，头插法。
+
+
+25. Reverse Nodes in k-Group
+https://leetcode.com/problems/reverse-nodes-in-k-group/description/
+链表分组反转，头插法。使用pre和cur分别记录当前组和下一组的头结点，设置dummy node作为结果链表的起始，记录新链表的尾部，因为没插入一个新的组之后就要更新这个尾部，再进行头插法。
 
 
 61. Rotate List
@@ -956,7 +961,7 @@ dfs。和maze那道题对比，思考想为什么要恢复原状态(回溯)，�
 
 89. Gray Code
 https://leetcode.com/problems/gray-code/description/
-原来这就是格雷码，一刷使用迭代（降低了空间复杂度的DP）算法AC。二刷使用非递归算法AC。要发现更high level的规律(可以利用子问题的结果)，这样才算理解了一个问题，这个问题直通硅谷讲完之后发现规律就理解了！其实是个递归问题，但是可以用dp，也可以用迭代消除尾递归。三刷使用递归，移位参数设置出错WA，再刷。四刷使用基于DP的bottom-up方法AC。
+递归。从0开始，不断从起始位或者终止位补0和1(从起始位补的话不必补0，更简洁)，当时从终止位补0或1出错，不知道为啥。
 
 
 211. Add and Search Word - Data structure design

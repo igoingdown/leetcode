@@ -1,20 +1,12 @@
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
-        if (nums.size() <= 1) {
-            return;
-        }
-        int i = nums.size() - 2;
-        for (; i >= 0; i--) {
-            if (nums[i] < nums[i + 1]) {
-                break;
-            }
-        }
+        int n = nums.size(), i;
+        if (n < 2) return;
+        for (i = n - 2; i >= 0 && nums[i] >= nums[i + 1]; i--);
         reverse(nums.begin() + i + 1, nums.end());
-        if (i == -1) {
-            return;
-        }
-        auto iptr = upper_bound(nums.begin() + i + 1, nums.end(), nums[i]);
-        swap(nums[i], *iptr);
+        if (i == -1) return;
+        auto iter = upper_bound(nums.begin() + i + 1, nums.end(), nums[i]);
+        swap(nums[i], *iter);
     }
 };
