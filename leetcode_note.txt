@@ -1790,6 +1790,12 @@ https://leetcode.com/problems/wildcard-matching/description/
 https://yucoding.blogspot.com/2013/02/leetcode-question-123-wildcard-matching.html
 
 
+36. Valid Sudoku
+https://leetcode.com/problems/valid-sudoku/description/
+暴力法：检查行 检查列 检查每个小矩阵就行，这种方法要遍历board3次。
+更巧妙的方法：记录每行、每列、每个小方块中每个数字是否使用过，如果使用过了，就是invalid，这种方法只需遍历1次board。注意数组的初始化！
+
+
 
 766. Toeplitz Matrix
 查看矩阵的每条斜向下对角线上的元素是否相同
