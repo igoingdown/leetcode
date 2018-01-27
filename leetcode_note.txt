@@ -1299,9 +1299,15 @@ https://leetcode.com/problems/matchsticks-to-square/description/
 一刷递归，效率低，有大量重复计算，自己的逻辑不清晰，TLE。二刷发现大神的DFS思路和我一致，按照大神的思路改完之后效率提高很多，但是仍然有优化的空间，重复计算问题并没有完全解决。
 
 
+36. Valid Sudoku
+https://leetcode.com/problems/valid-sudoku/description/
+暴力法：检查行 检查列 检查每个小矩阵就行，这种方法要遍历board3次。
+更巧妙的方法：记录每行、每列、每个小方块中每个数字是否使用过，如果使用过了，就是invalid，这种方法只需遍历1次board。注意数组的初始化！
+
+
 37. Sudoku Solver
 https://leetcode.com/problems/sudoku-solver/description/
-一刷使用DFS能AC，不太理解后2个return值设置的含义。
+dfs。注意使用上题的方式判断valid。
 
 
 102. Binary Tree Level Order Traversal
@@ -1788,12 +1794,6 @@ https://leetcode.com/problems/regular-expression-matching/description/
 https://leetcode.com/problems/wildcard-matching/description/
 递归超时，DP可以AC。和10非常相似。还有更简单的方法及双指针法。
 https://yucoding.blogspot.com/2013/02/leetcode-question-123-wildcard-matching.html
-
-
-36. Valid Sudoku
-https://leetcode.com/problems/valid-sudoku/description/
-暴力法：检查行 检查列 检查每个小矩阵就行，这种方法要遍历board3次。
-更巧妙的方法：记录每行、每列、每个小方块中每个数字是否使用过，如果使用过了，就是invalid，这种方法只需遍历1次board。注意数组的初始化！
 
 
 
