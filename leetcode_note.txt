@@ -414,6 +414,11 @@ https://leetcode.com/problems/4sum/?tab=Description
 双指针。先进行sort，然后逐个确定i,j,l,r四个指针，注意去重和剪枝(非必须)。
 
 
+38. Count and Say
+https://leetcode.com/problems/count-and-say/description/
+双指针，将序列模仿出来即可。
+
+
 16. 3Sum Closest
 https://leetcode.com/problems/3sum-closest/?tab=Description
 和18题非常相近，而且要简单很多。仿照18题的思路写了大部分，结果最后一行更新left和right的时候走入弯道了，看了讨论区的算法有了想法。变量名写错，三目运算符写错，一刷没能AC。二刷变量n没有声明，没有AC。
@@ -1307,7 +1312,7 @@ https://leetcode.com/problems/valid-sudoku/description/
 
 37. Sudoku Solver
 https://leetcode.com/problems/sudoku-solver/description/
-dfs。注意使用上题的方式判断valid。
+dfs。注意使用上题的方式判断valid。注意row_used, col_used和box_used要先初始化！
 
 
 102. Binary Tree Level Order Traversal
@@ -1813,7 +1818,24 @@ https://yucoding.blogspot.com/2013/02/leetcode-question-123-wildcard-matching.ht
 与上题不同的地方在于数组中元素可以有重复。
 
 
+771. Jewels and Stones
+https://leetcode.com/contest/weekly-contest-69/problems/jewels-and-stones/
+HashMap。
 
+
+773. Sliding Puzzle
+https://leetcode.com/contest/weekly-contest-69/problems/sliding-puzzle/
+BFS。
+
+
+774. Minimize Max Distance to Gas Station
+https://leetcode.com/contest/weekly-contest-69/problems/minimize-max-distance-to-gas-station/
+BS。与其他题目不同的是本题需要在整个限制范围内部进行BS，MSRA有一道题和本题相似，都是在整个限制范围内找解，这是一种很重要的思路，DP有时候也会用到这种思想。
+
+
+775. Global and Local Inversions
+https://leetcode.com/contest/weekly-contest-69/problems/global-and-local-inversions/
+array。
 
 
 
