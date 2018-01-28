@@ -409,6 +409,11 @@ https://leetcode.com/problems/next-permutation/?tab=Description
 math。先从后将降序变为升序，然后找升序中前一个数字的上界与该数字替换。
 
 
+41. First Missing Positive
+https://leetcode.com/problems/first-missing-positive/description/
+math。鸽巢原理，第一个missing的正整数的范围一定是[1, array.size() + 1]。扫描原数组，用额外的数组记录已经出现的正整数，再扫描新数组，第一个没访问过的数就是第一个missing的正整数。有更好的方法，不需要额外的空间，详见 http://www.cnblogs.com/AnnieKim/archive/2013/04/21/3034631.html  。
+
+
 18. 4Sum
 https://leetcode.com/problems/4sum/?tab=Description
 双指针。先进行sort，然后逐个确定i,j,l,r四个指针，注意去重和剪枝(非必须)。
@@ -931,7 +936,7 @@ dfs。
 
 78. Subsets
 https://leetcode.com/problems/subsets/
-一刷由于对vector的一些成员函数不熟悉，没有AC。二刷一次AC。讨论区第一名的算法是基于bitmap做的，一刷由于对vector的多元素版本的构造函数格式不熟，没能AC。二刷一次AC。三刷使用backtracing方法刷这类题，效率无损失。递归参数设置错误得了WA，再刷！四刷使用backtracing，没AC，应该存入第i个元素但是存了第start个元素，这个错误好几次了！
+dfs。
 
 
 39. Combination Sum
@@ -941,7 +946,7 @@ dfs。可以画出解空间来理解解题过程。
 
 40. Combination Sum II
 https://leetcode.com/problems/combination-sum-ii/?tab=Description
-讨论区第一名的算法先对候选排序，然后使用DFS，搜索路径。注意去除可能重复的路径和并进行必要的剪枝。一刷变量名写错没AC，对去重的理解也只限于想象，没有验证。讨论区第一名算法我添加了剪枝之后，算法执行时间缩短很多，还是挺有成就感的。二刷一次AC。三刷把求解树和递归过程对应上了，理解更简单；剪枝逻辑写错导致剪多了，再刷！
+DFS。首先要排序，之后要对照解空间写递归过程。
 
 
 51. N-Queens
