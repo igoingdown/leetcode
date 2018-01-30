@@ -353,9 +353,14 @@ https://leetcode.com/problems/predict-the-winner/description/
 二维DP，一维亦可，二维DP易于理解。两个维度坐标含义相同，填表方式是沿对角线填表，这取决于子问题的结构。子问题比较容易看出来，对于dp[i][j],取头剩dp[i+1][j],取尾剩dp[i][j-1]，但是剩下的是对手的盘，因此要将dp中存储的元素设置为一手比二手玩家多得的分，这样对手的盘就是负值！
 
 
-59. Spiral Matrix II
-https://leetcode.com/problems/spiral-matrix-ii/?tab=Description
-挺有意思的一道题，开始我以为矩阵有两种分解方式：第一种很有美感，结果这是个陷阱，n为偶数时可以正确返回结果，当n为奇数时，矩阵最中间的那个格会形成死循环；第二种才是正确的分解。一刷嵌套式vector的初始化语法写错，没能AC。二刷循环中更新j出错，没能AC。
+45. Jump Game II
+https://leetcode.com/problems/jump-game-ii/description/
+DP,BFS。DP复杂度为O(N^2)，自己写的DP，遍历nums，填充并修改dp，如果dp[i]都有效，遍历[1, nums[i]]，更新dp[i+j]，这种方式会超时。师姐的dp跟我不太一样，为了得到dp[i]，遍历dp[0, i-1]，如果一步可以到i则直接跳出，师姐的dp思路才是真正的dp思路。BFS的复杂度为O(N)，从0开始，对于每层更新能到达的最远的元素，然后从那个元素开始，直到能够到最后一个元素位置。
+
+
+55. Jump Game
+https://leetcode.com/problems/jump-game/?tab=Description
+同45。三种方法，性能由差到好。
 
 
 56. Merge Intervals
@@ -368,20 +373,20 @@ https://leetcode.com/problems/insert-interval/description/
 同56，先将要新Interval插入列表，然后merge。应该有更高效的算法。
 
 
-55. Jump Game
-https://leetcode.com/problems/jump-game/?tab=Description
-看了讨论区的两个算法，一个很简洁，4行完事，思路是遍历每个元素，看每个元素当前能达到的最远处是否包括当前元素（本质是0能不能跳过），一刷AC。另一个效率高些，思路更清晰，就是看0元素能不能跳过去，一刷没AC，注意循环从倒数第二个元素开始，因为最后一个元素的值是不用考虑的。二刷思路错了，不应该比较sum和dis，而应该比较dis和相应位的num，没能AC。但是这次刷理解了中间cur为什么可以直接减。
-
 
 54. Spiral Matrix
 https://leetcode.com/problems/spiral-matrix/?tab=Description
-按照59题相似的思路，出现了两个比较大的BUG，一是内层while循环索引没有递增/减，二是在两次反向遍历的时候要加一个判断条件，以免与正向遍历的是同一行/列。一刷没AC。二刷写错了最后一次从下向上遍历过程的行的index的初始化值，没能AC，但是对代码进行了优化。
+math。内循环每次从(i,i)开始，向右走到(i, n - i - 1), 再向下走到(m - i - 1, n - i - 1)，再向左走到(m - i - 1, i), 最后向上走到(i + 1, i)。注意去重，即后两趟走的不能和前两趟走的不能是一条道。
 
+
+59. Spiral Matrix II
+https://leetcode.com/problems/spiral-matrix-ii/?tab=Description
+同54。
 
 
 48. Rotate Image
 https://leetcode.com/problems/rotate-image/?tab=Description
-采用讨论区第一名的算法，效率不是很高，但是很容易明白。是一种普适的方法。对于旋转先将矩阵进行行逆序，然后对角互换。对于逆时针旋转则是先进行列逆序。一刷AC。二刷一次AC。
+math。矩阵顺时针旋转，先将矩阵进行上下翻转(上换到下)，然后对角互换(左下换到左上)，于是左上就换到了右上，左下换到了左上，右上换到了右下，右下换到了左下，实现了顺时针旋转90度。对于逆时针旋转先上下翻转，然后左上与右下互换。
 
 
 35. Search Insert Position
@@ -436,7 +441,7 @@ https://leetcode.com/problems/3sum/?tab=Description
 
 11. Container With Most Water
 https://leetcode.com/problems/container-with-most-water/?tab=Description
-一开始理解错题意，把矩形当成梯形来算，看了讨论区算法的思路后，自己写出来的。一刷AC，但是还需要再刷。二刷迭代时没有更新结果，没能AC。三刷连思路都没了，花了很长时间。我的思路是选可能留下的，而这种情况并不容易搞，答案是筛去不符合的！这样就简单很多。还要再刷！！
+双指针。左右指针分别从数组两端开始，两指针夹逼过程中，矩形的长变小，只有宽增大，面积才会增大。
 
 
 535. Encode and Decode TinyURL
@@ -911,12 +916,13 @@ https://leetcode.com/problems/binary-watch/description/
 
 46. Permutations
 https://leetcode.com/problems/permutations/description/
-dfs, 78，90，46，47，39，40，131，132，77都是简单套路题。面试趋势是这种题目变为解决问题其中的一步。
+dfs。面试趋势是这种题目变为解决问题其中的一步。
 
 
 47. Permutations II
 https://leetcode.com/problems/permutations-ii/description/
-比46要难，去重可以使用frequency，将重复元素的个数作为重复的第一个元素的访问次数。
+比46要难，去重可以使用frequency，将只考虑重复元素的第一个元素，重复次数用频率计数。排列、组合、组合和都属于01背包问题，理解要加强。
+
 
 
 90. Subsets II
@@ -1427,7 +1433,7 @@ https://leetcode.com/problems/implement-stack-using-queues/submissions/1
 
 42. Trapping Rain Water
 https://leetcode.com/problems/trapping-rain-water/description/
-递减栈，出栈情况下不用入栈，WA。需要深入理解。
+stack，递减栈。出栈情况下不用入栈，也不用循环向前将造成递增的元素全部出栈，这样容易理解，但是代码显得过于冗长。
 
 
 739. Daily Temperatures
