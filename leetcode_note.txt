@@ -303,14 +303,11 @@ https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/
 递归，将左右分别flattern之后，将左侧链接到右侧。
 
 
-80. Remove Duplicates from Sorted Array II
-https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
-比较简单，将重复次数小于3的元素往前移动，其他元素不动，就得到了重复次数最多为2的元素的个数。一刷题目理解不清，循环条件写错。二刷循环条件写错。三刷一次AC。
-
 
 75. Sort Colors
 https://leetcode.com/problems/sort-colors/
-这道题是让手写排序，一刷手写快排没AC。二刷由于多次将左侧边界想当然地视为0（其实是l）没能AC。讨论区第一名的算法针对特殊情况（只有0， 1， 2三个数字）对普适的排序算法做了优化，一刷循环条件写错没AC。二刷思路不清晰，没AC，注意需要两层循环，内层循环只处理连续的符合条件的情况，外层需要等于因为该index对应的值谁也不知道是几。第二种算法的在时间效益上不如快排。
+排序，暴力法，双指针。手写快排、堆排等时间复杂度都是O(NlogN)。暴力法第一次遍历记录0，1，2的数量，第二次遍历按照数量赋值上去，O(N)。双指针，O(N)。令index_0和index_2分别表示下一个0和2应该填进去的坑，外循环遍历i，内循环分别更新index_0和index_2即可。
+
 
 
 74. Search a 2D Matrix
@@ -365,13 +362,17 @@ https://leetcode.com/problems/jump-game/?tab=Description
 
 56. Merge Intervals
 https://leetcode.com/problems/merge-intervals/?tab=Description
-sort的第三个参数为重载了"<"的函数，可以自己写myCompare函数实现"<"逻辑，也可以写函数类用于构建函数对象。也可以利用C++11新特性lambda表达式实现，编译器会根据lambda表达式生成函数对象。
+sort。sort的第三个参数为重载了"<"的函数，可以自己写myCompare函数实现"<"逻辑，也可以写函数类用于构建函数对象。也可以利用C++11新特性lambda表达式实现，编译器会根据lambda表达式生成函数对象。
 
 
 57. Insert Interval
 https://leetcode.com/problems/insert-interval/description/
-同56，先将要新Interval插入列表，然后merge。应该有更高效的算法。
+sort。同56，先将要新Interval插入列表，然后merge。应该有更高效的算法。
 
+
+406. Queue Reconstruction by Height
+https://leetcode.com/problems/queue-reconstruction-by-height/description/
+sort。使用lambda表达式进行sort，然后将每个元素插到res.begin()+p.second的位置上。
 
 
 54. Spiral Matrix
@@ -387,6 +388,11 @@ https://leetcode.com/problems/spiral-matrix-ii/?tab=Description
 48. Rotate Image
 https://leetcode.com/problems/rotate-image/?tab=Description
 math。矩阵顺时针旋转，先将矩阵进行上下翻转(上换到下)，然后对角互换(左下换到左上)，于是左上就换到了右上，左下换到了左上，右上换到了右下，右下换到了左下，实现了顺时针旋转90度。对于逆时针旋转先上下翻转，然后左上与右下互换。
+
+
+66. Plus One
+https://leetcode.com/problems/plus-one/description/
+math。初始化令最低位进位c=1,可以按照统一的模式解决。
 
 
 35. Search Insert Position
@@ -544,6 +550,12 @@ https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/
 https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
 双指针。
 
+
+80. Remove Duplicates from Sorted Array II
+https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
+双指针。同26。遍历元素，更新len。使用count记录重复个数，只有重复个数为1或2时更新len。
+
+
 27. Remove Element
 原地操作，删除数组中的固定值的元素。
 双指针。
@@ -555,12 +567,12 @@ https://leetcode.com/problems/linked-list-cycle-ii/#/description
 
 
 206. Reverse Linked List
-链表反转，头插法。
+链表头插法。
 
 
 92. Reverse Linked List II
 https://leetcode.com/problems/reverse-linked-list-ii/#/description
-链表部分反转，头插法。
+双指针，头插法。分别用pre和end记录要翻转的部分的前一个节点和后一个节点，然后使用头插法即可。
 
 
 25. Reverse Nodes in k-Group
@@ -570,7 +582,7 @@ https://leetcode.com/problems/reverse-nodes-in-k-group/description/
 
 61. Rotate List
 https://leetcode.com/problems/rotate-list/#/description
-比较简单，一刷没有AC，思路有一点错误，不应该直接把旋转点之后的节点直接使用头插法，对k也要非常注意，k可能超出length。总结一点：如果链表中head不稳定，可能变化，就要另外设置一个新的head！二刷一次AC。
+双指针。注意要首先得出链表长度len，再将旋转次数对len取模，避免多余计算和可能的错误。
 
 
 83. Remove Duplicates from Sorted List
@@ -927,7 +939,7 @@ https://leetcode.com/problems/permutations-ii/description/
 
 90. Subsets II
 https://leetcode.com/problems/subsets-ii/description/
-一刷去重条件写错，WA。二刷去重条件写错，原数组未排序，WA。
+dfs，先排序，对着解空间写递归，注意去重。
 
 
 131. Palindrome Partitioning
@@ -1192,10 +1204,6 @@ https://leetcode.com/problems/next-greater-element-ii/description/
 一刷使用和上题相似的思路，没想清楚，WA。本题中有重复元素，stack和map都要保存index，和上题的区别在于要进行两次遍历，算法效率还可以继续提升。时间和空间复杂度为O(N)。再刷。
 
 
-144. Binary Tree Preorder Traversal
-https://leetcode.com/problems/binary-tree-preorder-traversal/description/
-二叉树先序遍历，一刷递归AC。二刷使用非递归算法一次AC，注意入栈的时先对右子树入栈，再对左子树入栈，从而保证左子树优先访问。
-
 
 341. Flatten Nested List Iterator
 https://leetcode.com/problems/flatten-nested-list-iterator/description/
@@ -1298,6 +1306,11 @@ https://leetcode.com/problems/validate-binary-search-tree/description/
 230. Kth Smallest Element in a BST
 https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/
 一刷使用基于非递归中序遍历二叉树的方法AC。
+
+
+144. Binary Tree Preorder Traversal
+https://leetcode.com/problems/binary-tree-preorder-traversal/description/
+二叉树先序遍历，一刷递归AC。二刷使用非递归算法一次AC，注意入栈的时先对右子树入栈，再对左子树入栈，从而保证左子树优先访问。
 
 
 113. Path Sum II
@@ -1433,12 +1446,16 @@ https://leetcode.com/problems/implement-stack-using-queues/submissions/1
 
 42. Trapping Rain Water
 https://leetcode.com/problems/trapping-rain-water/description/
-stack，递减栈。出栈情况下不用入栈，也不用循环向前将造成递增的元素全部出栈，这样容易理解，但是代码显得过于冗长。
+stack，单调栈。出栈情况下不必更新遍历指针，下次循环会自然地继续出栈或者入栈。出栈时用循环向前将造成递增的元素全部出栈，这样容易理解，但是代码显得过于冗长。
 
 
 739. Daily Temperatures
 https://leetcode.com/contest/weekly-contest-61/problems/daily-temperatures/
-非严格递减栈，比较简单，但是还是debug很久！注意存的是index，注意循环可以用for也可以用while，这题用while比较好！
+stack，单调栈。注意存的是index，循环用while比较好，更简洁。
+
+
+84. Largest Rectangle in Histogram
+stack，单调栈。注意要计算的矩形宽度不是(i - 出栈元素的index)，而是(i - 出栈后的栈顶 + 1)，这么做的原因是因为，当前元素可能是洼地，这么计算就不会少算了。
 
 
 735. Asteroid Collision
@@ -1497,7 +1514,7 @@ https://leetcode.com/problems/contiguous-array/description/
 
 76. Minimum Window Substring
 https://leetcode.com/problems/minimum-window-substring/description/
-双指针，难以理解。一刷Debug很久。注意前指针和后指针的更新以及极限情况（字符串为空或者长度为1）。start和end分别表示窗口的起始和末尾，window这个map就是start到end这段子串的符号及频数。二刷书写错误没AC。
+双指针。注意极限情况（字符串为空或者长度为1）。pattern存储模式串的字符及频数，text存储母串的窗口[start, end]中的字符及频数。初始化部分不太理解，循环的部分，每次先尝试右移start，右移start的前提是count==0(窗口已经包含目标串)，右移start可能找到更小的window。之后end++，这时text要更新，如果s[end]在pattern中，而且pattern[s[end]] >= text[s[end]]，count--。
 
 
 207. Course Schedule

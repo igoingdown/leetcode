@@ -19,7 +19,7 @@ int main(void) {
 
 void quick_s(vector<int>& s, int l, int r) {
 	if (l < r) {
-		int i = partition_2(s, l, r);
+		int i = partition_1(s, l, r);
 		quick_s(s, l, i - 1);
 		quick_s(s, i + 1, r);
 	}

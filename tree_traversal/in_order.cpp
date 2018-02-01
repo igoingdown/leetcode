@@ -34,20 +34,14 @@ void in_order_recursive(TreeNode* root) {
 
 
 void in_order_none_recursive(TreeNode* root) {
-	if (!root) return;
-	stack<TreeNode* > s;
-	while(root) {
-		s.push(root);
-		root = root->left;
-	}
-	while (!s.empty()) {
-		auto cur = s.top();
-		s.pop();
-		cout << cur->val << endl;
-		cur = cur->right;
-		while (cur) {
-			s.push(cur);
-			cur = cur->left;
+	stack<TreeNode*> s;
+	while (root || !s.empty()) {
+		while (root) {
+			s.push(root);
+			root = root->left;
 		}
+		root = s.top(); s.pop();
+		cout << root->val << endl;
+		root = root->right;
 	}
 }

@@ -5,11 +5,9 @@ public:
         vector<int> res(l);
         stack<int> s;
         while (i < l) {
-            if (s.empty() || temperatures[s.top()] >= temperatures[i]) {
-                s.push(i++);
-            } else {
-                int cur = s.top();
-                s.pop();
+            if (s.empty() || temperatures[s.top()] >= temperatures[i]) s.push(i++);
+            else {
+                int cur = s.top(); s.pop();
                 res[cur] = i - cur;
             }
         }
