@@ -9,20 +9,21 @@
  */
 class Solution {
 private:
-    TreeNode* first, * second, *pre;
-    void find_nodes(TreeNode* root) {
+    TreeNode *first, *second, *pre;
+public:
+    void recoverTree(TreeNode* root) {
+        first = NULL, second = NULL, pre = new TreeNode(INT_MIN);
+        traverse(root);
+        int tmp = first->val;
+        first->val = second->val;
+        second->val = tmp;
+    }
+    void traverse(TreeNode *root) {
         if (!root) return;
-        find_nodes(root->left);
+        traverse(root->left);
         if (!first && pre->val >= root->val) first = pre;
         if (first && pre->val >= root->val) second = root;
         pre = root;
-        find_nodes(root->right);
-    }
-public:
-    void recoverTree(TreeNode* root) {
-        if (!root) return;
-        first = NULL, second = NULL, pre = new TreeNode(INT_MIN);
-        find_nodes(root);
-        swap(first->val, second->val);
+        traverse(root->right);
     }
 };

@@ -8,18 +8,14 @@
  * };
  */
 class Solution {
-private:
-    int get_depth(TreeNode* root) {
-        if (!root) return 0;
-        int left_depth = get_depth(root->left);
-        int right_depth = get_depth(root->right);
-        if (left_depth == -1 || right_depth == -1 || abs(left_depth - right_depth) > 1) {
-            return -1;
-        }
-        return max(left_depth, right_depth) + 1;
-    }
 public:
+    unordered_map<TreeNode*, int> m = {{NULL, 0}};
+    int get_depth(TreeNode *root) {
+        if (!root) return 0;
+        int left = get_depth(root->left), right = get_depth(root->right);
+        return left >= 0 && right >= 0 && abs(left - right) < 2 ? max(left, right) + 1 : -1;
+    }
     bool isBalanced(TreeNode* root) {
-        return get_depth(root) != -1;
+        return get_depth(root) >= 0;
     }
 };

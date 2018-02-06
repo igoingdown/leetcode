@@ -926,6 +926,11 @@ https://leetcode.com/problems/binary-watch/description/
 一刷没好的思路，看了discuss区之后，发现真的是直接遍历解空间！由于不理解表的的实际运行换算进制搞错得了WA，再刷！
 
 
+113. Path Sum II
+https://leetcode.com/problems/path-sum-ii/description/
+dfs。遍历解空间，收集合法解。不用去重，比较简单。
+
+
 46. Permutations
 https://leetcode.com/problems/permutations/description/
 dfs。面试趋势是这种题目变为解决问题其中的一步。
@@ -1072,6 +1077,11 @@ https://leetcode.com/problems/unique-substrings-in-wraparound-string/description
 大神思路理解不透彻，时间复杂度O(N)，空间复杂度O(1)。一刷理解大神思路的基础上自己实现一次AC。再刷一次！但是这个解法真的是DP吗？
 
 
+97. Interleaving String
+https://leetcode.com/problems/interleaving-string/description/
+dp。二维填表，逐行填充，母问题可以转化为两个子问题。dp[i][j]表示s1的前i个字符和s2的前j个字符是否可以按照题目规定的方式组合成s3的前i+j个字符。
+
+
 221. Maximal Square
 https://leetcode.com/problems/maximal-square/description/
 一刷AC，自己的思路和大神的思路相似，我的思路不够简洁，大神使用square的边长表示square。二刷初始化参数写错，RE。
@@ -1121,6 +1131,12 @@ DP问题首先看问题能否降为子问题，如果能将问题分解为规模
 740. Delete and Earn
 https://leetcode.com/contest/weekly-contest-61/problems/delete-and-earn/
 DP，可以降为子问题，典型的0-1背包问题。要继续思考，细嚼慢咽还是很有收获的。
+
+
+115. Distinct Subsequences
+https://leetcode.com/problems/distinct-subsequences/description/
+DP。二维填表题，i-1和j-1分别是s和t的index，使用s[i-1]的匹配数为s[i-1]==t[j-1]时的dp[i-1][j-1]，不使用s[i-1]时的匹配数为dp[i-1]][j]。
+
 
 
 494. Target Sum
@@ -1280,12 +1296,12 @@ https://leetcode.com/problems/design-twitter/description/
 
 110. Balanced Binary Tree
 https://leetcode.com/problems/balanced-binary-tree/description/
-可以使用DFS和BFS，一刷使用BFS，效率非常低。二刷使用优化过的DFS，快了很多，用depth=-1表示不满足平衡性，从而实现短路计算，效率很高。三刷使用没有优化的递归算法，计算树深大量重复。四刷使用带memo的recursion，效率不如用depth=-1表示不平衡的算法高。
+dfs。一种优化可以使用memo避开一些重复计算。另一种优化转为计算树的高度的问题，高度为-1表示不平衡，可以实现短路计算。
 
 
 373. Find K Pairs with Smallest Sums
 https://leetcode.com/problems/find-k-pairs-with-smallest-sums/description/
-一刷基于heap来做的，一次AC。效率并不高，要先把所有可能的组合都存下了，然后再用堆排序找出前k个，再刷要注意提升效率。
+heap。要先把所有可能的组合都存下了，然后再用堆排序找出前k个，要注意提升效率。
 
 
 659. Split Array into Consecutive Subsequences
@@ -1312,10 +1328,6 @@ https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/
 https://leetcode.com/problems/binary-tree-preorder-traversal/description/
 二叉树先序遍历，一刷递归AC。二刷使用非递归算法一次AC，注意入栈的时先对右子树入栈，再对左子树入栈，从而保证左子树优先访问。
 
-
-113. Path Sum II
-https://leetcode.com/problems/path-sum-ii/description/
-一刷递归没考虑到节点的值可以使负的，自以为地剪枝WA，去掉之后AC。再来一次。
 
 
 200. Number of Islands
@@ -1376,7 +1388,7 @@ https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/
 
 99. Recover Binary Search Tree
 https://leetcode.com/problems/recover-binary-search-tree/description/
-一刷使用递归中序遍历的方式没有AC，不理解first更新为pre和second更新为root的过程。再刷！
+递归中序遍历。BST的中序遍历结果必定是单调递增的，如果进行替换，一定两次出现前一个比后一个大的情况，第一次出现时，被调换的那个一定是较大的那个，而第二次出现的时候被调换的那个一定是较小的那个。用全局变量first,second,pre分别记录被调换的第一个、第二个、上一次访问的元素，遍历完之后调换first和second节点的val即可。
 
 
 87. Scramble String
@@ -1610,6 +1622,11 @@ https://leetcode.com/problems/longest-univalue-path/description/
 654. Maximum Binary Tree
 https://leetcode.com/problems/maximum-binary-tree/description/
 树的递归。
+
+
+101. Symmetric Tree
+https://leetcode.com/problems/symmetric-tree/description/
+递归。对左右子树判断对称性。
 
 
 145. Binary Tree Postorder Traversal
