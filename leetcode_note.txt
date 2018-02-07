@@ -425,29 +425,28 @@ https://leetcode.com/problems/first-missing-positive/description/
 math。鸽巢原理，第一个missing的正整数的范围一定是[1, array.size() + 1]。扫描原数组，用额外的数组记录已经出现的正整数，再扫描新数组，第一个没访问过的数就是第一个missing的正整数。有更好的方法，不需要额外的空间，详见 http://www.cnblogs.com/AnnieKim/archive/2013/04/21/3034631.html  。
 
 
+15. 3Sum
+https://leetcode.com/problems/3sum/?tab=Description
+TP。
+
+16. 3Sum Closest
+https://leetcode.com/problems/3sum-closest/?tab=Description
+TP。同15，先sort，然后逐个确定i,l,r三个指针，注意去重。
+
+
 18. 4Sum
 https://leetcode.com/problems/4sum/?tab=Description
-双指针。先进行sort，然后逐个确定i,j,l,r四个指针，注意去重和剪枝(非必须)。
+TP。先进行sort，然后逐个确定i,j,l,r四个指针，注意去重和剪枝(非必须)。
 
 
 38. Count and Say
 https://leetcode.com/problems/count-and-say/description/
-双指针，将序列模仿出来即可。
-
-
-16. 3Sum Closest
-https://leetcode.com/problems/3sum-closest/?tab=Description
-和18题非常相近，而且要简单很多。仿照18题的思路写了大部分，结果最后一行更新left和right的时候走入弯道了，看了讨论区的算法有了想法。变量名写错，三目运算符写错，一刷没能AC。二刷变量n没有声明，没有AC。
-
-
-15. 3Sum
-https://leetcode.com/problems/3sum/?tab=Description
-15，16，18思路一样，但是都没有一次AC。一种算法，在不理解的情况下，至少要写5次才能懂得每一步的精髓！一刷去重条件写错，没能AC。二刷一次AC。
+TP。将序列模仿出来即可。
 
 
 11. Container With Most Water
 https://leetcode.com/problems/container-with-most-water/?tab=Description
-双指针。左右指针分别从数组两端开始，两指针夹逼过程中，矩形的长变小，只有宽增大，面积才会增大。
+TP。左右指针分别从数组两端开始，两指针夹逼过程中，矩形的长变小，只有宽增大，面积才会增大。
 
 
 535. Encode and Decode TinyURL
@@ -929,6 +928,11 @@ https://leetcode.com/problems/binary-watch/description/
 113. Path Sum II
 https://leetcode.com/problems/path-sum-ii/description/
 dfs。遍历解空间，收集合法解。不用去重，比较简单。
+
+
+124. Binary Tree Maximum Path Sum
+https://leetcode.com/problems/binary-tree-maximum-path-sum/description/
+dfs。一种方法是两个递归，小的递归找出以root为起点以任意节点为终点的所有path sum的最大值，大的递归找出以任意节点为root的子树的最大path sum作为结果；就是说遍历解空间，大递归遍历以任意节点为根的子树，对子树调用小递归，更新大递归的解。以这种方法存在大量的重复计算，效率低。另一种方法将大递归和小递归融合成一个递归，在小递归中更新全局最优解，但是返回小递归的解。
 
 
 46. Permutations
@@ -1666,12 +1670,12 @@ https://leetcode.com/problems/delete-node-in-a-bst/description/
 
 116. Populating Next Right Pointers in Each Node
 https://leetcode.com/problems/populating-next-right-pointers-in-each-node/description/
-双queue的BFS不是最优解，利用next指针空间复杂度可以降到O(1)。
+BFS。双queue实现的BFS空间复杂度为O(N)，不满足要求。利用next指针可以实现BFS，空间复杂度仅为O(1)。BFS的思想：遍历本层，链接下一层并记录下一层的起始节点。
 
 
 117. Populating Next Right Pointers in Each Node II
 https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/description/
-与116类似，均可以用双queue层序遍历的方式做，但是不是最优解，最优解是使用next指针优化层序遍历的空间复杂度,使用pre记录前一个节点，也用pre判断是否结束循环。
+BFS。同116。
 
 
 236. Lowest Common Ancestor of a Binary Tree
@@ -1712,6 +1716,11 @@ https://leetcode.com/problems/peeking-iterator/description/
 208. Implement Trie (Prefix Tree)
 https://leetcode.com/problems/implement-trie-prefix-tree/description/
 系统设计题，实现前缀树。注意要用c - 'a'而不是直接用c来索引后继节点！
+
+
+14. Longest Common Prefix
+https://leetcode.com/problems/longest-common-prefix/description/
+Trie。
 
 
 648. Replace Words

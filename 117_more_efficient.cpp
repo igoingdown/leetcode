@@ -10,9 +10,9 @@ class Solution {
 public:
     void connect(TreeLinkNode *root) {
         if (!root) return;
-        auto levelStart = root;
+        TreeLinkNode *levelStart = root, *cur, *pre;
         while (1) {
-            TreeLinkNode *cur = levelStart, *pre = NULL;
+            cur = levelStart, pre = NULL;
             while (cur) {
                 if (cur->left) {
                     if (pre) pre->next = cur->left;
