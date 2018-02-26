@@ -1055,6 +1055,13 @@ https://leetcode.com/problems/longest-increasing-subsequence/#/description
 一刷AC，使用patient sort算法，时间复杂度为O(NLOGN)，但是不太理解。二刷一次AC，仍然不太理解。三刷使用java刷，算法使用一维DP，时间复杂度为O(N^2)，效率略低，思路很简单，没AC，要注意重复数字不能计入length。patient sort是专门应对这个题的算法！和95相似，这两个问题的DP算法都有一点弯。四刷一次AC。
 
 
+32. Longest Valid Parentheses
+https://leetcode.com/problems/longest-valid-parentheses/description/
+一维DP，每一个元素记录以当前字符结尾的最长合法串的长度。
+1. s[i] == '('， dp[i] = 0；
+2. s[i] == ')'， 如果s[i - 1] == '(' 则dp[i] = dp[i- 2] + 2， 如果s[i - dp[i-1]-1] == '(', 则dp[i] = dp[i-dp[i-1]-2] + dp[i-1]+2；
+
+
 647. Palindromic Substrings
 https://leetcode.com/problems/palindromic-substrings/description/
 一刷使用DP算法AC，时间复杂度和空间复杂度都是O(N^2)。讨论区应该有更好的解法，再刷尝试！讨论区有一个经典的解决字符串中回文子串的算法叫“曼彻斯特算法”，后面要对这种类型进行总结！
