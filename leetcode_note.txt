@@ -128,6 +128,11 @@ https://leetcode.com/problems/01-matrix/description/
 一刷使用朴素的BFS一次AC，二刷加了一点trick，in-place的方式，题目要找到所有格到0格的最短距离，从0格出发不断修改到达非0格的距离，这种转换在DFS和BFS类的题目中非常常见！时间复杂度？？
 
 
+30. Substring with Concatenation of All Words
+https://leetcode.com/problems/substring-with-concatenation-of-all-words/description/
+一刷先用KMP得到每个关键字在母串中出现的所有位置，然后使用DFS得到解，这种方式会超时。二刷使用TP，使用两个map，一个map记录每个模式串的个数，另一个用于匹配，两层循环，外循环遍历母串（注意遍历的范围是0~ss - ws * l），内循环进行匹配，每次匹配都从母串中取出长为l的子串，看是否在map中，在map中则修改map，知道map为空，这时产生了一个答案，继续外循环即可。
+
+
 417. Pacific Atlantic Water Flow
 https://leetcode.com/problems/pacific-atlantic-water-flow/description/
 一刷使用相反的方式，从内到外查看一个节点是否能到达P或者A，终止条件不对，debug很久。二刷使用由外到内的方式，没理解终止条件中的mark参数的意义。
@@ -431,7 +436,7 @@ TP。
 
 16. 3Sum Closest
 https://leetcode.com/problems/3sum-closest/?tab=Description
-TP。同15，先sort，然后逐个确定i,l,r三个指针，注意去重。
+TP。同15，先sort，然后逐个确定i,l,r三个指针，注意去重。和15不同的是，内循环内部不需要再去重了。
 
 
 18. 4Sum
