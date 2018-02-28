@@ -466,7 +466,7 @@ https://leetcode.com/problems/most-frequent-subtree-sum/#/description
 
 1. Two Sum
 https://leetcode.com/problems/two-sum/description/
-multimap存储去掉一个数之和的target，遍历数组查找是否有数字。
+multimap存储去掉一个数之后的target，遍历数组查找是否有数字,注意找到的数字不能为a[i]。
 
 
 500. Keyboard Row
@@ -845,7 +845,7 @@ DP,注意处理非法输入。
 
 71. Simplify Path
 https://leetcode.com/problems/simplify-path/#/description
-string和stack相结合，面试非常容易考！一刷算法没理解透彻WA。二刷没AC，getline函数的第三个参数是一个char，表示分隔符。三刷AC。四刷自己写WA，要注意边界，每种情况的后续操作都有条件：".."要判断栈空；非"."且非".."时要判断字符串是否为空。
+stack。用vector代替stack更简单，stringstream要用熟，getline(stream, buffer, char)的第三个参数表示分隔符。最后多出来一个"/"要去掉。
 
 
 93. Restore IP Addresses
@@ -983,7 +983,7 @@ DFS。首先要排序，之后要对照解空间写递归过程。
 
 51. N-Queens
 https://leetcode.com/problems/n-queens/description/
-dfs时让col递增，逐个选择合法的row，存储path，之后将合法path转为棋局排列。注意判断冲突有三个条件（1）row1 ！= row2（2）row1 + col1 != row2 + col2 （3）row1 - col1 != row2 - col2。 
+dfs时让col递增，逐个选择合法的row，存储path，path的含义是(path[i], i)位置可以放一个Queen，之后将合法path转为棋局排列。注意判断冲突有三个条件（1）row1 ！= row2（2）row1 + col1 != row2 + col2 （3）row1 - col1 != row2 - col2。 
 
 
 52. N-Queens II
@@ -1812,7 +1812,7 @@ dfs + bfs。
 
 28. Implement strStr()
 https://leetcode.com/problems/implement-strstr/description/
-暴力匹配和KMP算法，KMP算法关键在于求解next数组。求解next数组和模式匹配过程相似，只是求解过程需要修改next数组。
+暴力匹配和KMP算法，KMP算法关键在于求解next数组。求解next数组和模式匹配过程相似，模式匹配中i,j均初始化为0；求解过程需要修改next数组,i,j初始化为0和-1，next数组初始化为全零，next[0]=-1。
 
 
 762. Prime Number of Set Bits in Binary Representation
@@ -1902,6 +1902,7 @@ BS。与其他题目不同的是本题需要在整个限制范围内部进行BS�
 775. Global and Local Inversions
 https://leetcode.com/contest/weekly-contest-69/problems/global-and-local-inversions/
 array。
+
 
 
 

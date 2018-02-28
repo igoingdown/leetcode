@@ -15,7 +15,7 @@ struct SNode
 {
 	TreeNode* n;
 	bool visited;
-	SNode(TreeNode* p): n(p), visited(false) {};
+	SNode(TreeNode *p): n(p), visited(false) {};
 };
 
 void post_order_none_recursive(TreeNode* root);

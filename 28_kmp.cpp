@@ -1,26 +1,24 @@
 class Solution {
-private:
-    void get_next(vector<int>& v, const string& str) {
-        int i = 0, j = -1;
-        v[i] = j;
-        while (i < str.size() - 1) {
-            if (j == -1 || str[i] == str[j]) v[++i] = ++j;
-            else j = v[j];
-        }
-    }
 public:
     int strStr(string haystack, string needle) {
-        int m = haystack.size(), n = needle.size();
-        if (n == 0) return 0;
-        if (m == 0) return -1;
-        vector<int> next(n, 0);
-        get_next(next, needle);
-        int i = 0, j = 0;
-        while (i < m && j < n) {
+        int ns = needle.size(), hs = haystack.size(), i = 0, j = 0;
+        if (ns == 0) return 0;
+        vector<int> next(ns, 0);
+        getNext(needle, next);
+        while (i < hs && j < ns) {
             if (j == -1 || haystack[i] == needle[j]) {
                 i++; j++;
             } else j = next[j];
         }
-        return j == needle.size() ? i - j : -1;
+        return j == ns ? i - j : -1;
+    }
+    
+    void getNext(string &s, vector<int> &next) {
+        int i = 0, j = -1, ss = s.size();
+        next[i] = j;
+        while (i < ss - 1) {
+            if (j == -1 || s[i] == s[j]) next[++i] = ++j;
+            else j = next[j];
+        }
     }
 };
