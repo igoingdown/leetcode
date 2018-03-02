@@ -466,7 +466,7 @@ https://leetcode.com/problems/most-frequent-subtree-sum/#/description
 
 1. Two Sum
 https://leetcode.com/problems/two-sum/description/
-multimap存储去掉一个数之后的target，遍历数组查找是否有数字,注意找到的数字不能为a[i]。
+multimap存储去掉一个数之后的target，遍历数组查找是否有数字,注意找到的数字不能为a[i]。因为题目的限制，也可以用map存。基于map的时间复杂度为O(N)。使用TP，要先sort，时间复杂度为O(NLOGN)。
 
 
 500. Keyboard Row
