@@ -1529,6 +1529,12 @@ https://leetcode.com/problems/reconstruct-itinerary/description/
 dfs和heap结合，时间复杂度？思想是path先添加无路可走的节点，使用链表的头插法。c++的list数据结构基于链表实现，接口很多，非常方便，相当于java中的LinkedList。分别使用c++和java刷过，但是都没有一次AC。三刷忘记了基于heap的方法，使用纯DFS加排序。两种算法的时间复杂度在搜索解空间时有较大区别，还需要认真分析。
 
 
+146. LRU Cache
+https://leetcode.com/problems/lru-cache/description/
+hashmap和list。主要利用了stl的list基于双向循环链表实现的性质及其提供的splice接口，使得插入、删除都控制在O(1)，而基于hashmap的查找、插入和删除同样是O(1)。注意put操作的实现中，不仅要修改list和相应的迭代器，还有list中的值和map。元素优先级越高在list中的位置越靠前，删除只会在list的尾部进行，而hashmap的删除操作随时随时都可以进行。
+list<pair<int, int>> items; unordered_map<int, list<pair<int, int>>::iterator> cache。cache存储key到list中key-value对的迭代器，可以脑补图形。。
+
+
 290. Word Pattern
 https://leetcode.com/problems/word-pattern/description/
 双map，一次AC。
