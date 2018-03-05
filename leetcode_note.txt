@@ -255,7 +255,7 @@ https://leetcode.com/problems/invert-binary-tree/
 
 169. Majority Element
 https://leetcode.com/problems/majority-element/
-二刷使用BM投票算法，因为初始化错误没能AC，深层原因在于没能透彻理解BM算法。
+math,鸽巢原理，投票法。同权投票众数的票数最多，一定胜出。
 
 
 100. Same Tree
@@ -311,7 +311,7 @@ https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/
 
 75. Sort Colors
 https://leetcode.com/problems/sort-colors/
-排序，暴力法，双指针。手写快排、堆排等时间复杂度都是O(NlogN)。暴力法第一次遍历记录0，1，2的数量，第二次遍历按照数量赋值上去，O(N)。双指针，O(N)。令index_0和index_2分别表示下一个0和2应该填进去的坑，外循环遍历i，内循环分别更新index_0和index_2即可。
+排序，暴力法，TP。手写快排、堆排等时间复杂度都是O(NlogN)。暴力法第一次遍历记录0，1，2的数量，第二次遍历按照数量赋值上去，O(N)。TP，O(N)。令index_0和index_2分别表示下一个0和2应该填进去的坑，外循环遍历i，内循环分别更新index_0和index_2即可。
 
 
 
@@ -542,27 +542,27 @@ https://leetcode.com/problems/insertion-sort-list/#/description
 
 143. Reorder List
 https://leetcode.com/problems/reorder-list/#/description
-挺简单的，看了就有思路，算法还不错，没有一次AC，再刷！借用上一题的思路，用双指针分离，将后段逆序，之后merge。注意merge阶段保存的是插入进来的node！
+挺简单的，看了就有思路，算法还不错，没有一次AC，再刷！借用上一题的思路，用TP分离，将后段逆序，之后merge。注意merge阶段保存的是插入进来的node！
 
 
 19. Remove Nth Node From End of List
 https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/
-双指针，先将快指针定位到n + 1处，维持快慢指针的间隔，直到快指针到了fast处，将慢指针后面的节点删除。注意要使用dummy节点作为新的头结点。
+TP，先将快指针定位到n + 1处，维持快慢指针的间隔，直到快指针到了fast处，将慢指针后面的节点删除。注意要使用dummy节点作为新的头结点。
 
 
 26. Remove Duplicates from Sorted Array
 https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
-双指针。
+TP。
 
 
 80. Remove Duplicates from Sorted Array II
 https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
-双指针。同26。遍历元素，更新len。使用count记录重复个数，只有重复个数为1或2时更新len。
+TP。同26。遍历元素，更新len。使用count记录重复个数，只有重复个数为1或2时更新len。
 
 
 27. Remove Element
 原地操作，删除数组中的固定值的元素。
-双指针。
+TP。
 
 
 142. Linked List Cycle II
@@ -576,7 +576,7 @@ https://leetcode.com/problems/linked-list-cycle-ii/#/description
 
 92. Reverse Linked List II
 https://leetcode.com/problems/reverse-linked-list-ii/#/description
-双指针，头插法。分别用pre和end记录要翻转的部分的前一个节点和后一个节点，然后使用头插法即可。
+TP，头插法。分别用pre和end记录要翻转的部分的前一个节点和后一个节点，然后使用头插法即可。
 
 
 25. Reverse Nodes in k-Group
@@ -586,22 +586,22 @@ https://leetcode.com/problems/reverse-nodes-in-k-group/description/
 
 61. Rotate List
 https://leetcode.com/problems/rotate-list/#/description
-双指针。注意要首先得出链表长度len，再将旋转次数对len取模，避免多余计算和可能的错误。
+TP。注意要首先得出链表长度len，再将旋转次数对len取模，避免多余计算和可能的错误。
 
 
 83. Remove Duplicates from Sorted List
 https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/
-双指针。用pre和cur两个指针，cur走到cur和cur->next不等，pre = cur，pre=cur->next, cur=cur->next。
+TP。用pre和cur两个指针，cur走到cur和cur->next不等，pre = cur，pre=cur->next, cur=cur->next。
 
 
 82. Remove Duplicates from Sorted List II
 https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/#/description
-双指针。同83，记录cur重复次数次，重复一次pre = cur，重复多次pre ->next = cur->next。最后cur=cur->next。
+TP。同83，记录cur重复次数次，重复一次pre = cur，重复多次pre ->next = cur->next。最后cur=cur->next。
 
 
 86. Partition List
 https://leetcode.com/problems/partition-list/#/description
-双指针。设置两个dummy node对于两部分分别进行尾插法，形成两个链表然后接上。
+TP。设置两个dummy node对于两部分分别进行尾插法，形成两个链表然后接上。
 
 
 523. Continuous Subarray Sum
@@ -735,7 +735,7 @@ https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/#/desc
 
 3. Longest Substring Without Repeating Characters
 https://leetcode.com/problems/longest-substring-without-repeating-characters/#/description
-滑动窗口，双指针。使用一个长为256的vector记录每个char上次出现的位置，用start记录当前无重复元素子串的起始位置，窗口右侧遇到一个已经访问过的char，窗口左侧（start）移到改char上次出现位置的后一位。
+滑动窗口，TP。使用一个长为256的vector记录每个char上次出现的位置，用start记录当前无重复元素子串的起始位置，窗口右侧遇到一个已经访问过的char，窗口左侧（start）移到改char上次出现位置的后一位。
 
 
 557. Reverse Words in a String III
@@ -780,7 +780,7 @@ DP解法,先判断是否为回文串，然后更新起始点，O(N^2)。另一�
 
 9. Palindrome Number
 https://leetcode.com/problems/palindrome-number/description/
-双指针或者看逆数与原数是否相等，注意本题中负数不合法。
+TP或者看逆数与原数是否相等，注意本题中负数不合法。
 
 
 385. Mini Parser
@@ -1257,6 +1257,10 @@ https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/des
 一刷使用自己的算法，没AC，看了讨论区，有大佬和我的算法相同，稍微修改了自己的代码AC。注意考虑两点，数的长度不止为1，中间过程如果stack为空，直接返回false即可。再刷一次。
 
 
+158. Min Stack
+hulu面试题。使用s,min两个栈实现，min记录串数加入s之后之后的最小值，只有最小值变化或者连续添加最小值才入min栈，出栈时只有s和min的top相同才出栈。
+
+
 103. Binary Tree Zigzag Level Order Traversal
 https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/
 BFS，deque。
@@ -1486,6 +1490,11 @@ stack，单调栈。注意存的是index，循环用while比较好，更简洁�
 stack，单调栈。注意要计算的矩形宽度不是(i - 出栈元素的index)，而是(i - 出栈后的栈顶 + 1)，这么做的原因是因为，当前元素可能是洼地，这么计算就不会少算了。
 
 
+246. Sliding Window Maximum
+https://leetcode.com/problems/sliding-window-maximum/description/
+单调递减双端队列或堆。使用deque时维护一个单调递减栈（存索引），对于每个可以生成结果的元素，将队头元素插入结果中。使用优先级队列时直接存索引，按照数字大小构建大根堆即可。注意c++实现优先级队列不好写，可以使用java实现。
+
+
 735. Asteroid Collision
 https://leetcode.com/contest/weekly-contest-60/problems/asteroid-collision/
 利用stack的特性，注意分类，debug很久！
@@ -1542,7 +1551,12 @@ https://leetcode.com/problems/contiguous-array/description/
 
 76. Minimum Window Substring
 https://leetcode.com/problems/minimum-window-substring/description/
-双指针。注意极限情况（字符串为空或者长度为1）。pattern存储模式串的字符及频数，text存储母串的窗口[start, end]中的字符及频数。初始化部分不太理解，循环的部分，每次先尝试右移start，右移start的前提是count==0(窗口已经包含目标串)，右移start可能找到更小的window。之后end++，这时text要更新，如果s[end]在pattern中，而且pattern[s[end]] >= text[s[end]]，count--。
+TP，将直通硅谷老师的思路改进如下：
+1. 分别用aMap与tMap（vector实现）存储符合条件的子串([i, ……，j])与T中的字符及频率。 
+2. for循环遍历j（每轮循环先更新j，然后固定j更新i）:
+    2a. 先将s[j]添加到aMap中
+    2b. 尝试更新count和include
+    2c. 如果[i, ……, j]满足条件,使用while循环尝试右移i,移动过程中优先更新min_len和min_start，如果不能再右移直接退出while循环。
 
 
 207. Course Schedule
@@ -1587,7 +1601,7 @@ DP，可以降为子问题，典型的0-1背包问题。要继续思考，细嚼
 
 393. UTF-8 Validation
 https://leetcode.com/problems/utf-8-validation/description/
-dfs和位运算，注意位运算的优先级没有判断符号优先级高！位运算的优先级很低！
+dfs，1，2，3，4个字符表示一个UTF8码分别对应4个子问题。注意位运算的优先级没有判断符号优先级高！位运算的优先级很低！注意递归要先设定基础情况，注意判断index不能越界！
 
 
 617. Merge Two Binary Trees
@@ -1768,12 +1782,16 @@ https://leetcode.com/problems/contains-duplicate-iii/description/
 
 382. Linked List Random Node
 https://leetcode.com/problems/linked-list-random-node/description/
-概率题，ACM校赛考过类似题型。
+概率，math。for循环每次以1/k概率将原值覆盖，(1-1/k)的概率保留原值。当链表中的数字为：{1， 2， 3， 4}时,概率分布如下：
+P(res = 1) = 1 * 1/2 * 2/3 * 3/4
+P(res = 2) =     1/2 * 2/3 * 3/4
+P(res = 3) =           1/3 * 3/4
+P(res = 4) =                 1/4
 
 
 398. Random Pick Index
 https://leetcode.com/problems/random-pick-index/description/
-同上
+同上一题，O(N)。
 
 
 560. Subarray Sum Equals K
@@ -1863,7 +1881,7 @@ https://leetcode.com/problems/regular-expression-matching/description/
 
 44. Wildcard Matching
 https://leetcode.com/problems/wildcard-matching/description/
-递归超时，DP可以AC。和10非常相似。还有更简单的方法及双指针法。
+递归超时，DP可以AC。和10非常相似。还有更简单的方法及TP法。
 https://yucoding.blogspot.com/2013/02/leetcode-question-123-wildcard-matching.html
 
 
@@ -1903,8 +1921,8 @@ BS。与其他题目不同的是本题需要在整个限制范围内部进行BS�
 https://leetcode.com/contest/weekly-contest-69/problems/global-and-local-inversions/
 array。
 
-
-
+hulu_wushen_1.1
+使用两个stack实现queue和deque，两个stack形成了一个“U”字。pop时不用每次都要把s1倒到s2,再把剩余地倒回来，需要的时候(s2为空的时候)倒一次就行。
 
 
 

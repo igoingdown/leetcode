@@ -1,26 +1,26 @@
 class Solution {
 public:
     string minWindow(string s, string t) {
-        int text[256] = {0}, pattern[256] = {0};
-        for (char c : t) pattern[c]++;
-        int start = 0, end = 0, min_start = 0, min_len = s.size() + 1, count = t.size(), n = s.size();
-        bool included = false;
-        text[s[0]]++;
-        if (pattern[s[0]] > 0) count--;
-        while (1) {
-            if (count == 0) {
-                included = true;
-                while (text[s[start]] > pattern[s[start]]) text[s[start++]]--;
-                if (min_len > end - start + 1) {
-                    min_start = start;
-                    min_len = end - start + 1;
+        int count = t.size(), min_start = 0, min_len = INT_MAX;
+        bool include = false;
+        vector<int> tMap(256), aMap(256);
+        for (char c : t) tMap[c]++;
+        for (int i = 0, j = 0; j < s.size(); j++) {
+            aMap[s[j]]++;
+            if (count > 0 && tMap[s[j]] >= aMap[s[j]]) count--;
+            if (count == 0) include = true;
+            if (include) {
+                while (i <= j) {
+                    if (min_len > j - i + 1) {
+                        min_len = j - i + 1; min_start = i;
+                    }
+                    if (tMap[s[i]] > 0 && aMap[s[i]] == tMap[s[i]]) break;
+                    else {
+                        aMap[s[i]]--; i++;
+                    }
                 }
             }
-            if (end < n - 1) {
-                text[s[++end]]++;
-                if (pattern[s[end]] >= text[s[end]]) count--;
-            } else break;
         }
-        return included ? s.substr(min_start, min_len) : "";
+        return include ? s.substr(min_start, min_len) : ""; 
     }
 };
