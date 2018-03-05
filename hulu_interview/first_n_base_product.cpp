@@ -22,17 +22,19 @@ vector<int> first_n_nums_pow(vector<int> &base, int k);
 
 int main() {
 	vector<int> base = {2, 3, 5, 7};
-	for (int i : first_n_nums_pow(base, 100)) cout << i << " ";
+	int k = 5000;
+	for (int i : first_n_nums_pow(base, k)) cout << i << " ";
 	cout << endl;
 	return 0;
 }
 
 /*
-定义了一种数，质因子只有2,3,5, 7，写个程序找到前n个这个数
+定义了一种数，质因子只有2,3,5,7。写个程序找到前k个这个数
 比如, 1, 2, 3, 4, 5, 6, 8, 9, 10这些都是
 建一个堆，堆中每个元素为vector，记录base vector中各数的指数，初始化堆中只有一个元素，所有指数均为0。
 每次出堆，先检查当前值是否重复，不重复则加入res, 并把每个指数分别加1之后加入堆中。
 这种方式不太好的地方在于当k很大时，堆中有大量用不到的元素。
+当k取5911时结果超出了int的范围。
 */
 
 
