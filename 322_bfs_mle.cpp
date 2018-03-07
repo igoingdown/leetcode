@@ -6,16 +6,13 @@ public:
         int l = 0;
         while (!q.empty()) {
             while (!q.empty()) {
-                int cur = q.front();
-                q.pop();
+                int cur = q.front(); q.pop();
                 if (cur == amount) return l;
                 for (int coin : coins) {
-                    if (coin + cur == amount) return l + 1;
-                    else if (coin + cur < amount) next.push(coin + cur);
+                    if (coin + cur <= amount) next.push(coin + cur);
                 }
             }
-            swap(q, next);
-            l++;
+            swap(q, next); l++;
         }
         return -1;
     }

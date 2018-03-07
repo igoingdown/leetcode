@@ -542,7 +542,7 @@ https://leetcode.com/problems/insertion-sort-list/#/description
 
 143. Reorder List
 https://leetcode.com/problems/reorder-list/#/description
-挺简单的，看了就有思路，算法还不错，没有一次AC，再刷！借用上一题的思路，用TP分离，将后段逆序，之后merge。注意merge阶段保存的是插入进来的node！
+TP。用快慢指针分离前段和后段链表，将后段倒置，之后将后段链表每个节点逐个插入到前段中。
 
 
 19. Remove Nth Node From End of List
@@ -1080,7 +1080,14 @@ https://discuss.leetcode.com/topic/67539/0-1-knapsack-detailed-explanation
 
 139. Word Break
 https://leetcode.com/problems/word-break/description/
-一刷没思路，使用DP算法一刷AC，时间复杂度O(N^2*M)，空间复杂度O(N),理解起来不难，二刷一次AC。
+一维DP，不用管前面，每次从后面看，将s[0, j]分成两部分s[0, i]和s[i+1, j]，如果s[i+1, j]在字典中，s[0,i]可以由词典中的词拼成，则s[0, j]也可以由字典中的词拼成。注意dp[0]=true的初始化。dp[0]对结果没有意义，但是在dp更新时有用。O(N^2*M)。
+
+
+140. Word Break II
+https://leetcode.com/problems/word-break-ii/description/
+和上题的思路相同，但是使用的是递归+MEMO，因为要把所有可能的结果都保存下来。
+f(s[0, j]) = f(s[0, i]) + word(s[i + 1, j]) 
+
 
 
 464. Can I Win
@@ -1137,11 +1144,16 @@ https://leetcode.com/problems/longest-palindromic-subsequence/description/
 
 322. Coin Change
 https://leetcode.com/problems/coin-change/description/
-一刷使用贪心剪枝的递归，WA，错在使用贪心算法剪枝并不一定得到最优解！如([10, 25, 30], 50)这个反例，因为问题要找最短的，这相当于提示用BFS。二刷使用一维DP和二维DP，二维DP并不是最优解。三刷使用DFS和BFS，均TLE。
+DP。dfs+贪心剪枝，WA，错在使用贪心算法剪枝并不一定得到最优解！如([10, 25, 30], 50)这个反例，因为问题要找最短的，这相当于提示用BFS，但是BFS会导致MLE。一维DP最简单，[0, amount]全序列DP，子问题规模就是coin的面值种类。
 
 一般面试能碰到的DP可以分为3类，第一类是一维DP（LCS， final_term 第4题），第二类和第三类都是二维DP，其中第二类的下标i和j表示的含义相同，是对称的 (Longest Palindromic Substring, Unique Binary Search Tree, Triangle) ，第三类是下表i和j的含义是不同的，不是对称的 (0-1背包问题，Best Time to Buy and Sell Stock IV)，其实还有三维DP（87. Scramble String）。刷题要精刷，每道题做完都要看discuss区找最优解！
 
 DP问题首先看问题能否降为子问题，如果能将问题分解为规模更小的问题，那就很可能用Buttom-up的DP方法。子问题可能是两个（Climb Stairs, Unique Paths, Minimum Path Sum, Delete and Earn），三个及多个（Coin Change）或者全部更小规模子问题（final term第4道题）。
+
+
+518. Coin Change 2
+https://leetcode.com/problems/coin-change-2/description/
+DP.与上题不同的是要去重，这里计算的是目标组合的个数。相比于这题，Climbing Stairs相比，这里因为计算的是合法组合数，去重更困难。思路是先控制使用的coin的面值，逐个加入新面值，改变组合数。
 
 
 740. Delete and Earn
@@ -1532,7 +1544,7 @@ dfs和heap结合，时间复杂度？思想是path先添加无路可走的节点
 146. LRU Cache
 https://leetcode.com/problems/lru-cache/description/
 hashmap和list。主要利用了stl的list基于双向循环链表实现的性质及其提供的splice接口，使得插入、删除都控制在O(1)，而基于hashmap的查找、插入和删除同样是O(1)。注意put操作的实现中，不仅要修改list和相应的迭代器，还有list中的值和map。元素优先级越高在list中的位置越靠前，删除只会在list的尾部进行，而hashmap的删除操作随时随时都可以进行。
-list<pair<int, int>> items; unordered_map<int, list<pair<int, int>>::iterator> cache。cache存储key到list中key-value对的迭代器，可以脑补图形。。
+list<pair<int, int>> items; unordered_map<int, list<pair<int, int>>::iterator> cache。cache存储key到list中key-value对的迭代器，可以脑补图形。
 
 
 290. Word Pattern
@@ -1861,7 +1873,7 @@ https://leetcode.com/problems/valid-number/description/
 
 70. Climbing Stairs
 https://leetcode.com/problems/climbing-stairs/description/
-DP和递归，递归超时，可以使用迭代替换递归
+DP和递归，递归超时，可以使用迭代替换递归，实质是斐波那契数列，计算的是合法的排列数。
 
 
 88. Merge Sorted Array
