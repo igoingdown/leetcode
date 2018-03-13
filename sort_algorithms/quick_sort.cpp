@@ -53,7 +53,7 @@ int partition_2(vector<int>& s, int l, int r) {
 
 void quick_sort_with_inline_partition(vector<int> & nums, int l, int r) {
     swap(nums[l], nums[l + (r - l) / 2]);
-    if (l < r) {
+    if (l < r) { // 递归之前要先挑出base case！
         int i = l, j = r, x = nums[l];
         while (i < j) {
             while (i < j && nums[j] >= x) j--;

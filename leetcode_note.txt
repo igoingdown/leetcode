@@ -60,7 +60,7 @@ https://leetcode.com/problems/game-of-life/
 
 287. Find the Duplicate Number
 https://leetcode.com/problems/find-the-duplicate-number/
-一刷使用二分法，但是对二分法中low和high的更新细节不清楚，多个同类型的变量一起声明时应该用逗号隔离。二分法中low与high的更新过程和后面的返回值是low还是mid又有什么关系，还需要一点时间来理解。看了大神的博客知道发现更高效的算法，就是转化为链表内部环检测的问题。链表成环检测的问题是一个经典问题，大神的博客分析非常精彩，核心思想是用快慢指针走过的路程和环长等进行推理和证明，最后一个恒等式的利用非常精彩。大神博客地址为：http://www.cnblogs.com/ccdev/archive/2012/09/06/2673618.html,二刷使用该方法一次ac。
+BS、TP。二分法没什么说的。TP将问题转化为链表内部环检测的问题。
 
 
 2. Add Two Numbers
@@ -268,19 +268,15 @@ https://leetcode.com/problems/longest-consecutive-sequence/
 HashMap，空间换时间。可以使用师姐的思路，每次遇到没访问过的元素，访问之，并查看该元素所在最长连续序列的长度，更新结果，O(N^2)。使用unordered_map记录访问元素的最大长度。当n-1和n+1都访问过后，将序列两端的元素对应的最大长度更新。因为之后序列内部的元素就不考虑了，只会考虑序列外的元素，而序列外的元素跟该序列可能链接的地方只有左右两端，这个题很像DP，注意要将该元素设为访问过的状态，要向map中添加pair，O(N)。
 
 
-126. Word Ladder II
-https://leetcode.com/problems/word-ladder-ii/
-使用BFS，代码非常复杂，这道题确实很难，通过率仅13%！需要考虑的东西很多，看大神的代码看了3天才算弄明白怎么回事。还是要动笔自己跑几个demo，这样非常有助于了解算法的精妙之处。大神的代码是用java写的，我把它翻译成了C++，也挺有难度的！一刷在XCODE上写的，debug花了不少时间，不过这样一来对C++的容器的使用更熟练了。非常关键的一点在于不能重复向队列中插入元素！二刷有两处语法错误，一个函数签名写错（少写了一个引用符号），导致返回结果为空，比起一刷进步很大，非常开心。三刷一次AC，写的时候细心一点，还是可以一次AC的！
-
-
-121. Best Time to Buy and Sell Stock
-https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
-比较简单，但是看了一会没什么思路，看了discuss区的答案。思路是遍历每天的股价，记录今日之前的最低价和最高收益，和今日股价比较更新最低价，最高收益和今天卖出的收益比较更新。一刷一次AC，但是思路不是自己的！
-
-
 120. Triangle
 https://leetcode.com/problems/triangle/
-DP，从底向上找。一刷for循环里面的变量名写错，也是醉。这种算法的空间复杂度为O(N)，还有一种空间复杂度为O(1)的算法，下次来的时候好好调研一下。
+DP。自底向上，dp[c] = min(dp[c], dp[c+1]) + triangle[r][c],O(N^2)。
+
+
+799. Champagne Tower
+DP。与120类似。
+dp[r][c] = (dp[r-1][c-1] >= 1 : dp[r-1][c-1] - 1 : 0) / 2 + (dp[r-1][c] >= 1 ? dp[r-1][c] - 1 : 0) / 2。
+
 
 
 105. Construct Binary Tree from Preorder and Inorder Traversal
@@ -360,6 +356,12 @@ https://leetcode.com/problems/jump-game-ii/description/
 DP,BFS。DP复杂度为O(N^2)，自己写的DP，遍历nums，填充并修改dp，如果dp[i]都有效，遍历[1, nums[i]]，更新dp[i+j]，这种方式会超时。师姐的dp跟我不太一样，为了得到dp[i]，遍历dp[0, i-1]，如果一步可以到i则直接跳出，师姐的dp思路才是真正的dp思路。BFS的复杂度为O(N)，从0开始，对于每层更新能到达的最远的元素，然后从那个元素开始，直到能够到最后一个元素位置。
 
 
+85. Maximal Rectangle
+https://leetcode.com/problems/maximal-rectangle/description/
+DP。把原来的1010矩阵变成直方图矩阵。外层遍历每一行，内层遍历每一列，下一行只要需要使用上一行的信息，所以可以简化为一维DP。height,left和right更新的先后顺序无所谓。关键是理解left[j]和right[j]为什么可以表示最高的（高度为height[j]）的全1向量的左右边界,原因是当matrix[i][j]为1时，left和right的更新会取当前行的边界cur和上一行的对应列的最小值(对right)或者最大值(left)。
+这个题很好，大概好在DP不算难，但是有一定的技巧上？
+
+
 55. Jump Game
 https://leetcode.com/problems/jump-game/?tab=Description
 同45。三种方法，性能由差到好。
@@ -422,7 +424,7 @@ BS。同33，只是数组中存在重复元素，[mid] = [low]时分类不明显
 
 31. Next Permutation
 https://leetcode.com/problems/next-permutation/?tab=Description
-math。先从后将降序变为升序，然后找升序中前一个数字的上界与该数字替换。
+math。先从后将降序序列反转，然后找反转序列的前一个数字在反转序列中的上界与该数字替换。
 
 
 41. First Missing Positive
@@ -507,7 +509,12 @@ discuss区c++第一名的算法非常简洁，和我思路一样。
 
 138. Copy List with Random Pointer
 https://leetcode.com/problems/copy-list-with-random-pointer/#/description
-一刷没AC，但是按照自己的思路最后还是debug成功了，再刷！！对链表的更新过程不熟悉，使用一个hash表记录已经访问过的节点。
+HashMap。使用hashmap记录就链表节点到新链表节点的对照，然后按单链表的顺序复制即可。
+
+
+133. Clone Graph
+https://leetcode.com/problems/clone-graph/description/
+graph的dfs, 注意图中可能有环，和138非常相似。
 
 
 94. Binary Tree Inorder Traversal
@@ -532,12 +539,12 @@ https://leetcode.com/problems/odd-even-linked-list/#/description
 
 148. Sort List
 https://leetcode.com/problems/sort-list/#/description
-对排序还是有点怵，没思路，看了归并排序的思路自己写没有一次AC，漏掉了merge步骤更新h。再刷！！
+TP。双指针找到中点，递归排序再merge。
 
 
 147. Insertion Sort List Add to List
 https://leetcode.com/problems/insertion-sort-list/#/description
-比较简单，一刷没AC，查找插入位置时应该从h->next开始，而不应该冲h开始！
+指针。使用dummy node作为新的头结点，将原链表的节点依次插入到新链表中。
 
 
 143. Reorder List
@@ -568,6 +575,18 @@ TP。
 142. Linked List Cycle II
 https://leetcode.com/problems/linked-list-cycle-ii/#/description
 链表成环检测。快慢指针，快指针每次走两步，慢指针每次走一步，如果两者相遇则有环。此时令快指针从头开始走，快慢指针一次走一步，知道两者相遇，相遇点就是环的起点。
+
+链表环相关问题：
+1. 是否有环（slow和fast是否相遇）
+2. 环长（相遇后以原方式继续走，到两者再次相遇（还是到碰撞点，可画函数图像），记录走过的距离即可）
+3. 环起点位置（相遇后slow从head开始，fast从碰撞点出发，一次走一步，相遇处就是连接点位置）
+4. 链表长度（基于2和3可得）
+
+引申的链表相交问题：
+根据两个链表是否成环：
+	a. 两个都没环：判断两者最后一个节点是否相同
+	b. 一个有环，一个没环，不可能相交
+	c. 两个都有环，看一个链表的碰撞点是否在另一个链表的环内，因为若相交，环一定共享！
 
 
 206. Reverse Linked List
@@ -1047,7 +1066,7 @@ DP思路是：将1到n分别作为根，左右两侧都是一个规模更小的�
 
 95. Unique Binary Search Trees II
 https://leetcode.com/problems/unique-binary-search-trees-ii/description/
-一刷递归AC，算法复杂度？？二刷使用DP，没AC，因为向n-1子树添加右子后没改回原状态。算法复杂度？？三刷使用DP算法AC。四刷使用DP没AC,思路不熟。五刷没AC，n=0边界忘记处理。
+BFS或递归。BFS从1到n，逐渐扩充res，然后遍历上一个节点加入后的res列表，在每棵树上添加新的节点（每个可能的右子树），时间复杂度O(N^2logN)~O(N^3logN)。递归将问题转化为区间的BST生成，遍历范围，选取元素为根，2个子问题分别生成所有左子树left与所有右子树right，然后按照96的思路将所有左右子树的组合得到就是结果。
 
 
 300. Longest Increasing Subsequence
@@ -1088,6 +1107,9 @@ https://leetcode.com/problems/word-break-ii/description/
 和上题的思路相同，但是使用的是递归+MEMO，因为要把所有可能的结果都保存下来。
 f(s[0, j]) = f(s[0, i]) + word(s[i + 1, j]) 
 
+
+135. Candy
+BFS或DP。BFS算法将问题转化为拓扑排序，O(N^2)的复杂度，超时。一维DP先从左向右扫描数组，与左侧元素比较更新DP，之后反向扫描数组，根据元素与右侧元素的关系修改DP。可以将空间复杂度降到O(1)，同时保留O(N)的时间复杂度。
 
 
 464. Can I Win
@@ -1280,7 +1302,7 @@ BFS，deque。
 
 150. Evaluate Reverse Polish Notation
 https://leetcode.com/problems/evaluate-reverse-polish-notation/description/
-一刷AC，注意先出栈的第二个操作数，后出栈的是第一个操作数。
+栈。注意先出栈的第二个操作数，后出栈的是第一个操作数。
 
 
 456. 132 Pattern
@@ -1393,6 +1415,11 @@ https://leetcode.com/problems/word-ladder/description/
 双queue实现BFS。
 
 
+126. Word Ladder II
+https://leetcode.com/problems/word-ladder-ii/
+BFS和DFS。先用BFS生成每个次到其前缀的map(string, set<string>)，利用这个map使用DFS生成所有路径,vector前向插入不便的情景可以使用list。
+
+
 515. Find Largest Value in Each Tree Row
 https://leetcode.com/problems/find-largest-value-in-each-tree-row/description/
 BFS，一刷AC。
@@ -1448,9 +1475,24 @@ https://leetcode.com/problems/task-scheduler/description/
 一刷没思路，讨论区使用的算法没有看出什么门道，就是找出最频繁的字母，按公式给出结果。公式是：循环体size * 循环次数(频繁字母频率-1) + 剩余的频繁字母个数。公式有特例如3个A，3个B，3个C，1个D，n=2时就不对，此时res=tasks.size()。再刷！
 
 
+121. Best Time to Buy and Sell Stock
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+DP。遍历每天的股价，记录当前（包括今天的）最低价，当前价格减当前最低价就是今天卖出的最大收益，取每天最大收益的最大值就是结果。
+
+
 122. Best Time to Buy and Sell Stock II
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
-一刷使用贪心算法，不涨就买，涨就卖。理解还是不够深入。
+贪心算法或DP。贪心算法不涨就买，涨就卖。DP使用sell和buy两个数组分别记录当天买入或卖出可能的最大收益，递推公式为：
+sell[i] = max(sell[i-1], buy[i-1] + prices[i])
+buy[i] = max(buy[i-1], sell[i-1] - prices[i])
+
+
+123. Best Time to Buy and Sell Stock III
+DP。同122，只是要用四个变量分别记录买1次，买2次，卖1次和卖2次的最大收益。
+sell2[i] = max(sell[i-1], buy2[i-1] + prices[i])
+buy2[i] = max(buy2[i], sell1[i-1] - prices[i])
+sell1[i] = max(sell[i-1], buy1[i] + prices[i])
+buy1[i] = max(buy1[i-1], -prices[i])
 
 
 714. Best Time to Buy and Sell Stock with Transaction Fee
@@ -1470,7 +1512,7 @@ https://leetcode.com/problems/dota2-senate/description/
 
 134. Gas Station
 https://leetcode.com/problems/gas-station/description/
-一刷贪心算法没写好，WA。注意遍历i过程中，用j更新i时更新到j - 1即可,for循环最后还要进行i++。效率不够高，时间空间复杂度都是O(N)。
+math。做法是遍历i（尝试以i为起点），如果i可以成为起点则返回，如果不能成为起点，则[i, j]中任意一个station都不能成为起点（sum(i,j)<0，对i和j之间的任意一个位置k，sum(i,k)>=0，故l[j]<0, sum[i,j-1]>=0且|l[j]|>sum(i,j-1)，故sum(k,j-1)<sum(i,j-1)，于是sum(k,j)<0）。直到遍历结束，如果total+tank>0，则一定有解，且start记录的i就是一个解（可以用假设法证明，如果start之后的一个station是解，由于从start可以到达该station，所以start一定也是解。而start之前不可能存在解，如果有解，则start一定是一个解）。
 
 
 179. Largest Number
@@ -1585,11 +1627,6 @@ graph拓扑排序，算法复杂度有点高，可继续优化！一次AC。
 210. Course Schedule II
 https://leetcode.com/problems/course-schedule-ii/description/
 graph拓扑排序，和上一道比仅仅是输出结果有变化。
-
-
-133. Clone Graph
-https://leetcode.com/problems/clone-graph/description/
-graph的dfs, 注意图中可能有环。
 
 
 269. Alien Dictionary
@@ -1941,6 +1978,45 @@ array。
 
 hulu_wushen_1.1
 使用两个stack实现queue和deque，两个stack形成了一个“U”字。pop时不用每次都要把s1倒到s2,再把剩余地倒回来，需要的时候(s2为空的时候)倒一次就行。
+
+
+796. Rotate String
+字符串旋转。先判断字母表是否相同，然后逐位旋转一个字符串，看是否与另一个相同，O(N^2)。要旋转字符串s的一部分s[i,j]，需要调用reverse(s.begin() + i, s.begin() + j + 1)，c++的尾迭代器都是一个字符的下一个，可以参考s.end()迭代器的使用。
+
+
+797. All Paths From Source to Target
+dfs。从指定起点出发到达指定终点。
+
+
+798. Smallest Rotation with Highest Score
+DP。一刷使用暴力法O(N^2)超时。大神的DP方法没看懂，继续攻克DP解法。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
