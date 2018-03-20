@@ -316,6 +316,11 @@ https://leetcode.com/problems/search-a-2d-matrix/?tab=Description
 BS，将矩阵降为视为一维数组用BS。index的映射关系:matrix[mid / n][mid % n]。
 
 
+240. Search a 2D Matrix II
+https://leetcode.com/problems/search-a-2d-matrix-ii/description/
+math，BS的变形，所选的哨兵为角上的元素，每次将范围缩减一行或一列，O(MAX(M,N))。暴力方法是对每一行进行BS，O(MlogN)。
+
+
 73. Set Matrix Zeroes
 https://leetcode.com/problems/set-matrix-zeroes/?tab=Description
 将第一行第一列作为标志，第一行第一列用其他标志。顺序遍历将标志置0，逆序遍历按标志将元素置0。算法复杂度高些，但是好理解。
@@ -937,11 +942,6 @@ https://leetcode.com/problems/count-complete-tree-nodes/description/
 230. Kth Smallest Element in a BST
 https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/
 一刷计算比mid值小的节点个数时逻辑出错，得了WA，再刷！用VS在本地debug就是方便，终于不用自己写很多cout了，而且快了很多！算法效率不高，follow up没看，后面再刷要注意这两个问题！二刷使用非递归的基于树的中序遍历的方法一次AC，效率高出很多，再刷一次，深入理解BST的中序遍历过程，尤其是非递归方法。
-
-
-240. Search a 2D Matrix II
-https://leetcode.com/problems/search-a-2d-matrix-ii/description/
-一刷AC，但是算法效率不高，下次刷要注意这个问题！
 
 
 401. Binary Watch

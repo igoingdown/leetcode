@@ -23,7 +23,6 @@ public:
 		s1.push(x);
 	}
 	~MyQueue(){}
-	
 };
 
 
