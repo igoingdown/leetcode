@@ -856,6 +856,9 @@ https://leetcode.com/problems/delete-operation-for-two-strings/#/description
 https://leetcode.com/problems/validate-ip-address/#/description
 一刷没AC，getline在这个题目中有妙用！题目不难，但是边界条件非常多！坑很多！再刷！
 
+811. Subdomain Visit Count
+string，map。使用istringstream和getline对字符串进行处理，用map进行存储。
+
 
 522. Longest Uncommon Subsequence II
 https://leetcode.com/problems/longest-uncommon-subsequence-ii/#/description
@@ -1513,6 +1516,10 @@ https://leetcode.com/problems/dota2-senate/description/
 134. Gas Station
 https://leetcode.com/problems/gas-station/description/
 math。做法是遍历i（尝试以i为起点），如果i可以成为起点则返回，如果不能成为起点，则[i, j]中任意一个station都不能成为起点（sum(i,j)<0，对i和j之间的任意一个位置k，sum(i,k)>=0，故l[j]<0, sum[i,j-1]>=0且|l[j]|>sum(i,j-1)，故sum(k,j-1)<sum(i,j-1)，于是sum(k,j)<0）。直到遍历结束，如果total+tank>0，则一定有解，且start记录的i就是一个解（可以用假设法证明，如果start之后的一个station是解，由于从start可以到达该station，所以start一定也是解。而start之前不可能存在解，如果有解，则start一定是一个解）。
+
+
+808. Soup Servings
+math，DP，DFS，BFS。难点在于空间和时间限制很死，而题目结果是有极限的，要发现问题的结果的规律，简化求解过程。概率随着N的增大而显著增大，概率最大值为1，这就要自己去试探边界。BFS导致TLE，DFS + memo可以接近临界情况，但是还是不够，必须发现概率随N递增规律才能解出这道题。DP要考虑空间开销，我用的二维DP，有解法优化到了一维DP。
 
 
 179. Largest Number
