@@ -30,7 +30,9 @@ public:
 			MyString tmp(s);
 			char *p = this->str;
 			this->str = tmp.str;
-			tmp.str = p;
+			tmp.str = p;   
+			// 相当于用swap来实现，避免临时对象销毁之后this的str也被销毁。
+			// 应该使用swap，让tmp被销毁时顺带销毁this之前指向的对象。
 		}
 		return *this;
 	}

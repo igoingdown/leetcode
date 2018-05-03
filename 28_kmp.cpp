@@ -1,24 +1,22 @@
 class Solution {
 public:
     int strStr(string haystack, string needle) {
-        int ns = needle.size(), hs = haystack.size(), i = 0, j = 0;
+        int hs = haystack.size(), ns = needle.size();
         if (ns == 0) return 0;
-        vector<int> next(ns, 0);
-        getNext(needle, next);
+        if (hs == 0) return -1;
+        vector<int> next(ns);
+        int i = 0, j = -1;
+        next[i] = j;
+        while (i + 1 < ns) {
+            if (j == -1 || needle[i] == needle[j]) next[++i] = ++j;
+            else j = next[j];
+        }
+        i = 0; j = 0;
         while (i < hs && j < ns) {
             if (j == -1 || haystack[i] == needle[j]) {
-                i++; j++;
+                ++i; ++j;
             } else j = next[j];
         }
         return j == ns ? i - j : -1;
-    }
-    
-    void getNext(string &s, vector<int> &next) {
-        int i = 0, j = -1, ss = s.size();
-        next[i] = j;
-        while (i < ss - 1) {
-            if (j == -1 || s[i] == s[j]) next[++i] = ++j;
-            else j = next[j];
-        }
     }
 };

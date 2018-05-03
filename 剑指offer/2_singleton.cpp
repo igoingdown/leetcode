@@ -21,7 +21,7 @@ private:
 	SingletonMode(const SingletonMode&);
 	SingletonMode& operator=(const SingletonMode &);
 
-	static SingletonMode * _instance;
+	static SingletonMode * _instance = NULL;
 };
 
 
