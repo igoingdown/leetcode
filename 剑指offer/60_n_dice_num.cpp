@@ -19,11 +19,11 @@ int main(int argc, char const *argv[])
 
 void n_dice_num(int n) {
 	vector<int> dp(n * 6 + 1);
-	for (int i = 1; i <= 6 && i <= n * 6; i++) dp[i] = 1;
-	for (int i = 2; i <= n; i++) {
-		for (int x = 6 * n; x >= 1; x--) {
+	dp[0] = 1;
+	for (int i = 1; i <= n; i++) {
+		for (int x = 6 * n; x >= 0; x--) {
 			dp[x] = 0;
-			for (int j = 1; j <= 6; j++) dp[x] += x - j >= 0 ? dp[x - j] : 0;
+			for (int j = 1; j <= 6 && x - j >= 0; j++) dp[x] += dp[x - j];
 		}
 	}
 	if (n > 0) {
