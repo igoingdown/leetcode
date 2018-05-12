@@ -273,6 +273,11 @@ https://leetcode.com/problems/find-k-th-smallest-pair-distance/description/
 Hashmap，已知距离的范围，用vector对所有的距离进行计数，最后找出第k小的距离。
 
 
+381. Insert Delete GetRandom O(1) - Duplicates allowed
+https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/description/
+Hashmap，使用Hashmap记录val到index set的映射，使用pos记录array最后一个元素的下一个位置。调用Random找随机元素
+
+
 120. Triangle
 https://leetcode.com/problems/triangle/
 DP。自底向上，dp[c] = min(dp[c], dp[c+1]) + triangle[r][c],O(N^2)。
