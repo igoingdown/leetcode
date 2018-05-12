@@ -268,6 +268,11 @@ https://leetcode.com/problems/longest-consecutive-sequence/
 HashMap，空间换时间。可以使用师姐的思路，每次遇到没访问过的元素，访问之，并查看该元素所在最长连续序列的长度，更新结果，O(N^2)。使用unordered_map记录访问元素的最大长度。当n-1和n+1都访问过后，将序列两端的元素对应的最大长度更新。因为之后序列内部的元素就不考虑了，只会考虑序列外的元素，而序列外的元素跟该序列可能链接的地方只有左右两端，这个题很像DP，注意要将该元素设为访问过的状态，要向map中添加pair，O(N)。
 
 
+719. Find K-th Smallest Pair Distance
+https://leetcode.com/problems/find-k-th-smallest-pair-distance/description/
+Hashmap，已知距离的范围，用vector对所有的距离进行计数，最后找出第k小的距离。
+
+
 120. Triangle
 https://leetcode.com/problems/triangle/
 DP。自底向上，dp[c] = min(dp[c], dp[c+1]) + triangle[r][c],O(N^2)。
