@@ -21,7 +21,6 @@ https://leetcode.com/problems/ransom-note/
 一刷for循环中的计数器i没有声明类型（int），编译错误。二刷一次ac。
 
 
-
 404. Sum of Left Leaves
 https://leetcode.com/problems/sum-of-left-leaves/
 看到这种题知道用递归，但是自己的思路很长时间没有理清。递归算法只要想明白一个节点的情况，其他节点都一样。对于每个节点如果指针为空，返回0；如果该节点飞空且左子树为叶子节点，则返回左叶子节点和右子树递归结果的和，否则返回左右子树的递归结果的和。一刷在处理左子树为叶子节点的情况时少写了val，二刷一次ac。
@@ -29,6 +28,11 @@ https://leetcode.com/problems/sum-of-left-leaves/
 还有一种写了两个函数的算法，其实差不多。一刷第一次调用dfs函数参数给错了，只有一个root节点不算左叶子结点。二刷出现不明bug……没解决！
 
 递归算法虽然简单明了，缺点是低效。尝试非递归算法，但是效率并没有提升，可能是因为递归与非递归算法用的是相同的原理：栈。一刷没有处理root为空的情况，忘记写返回语句。二刷也没有处理root为空的情况，另外没有声明类型，并且把变量名混淆。三刷处理了root为空的情况，但是处理栈顶元素的时候直接处理栈顶元素，其实应该处理栈顶元素的左右结点。四刷一次ac。
+
+
+834. Sum of Distances in Tree
+https://leetcode.com/contest/weekly-contest-84/problems/sum-of-distances-in-tree/
+用图的思路解决树的问题。先用DFS算出跟节点到其他节点的距离之和tot，并且在计算过程中连带算出以每个节点为根节点的子树的节点个数c[0, i, .., n - 1]，这两个问题都是比较简单的问题。然后DFS遍历所有节点，已知根节点到所有其他节点的距离之和的情况下，算任意一个子节点到其他所有节点的距离之和的公式是: s[v] = (s[u] - c[v]) + (n - c[v])。这是因为已知根节点u到所有其他节点的距离之和s[u]，求所有其他节点到一个u的一个子节点v的距离之和s[v]，可以将所有节点分为两部分，其中一部分是以v为根节点的子树，另一部分是整个树的其余部分。以v为根节点的子树上的每个节点到u的距离减1就是这些节点到v的距离，树的另一部分上的每个节点到u的距离+1就是他们到v的距离。反映在最终结果(距离加和)上，前一部分需要在s[u]的基础上减掉c[v]，后一部分需要在s[u]的基础上加上(n - c[v])，于是就有了上面的公式。
 
 
 409. Longest Palindrome
@@ -314,7 +318,6 @@ https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/
 递归，将左右分别flattern之后，将左侧链接到右侧。
 
 
-
 75. Sort Colors
 https://leetcode.com/problems/sort-colors/
 排序，手写快排、堆排等时间复杂度都是O(NlogN)。
@@ -404,6 +407,11 @@ https://leetcode.com/problems/spiral-matrix/?tab=Description
 math。内循环每次从(i,i)开始，向右走到(i, n - i - 1), 再向下走到(m - i - 1, n - i - 1)，再向左走到(m - i - 1, i), 最后向上走到(i + 1, i)。注意去重，即后两趟走的不能和前两趟走的不能是一条道。
 
 
+835. Image Overlap
+https://leetcode.com/contest/weekly-contest-84/problems/image-overlap/
+math。空间考察，两个大小一样的方阵A，B重叠，有四种可能的情况，固定A，B可以与A重叠左上角，左下角，右上角，右下角。遍历A的格，作为重叠的部分在A内的一角，遍历B的每个格，根据重叠部分在A的方位（四个，所以有四种情况），计算重叠的格在A中对应的行和列，判断两者的值并分别计数。
+
+
 59. Spiral Matrix II
 https://leetcode.com/problems/spiral-matrix-ii/?tab=Description
 同54。
@@ -481,6 +489,17 @@ TP，string中里指定字符最近的距离，分别从左侧和右侧使用TP�
 820. Short Encoding of Words
 https://leetcode.com/contest/weekly-contest-81/problems/short-encoding-of-words/
 TP。将后缀通过反转转为前缀，sort，出去子串长度即可，加法不好做，可以换到减法。
+
+
+833. Find And Replace in String
+https://leetcode.com/contest/weekly-contest-84/problems/find-and-replace-in-string/
+TP。在字符串中进行多次互不影响的替换，先替换前面的，再替换后面的，用一个bias记录全局的偏移量。由于sources和targets中的字符串都要按照indexes中的index的顺序排序，使用map记录string到index的映射会有问题，因为key有可能存在重复。
+
+
+689. Maximum Sum of 3 Non-Overlapping Subarrays
+https://leetcode.com/problems/maximum-sum-of-3-non-overlapping-subarrays/description/
+在数组中找出3个不重叠长度为K的连续子数组要求三个数组的和最大。BF解法，遍历三个子数组所有可能的起始位置，求和，O(KN^3)。
+DP解法，使用前缀和记录sum，这应该视作解决连续序列问题的基本方法！三个internval的出现的位置是被限定的，middle的起始位置i处于[k, n - 2k]区间，当middle限定后，left的起点限定在[0, i - 1 - k]区间，right起点限定在[i + k, n - k]区间。从左向右使用缓存记录left的局部最大值，从右向左记录right的局部最大值，当middle的起点i从左向右移动时，只要知道[0, i - 1]区间left的最大值和[i + k, n - 1]区间上right的最大值即可。
 
 
 535. Encode and Decode TinyURL
@@ -2028,7 +2047,9 @@ dfs。从指定起点出发到达指定终点。
 DP。一刷使用暴力法O(N^2)超时。大神的DP方法没看懂，继续攻克DP解法。
 
 
-
+715. Range Module
+https://leetcode.com/problems/range-module/description/
+TreeMap。使用key记录区间[start, end)的起点，value记录终点。添加、删除、查询区间都可以很快完成。TreeMap适合这个场景，floorKey和ceilingKey两个API非常好用，可以用这两个API遍历不相邻的区间。
 
 
 

@@ -1,16 +1,11 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Random;
-
-public class RandomizeCollection {
-
+class RandomizedCollection {
     private HashMap<Integer, HashSet<Integer>> map = new HashMap<>();
     private int[] arr;
     private int pos = 0;
     private Random rnd = new Random();
-
-    public RandomizeCollection() {
+    
+    /** Initialize your data structure here. */
+    public RandomizedCollection() {
         arr = new int[1];
     }
 
@@ -45,3 +40,11 @@ public class RandomizeCollection {
         return arr[rnd.nextInt(pos)];
     }
 }
+
+/**
+ * Your RandomizedCollection object will be instantiated and called as such:
+ * RandomizedCollection obj = new RandomizedCollection();
+ * boolean param_1 = obj.insert(val);
+ * boolean param_2 = obj.remove(val);
+ * int param_3 = obj.getRandom();
+ */
