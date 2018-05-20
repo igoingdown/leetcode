@@ -111,6 +111,11 @@ https://leetcode.com/problems/accounts-merge/description/
 一刷使用DFS，C++版debug很久，用python写debug方便很多，但是超时了。二刷使用并查集。上面那道题是并查集的简单题，这道属于并查集比较难的题。
 
 
+839. Similar String Groups
+https://leetcode.com/contest/weekly-contest-85/problems/similar-string-groups/
+并查集。并查集在逻辑上构造一个森林，先将每个节点都初始化为森林中的一棵树，group为N。然后遍历所有的边，对于每一条边，如果两个节点所在树的根节点不同，就将后一个节点所在的树的根节点作为前一个节点所在树的根节点的子节点，同时group减一。这样就可以解决并查集的第一类题目，就是求group的数量。另一种题目要求不仅分出group，并且要给出每个group具体有哪些节点，这时候需要遍历每个节点，找出其所在树的根节点，按根节点分离每个group即可。547，839属于第一类，721属于第二类。
+
+
 720. Longest Word in Dictionary
 https://leetcode.com/problems/longest-word-in-dictionary/description/
 Trie和DFS结合，一次AC。
@@ -379,6 +384,11 @@ DP,BFS。DP复杂度为O(N^2)，自己写的DP，遍历nums，填充并修改dp�
 85. Maximal Rectangle
 https://leetcode.com/problems/maximal-rectangle/description/
 DP。把原来的1010矩阵变成直方图矩阵。外层遍历每一行，内层遍历每一列，下一行只要需要使用上一行的信息，所以可以简化为一维DP。height,left和right更新的先后顺序无所谓。关键是理解left[j]和right[j]为什么可以表示最高的（高度为height[j]）的全1向量的左右边界,原因是当matrix[i][j]为1时，left和right的更新会取当前行的边界cur和上一行的对应列的最小值(对right)或者最大值(left)。
+
+
+837. New 21 Game
+https://leetcode.com/contest/weekly-contest-85/problems/new-21-game/
+DP。给定K,N,W，当牌的点数小于K时，从[1, W]的牌中等概论随机抽取一张，计算手牌的面值之和<=N的概率。使用pre记录当前牌面值总和之前的概率总，相当于前缀和，使用dp记录当前牌面值的概率。dp[i]最多只跟[i - 1, i-1-W]的牌面值概率的总和sum有关，dp = sum / W, 使用b记录相关牌面值的起点，使用e记录牌面值的终点。每次计算dp之后，pre[i + 1] = pre[i] + dp[i]。
 
 
 55. Jump Game
@@ -1333,6 +1343,11 @@ https://leetcode.com/problems/binary-search-tree-iterator/description/
 394. Decode String
 https://leetcode.com/problems/decode-string/description/
 一刷使用自己的算法WA。二刷使用大神的算法AC，使用两个stack分别存放“[x]”出现时之前的num和应该加到num * "[x]"之前的string，每个元素只表示一层，跟上层无关。思路理解了，但是还不熟，再刷。三刷使用递归算法，运行时间少于非递归算法，没有AC，思路不是很清楚，再刷。
+
+
+838. Push Dominoes
+https://leetcode.com/contest/weekly-contest-85/problems/push-dominoes/
+字符串题型。多米诺骨牌模拟题，一列骨牌，随机选择其中一部分使其左倾或者右倾，每秒传递一张牌的距离。根据一张牌的左右两侧的牌决定其状态，直到状态不变为止。有点BFS的意思。
 
 
 331. Verify Preorder Serialization of a Binary Tree
