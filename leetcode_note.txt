@@ -126,6 +126,11 @@ https://leetcode.com/problems/map-sum-pairs/description/
 Trie和BFS结合，一次AC。
 
 
+842. Split Array into Fibonacci Sequence
+https://leetcode.com/contest/weekly-contest-86/problems/split-array-into-fibonacci-sequence/
+DFS. 记录起始位置，分离结果，设置终止条件，将问题转为子问题。
+
+
 743. Network Delay Time
 https://leetcode.com/problems/network-delay-time/description/
 一刷使用DFS没AC，debug很久,没理解错哪了，二刷使用BFS就AC了。三刷使用Dijkstra算法，效率不如BFS，实现效率不高，可以继续改进。BFS是Dijkstra的降级。
@@ -1486,6 +1491,11 @@ https://leetcode.com/problems/word-ladder-ii/
 方法三：双向BFS，分别保存从beginWord和endWord两个方向出发的path，如果两条path能接上，则结果找到。有点tricky。
 
 
+841. Keys and Rooms
+https://leetcode.com/contest/weekly-contest-86/problems/keys-and-rooms/
+BFS. 从0号房间取钥匙，然后访问0号房间中钥匙对应的房间，以此类推，典型的BFS，一开始没反应过来！
+
+
 515. Find Largest Value in Each Tree Row
 https://leetcode.com/problems/find-largest-value-in-each-tree-row/description/
 BFS，一刷AC。
@@ -1494,6 +1504,11 @@ BFS，一刷AC。
 199. Binary Tree Right Side View
 https://leetcode.com/problems/binary-tree-right-side-view/description/
 BFS，一刷AC。
+
+
+843. Guess the Word
+https://leetcode.com/contest/weekly-contest-86/problems/guess-the-word/
+BFS，实际上是个概率题，初始情况下，随机选定一个word作为target，wordlist中的每个词与target match的character的个数分别为0,1,2,...,6。概率分布为[1 * 25**6/26**6, 6 * 25**5/ 26**6, ..., 1 * 1/ 26**6]，随机选出一个word调用guess，设该word与target match的字母数为r，从原始wordlist中过滤出所有与word match的字母数为r的单词（target一定包含在其中）组成新的wordlist，依次类推，知道找到target或者guess次数超过10次。由初始状态知道，match为0的概率最大，因此每次随机选择的word与target的match的字母数均为0的概率最大，为26 * 25 * 24 * ,..., * 17 / 26 ** 10 = 6.48e-6。因此guess一定会得到target。
 
 
 130. Surrounded Regions
