@@ -1653,6 +1653,11 @@ https://leetcode.com/problems/merge-k-sorted-lists/description/
 优先级队列，时间复杂度为O(NKlogK)，一刷没AC。头条喜欢考！priority_queue的构造函数中第三个参数不可以使用lambda表达式。
 
 
+632. Smallest Range
+https://leetcode.com/problems/smallest-range/description/
+优先级队列。和merge sort的merge算法类似，区别在于本题需要访问priority_queue的队尾元素，因此使用了map，map基于红黑树实现，自动对key进行排序，而且可以通过迭代器随时访问头和尾。保证队列中存有每个list中的最小的数，队列的队头和队尾之间的距离的最小值就是题目的解，每次更新结果后，扔掉队头，并将队头所在的list中下一个元素添加到队列中。将map作为可以两端同时访问的priority_queue的想法真是要逆天了！
+
+
 239. Sliding Window Maximum
 https://leetcode.com/problems/sliding-window-maximum/description/
 一刷使用java优先级队列（因为c++中的优先级队列没有remove接口）没有判空CE，时间复杂度为O(NlogK)，时间复杂度不够好，最好的算法是递归。
