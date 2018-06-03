@@ -944,6 +944,11 @@ https://leetcode.com/problems/simplify-path/#/description
 stack。用vector代替stack更简单，stringstream要用熟，getline(stream, buffer, char)的第三个参数表示分隔符。最后多出来一个"/"要去掉。
 
 
+844. Backspace String Compare
+https://leetcode.com/contest/weekly-contest-87/problems/backspace-string-compare/
+stack。使用将string转为stack，遇到'#'且栈非空则删除栈顶元素，否则将字符压入栈中。
+
+
 93. Restore IP Addresses
 https://leetcode.com/problems/restore-ip-addresses/#/description
 DFS。count记录ip段数，start记录起始位。
@@ -1182,6 +1187,11 @@ f(s[0, j]) = f(s[0, i]) + word(s[i + 1, j])
 
 135. Candy
 BFS或DP。BFS算法将问题转化为拓扑排序，O(N^2)的复杂度，超时。一维DP先从左向右扫描数组，与左侧元素比较更新DP，之后反向扫描数组，根据元素与右侧元素的关系修改DP。可以将空间复杂度降到O(1)，同时保留O(N)的时间复杂度。
+
+
+845. Longest Mountain in Array
+https://leetcode.com/contest/weekly-contest-87/problems/longest-mountain-in-array/
+DP。分别使用前向和后向DP记录左侧和右侧能与该元素形成单调递严格减的序列的长度，正向遍历填充前向DP，逆向遍历填充后向DP，最后结合两个DP结果给出答案。
 
 
 464. Can I Win
@@ -1666,6 +1676,11 @@ https://leetcode.com/problems/smallest-range/description/
 优先级队列。和merge sort的merge算法类似，区别在于本题需要访问priority_queue的队尾元素，因此使用了map，map基于红黑树实现，自动对key进行排序，而且可以通过迭代器随时访问头和尾。保证队列中存有每个list中的最小的数，队列的队头和队尾之间的距离的最小值就是题目的解，每次更新结果后，扔掉队头，并将队头所在的list中下一个元素添加到队列中。将map作为可以两端同时访问的priority_queue的想法真是要逆天了！
 
 
+846. Hand of Straights
+https://leetcode.com/contest/weekly-contest-87/problems/hand-of-straights/
+map。跟上面的那道题有异曲同工之妙，因为map基于红黑树实现，默认根据key的大小排序！用map记录数组中数字的频率，每组的起点一定是当前map的key的起点，每组要消耗一个数，消耗完就将其移除这个key。只要出现一次key的缺失，则失败！
+
+
 239. Sliding Window Maximum
 https://leetcode.com/problems/sliding-window-maximum/description/
 一刷使用java优先级队列（因为c++中的优先级队列没有remove接口）没有判空CE，时间复杂度为O(NlogK)，时间复杂度不够好，最好的算法是递归。
@@ -1855,6 +1870,11 @@ BFS。双queue实现的BFS空间复杂度为O(N)，不满足要求。利用next�
 117. Populating Next Right Pointers in Each Node II
 https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/description/
 BFS。同116。
+
+
+847. Shortest Path Visiting All Nodes
+https://leetcode.com/contest/weekly-contest-87/problems/shortest-path-visiting-all-nodes/
+BFS + DP。使用2进制的方法记录每个节点是否被访问，相当于中间状态。每次访问一条边，如果经过头结点的状态到达尾节点的距离大于经过头结点的状态到头结点 + 1，则更新经过头结点状态到达尾节点的距离。
 
 
 236. Lowest Common Ancestor of a Binary Tree
