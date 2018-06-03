@@ -511,6 +511,14 @@ https://leetcode.com/contest/weekly-contest-84/problems/find-and-replace-in-stri
 TP。在字符串中进行多次互不影响的替换，先替换前面的，再替换后面的，用一个bias记录全局的偏移量。由于sources和targets中的字符串都要按照indexes中的index的顺序排序，使用map记录string到index的映射会有问题，因为key有可能存在重复。
 
 
+214. Shortest Palindrome
+https://leetcode.com/problems/shortest-palindrome/description/
+TP。把原始串补成回文字符串的两个极限情况是：
+1. 以第一个字符为中心，将后面的字符串补齐
+2. 原始串就是回文串（中心是原始串的中点），不需要补齐
+这样就可以分析出来原始串补齐之后形成的回文串的中点的位置范围，从原始串的中点开始，向左遍历找到第一个可以通过补全就能得到回文串的位置即可。
+
+
 689. Maximum Sum of 3 Non-Overlapping Subarrays
 https://leetcode.com/problems/maximum-sum-of-3-non-overlapping-subarrays/description/
 在数组中找出3个不重叠长度为K的连续子数组要求三个数组的和最大。BF解法，遍历三个子数组所有可能的起始位置，求和，O(KN^3)。
