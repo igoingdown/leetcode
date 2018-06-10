@@ -396,6 +396,11 @@ https://leetcode.com/contest/weekly-contest-85/problems/new-21-game/
 DP。给定K,N,W，当牌的点数小于K时，从[1, W]的牌中等概论随机抽取一张，计算手牌的面值之和<=N的概率。使用pre记录当前牌面值总和之前的概率总，相当于前缀和，使用dp记录当前牌面值的概率。dp[i]最多只跟[i - 1, i-1-W]的牌面值概率的总和sum有关，dp = sum / W, 使用b记录相关牌面值的起点，使用e记录牌面值的终点。每次计算dp之后，pre[i + 1] = pre[i] + dp[i]。
 
 
+730. Count Different Palindromic Subsequences
+https://leetcode.com/problems/count-different-palindromic-subsequences/description/
+DP。二维DP记录每个子串中不重复且合法的子序列的个数，先固定长度，然后遍历起点。需要更深入地理解！
+
+
 55. Jump Game
 https://leetcode.com/problems/jump-game/?tab=Description
 同45。三种方法，性能由差到好。
