@@ -492,7 +492,9 @@ math。先从后将降序序列反转，然后找反转序列的前一个数字�
 
 
 41: First Missing Positive
+
 https://leetcode.com/problems/first-missing-positive/description/
+
 math。鸽巢原理，第一个missing的正整数的范围一定是$[1, array.size() + 1]$。扫描原数组，用额外的数组记录已经出现的正整数，再扫描新数组，第一个没访问过的数就是第一个missing的正整数。有更好的方法，不需要额外的空间，详见 http://www.cnblogs.com/AnnieKim/archive/2013/04/21/3034631.html  。
 
 
