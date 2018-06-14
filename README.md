@@ -451,6 +451,16 @@ https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/
 递归，将左右分别flattern之后，将左侧链接到右侧。
 
 
+761: Special Binary String
+
+https://leetcode.com/problems/special-binary-string/description/
+
+* BFS:每次选字符串中两个special binary substring交换，如果结果没有访问过就将其放入队列中，这种解法是我自己的解法，有大量重复计算，超时。
+* 递归：题目中暗藏两个规律:
+	1. 所有special binary string均以1开头，以0结尾
+	2. 允许交换两个相邻的special binary substring，可以得到所有special binary substring的全排列，因此最大的special binary string就是所有special binary substring按递减排序得到的结果。
+	分析得知以上两点就容易想到递归算法，将special binary string分成尽可能多的special binary substrings,对每个special binary substring进行递归得到special binary substring的最大值，然后将按降序排序后的special binary substrings连接起来就是要求的结果。
+
 75: Sort Colors
 
 https://leetcode.com/problems/sort-colors/
