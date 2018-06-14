@@ -12,6 +12,7 @@ tags:
   - 算法
 ---
 
+
 463: Island Perimeter
 
 https://leetcode.com/problems/island-perimeter/
@@ -2436,7 +2437,7 @@ https://leetcode.com/problems/house-robber-iii/description/
 
 https://leetcode.com/problems/maximum-width-of-binary-tree/description/
 
-一刷使用BFS，当树的高度过大时，内存溢出。二刷基于BFS，利用满二叉树的性质（子节点和父节点index之间的关系，$左子index = 父节点index * 2$， $右子index = 父节点index * 2 + 1$）AC。
+一刷使用BFS，当树的高度过大时，内存溢出。二刷基于BFS，利用满二叉树的性质（子节点和父节点index之间的关系，$left child node index = parent node index * 2$， $right child node index = parent node index * 2 + 1$。
 
 
 129: Sum Root to Leaf Numbers
@@ -2768,6 +2769,7 @@ DP。一刷使用暴力法O(N^2)超时。大神的DP方法没看懂，继续攻�
 https://leetcode.com/problems/range-module/description/
 
 TreeMap。使用key记录区间[start, end)的起点，value记录终点。添加、删除、查询区间都可以很快完成。TreeMap适合这个场景，floorKey和ceilingKey两个API非常好用，可以用这两个API遍历不相邻的区间。
+
 
 
 
