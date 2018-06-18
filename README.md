@@ -727,6 +727,12 @@ TP。把原始串补成回文字符串的两个极限情况是：
 这样就可以分析出来原始串补齐之后形成的回文串的中点的位置范围，从原始串的中点开始，向左遍历找到第一个可以通过补全就能得到回文串的位置即可。
 
 
+855: Exam Rooms
+
+https://leetcode.com/contest/weekly-contest-89/problems/exam-room/
+
+TP。 用set记录已经被占领的座位，由于set基于红黑树实现，可以对元素默认进行升序排序。每次有新的人要加入考场，遍历set，找相邻且距离最远的两个元素，第一个元素和最后一个元素单独考虑，因为他们只有一个边界，其余元素都有两个边界。
+
 689: Maximum Sum of 3 Non-Overlapping Subarrays
 
 https://leetcode.com/problems/maximum-sum-of-3-non-overlapping-subarrays/description/
