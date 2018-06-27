@@ -610,6 +610,12 @@ https://leetcode.com/contest/weekly-contest-84/problems/image-overlap/
 math。空间考察，两个大小一样的方阵A，B重叠，有四种可能的情况，固定A，B可以与A重叠左上角，左下角，右上角，右下角。遍历A的格，作为重叠的部分在A内的一角，遍历B的每个格，根据重叠部分在A的方位（四个，所以有四种情况），计算重叠的格在A中对应的行和列，判断两者的值并分别计数。
 
 
+858: Mirror Reflection
+
+https://leetcode.com/contest/weekly-contest-90/problems/mirror-reflection/
+
+math。全镜面正方形二维房间，一束光从一角照进来，控制入射角度（q控制）和房间的长度（p），观察这束光第一次照到角上会最先照到另外三个角的哪一个。这是一个非常好的初中物理题。其实只要沿一个方向（上方）按光的反射定律无限延伸即可，如果想到最简单的照到其它三个角的方式，后面就容易了。于是问题变为一个数学问题，一个点每次向上跑q，看什么时候能达到$n * q % p == 0$的条件，根据n来判断是哪个角。
+
 59: Spiral Matrix II
 
 https://leetcode.com/problems/spiral-matrix-ii/?tab=Description
@@ -2236,8 +2242,19 @@ https://leetcode.com/problems/sliding-window-maximum/description/
 
 https://leetcode.com/problems/find-median-from-data-stream/description/
 
-分别使用小根堆和大根堆存储较大的部分和较小的部分，控制大根堆的size = 小根堆的size或者小根堆的size + 1。一刷没处理好插入元素的大小和大根堆小根堆的size的限制关系，WA。
+Heap。分别使用小根堆和大根堆存储较大的部分和较小的部分，控制大根堆的size = 小根堆的size或者小根堆的size + 1。一刷没处理好插入元素的大小和大根堆小根堆的size的限制关系，WA。
 
+
+857: Minimum Cost to Hire K Workers
+
+https://leetcode.com/contest/weekly-contest-90/problems/minimum-cost-to-hire-k-workers/
+
+Heap。这是个非常好的题目！场景是给公司制定招人策略，给定一组候选人，每个员工有两个参数：quality和期望最低wage。要求招K个人，招的人的wage按quality的比例给，要求招人花费的钱最少。直观感受是对每个员工按`wage/quality`升序排序，因为还钱最少，肯定要招性价比最高的员工。但是由于所有员工的实际按招的人的quality的比例给，如果招了一个quality非常高，同时期望最低wage也很高的人，那这组解就不一定是最优解。于是我们可以得到总体的招人原则：
+1. 招的人的`wage/quality`尽可能低（要求候选人对自己的认识足够清晰）
+
+2. 招的人quality不能太高（招尽可能平庸的人！）
+
+于是解法就比较清晰了，构建quality的大根堆q，遍历按wage/quality升序排序后的候选人（包括wage和quality属性）列表，每次将当前候选人插入q中，用sum记录当前q中候选人quality的总数，当q中候选人的个数为K时，招这K个人要花的钱是sum * 当前候选人的`wage/quality`，这是因为当前候选人的`wage/quality`一定是最大的。当q的候选人数大于K(为K+1)时，先把quality最大的候选人出队列(不要他了，因为他太优秀了)，然后按前一种情况处理即可。
 
 332: Reconstruct Itinerary
 
