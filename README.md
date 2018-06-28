@@ -1741,6 +1741,14 @@ https://leetcode.com/problems/find-bottom-left-tree-value/description/
 一刷使用DFS暴力递归AC，效率低。时、空间复杂度O(L^2)，因为递归深度为L，查深度和查最左下元素都要递归到最底层。再刷要使用高效解法。二刷使用大神的DFS解法，不太理解，再刷！
 
 
+856: Score of Parentheses
+
+https://leetcode.com/contest/weekly-contest-90/problems/score-of-parentheses/
+
+递归。按指定规则计算括号对的分数，递归思路比较容易，用栈找第一个左括号与最左侧匹配的右括号，将原括号组分为左右两部分，并对两个子问题进行递归处理。
+
+
+
 693: Binary Number with Alternating Bits
 
 https://leetcode.com/problems/binary-number-with-alternating-bits/description/
