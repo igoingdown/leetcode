@@ -41,6 +41,7 @@ https://leetcode.com/problems/ransom-note/
 就是用后一个串合成前一个串，条件是后一个串的每个字符只能用一次，这种题都可以利用c++的字符和int型转换来构建一个长为26的数组，每个数组表示一个key（前提是全大写或者全小写）。
 一刷for循环中的计数器i没有声明类型（int），编译错误。二刷一次ac。
 
+
 404: Sum of Left Leaves
 
 https://leetcode.com/problems/sum-of-left-leaves/
@@ -180,6 +181,7 @@ Trie和BFS结合，一次AC。
 
 
 842: Split Array into Fibonacci Sequence
+
 https://leetcode.com/contest/weekly-contest-86/problems/split-array-into-fibonacci-sequence/
 
 DFS. 记录起始位置，分离结果，设置终止条件，将问题转为子问题。
@@ -1839,8 +1841,17 @@ hulu面试题。使用s,min两个栈实现，min记录串数加入s之后之后�
 
 https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/
 
-BFS，deque。
+BFS。“之”字层序遍历二叉树。
 
+使用双deque实现BFS时，根据奇偶层的处理区别可以分为两种方案：当前层为cur，下一层为next，
+* 方案一: 
+	1. 奇数层: 读cur时从头读，写next时从尾写，先写左子树再写右子树
+	2. 偶数层: 读cur时从尾读，写next时从头写，先写右子树再写左子树 
+* 方案二:
+	1. 奇数层: 读cur时从尾读，写next时从头写，先写左子树再写右子树
+	2. 偶数层: 读cur时从头读，写next时尾头写，先写右子树再写左子树 
+
+也可以使用双Stack实现BFS。奇数层先入左子再入右子，偶数层先入右子再入左子。基于Stack的方法更简单。
 
 150: Evaluate Reverse Polish Notation
 
