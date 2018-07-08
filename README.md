@@ -603,8 +603,15 @@ sort。使用lambda表达式进行sort，然后将每个元素插到`res.begin()
 54: Spiral Matrix
 
 https://leetcode.com/problems/spiral-matrix/?tab=Description
+
 math。内循环每次从$(i,i)$开始，向右走到$(i, n - i - 1)$, 再向下走到$(m - i - 1, n - i - 1)$，再向左走到$(m - i - 1, i)$, 最后向上走到$(i + 1, i)$。注意去重，即后遍历一圈的过程中，前后两次沿相反的方向遍历的不能是同一行或者同一列！
 
+
+59: Spiral Matrix II
+
+https://leetcode.com/problems/spiral-matrix-ii/?tab=Description
+
+同54。
 
 835: Image Overlap
 https://leetcode.com/contest/weekly-contest-84/problems/image-overlap/
@@ -618,15 +625,20 @@ https://leetcode.com/contest/weekly-contest-90/problems/mirror-reflection/
 
 math。全镜面正方形二维房间，一束光从一角照进来，控制入射角度（q控制）和房间的长度（p），观察这束光第一次照到角上会最先照到另外三个角的哪一个。这是一个非常好的初中物理题。其实只要沿一个方向（上方）按光的反射定律无限延伸即可，如果想到最简单的照到其它三个角的方式，后面就容易了。于是问题变为一个数学问题，一个点每次向上跑q，看什么时候能达到$n * q % p == 0$的条件，根据n来判断是哪个角。
 
-59: Spiral Matrix II
 
-https://leetcode.com/problems/spiral-matrix-ii/?tab=Description
-同54。
+867: Prime Palindrome
+
+https://leetcode.com/contest/weekly-contest-92/problems/prime-palindrome/
+
+math。给定整数N，找出一个回文质数p，要求p是满足$p >= N$的第一个回文质数。 由于题目条件$N < 10^8$而且N为`int`型，因此可以遍历$i \in [0, 10000]$，作为回文数的左侧部分，然后通过`mirror`函数，将右侧补全。补全的过程中可以在左右两部分的中间添加一位数字$j \in [-1, 9]$($j=-1$表示不添加)。如果`mirror`函数的结果p满足$p >= N$且p是回文数，则答案正确。
+
+上面的解法有个小trick，仔细分析`mirror`函数的遍历过程会发现，每次遍历的时候都是先产生一个$2k$位的整数，然后再产生10个$2k+1$位的整数，这就产生了一个问题:为什么先遍历大的整数，再遍历小的整数结果却不会出错？其实这是因为符合模式为`xx`(`x`表示一个整数)的质数只有11一个，这个结论需要证明！
 
 
 48: Rotate Image
 
 https://leetcode.com/problems/rotate-image/?tab=Description
+
 math。矩阵顺时针旋转，先将矩阵进行上下翻转(上换到下)，然后对角互换(左下换到左上)，于是左上就换到了右上，左下换到了左上，右上换到了右下，右下换到了左下，实现了顺时针旋转90度。对于逆时针旋转先上下翻转，然后左上与右下互换。
 
 
@@ -2052,6 +2064,13 @@ https://leetcode.com/problems/surrounded-regions/description/
 dfs。不能从所有单元格出发进行dfs或者bfs，而是从四条边界出发使用dfs或者bfs即可。、
 
 
+865: Shortest Path to Get All Keys
+
+https://leetcode.com/problems/shortest-path-to-get-all-keys/description/
+
+BFS。和Maze那一系列的题目非常相似，尤其是MazeII。给定一个由二维字符数组`grid`表示的区域，`'@'`表示起点，`'#'`表示墙，`'.'`表示空白，小写字母表示钥匙，与小写字母对应的大写字母表示锁。计算从起点出发到集齐所有钥匙走的最短步数。我的BFS方法中使用Queue记录需要遍历的状态，每个状态包括当前位置与当前拥有的钥匙串，这个状态是唯一的，可以用visited集合记录已经遍历过的状态，BFS直到状态遍历完或者集齐所有的钥匙为止，BFS的层数就是结果。我的算法效率不高，TLE了。
+
+
 301: Remove Invalid Parentheses
 
 https://leetcode.com/problems/remove-invalid-parentheses/description/
@@ -2530,7 +2549,15 @@ BFS + DP。使用2进制的方法记录每个节点是否被访问，相当于�
 
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/
 
-LCA，非常经典，一次AC。O(N)时间复杂度，递归找path，选出最后一个相同节点。
+两个节点的LCA，非常经典！O(N)时间复杂度，递归找path，选出最后一个相同节点，这是最蠢的方法！
+
+
+
+866: Smallest Subtree with all the Deepest Nodes
+
+https://leetcode.com/contest/weekly-contest-92/problems/smallest-subtree-with-all-the-deepest-nodes/
+
+dfs，多个节点的LCA。递归找path，选出最后一个相同节点，在这个场景下这个解法还不错。
 
 
 297: Serialize and Deserialize Binary Tree
