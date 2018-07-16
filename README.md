@@ -2143,8 +2143,19 @@ https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/descrip
 
 https://leetcode.com/problems/non-overlapping-intervals/description/
 
-与452非常相似，但是并没有想到怎么做，看Wikipedia（https://en.wikipedia.org/wiki/Interval_scheduling#Interval_Scheduling_Maximization）也没看懂，真菜！对于贪心还是不太理解，再刷。
+与452非常相似，但是并没有想到怎么做，看[Wikipedia](https://en.wikipedia.org/wiki/Interval_scheduling#Interval_Scheduling_Maximization)没看太明白，对于贪心还是不太理解，再刷。
 
+
+870: Advantage Shuffle
+
+https://leetcode.com/contest/weekly-contest-93/problems/advantage-shuffle/
+
+贪心算法。给定两个大小相同的数组`a`和`b`，随意调整`a`中元素的顺序，找出一种排列顺序使同位置上的`a`中元素比`b`中元素大的个数最多。分析题目的测试用例的数据规模，不能用DFS，结合之前参加校级ACM决赛的经验，这个题是有迹可循的，当时的解决方法也是贪心算法。
+
+* 我的思路：先将`b`排序，然后遍历`a`，为`a`中每个元素$x$在`b`中找出第一个比$x$小且没有被分配过的元素$y$。这种做法比较低效,较好状况下时间复杂度为$O(N\log N)$， 这种情况下每次BS找到的$y$都是距离$x$最近的，最坏情况下的时间复杂度为$O(N^2)$。
+	* 最好情况下的例子: `a`=$[12,24,8,32]$，`b`=$[13,25,32,11]$
+	* 最差情况下的例子: `a`=$[15,16,17,18]$，`b`=$[13,12,14,11]$，这种情况下每个`a`中的每个数字找到的都是距离自己最远的，需要往回走继续找。
+* 最优思路：将`a`和`b`同时降序排序，记录`b`中元素原始的位置。然后使用滑动窗口方式，遍历`a`和`b`，分别用`i`和`j`来记录`a`和`b`中下次匹配的起始位置，`j`一定会比`i`率先到达终点，这表示`a`中能在`b`找到对应元素$y$的$x$都已经找到对应的元素(距离最近的较小的元素)了，然后`j`从0重新开始，`i`不变，继续滑动窗口遍历，将`b`中没有用掉的$y$随意塞给`a`中的$x$。这其实是一种TP算法，但是算法的思想有一点贪心在。
 
 621: Task Scheduler
 
