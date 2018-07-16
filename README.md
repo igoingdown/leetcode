@@ -753,6 +753,12 @@ https://leetcode.com/contest/weekly-contest-89/problems/exam-room/
 
 TP。 用set记录已经被占领的座位，由于set基于红黑树实现，可以对元素默认进行升序排序。每次有新的人要加入考场，遍历set，找相邻且距离最远的两个元素，第一个元素和最后一个元素单独考虑，因为他们只有一个边界，其余元素都有两个边界。
 
+868: Binary Gap
+
+https://leetcode.com/contest/weekly-contest-93/problems/binary-gap/
+
+TP。找一个正整数`N`的二进制表示中，距离最远的两个`1`之间的距离。之间利用`bitset`将问题转化为TP问题。
+
 689: Maximum Sum of 3 Non-Overlapping Subarrays
 
 https://leetcode.com/problems/maximum-sum-of-3-non-overlapping-subarrays/description/
@@ -1753,6 +1759,15 @@ https://leetcode.com/problems/employee-importance/description/
 https://leetcode.com/problems/find-bottom-left-tree-value/description/
 
 一刷使用DFS暴力递归AC，效率低。时、空间复杂度O(L^2)，因为递归深度为L，查深度和查最左下元素都要递归到最底层。再刷要使用高效解法。二刷使用大神的DFS解法，不太理解，再刷！
+
+
+869: Reordered Power of 2
+
+https://leetcode.com/contest/weekly-contest-93/problems/reordered-power-of-2/
+
+DFS。将一个整数$N$的各位上的数字打乱，将这些数字重新组合，是否存在一个组合能使组合得到的数字$n$(0不可以出现在首位)是$2$的幂。这是个典型的DFS的题目，用一个map记录数字到频率的映射，然后DFS遍历所有组合，在DFS的过程中判断$n$是否是$2$的幂，判断依据很简单，当且仅当$n$的二进制表示中只有一位为1时，$n$为$2$的幂。如果$n$是$2$的幂，则立即中断DFS。
+
+我一开始的解法设计是先用DFS遍历出所有可能的组合，再从中查找是否有满足条件的组合，这种做法的时间和空间复杂度都极高，以至于TLE了。
 
 
 856: Score of Parentheses
