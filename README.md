@@ -2181,6 +2181,7 @@ buy[i] = max(buy[i-1], sell[i-1] - prices[i])
 
 
 123: Best Time to Buy and Sell Stock III
+
 DP。同122，只是要用四个变量分别记录买1次，买2次，卖1次和卖2次的最大收益。
 $$sell2[i] = max(sell[i-1], buy2[i-1] + prices[i])$$
 $$buy2[i] = max(buy2[i], sell1[i-1] - prices[i])$$
@@ -2213,8 +2214,16 @@ https://leetcode.com/problems/dota2-senate/description/
 
 https://leetcode.com/problems/gas-station/description/
 
-math。做法是遍历i（尝试以i为起点），如果i可以成为起点则返回，如果不能成为起点，则[i, j]中任意一个station都不能成为起点（sum(i,j)<0，对i和j之间的任意一个位置k，sum(i,k)>=0，故l[j]<0, sum[i,j-1]>=0且|l[j]|>sum(i,j-1)，故sum(k,j-1)<sum(i,j-1)，于是sum(k,j)<0）。直到遍历结束，如果total+tank>0，则一定有解，且start记录的i就是一个解（可以用假设法证明，如果start之后的一个station是解，由于从start可以到达该station，所以start一定也是解。而start之前不可能存在解，如果有解，则start一定是一个解）。
+math。在一个单向成环的道路(类比单链表成一个完整环)上有$N$个加油站，对于每个加油站$G_i$，有两个重要参数:分别是加油站储油量$g_i$和从第$i$个加油站到第$i+1$个加油站需要消耗的油量$c_i$，给定一辆油箱无限大的卡车，问从哪个加油站出发可以绕环路一圈回到起点。
 
+定义$l_i = g_i - c_i$，遍历每个加油站$G_i$(尝试以$G_i$为起点)，如果$G_i$可以成为起点则返回$i$，如果$G_i$不能成为起点，即从$G_i$出发最远只能到达$G_j$，则$[G_i, G_{i+1}, \cdots ,G_j]$中任意一个加油站都不能成为起点，这是因为：
+
+1. 对于$[G_i, G_{i+1}, \cdots ,G_j]$的任意一个加油站$G_k$，有$\sum_{k=i}^j l_k < 0$和$\sum_{x=i}^k l_x \geq 0$
+2. 根据**1**和**2**，有$l_j < 0$，$\sum_{k=i}^{j-1} l_k \geq 0$和$|l[j]|> \sum_{k=i}^{j-1} l_k$
+3. 故$\sum_{x=k}^{j-1} l_x < \sum_{x=i}^{j-1} l_k$
+4. 于是$\sum{x=k}^j l_x<0$，即从$G_k$不可能到达$G_j$。
+
+重复以上过程直到遍历结束，如果$\sum_{i=1}^N l_i >= 0$，则一定有解，且最后一次选中的作为起点的$G_i$就是一个解。
 
 808: Soup Servings
 math，DP，DFS，BFS。难点在于空间和时间限制很死，而题目结果是有极限的，要发现问题的结果的规律，简化求解过程。概率随着N的增大而显著增大，概率最大值为1，这就要自己去试探边界。BFS导致TLE，DFS + memo可以接近临界情况，但是还是不够，必须发现概率随N递增规律才能解出这道题。DP要考虑空间开销，我用的二维DP，有解法优化到了一维DP。
@@ -2540,7 +2549,7 @@ https://leetcode.com/problems/house-robber-iii/description/
 
 https://leetcode.com/problems/maximum-width-of-binary-tree/description/
 
-一刷使用BFS，当树的高度过大时，内存溢出。二刷基于BFS，利用满二叉树的性质（子节点和父节点index之间的关系，$left child node index = parent node index * 2$， $right child node index = parent node index * 2 + 1$。
+一刷使用BFS，当树的高度过大时，内存溢出。二刷基于BFS，利用满二叉树的性质（子节点和父节点index之间的关系，$left\_child\_node\_index = parent\_node\_index * 2$， $right\_child\_node\_index = parent\_node\_index * 2 + 1$。
 
 
 129: Sum Root to Leaf Numbers
@@ -2572,9 +2581,18 @@ BFS。同116。
 
 
 847: Shortest Path Visiting All Nodes
+
 https://leetcode.com/contest/weekly-contest-87/problems/shortest-path-visiting-all-nodes/
 
 BFS + DP。使用2进制的方法记录每个节点是否被访问，相当于中间状态。每次访问一条边，如果经过头结点的状态到达尾节点的距离大于经过头结点的状态到头结点 + 1，则更新经过头结点状态到达尾节点的距离。
+
+871: Minimum Number of Refueling Stops
+
+https://leetcode.com/problems/minimum-number-of-refueling-stops/description/
+
+BFS。题目的场景和**leetcode 134**很像，给定一辆油箱无限大的卡车，初始油量为$G$，需要前往离起点$S$距离为$T$的目的地$D$，起点和终点之间有若干加油站，加油站$G_i$到起点的距离和储油量分别记为$d_i和g_i$，求从起点到终点需要加油的最少次数。
+
+分析可知这是个BFS的题目，遍历解空间一定可以得到解，我用双queue实现了BFS，但是很遗憾空间复杂度过高，内存超了。分析可知这个题目有一个性质在提示我们可以用`priority_queue`代替`queue`实现BFS，这个性质就是：在BFS的过程中，解空间中一个父节点的所有子节点是有优劣比较的，因为目标是要加油的次数最少，我们必须要优先选择储油量最大的子节点(加一次油可以撑到更远的距离)，只有当储油量最大的子节点的储油量不足够到达下一个加油站的时候，才会继续选择储油量更小的节点，就是说最好的情况是加一次(选择储油量最大的子节点)就可以撑到下一个加油站，最坏的情况是所有子节点都选中了，即上次加油后，沿途的每个加油站都停下加油，结果还是撑不到下一个加油站，这种情况下就必然无法到达目的地了！因此可以用`priority_queue`来实现BFS。每次访问一个父节点，将所有可能的子节点都加入`priority_queue`中，选择储油量最大的子节点，更新这次加油后能到达的最远距离$d$和加油次数$c$，直到$d \geq T$为止。`priority_queue`实际保存了从起点到当前位置为止，沿途没有加过油的加油站按储油量由大到小排序的优先级队列。
 
 
 236: Lowest Common Ancestor of a Binary Tree
