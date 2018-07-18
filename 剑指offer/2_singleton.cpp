@@ -7,7 +7,7 @@ using namespace std;
 class SingletonMode {
 public:
 	// lazy方式，先不生成对象，只有显式调用instance()时才会生成对象，对于比较占内存的对象较为友好。
-	static SingletonMode& instance() { // 返回引用而不是指针是防止外部操作使用delete释放对象
+	static SingletonMode& instance() { // 返回引用而不是指针可以防止外部操作使用delete销毁对象
 		if (_instance == NULL) {  // 这个语句非线程安全
 			_instance = new SingletonMode;
 		}
