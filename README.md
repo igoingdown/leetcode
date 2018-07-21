@@ -2168,14 +2168,21 @@ https://leetcode.com/problems/task-scheduler/description/
 
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
-DP。遍历每天的股价，记录当前（包括今天的）最低价，当前价格减当前最低价就是今天卖出的最大收益，取每天最大收益的最大值就是结果。
+
+DP。给定一段时间内一支股票每天的价格数组$P$，计算本金充足只允许一次买入和一次卖出的条件下能获得的最大收益。
+
+遍历每天的股价$P_i$，记录历史(包括今天的)最低价$min\_price$(初始化为`INT_MAX`)和今天卖出能够得到的最大收益$max\_profit$(初始化为$0$)，递推公式为：
+$$min\_price = min(min_price, P_i)$$
+$$max\_profit = max(max\_profit, P_i - min\_price)$$
 
 
 122: Best Time to Buy and Sell Stock II
 
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
 
-贪心算法或DP。贪心算法不涨就买，涨就卖。DP使用sell和buy两个数组分别记录当天买入或卖出可能的最大收益，递推公式为：
+贪心算法或DP。给定一段时间内一支股票每天的价格数组$P$，计算本金充足允许多次买入和一次卖出的条件下能获得的最大收益。
+
+贪心算法不涨就买，涨就卖。DP使用sell和buy两个数组分别记录当天买入或卖出可能的最大收益，递推公式为：
 sell[i] = max(sell[i-1], buy[i-1] + prices[i])
 buy[i] = max(buy[i-1], sell[i-1] - prices[i])
 
@@ -2346,8 +2353,8 @@ dfs和heap结合，时间复杂度？思想是path先添加无路可走的节点
 
 https://leetcode.com/problems/lru-cache/description/
 
-hashmap和list。主要利用了stl的list基于双向循环链表实现的性质及其提供的splice接口，使得插入、删除都控制在O(1)，而基于hashmap的查找、插入和删除同样是O(1)。注意put操作的实现中，不仅要修改list和相应的迭代器，还有list中的值和map。元素优先级越高在list中的位置越靠前，删除只会在list的尾部进行，而hashmap的删除操作随时随时都可以进行。
-list<pair<int, int>> items; unordered_map<int, list<pair<int, int>>::iterator> cache。cache存储key到list中key-value对的迭代器，可以脑补图形。
+`Hashmap`和`list`。主要利用了`STL`的`list`基于双向循环链表实现的性质及其提供的`splice`接口，因为`list`底层使用了双向循环链表，插入、删除都可以控制在O(1)。`splice`接口可以直接将`list`中刚刚使用过的元素调度到`list`的首部，这是LRU的核心思想。而基于`hashmap`的查找、插入和删除同样是O(1)。注意`put`操作的实现中，不仅要修改`list`和相应的迭代器，还有`list`中的值和`map`。使用这两种数据结构,元素优先级越高，使用越频繁，在`list`中的位置越靠前，删除只会在`list`的尾部进行，而`hashmap`的删除操作随时随时都可以进行。
+`list<pair<int, int>> items; unordered_map<int, list<pair<int, int>>::iterator> cache`。`cache`存储key到list中key-value对的迭代器，可以脑补图形。
 
 
 290: Word Pattern

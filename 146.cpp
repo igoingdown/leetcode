@@ -12,7 +12,8 @@ public:
         if (cache.find(key) == cache.end()) {
             return -1;
         } else {
-            items.splice(items.begin(), items, cache[key]); cache[key] = items.begin();
+            items.splice(items.begin(), items, cache[key]); 
+            cache[key] = items.begin();
             return cache[key]->second;
         }
     }
@@ -25,7 +26,9 @@ public:
             items.push_front({key, value});
             cache[key] = items.begin(); 
         } else {
-            items.splice(items.begin(), items, cache[key]); cache[key] = items.begin(); cache[key]->second = value;
+            items.splice(items.begin(), items, cache[key]); 
+            cache[key] = items.begin(); 
+            cache[key]->second = value;
         }
     }
 };
