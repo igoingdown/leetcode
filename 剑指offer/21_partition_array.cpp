@@ -13,6 +13,12 @@ bool partition_rule_1_is_negative(int a) {
 	return a < 0;
 }
 
+class PartitionOddAndEven {
+	bool opertor() (int x) {
+		return x % 2 == 0;
+	}
+};
+
 
 int main() {
 	vector<int> a = {1, 0, 2, 3};
