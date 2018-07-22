@@ -8,12 +8,14 @@ using namespace std;
 int one_num(int x);
 int one_num_no_exception(int x);
 int one_num_efficient(int x);
+int one_num_bitset(int x);
 
 int main() {
 	int x; cin >> x;
 	// cout << one_num(x) << endl;
 	cout << one_num_no_exception(x) << endl;
 	cout << one_num_efficient(x) << endl;
+	cout << one_num_bitset(x) << endl;
 	return 0;
 }
 
@@ -44,4 +46,9 @@ int one_num_efficient(int x) {
 		x &= (x - 1);
 	}
 	return count;
+}
+
+int one_num_bitset(int x) {
+	bitset<64> bs(x);
+	return bs.count();
 }

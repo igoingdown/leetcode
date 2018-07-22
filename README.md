@@ -406,6 +406,22 @@ https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/desc
 Hashmap，使用Hashmap记录val到index set的映射，使用pos记录array最后一个元素的下一个位置。调用Random找随机元素
 
 
+873: Length of Longest Fibonacci Subsequence
+
+https://leetcode.com/contest/weekly-contest-94/problems/length-of-longest-fibonacci-subsequence/
+
+Hashmap。给定一个数组$A$，找出其中最长的满足斐波那契规律的子序列的长度。
+
+由于题目只需要知道最长的斐波那契子序列的长度，可以暴力解决。为了方便查找，将数组拷贝一份到Hashmap中，遍历所有可能的子序列，开头分别是$A_i$和$A_j$($i<j$)，如果Hashmap包含$sum = A_i + A_j$，则令$A_i = A_j, A_j = sum$，重复以上过程，记录可能得到的最大长度，时间复杂度为$O(N_3)$。
+
+874: Walking Robot Simulation
+
+https://leetcode.com/problems/walking-robot-simulation/description/
+
+Hashmap。给定一个边界无限的二维平面和一个初始处于这个平面上原点面向$Y$轴正向的机器人，二维平面上有些障碍物$O$无法通过，给定一组命令$C$，每条命令为一个整数，正整数表示前进的距离，$-1$表示右转，$-2$表示左转。机器人执行命令，前进过程中如果遇到障碍物会停下，直到转向绕过障碍物。问机器人**执行命令过程中到原点的最远欧式距离**。
+
+从原点出发，模拟机器人执行命令的路线，更新能够导到的最远距离。只要比较每条命令执行完机器人所处的位置到原点的距离和已知最大距离即可，因为移动过程中的位置不可能是最大值。
+
 120: Triangle
 
 https://leetcode.com/problems/triangle/
@@ -672,6 +688,15 @@ BS。$a[mid]$和$a[low]$比较，是为了确定$a[mid]$在较大的前半部分
 https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
 
 BS。同33，只是数组中存在重复元素，$a[mid] = a[low]$时分类不明显，直接拎出来，令`low++`(相当于遍历)，其余不变。
+
+
+875: Koko Eating Bananas
+
+https://leetcode.com/problems/koko-eating-bananas/description/
+
+BS。有$N$堆香蕉，记为$P$，每堆有$P_i$个香蕉，KOKO要在$H$小时内把香蕉吃完，KOKO可以控制自己每小时吃的最多香蕉数$K$，而且每小时只选择一个香蕉堆吃香蕉，计算KOKO完成吃香蕉任务最小的$K$。
+
+$K \in  [\sum_{i} P_i, \max_i{P_i}]$，已知上界和下界，用BS找目标元素$t$即可，目标元素$t$需要满足$\sum_{i} P_i / t的上界 <= H$。
 
 
 31: Next Permutation
@@ -2530,6 +2555,13 @@ https://leetcode.com/problems/binary-tree-postorder-traversal/description/
 
 二叉树后续遍历递归与非递归实现。多做是有用的，非常有用，做这个题的时候深有体会！
 
+872: Leaf-Similar Trees
+
+https://leetcode.com/contest/weekly-contest-94/problems/leaf-similar-trees/
+
+递归。定义如果两棵树的叶子节点按从左到右的顺序访问，得到结果列表相同，则两棵树相似。给定两棵树，判断两棵树是否相似。
+
+中序递归遍历两棵树，记录叶子节点的访问列表，判断访问列表是否完全相同即可。
 
 655: Print Binary Tree
 
