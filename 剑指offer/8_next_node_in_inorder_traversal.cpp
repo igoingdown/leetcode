@@ -28,17 +28,18 @@ int main() {
 }
 
 TreeNode * next_node(TreeNode *target) {
-	if (!target) return target;
+	if (!target) return NULL;
 	if (!target->right) {
+		// 没有右子，向上找到第一个非父节点的右子的节点，返回该节点的父节点
 		if (target->parent && target->parent->left == target) return target->parent;
 		else {
 			auto tmp = target->parent;
 			while (tmp && tmp->parent && tmp->parent->right == tmp) tmp = tmp->parent; 
-			// 没有右子，向上找到第一个节点非父节点的右子的节点，返回该节点的父节点
-			return tmp ? tmp->parent : tmp;
+			return tmp ? tmp->parent : NULL;
 		}
 
 	} else {
+		// 有右子树，找到右子树上最左侧的节点即可
 		auto tmp = target->right;
 		while (tmp->left) tmp = tmp->left;
 		return tmp; 

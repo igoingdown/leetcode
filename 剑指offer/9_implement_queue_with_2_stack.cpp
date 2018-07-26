@@ -6,7 +6,8 @@
 using namespace std;
 
 
-template <typename T> class MyQueue{
+template <typename T> 
+class MyQueue{
 private:
 	stack<T> s1, s2;
 public:
