@@ -138,14 +138,6 @@ https://leetcode.com/problems/summary-ranges/
 用b记录本次范围的起始位置，用i作为索引。注意更新i和b时先更新i再更新b，而且是拿第i个元素和第i+1个元素比较，这样就不必在循环体外单独处理最后一个元素了。
 
 
-216: Combination Sum III
-
-https://leetcode.com/problems/combination-sum-iii/
-
-一刷使用dfs解决。我总是不太会构造递归，要注意这种题型！用递归解决问题，只要关注解决本层次的问题就好，通过条件筛选和循环将本层解决完，调用本身进入下一层。这种说法很简单，其实不容易做到！
-注意剪枝条件，比如left可能等于i，每步循环中，需先将元素插入列表尾部，在下一层递归结束后，要将插入的元素从尾部取出！
-
-
 547: Friend Circles
 
 https://leetcode.com/problems/friend-circles/description/
@@ -1451,8 +1443,54 @@ dfs。面试趋势是这种题目变为解决问题其中的一步。
 
 https://leetcode.com/problems/permutations-ii/description/
 
-比46要难，去重可以使用frequency，将只考虑重复元素的第一个元素，重复次数用频率计数。排列、组合、组合和都属于01背包问题，理解要加强。
+DFS。比46难一点，其实把解空间画出来，是一样的，因为每个分支的子问题规模完全相同，只是递归深度不同而已。只是有了虽然有了重复元素，但是用map可以去重，顺带可以统计频率，46中的visited的功能也可以用map来代替。
 
+
+77: Combinations
+
+https://leetcode.com/problems/combinations/description/
+
+dfs。
+
+39: Combination Sum
+
+https://leetcode.com/problems/combination-sum/?tab=Description
+
+dfs。可以画出解空间来理解解题过程。
+
+
+40: Combination Sum II
+
+https://leetcode.com/problems/combination-sum-ii/?tab=Description
+
+DFS。首先要排序（对于去重很重要），之后要对照解空间写递归过程。
+
+
+216: Combination Sum III
+
+https://leetcode.com/problems/combination-sum-iii/
+
+一刷使用dfs解决。用递归解决问题，只要关注解决本层次的问题就好，通过条件筛选和循环将本层解决完，调用本身进入下一层。这种说法很简单，其实不容易做到！
+
+注意剪枝条件，比如left可能等于i，每步循环中，需先将元素插入列表尾部，在下一层递归结束后，要将插入的元素从尾部取出！
+
+
+377: Combination Sum IV
+
+https://leetcode.com/problems/combination-sum-iv/description/
+
+DFS,DP。top-down的DFS超时，加入memo实现DP后，AC。这个题很经典，和之前整理的回溯法有强关联！注意理解DP的含义，我现在仍然不知道这样做是不是就叫做DP。
+
+除了上一种top-down的DP方法，还有一种bottom-up的DP方法，这种方法在我看来更像DP。
+
+两种方法的空间复杂度都是O(N)，时间复杂度均为O(MN)，top-down方法虽然使用递归，但是这个时间复杂度容易分析。
+
+
+78: Subsets
+
+https://leetcode.com/problems/subsets/
+
+dfs。
 
 
 90: Subsets II
@@ -1466,33 +1504,9 @@ dfs，先排序，对着解空间写递归，注意去重。
 
 https://leetcode.com/problems/palindrome-partitioning/description/
 
-先用dp计算任意子串是否为回文，再使用dfs收集合法的partition。
+DP,DFS。 先用dp计算任意子串是否为回文，再使用dfs收集合法的partition。
 
 
-77: Combinations
-
-https://leetcode.com/problems/combinations/description/
-
-dfs。
-
-
-78: Subsets
-
-https://leetcode.com/problems/subsets/
-
-dfs。
-
-
-39: Combination Sum
-
-https://leetcode.com/problems/combination-sum/?tab=Description
-dfs。可以画出解空间来理解解题过程。
-
-
-40: Combination Sum II
-
-https://leetcode.com/problems/combination-sum-ii/?tab=Description
-DFS。首先要排序，之后要对照解空间写递归过程。
 
 
 51: N-Queens
@@ -1690,15 +1704,6 @@ https://leetcode.com/problems/out-of-boundary-paths/description/
 https://leetcode.com/problems/2-keys-keyboard/description/
 
 一刷没思路，使用大神的思路AC。大神没有用DP，时间复杂度最好为O(logN),最差O(N)，比DP算法效率高，但是比较难以理解。再刷，注意理解！
-
-
-377: Combination Sum IV
-
-https://leetcode.com/problems/combination-sum-iv/description/
-
-一刷没思路，DFS都忘了。大神的top-down的DFS超时，加入memo实现DP后，AC。这个题很经典，和之前整理的回溯法有强关联！注意理解DP的含义，我现在仍然不知道这样做是不是就叫做DP。再刷！注意整理！
-除了上一种top-down的DP方法，还有一种bottom-up的DP方法，这种方法在我看来更像DP。一刷dp空间分配不够，RE。错误在本地没复现，猜测是因为本地使用伙伴内存管理，dp配额有冗余，而网页后端对内存的检测更严格。
-两种方法的空间复杂度都是O(N)，时间复杂度均为O(MN)，top-down方法虽然使用递归，但是这个时间复杂度容易分析。
 
 
 376: Wiggle Subsequence

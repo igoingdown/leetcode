@@ -1,23 +1,25 @@
 class Solution {
 public:
     vector<vector<int>> permuteUnique(vector<int>& nums) {
-        vector<vector<int>> res;
         vector<int> path;
-        map<int, int> freq;
-        for (auto n : nums) freq[n]++;
+        vector<vector<int>> res;
+        map<int, int> f;
+        for (auto n : nums) f[n]++;
         sort(nums.begin(), nums.end());
-        dfs(nums, res, path, freq);
+        dfs(res, path, f, nums);
         return res;
     }
-    void dfs(vector<int>& nums, vector<vector<int>>& res, vector<int>& path, map<int, int>& freq) {
+    void dfs(vector<vector<int>> &res, vector<int> &path, map<int, int> &f, vector<int> &nums) {
         if (path.size() == nums.size()) {
             res.push_back(path);
             return;
         }
-        for (int i = 0; i < nums.size(); i++) {
-            if (count(path.begin(), path.end(), nums[i]) < freq[nums[i]] && !(i > 0 && nums[i] == nums[i - 1])) {
-                path.push_back(nums[i]);
-                dfs(nums, res, path, freq);
+        for (auto iter = f.begin(); iter != f.end(); iter++) {
+            if (iter->second > 0) {
+                iter->second--;
+                path.push_back(iter->first);
+                dfs(res, path, f, nums);
+                iter->second++;
                 path.pop_back();
             }
         }
