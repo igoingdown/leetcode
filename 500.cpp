@@ -4,45 +4,15 @@ public:
         string s1("qwertyuiop");
         string s2("asdfghjkl");
         string s3("zxcvbnm");
-        unordered_set<char> m1(s1.begin(), s1.end());
-        unordered_set<char> m2(s2.begin(), s2.end());
-        unordered_set<char> m3(s3.begin(), s3.end());
+        vector<int> m(26);
+        for (char c : s1) m[c - 'a'] = 1;
+        for (char c : s2) m[c - 'a'] = 2;
+        for (char c : s3) m[c - 'a'] = 3;
         vector<string> res;
-        for (auto w: words) {
-            if(w.size() == 0) {
-                res.push_back(w);
-            }
-            unordered_set<char> temp;
-            char ch;
-            if (w[0] <= 'Z' && w[0] >= 'A') {
-                ch = w[0] + 32;
-            } else {
-                ch = w[0];
-            }
-            if (m1.find(ch) != m1.end()) {
-                temp = m1;
-            } else if (m2.find(ch) != m2.end()) {
-                temp = m2;
-            } else if (m3.find(ch) != m3.end()) {
-                temp = m3;
-            } else {
-                continue;
-            }
-            bool flag = true;
-            for (auto c: w) {
-                if (c <= 'Z' && c >= 'A') {
-                    ch = c + 32;
-                } else {
-                    ch = c;
-                }
-                if (temp.find(ch) == temp.end()) {
-                    flag = false;
-                    break;
-                }
-            }
-            if (flag) {
-                res.push_back(w);
-            }
+        for (const string &w: words) {
+            int i = 1;
+            while (i < w.size() && m[tolower(w[i]) - 'a'] == m[tolower(w[i-1]) - 'a']) i++;
+            if (i >= w.size()) res.push_back(w);
         }
         return res;
     }

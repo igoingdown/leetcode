@@ -9,8 +9,14 @@ public:
             while (l < r) {
                 int sum = nums[i] + nums[l] + nums[r];
                 if (abs(sum - target) < abs(res - target)) res = sum;
-                if (sum > target) r--;
-                else if (sum < target) l++;
+                if (sum > target) {
+                    r--;
+                    while (l < r && nums[r] == nums[r + 1]) r--;
+                }
+                else if (sum < target) {
+                    l++;
+                    while (l < r && nums[l] == nums[l - 1]) l++;
+                }
                 else return res;
             }
         }

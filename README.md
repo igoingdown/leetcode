@@ -714,23 +714,6 @@ https://leetcode.com/problems/first-missing-positive/description/
 math。鸽巢原理，第一个missing的正整数的范围一定是$[1, array.size() + 1]$。扫描原数组，用额外的数组记录已经出现的正整数，再扫描新数组，第一个没访问过的数就是第一个missing的正整数。有更好的方法，不需要额外的空间，详见 http://www.cnblogs.com/AnnieKim/archive/2013/04/21/3034631.html  。
 
 
-15: 3Sum
-
-https://leetcode.com/problems/3sum/?tab=Description
-TP。
-
-16: 3Sum Closest
-
-https://leetcode.com/problems/3sum-closest/?tab=Description
-TP。同15，先sort，然后逐个确定i,l,r三个指针，注意去重。和15不同的是，内循环内部不需要再去重了。
-
-
-18: 4Sum
-
-https://leetcode.com/problems/4sum/?tab=Description
-TP。先进行sort，然后逐个确定i,j,l,r四个指针，注意去重和剪枝(非必须)。
-
-
 38: Count and Say
 
 https://leetcode.com/problems/count-and-say/description/
@@ -808,20 +791,44 @@ https://leetcode.com/problems/most-frequent-subtree-sum/#/description
 
 https://leetcode.com/problems/two-sum/description/
 
-multimap存储去掉一个数之后的target，遍历数组查找是否有数字,注意找到的数字不能为a[i]。因为题目的限制，也可以用map存。基于map的时间复杂度为O(N)。使用TP，要先sort，时间复杂度为O(NLOGN)。
+* 方法一： Map。对于数组中的每一个元素$A_i$，使用multimap存储键值对$(target - A_i, i)$。再次遍历数组的每个元素$A_j$, 如果$A_j$是multimap的key且对应的value不等于$j$。因为题目的限制，multimap也可以用map代替。基于map的时间复杂度为$O(N)$。
+
+* 方法二：TP。先拷贝数组$A$到$copy$中，sort $copy$，首尾指针$l$和$r$分别向中间移动使首尾指针指向的元素的和$sum$逐渐向$taret$靠拢。最后再$A$中分别查找$copy$数组的首尾指针$l$和$r$指向的元素在$A$中对应的元素。时间复杂度为$O(N\log{N})$。
 
 
-500: Keyboard Row
+15: 3Sum
 
-https://leetcode.com/problems/keyboard-row/#/description
-现在连easy级的题都没法一刷AC了，真是菜啊！再刷！！！二刷一次AC。
+https://leetcode.com/problems/3sum/description/
+
+TP/MP。类似上题的**方法二**，先对数组排序，前向遍历数组先固定一个指针`i`，这样$sum$中的一个元素就有了，剩下的问题就是一个 **Two Sum**问题了。
+
+注意去重，`i`,`l`,`r`三个指针都要去重。
+
+16: 3Sum Closest
+
+https://leetcode.com/problems/3sum-closest/?tab=Description
+
+TP/MP。同15，先sort，然后逐个确定`i`,`l`,`r`三个指针，注意三个指针都要去重。**和15相同，去重的原则是计算过的组合不必继续计算，这种情况下解空间树仍然有很好的作用，非常清晰！**
+
+18: 4Sum
+
+https://leetcode.com/problems/4sum/?tab=Description
+
+TP/MP。先进行sort，然后逐个确定i,j,l,r四个指针，注意去重和剪枝(非必须)。
 
 
 454: 4Sum II
 
 https://leetcode.com/problems/4sum-ii/#/description
+
 没有思路，要再刷两遍！一刷没AC，res更新不是加1，而是加上map中的count！二刷一次AC，但是思路理解并不流畅！还要再刷!
 
+
+500: Keyboard Row
+
+https://leetcode.com/problems/keyboard-row/#/description
+
+HashMap。使用vector表示map，`tolower()`、`toupper()`、`isupper()`、 `islower()`和`isalpha()`这一系列处理char的函数都处于相同的命名空间。
 
 451: Sort Characters By Frequency
 
