@@ -10,13 +10,13 @@ public:
             while (!q.empty()) {
                 string cur = q.front();
                 q.pop();
+                if (cur == endWord) return dis;
                 for (int i = 0; i < cur.size(); i++) {
                     char tmp = cur[i];
                     for (char c = 'a'; c <= 'z'; c++) {
                         if (c == tmp) continue;
                         cur[i] = c;
                         if (visit.find(cur) != visit.end() && !visit[cur]) {
-                            if (cur == endWord) return dis + 1;
                             next.push(cur);
                             visit[cur] = true;
                         }

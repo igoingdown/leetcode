@@ -106,14 +106,14 @@ BS，TP。TP将问题转化为链表内部环检测的问题。
 
 https://leetcode.com/problems/add-two-numbers/description/
 
-链表。
+链表尾插法。
 
 
 24: Swap Nodes in Pairs
 
 https://leetcode.com/problems/swap-nodes-in-pairs/description/
 
-一次走两步。注意原链表只有一个元素时新链表为空，要对这种情况进行判别。
+链表尾插法。一次走两步，注意使用`dummy_node`时，如果原链表只有一个元素直接返回`dummy_node->next`是错误的，要对这种情况进行判别。
 
 
 268: Missing Number
@@ -505,7 +505,8 @@ math，BS的变形，所选的哨兵为角上的元素，每次将范围缩减�
 73: Set Matrix Zeroes
 
 https://leetcode.com/problems/set-matrix-zeroes/?tab=Description
-将第一行第一列作为标志，第一行第一列用其他标志。顺序遍历将标志置0，逆序遍历按标志将元素置0。算法复杂度高些，但是好理解。
+
+将第一行(或第一列)作为标志，第一行(或第一列)用其他标志。从$(0, 0)$到$(m-1, n-1)$前向遍历将标志置0，从$(m-1, n-1)$到$(0, 0)$逆序遍历按标志将元素置0。时间复杂度$O(MN)$。
 
 
 62: Unique Paths
@@ -598,15 +599,17 @@ https://leetcode.com/problems/jump-game/?tab=Description
 56: Merge Intervals
 
 https://leetcode.com/problems/merge-intervals/?tab=Description
-sort。sort的第三个参数为重载了"<"的函数，可以自己写myCompare函数实现"<"逻辑，也可以写函数类用于构建函数对象。也可以利用C++11新特性lambda表达式实现，编译器会根据lambda表达式生成函数对象。
+
+sort。sort的第三个参数为重载了"<"的函数，可以自己写myCompare函数实现"<"逻辑，也可以写函数类用于构建函数对象，也可以利用C++11新特性lambda表达式实现，编译器会根据lambda表达式生成函数对象。
 
 
 57: Insert Interval
 
 https://leetcode.com/problems/insert-interval/description/
 
-sort。同56，先将要新Interval插入列表，然后merge。
-更高效的算法是扫一遍所有的interval。看看当前的interval能不能merge到新的interval中。如果能merge则更新新的interval，如果不能更新，没有交集且当前的interval在新的interval前，则直接加入结果，如果没有交集且当前的interval在新的interval之后，直接退出扫描。将新的interval和剩下的interval逐个加入结果列表中。这是fun的方法，O(N)。
+本题至少有两种方法：
+* 方法一：sort，同上题。先将要新Interval插入列表，sort后按上题的思路merge。$O(N\log{N})$
+* 方法二：由于题目给定的Interval列表已经有序，插入新的Interval不需要重新对列表排序。扫一遍Interval列表，当前的Interval如果能merge到新Interval中，则更新新的Interval，如果不能更新，没有交集且当前的Interval在新的Interval前，则直接加入结果，如果没有交集且当前的Interval在新的Interval之后，直接退出扫描。将新的Interval和剩下的Interval逐个加入结果列表中。这是fun的方法，实际上模拟了上题合成单个Interval的过程，$O(N)$。
 
 
 406: Queue Reconstruction by Height
@@ -821,8 +824,7 @@ TP/MP。先进行sort，然后逐个确定i,j,l,r四个指针，注意去重和�
 
 https://leetcode.com/problems/4sum-ii/#/description
 
-没有思路，要再刷两遍！一刷没AC，res更新不是加1，而是加上map中的count！二刷一次AC，但是思路理解并不流畅！还要再刷!
-
+TP/MP，HashMap。同上题，由于题目不需要找出符合条件的各个数的index，可以先遍历两个指针的结果并用HashMap存储，之后遍历另外两个指针并在HashMap中查找。这样一个$O(N_4)$的问题就降到了$O(N_2)$。
 
 500: Keyboard Row
 
@@ -833,7 +835,8 @@ HashMap。使用vector表示map，`tolower()`、`toupper()`、`isupper()`、 `is
 451: Sort Characters By Frequency
 
 https://leetcode.com/problems/sort-characters-by-frequency/#/description
-比较简单，但是比较考基本功，但是还是不明白为啥要用static关键字！！！一刷没AC，注意map使用[]操作查询时，不存在的键会自动生成！而值会调用相应的默认构造函数！这是c++的一大优点。
+
+HashMap。`Solution`类内部定义的`MyCompare`要用static关键字，因为在调用排序函数的时候编译器没有`Solution`类对象信息!map使用[]操作查询时，不存在的键会自动生成！而值会调用相应的默认构造函数！。
 
 
 438: Find All Anagrams in a String
@@ -1115,7 +1118,8 @@ https://leetcode.com/problems/ugly-number-ii/#/description
 50: Pow(x, n)
 
 https://leetcode.com/problems/powx-n/#/description
-使用进制计算，计算n的2进制表示下的每一位的权值并相乘。注意将n由负转为正时，需要使用long long类型。
+
+位操作。直接视为进制题型，指数视为二进制表示，每位的权重是前一位权重的平方。末位的权重为x，从后向前依次遍历指数的每一位即可。注意先将负数转为整数，负指数转我正指数。
 
 
 60: Permutation Sequence
@@ -1139,13 +1143,14 @@ https://leetcode.com/problems/divide-two-integers/#/description
 12: Integer to Roman
 
 https://leetcode.com/problems/integer-to-roman/#/description
-自己建立map，将阿拉伯数字与罗马数字字符串对应起来。
+
+HashMap,Math。自己建立map，将阿拉伯数字与罗马数字字符串对应起来。
 
 13: Roman to Integer
 
 https://leetcode.com/problems/roman-to-integer/description/
 
-是12题的逆过程。
+HashMap,Math。上题的逆过程，扫一遍字符串，如果当前字符比后一个字符的权值大，做减法，否则做加法。
 
 567: Permutation in String
 
@@ -1244,7 +1249,7 @@ https://leetcode.com/problems/next-greater-element-iii/#/description
 不难，但是忘记怎么求下一个排列的算法了。标准库有api可以用！再刷！
 
 
-227: Basic Calculator II
+7: Basic Calculator II
 
 https://leetcode.com/problems/basic-calculator-ii/#/description
 istringstream非常好用，可以从中直接读取任意数据类型，读取字符串直接用getline操作。注意用op来对term进行正负修饰，只有第一次读入加号或者减号的时候需要。一刷没思路，二刷term的正负没写对位置。
@@ -1302,6 +1307,13 @@ https://leetcode.com/problems/decode-ways/#/description
 DP,注意处理非法输入。
 
 
+20: Valid Parentheses
+
+https://leetcode.com/problems/valid-parentheses/description/
+
+stack。判断各种括号的组合是否合法，用栈。遍历字符串，遇左括号入栈，遇右括号如果栈顶为对应的左括号则出栈，否则该括号串非法。遍历结束如果栈空则合法，否则非法。
+
+
 71: Simplify Path
 
 https://leetcode.com/problems/simplify-path/#/description
@@ -1323,12 +1335,14 @@ DFS。count记录ip段数，start记录起始位。
 22: Generate Parentheses
 
 https://leetcode.com/problems/generate-parentheses/#/description
-dfs，左括号只要有剩余就可以选，右括号只有在已生成的串中左括号多于右括号才可以选。
+
+dfs。左括号只要有剩余就可以选，右括号只有在已生成的串中左括号多于右括号才可以选。
 
 
 475: Heaters
 
 https://leetcode.com/problems/heaters/#/description
+
 比较简单，但是没有好的思路。一刷没有一次AC，而是各种CE！再刷！从解答区选择的思路也不是最好的！二刷没有一次AC，不太懂upper_bound和lower_bound的区别拿了WA，再刷！三刷一次AC。
 
 
@@ -2013,8 +2027,11 @@ https://leetcode.com/problems/same-tree/description/
 
 https://leetcode.com/problems/validate-binary-search-tree/description/
 
-递归使用min和max限定子树范围。非递归利用BST的中序遍历一定是递增序列的性质。
+DFS。根据采用的参数量不同分为两种方法：
+* 方法一：使用两个标识量$minValue$和$maxValue$记录BST的值的下界和上界，DFS每次判断时要判断`root->val`是否处于区间$(minValue, maxValue)$内。
+* 方法二：利用BST的中序遍历一定是递增序列的性质，使用一个标识量$lastVisited$(初始化为`INT_MIN`)记录DFS中序遍历树时上次访问的节点的值，每次访问一个节点时只要确保`lastVisited < root->val`即可。
 
+以上两种方法的区别在于**方法一**中参数足够，不需要指定DFS的遍历顺序；而**方法二**中必须按照先访问左子树再访问根节点最后访问右子树的中序遍历顺序，因为这个方法利用的就是BST的中序遍历严格递增的性质，全局只有一个参数`last_visited`，而且这个参数依赖遍历过程中的赋值。
 
 230: Kth Smallest Element in a BST
 
@@ -2071,7 +2088,7 @@ https://leetcode.com/problems/binary-tree-level-order-traversal/description/
 
 https://leetcode.com/problems/word-ladder/description/
 
-双queue实现BFS。
+双queue实现BFS。这种需要记录BFS中遍历层数的题不用着急在构建next的时候返回，在访问当前层的时候返回效果没多大差别，而且逻辑会更清晰。
 
 
 126: Word Ladder II
@@ -2338,14 +2355,14 @@ https://leetcode.com/problems/maximum-gap/description/
 
 https://leetcode.com/problems/merge-k-sorted-lists/description/
 
-优先级队列，时间复杂度为O(NKlogK)，一刷没AC。头条喜欢考！priority_queue的构造函数中第三个参数不可以使用lambda表达式。
+Heap。炒鸡经典的考题！`priority_queue`的构造函数中第三个参数不可以使用lambda表达式，但是可以自己构造函数类从而生成函数对象、或者直接传递一个函数指针。时间复杂度为$O(NK\log{K})$
 
 
 632: Smallest Range
 
 https://leetcode.com/problems/smallest-range/description/
 
-优先级队列。和merge sort的merge算法类似，区别在于本题需要访问priority_queue的队尾元素，因此使用了map，map基于红黑树实现，自动对key进行排序，而且可以通过迭代器随时访问头和尾。保证队列中存有每个list中的最小的数，队列的队头和队尾之间的距离的最小值就是题目的解，每次更新结果后，扔掉队头，并将队头所在的list中下一个元素添加到队列中。将map作为可以两端同时访问的priority_queue的想法真是要逆天了！
+Heap。和merge sort的merge算法类似，区别在于本题需要访问priority_queue的队尾元素，因此使用了map，map基于红黑树实现，自动对key进行排序，而且可以通过迭代器随时访问头和尾。保证队列中存有每个list中的最小的数，队列的队头和队尾之间的距离的最小值就是题目的解，每次更新结果后，扔掉队头，并将队头所在的list中下一个元素添加到队列中。将map作为可以两端同时访问的priority_queue的想法真是要逆天了！
 
 
 846: Hand of Straights
