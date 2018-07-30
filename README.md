@@ -108,6 +108,12 @@ https://leetcode.com/problems/add-two-numbers/description/
 
 链表尾插法。
 
+445: Add Two Numbers II
+
+https://leetcode.com/problems/add-two-numbers-ii/#/description
+
+链表。先反转链表，然后按上题来做。不允许反转链表可以先求二者长度，然后从后向前遍历。
+
 
 24: Swap Nodes in Pairs
 
@@ -884,13 +890,8 @@ https://leetcode.com/problems/binary-tree-inorder-traversal/#/description
 49: Group Anagrams
 
 https://leetcode.com/problems/anagrams/#/description
-map使用红黑树实现，而unordered_map基于hash table，使用hash型数据结构必须保证key的类型有hash()方法，容器类型除了string外默认是没有hash()方法的，而非hash型数据结构没有限制！c++中对于map和unordered_map，使用[]方法访问当key不存在时调用value的默认构造函数。
 
-
-445: Add Two Numbers II
-
-https://leetcode.com/problems/add-two-numbers-ii/#/description
-很简单，但是没有一次AC！而且我的方法时间和空间复杂度都比较高。
+HashMap。`map`使用红黑树实现，而`unordered_map`基于hash table，使用hash型数据结构必须保证key的类型有`hash()`方法，容器类型除了string外默认是没有`hash()`方法的，而非hash型数据结构没有限制！c++中对于`map`和`unordered_map`，使用[]方法访问当key不存在时调用value的默认构造函数。
 
 
 328: Odd Even Linked List
@@ -902,6 +903,7 @@ https://leetcode.com/problems/odd-even-linked-list/#/description
 148: Sort List
 
 https://leetcode.com/problems/sort-list/#/description
+
 TP。双指针找到中点，递归排序再merge。
 
 
@@ -1470,9 +1472,7 @@ DFS。首先要排序（对于去重很重要），之后要对照解空间写�
 
 https://leetcode.com/problems/combination-sum-iii/
 
-一刷使用dfs解决。用递归解决问题，只要关注解决本层次的问题就好，通过条件筛选和循环将本层解决完，调用本身进入下一层。这种说法很简单，其实不容易做到！
-
-注意剪枝条件，比如left可能等于i，每步循环中，需先将元素插入列表尾部，在下一层递归结束后，要将插入的元素从尾部取出！
+DFS。解空间树画出来就有了。
 
 
 377: Combination Sum IV
@@ -1926,15 +1926,14 @@ https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/descripti
 
 BFS。“之”字层序遍历二叉树。
 
-使用双deque实现BFS时，根据奇偶层的处理区别可以分为两种方案：当前层为cur，下一层为next，
-* 方案一: 
-	1. 奇数层: 读cur时从头读，写next时从尾写，先写左子树再写右子树
-	2. 偶数层: 读cur时从尾读，写next时从头写，先写右子树再写左子树 
-* 方案二:
-	1. 奇数层: 读cur时从尾读，写next时从头写，先写左子树再写右子树
-	2. 偶数层: 读cur时从头读，写next时尾头写，先写右子树再写左子树 
+* 双deque实现BFS：
+	* 奇数层: q从尾读，next从头写，先写左子树再写右子树
+	* 偶数层: q从头读，next从尾写，先写右子树再写左子树 
+* 双Stack实现BFS：
+	* 奇数层： 先入左子再入右子
+	* 偶数层：先入右子再入左子
 
-也可以使用双Stack实现BFS。奇数层先入左子再入右子，偶数层先入右子再入左子。基于Stack的方法更简单。
+使用`deque`和`stack`都只有一种顺序是正确的，显然基于`stack`的方法更简单。
 
 150: Evaluate Reverse Polish Notation
 
