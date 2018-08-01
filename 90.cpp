@@ -12,7 +12,7 @@ private:
     }
 public:
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
-        vector<vector<int>> res(1, vector<int> (0));
+        vector<vector<int>> res(1, vector<int> ());
         int s = nums.size();
         if (!s) return res;
         sort(nums.begin(), nums.end());

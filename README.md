@@ -708,11 +708,9 @@ math。先从后将降序序列反转，然后找反转序列的前一个数字�
 
 41: First Missing Positive
 
-
 https://leetcode.com/problems/first-missing-positive/description/
 
-
-math。鸽巢原理，第一个missing的正整数的范围一定是$[1, array.size() + 1]$。扫描原数组，用额外的数组记录已经出现的正整数，再扫描新数组，第一个没访问过的数就是第一个missing的正整数。有更好的方法，不需要额外的空间，详见 http://www.cnblogs.com/AnnieKim/archive/2013/04/21/3034631.html  。
+math。鸽巢原理，第一个missing的正整数的范围一定是$[1, array.size() + 1]$。扫描原数组，用额外的数组记录已经出现的正整数，再扫描新数组，第一个没访问过的数就是第一个missing的正整数。有更好的方法，不需要额外的空间，详见[这篇博客](http://www.cnblogs.com/AnnieKim/archive/2013/04/21/3034631.html)。
 
 
 38: Count and Say
@@ -725,22 +723,33 @@ TP。将序列模仿出来即可。
 11: Container With Most Water
 
 https://leetcode.com/problems/container-with-most-water/?tab=Description
+
 TP。左右指针分别从数组两端开始，两指针夹逼过程中，矩形的长变小，只有宽增大，面积才会增大。
 
 
+67. Add Binary
+
+https://leetcode.com/problems/add-binary/description/
+
+TP。双指针后向遍历，最后将得到的结果逆转。
+
 821: Shortest Distance to a Character
+
 https://leetcode.com/contest/weekly-contest-81/problems/shortest-distance-to-a-character/
 
-TP，string中里指定字符最近的距离，分别从左侧和右侧使用TP进行遍历。
+TP。string中里指定字符最近的距离，分别从左侧和右侧使用TP进行遍历。
+
 
 
 820: Short Encoding of Words
+
 https://leetcode.com/contest/weekly-contest-81/problems/short-encoding-of-words/
 
 TP。将后缀通过反转转为前缀，sort，出去子串长度即可，加法不好做，可以换到减法。
 
 
 833: Find And Replace in String
+
 https://leetcode.com/contest/weekly-contest-84/problems/find-and-replace-in-string/
 
 TP。在字符串中进行多次互不影响的替换，先替换前面的，再替换后面的，用一个bias记录全局的偏移量。由于sources和targets中的字符串都要按照indexes中的index的顺序排序，使用map记录string到index的映射会有问题，因为key有可能存在重复。
@@ -984,6 +993,7 @@ https://leetcode.com/problems/reverse-nodes-in-k-group/description/
 61: Rotate List
 
 https://leetcode.com/problems/rotate-list/#/description
+
 TP。注意要首先得出链表长度len，再将旋转次数对len取模，避免多余计算和可能的错误。
 
 
@@ -997,24 +1007,28 @@ TP。用pre和cur两个指针，cur走到cur和cur->next不等，pre = cur，pre
 82: Remove Duplicates from Sorted List II
 
 https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/#/description
+
 TP。同83，记录cur重复次数次，重复一次pre = cur，重复多次pre ->next = cur->next。最后cur=cur->next。
 
 
 86: Partition List
 
 https://leetcode.com/problems/partition-list/#/description
+
 TP。设置两个dummy node对于两部分分别进行尾插法，形成两个链表然后接上。
 
 
 523: Continuous Subarray Sum
 
 https://leetcode.com/problems/continuous-subarray-sum/#/description
+
 思路不是自己的，一刷没AC，因为变量写错CE，因为没考虑K会是负数而WA，还要再刷！
 
 
 462: Minimum Moves to Equal Array Elements II
 
 https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/#/description
+
 这个问题中数列的平衡杆不一定就是均值，因为经过排序后两端每对数字移动的总距离和均值无关。当数字有偶数个时，以均值直接算作平衡杆正确；当数字有奇数个且中间那个数恰好为均值时，用均值作为平衡杆也正确；但是当中间那个数不是均值时，就应该用中间那个数作为平衡杆，亦即中间那个数不需要移动！
 一次AC，但是思路不是自己的，还要再刷！
 
@@ -1022,78 +1036,92 @@ https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/#/descrip
 441: Arranging Coins
 
 https://leetcode.com/problems/arranging-coins/#/description
+
 很简单的数学问题，就是个一元二次方程求解的问题，我忘记用公式了。用了个O(logN)的方法，用公式一次一次开方就OK了。一次AC。
 
 
 423: Reconstruct Original Digits from English
 
 https://leetcode.com/problems/reconstruct-original-digits-from-english/#/description
+
 比较简单的多元方程组的问题，一刷没AC，因为string和int的互换方法不清CE了，算法效率也不是很高。
 
 
 415: Add Strings
 
 https://leetcode.com/problems/add-strings/#/description
+
 很简单，看了就有思路，一次AC。算法效率好像不太行。
 
 
 400: Nth Digit
 
 https://leetcode.com/problems/nth-digit/#/description
+
 思路不是自己的。一刷没AC，因为base设为int类型越界导致WA。再刷！
 
 
 413: Arithmetic Slices
 
 https://leetcode.com/problems/arithmetic-slices/#/description
+
 比较简单，一刷没有AC，不用设置两个begin和end两个变量，只需一个middle就可以了，注意middle从1到A.size() - 2，因为这个WA。因为==写成=CE。
 
 
 372: Super Pow
 
 https://leetcode.com/problems/super-pow/#/description
+
 思路不是自己的，一刷AC，还要再刷！递归设计的很好！
 
 
 368: Largest Divisible Subset
 
 https://leetcode.com/problems/largest-divisible-subset/#/description
+
 思路不好，有漏洞，看了讨论区的C++算法，一刷没AC。因为开始没对数组没排序得了WA。对大神的思路理解的不够深入，再刷！！
 
 
 367: Valid Perfect Square
 
 https://leetcode.com/problems/valid-perfect-square/#/description
+
 一道简单的二分查找，一刷没有AC。注意一个公式1 + 3 + 5 + 7 + 9 + …… = n^2!因为mid设为int，结果溢出得了WA。
 
 
 365: Water and Jug Problem
 
 https://leetcode.com/problems/water-and-jug-problem/#/description
+
 巨硬笔试题，数论问题，挺难的！证明还挺复杂……。最大公约数GCD和最小公倍数LCM还不太会弄！一刷一次AC。但是思路理解起来还是挺费劲的！再刷！
 
 
 343: Integer Break
 
 https://leetcode.com/problems/integer-break/#/description
+
 一道规律题，一刷没有AC，以为大于号写成小于号得了WA，需要用导数来推导，果然是数学题！再刷！
 
 
 319: Bulb Switcher
 
 https://leetcode.com/problems/bulb-switcher/#/description
+
 规律题，发现了一部分规律，但是没有继续深入，发现的规律还比较浅层。一刷一次AC。
 
 
 69: Sqrt(x)
 
 https://leetcode.com/problems/sqrtx/#/description
-二分法注意0和mid * mid == x的情况。经典方法是Newton法。
 
+BS。注意0和mid * mid == x的情况。需要求更精确的平方根时可以用Newton法。
+
+Newton法：求$x$的平方根即求$f(t) = t^2 - x$的根，根据牛顿法的思想，在二次方程中，通过迭代切线根会逐渐收敛到曲线根，初始化$t_n = 1.0$，不断地通过$t_{n+1}=t_n - \frac{f(t_n)}{f'(t_n)}$迭代，直到$|t_n - t_{n+1}| <= \epsilon$即可。更细节的推理可以参考[该知乎问题的答案](https://www.zhihu.com/question/20690553)。
 
 313: Super Ugly Number
 
 https://leetcode.com/problems/super-ugly-number/#/description
+
 比较复杂，我有个思路，但是没有想到怎么实现。看了讨论区算法才搞明白，思路不是自己的，一次AC，还要再刷！
 
 
@@ -1295,12 +1323,6 @@ https://leetcode.com/problems/longest-uncommon-subsequence-ii/#/description
 思路不是自己的，一刷废了很大劲没AC。用了两种方法，直接构造带有cmp函数的map失效，还没弄明白原因！再刷！
 
 
-91: Decode Ways
-
-https://leetcode.com/problems/decode-ways/#/description
-DP,注意处理非法输入。
-
-
 20: Valid Parentheses
 
 https://leetcode.com/problems/valid-parentheses/description/
@@ -1499,22 +1521,14 @@ https://leetcode.com/problems/subsets-ii/description/
 
 dfs，先排序，对着解空间写递归，注意去重。
 
-
-131: Palindrome Partitioning
-
-https://leetcode.com/problems/palindrome-partitioning/description/
-
-DP,DFS。 先用dp计算任意子串是否为回文，再使用dfs收集合法的partition。
-
-
-
-
 51: N-Queens
 
 https://leetcode.com/problems/n-queens/description/
 
-dfs时让col递增，逐个选择合法的row，存储path，path的含义是(path[i], i)位置可以放一个Queen，之后将合法path转为棋局排列。注意判断冲突有三个条件（1）row1 ！= row2（2）row1 + col1 != row2 + col2 （3）row1 - col1 != row2 - col2。 
-
+DFS。让$col$递增，逐个选择合法的$row$，存储$path$，$path$的含义是$(path[i], i)$位置可以放一个Queen，之后将合法$path$转为棋局排列。注意判断冲突有三个条件：
+1. $row1 \neq row2$，两个Queen不在同一行
+2. $row1 + col1 \neq row2 + col2$，两个Queen不在一个斜对角线上
+3. $row1 - col1 \neq row2 - col2$，两个Queen不在一个正对角线上
 
 52: N-Queens II
 
@@ -1523,18 +1537,24 @@ https://leetcode.com/problems/n-queens-ii/description/
 dfs，思路同上。
 
 
+131: Palindrome Partitioning
+
+https://leetcode.com/problems/palindrome-partitioning/description/
+
+DP,DFS。先用dp计算任意子串是否为回文，再使用dfs收集合法的partition。
+
 132: Palindrome Partitioning II
 
 https://leetcode.com/problems/palindrome-partitioning-ii/description/
 
-dfs超时,DP一次AC。partition的DP递推公式和判断回文的递推公式不同，[i,j]不满足回文的时候，不能只考虑[i+1,j]和[i,j-1]令其较小值+1，因为[i+1,j]和[i,j-1]虽然可能组成最长的回文子串，也可能partition次数很多！因此要再用一个minCut数组存储最小的cut.
+DP。partition的DP递推公式和判断回文的递推公式不同，[i,j]不满足回文的时候，不能只考虑[i+1,j]和[i,j-1]令其较小值+1，因为[i+1,j]和[i,j-1]虽然可能组成最长的回文子串，也可能partition次数很多！因此要再用一个minCut数组存储最小的cut.
 
 
 79: Word Search
 
 https://leetcode.com/problems/word-search/description/
 
-dfs。和maze那道题对比，思考想为什么要恢复原状态(回溯)，回溯会不会造成死循环？
+dfs。和maze那道题对比，本题需要回溯，原因是本题中解空间中两个分支同时经过运动空间的一个节点时，表示的含义不同，两个分支很有可能是两个不同的单词（也有可能是一个单词，只是路径不同），因此当第二个分支经过运动空间中的这个节点时，后续状态仍然需要遍历！而maze那道题不需要，因为后续状态一定走不通，结果是必然的！而且回溯不会造成死循环，回溯只是为了确保解空间的完整性！
 
 
 89: Gray Code
@@ -2869,8 +2889,16 @@ https://leetcode.com/problems/valid-number/description/
 
 https://leetcode.com/problems/climbing-stairs/description/
 
-DP和递归，递归超时，可以使用迭代替换递归，实质是斐波那契数列，计算的是合法的排列数。
+DP，递归。递归超时，可以使用迭代替换递归，实质是斐波那契数列，计算的是合法的排列数。
 
+
+91: Decode Ways
+
+https://leetcode.com/problems/decode-ways/#/description
+
+线性DP。注意处理非法输入，每个原问题最多有两个最优子问题：
+1. `f[0] = 0`，空串结果为0
+2. `f[i] = s[i] == '0' ? 0 : f[i - 1] + "10" < s[i-1,i] <= "26" ? f[i-2] : 0`，如果当前字符是`1-9`，则该字符可以单独decode，这是`f[i]`应该加上`f[i-1]`，如果当前字符和前一个字符组成的字符串属于`["10", "26"]`，这两个字符可以连在一起decode，此时`f[i]`应该加上`f[i-2]`，于是这个题目的实质就和斐波那契数列一致了。
 
 88: Merge Sorted Array
 

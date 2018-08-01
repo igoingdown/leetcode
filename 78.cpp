@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<vector<int>> subsets(vector<int>& nums) {
-        vector<vector<int>> res(1, vector<int>(0));
+        vector<vector<int>> res(1, vector<int>());
         for (auto n : nums) {
             int s = res.size();
             for (int i = 0; i < s; i++) {
