@@ -249,14 +249,6 @@ https://leetcode.com/problems/maximum-product-subarray/
 原理是dp，但是我对dp并不熟！关键在于当前的max和min并不是全局的max和min，每遍历一个元素就要更新全局的max（res）。一刷变量名写错，效率也不高。二刷由于不理解DP，更新过程写错！三刷一次AC。
 
 
-
-344: Reverse String
-
-https://leetcode.com/problems/reverse-string/
-
-字符串翻转，很简单。使用内置函数swap简化了代码，一次AC。
-
-
 136: Single Number
 
 https://leetcode.com/problems/single-number/
@@ -292,13 +284,6 @@ https://leetcode.com/problems/total-hamming-distance/description/
 位运算，分两派，该位为0和该位为1，分别记录每派的count，相乘加到结果上即可。
 
 
-190: Reverse Bits
-
-https://leetcode.com/problems/reverse-bits/description/
-
-位运算。一刷边界设置错误没AC。
-
-
 201: Bitwise AND of Numbers Range
 
 https://leetcode.com/problems/bitwise-and-of-numbers-range/description/
@@ -317,14 +302,21 @@ https://leetcode.com/problems/convert-a-number-to-hexadecimal/description/
 
 https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/description/
 
-位运算比较难的题，没太明白关键一步异或的操作的含义。再刷。
+Bit，Math。没太明白关键一步异或的操作的含义。再刷。
+
+
+190: Reverse Bits
+
+https://leetcode.com/problems/reverse-bits/description/
+
+Bit。将一个32位无符号数的2进制表示reverse，利用进制，采用10进制的方式来做即可，低位的权重更高。
 
 
 7: Reverse Integer
 
 https://leetcode.com/problems/reverse-integer/description/
 
-和190相似，一刷没AC。注意考虑极限情况，包括INT_MAX和INT_MIN。
+Math。和190相似，注意INT_MAX、INT_MIN和正负号，参考**atoi**。
 
 
 476: Number Complement
@@ -1147,19 +1139,26 @@ https://leetcode.com/problems/powx-n/#/description
 60: Permutation Sequence
 
 https://leetcode.com/problems/permutation-sequence/#/description
+
 题目不简单，看别人的代码很难，对思路还不是很清晰，再刷！
 
 
 43: Multiply Strings
 
 https://leetcode.com/problems/multiply-strings/#/description
-大数乘法。从低位到高位，对于结果的每一位都跑一次循环，得到该位的数字并设置全局变量记录进位。初始化结果全零，之后再将高位的0抹去，当结果为0要补个0。
+
+math。大数乘法，给定两个大数$a,b$(字符串表示)，求$c=a*b$。
+
+设$a,b$的长度为别为$n_1,n_2$，则$c$的长度最大为$n_1+n_2$。由低位到高位计算$c$的任意一位$c_k$，对于每一个满足`i+j == k`的有序对`{i,j}`计算$p_{ij}=a_i * b_j$并求和，加上计算$c_{k-1}$产生的进位$carrier_k$对10取模即可，即$c_k=(\sum_{i=0}^{k}{a_i * b_{k-i}} + carrier_k) \% 10$, 且$carrier_{k+1}=(\sum_{i=0}^{k}{a_i * b_{k-i}} + carrier_k) / 10$。初始化$c$长度为$n_1+n_2$的全零字符串，计算结束之后将高位的0抹去，当结果为0要补个0。
 
 
 29: Divide Two Integers
 
 https://leetcode.com/problems/divide-two-integers/#/description
-二进制，位运算。时间复杂度是O(logN)。
+
+Bit，math。给定32位整数$a,b$的除法，求$a/b$，要求不能用乘法运算。
+
+视为求商的二进制表示。每次循环寻找除$a$商大于0的最大的$b*2^i$，减掉这部分。重复上述步骤直到$a<b$。时间复杂度$O(\log{N})$。
 
 
 12: Integer to Roman
@@ -1287,7 +1286,8 @@ https://leetcode.com/problems/basic-calculator/description/
 17: Letter Combinations of a Phone Number Add to List
 
 https://leetcode.com/problems/letter-combinations-of-a-phone-number/#/description
-BFS和DFS都可以做，我更喜欢用bfs.
+
+BFS，DFS。我更喜欢用bfs.
 
 
 336: Palindrome Pairs
@@ -1525,16 +1525,18 @@ dfs，先排序，对着解空间写递归，注意去重。
 
 https://leetcode.com/problems/n-queens/description/
 
-DFS。让$col$递增，逐个选择合法的$row$，存储$path$，$path$的含义是$(path[i], i)$位置可以放一个Queen，之后将合法$path$转为棋局排列。注意判断冲突有三个条件：
-1. $row1 \neq row2$，两个Queen不在同一行
-2. $row1 + col1 \neq row2 + col2$，两个Queen不在一个斜对角线上
-3. $row1 - col1 \neq row2 - col2$，两个Queen不在一个正对角线上
+DFS。让$col$递增，逐个选择合法的$row$，存储$path$，$path$的含义是$(path[i], i)$位置可以放一个Queen，之后将合法$path$转为棋局排列。DFS的解空间是一个N*N的树，每层表示固定的行号，每个节点的n个分支表示可能的行号，遍历解空间的时间复杂度为$O(N^2)$，由于需要判断冲突，所以总的时间复杂度为$O(N^3)$。
+
+判断冲突有三个条件：
+1. $row_1 \neq row_2$，两个Queen不在同一行
+2. $row_1 + col_1 \neq row_2 + col_2$，两个Queen不在一个斜对角线上
+3. $row_1 - col_1 \neq row_2 - col_2$，两个Queen不在一个正对角线上
 
 52: N-Queens II
 
 https://leetcode.com/problems/n-queens-ii/description/
 
-dfs，思路同上。
+dfs，思路与上题完全相同。
 
 
 131: Palindrome Partitioning
@@ -2904,7 +2906,7 @@ https://leetcode.com/problems/decode-ways/#/description
 
 https://leetcode.com/problems/merge-sorted-array/description/
 
-合并两个排好序的数组。我用了堆，用了temp，空间复杂度过高。最优解是将较长的数组扩充，然后倒着插入，思路类似快排，挖坑填坑。
+TP。我用了堆，用了temp，空间复杂度高。最优解是将较长的数组扩充，然后倒着插入，思路类似快排，挖坑填坑。
 
 
 125: Valid Palindrome
@@ -2918,39 +2920,56 @@ https://leetcode.com/problems/valid-palindrome/description/
 
 https://leetcode.com/problems/median-of-two-sorted-arrays/description/
 
-二分查找。查找两个有序数组总的中位数，要求O(log(m+n))的时间复杂度。基于归并排序的方式O(m+n)的复杂度，基于递归的二分查找可以达到复杂度要求。
+BS，TP。查找两个有序数组$a_1,a_2$组成的大数组$a$的中位数，时间复杂度要求$O(\log{(m+n)})$。
+* TP: 模拟归并排序的merge过程，分别查找使用两个指针$p,q$排序后的$a$中的元素$a_{(m + n + 1) / 2}$和$a_{(m + n + 2) /2}$，求两者的平均数，时间复杂度$O(m+n)$。
+* BS: 递归实现BS，与TP类似，在查找两个元素的过程中，比较的关键步骤，分别从$a_1,a_2$中取出中位数$a_1[i]$和$a_2[j]$，比较两者，小的那个所在的数组的前一半可以舍弃掉，这样就讲问题的规模缩减了一半，时间复杂度$O(\log{m + n})$。
 
 
 10: Regular Expression Matching
 
 https://leetcode.com/problems/regular-expression-matching/description/
 
-正则表达式匹配，频率超高！同频的还有四则运算表达式的计算，前、中、后缀表达式切换和运算！
-递归方法分char和`.`，之后在内部讨论后面是否有`*`。DP考虑是否为`*`，是`*`分不重复和重复重复，重复时`x*x`只需判断s把`x`去掉之后的情况，不是`*`可以归于一类。
+DP，DFS。正则表达式匹配，频率超高！同频的还有四则运算表达式的计算，前、中、后缀表达式切换和运算！
+
+* DFS：分char和`.`，之后在内部讨论后面是否有`'*'`。
+* DP：对于$p$中的任意字符$p_j$和要与$p_j$匹配的$s$中的字符$s_i$,先考虑$p_j$是否为`'*'`：
+	1. $p_j$`== '*'`：此时分$s_{i}$是否为$p_{j-1}$的重复：
+		* $s_i$是$p_{j-1}$的重复：此时应有$s[0,...,i-1]$和$p[0,...,j]$匹配成功，`dp[i][j] =  dp[i-1][j] && s[i] == p[j-1]`
+		* $s_i$不是$p_{j-1}$的重复：此时可以视为$p_{j-1}$在$s[i]$后重复了0次，应有$s[0,...,i]$和$p[0,...,j-2]$匹配成功，`dp[i][j] = dp[i][j - 2]`
+	2. $p_j$`!= '*'`：如果成功匹配，则$p[j]$必为通配符`'.'`或者$s[i]$`==`$p[j]$，`dp[i][j] = p[j] == '.' || s[i] == p[j]`。
 
 
 44: Wildcard Matching
 
 https://leetcode.com/problems/wildcard-matching/description/
 
-递归超时，DP可以AC。和10非常相似。还有更简单的方法及TP法。
-https://yucoding.blogspot.com/2013/02/leetcode-question-123-wildcard-matching.html
+DP,DFS,TP。与**10**不同的地方在于匹配规则是`'*'`可以匹配任意长度的字符串，`'?'`可以匹配单一字符。
+
+* DFS超时。
+* DP思路甚至公式和上题都非常相似:
+	1. $p[j]$`=='*'`:`dp[i][j] = dp[i-1][j] || dp[i][j-1]`
+	2. $p[j]$`!='*'`: `dp[i][j] = dp[i-1][j-1] && (s[i] == p[j] || p[j] == '?')`
+* TP才是这道题的最优解，但是DP也不错，可以参考[这篇博客](https://yucoding.blogspot.com/2013/02/leetcode-question-123-wildcard-matching.html)。
 
 
 
 766: Toeplitz Matrix
+
 查看矩阵的每条斜向下对角线上的元素是否相同
 
 
 767: Reorganize String
+
 将字符串重排，要求相邻的两个字母不同，dfs超时，应该用优先级队列。
 
 
 769: Max Chunks To Make Sorted (ver. 1)
+
 给定数组为下标的一种排列，将数组进行partition，要求每个子数组排序后整个数组也有序，给出合法的partition后最多的子数组个数。
 
 
 768: Max Chunks to Make Sorted (ver. 2)
+
 与上题不同的地方在于数组中元素可以有重复。
 
 
