@@ -448,6 +448,7 @@ https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/descrip
 109: Convert Sorted List to Binary Search Tree
 
 https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/#/description
+
 同108，只是这里mid要通过快慢指针来找。
 
 
@@ -894,6 +895,7 @@ graph的dfs, 注意图中可能有环，和138非常相似。
 94: Binary Tree Inorder Traversal
 
 https://leetcode.com/problems/binary-tree-inorder-traversal/#/description
+
 二叉树的前、中、后遍历的递归和非递归算法都要很熟悉。
 
 
@@ -1002,14 +1004,14 @@ TP。注意要首先得出链表长度len，再将旋转次数对len取模，避
 
 https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/
 
-TP。用pre和cur两个指针，cur走到cur和cur->next不等，pre = cur，pre=cur->next, cur=cur->next。
+TP。用`pre`和`cur`两个指针，每次循环让`cur`走到`cur`和`cur->next`不等，`pre = cur，pre=cur->next, cur=cur->next`。
 
 
 82: Remove Duplicates from Sorted List II
 
 https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/#/description
 
-TP。同83，记录cur重复次数次，重复一次pre = cur，重复多次pre ->next = cur->next。最后cur=cur->next。
+TP。同83，记录`cur`的重复次数，只重复一次将`cur`添加到结果链表中，重复多次直接将`cur`跳过。
 
 
 86: Partition List
@@ -1203,13 +1205,17 @@ https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/#/desc
 3: Longest Substring Without Repeating Characters
 
 https://leetcode.com/problems/longest-substring-without-repeating-characters/#/description
-滑动窗口，TP。使用一个长为256的vector记录每个char上次出现的位置，用start记录当前无重复元素子串的起始位置，窗口右侧遇到一个已经访问过的char，窗口左侧（start）移到改char上次出现位置的后一位。
+
+滑动窗口，TP。使用一个长为256的`vector`记录每个`char`上次出现的位置，用`start`记录当前无重复字符子串的起始位置，窗口右侧遇到一个已经访问过的`char`，窗口左侧`start`移到该`char`上次出现位置的后一位。
 
 
 557: Reverse Words in a String III
 
 https://leetcode.com/problems/reverse-words-in-a-string-iii/#/description
-面试被难倒的一个问题，一刷没有AC，真是辣鸡！再刷！
+
+TP。字符串内部单词反转。
+
+用`b`和`e`分别记录每个单词的起始字符的index和末尾字符的下一个index，然后用`reverse(s.begin()+b, s.begin()+e)`反转单词即可。
 
 
 520: Detect Capital
@@ -1251,7 +1257,11 @@ https://leetcode.com/problems/longest-uncommon-subsequence-i/#/description
 5: Longest Palindromic Substring
 
 https://leetcode.com/problems/longest-palindromic-substring/#/description
-DP解法,先判断是否为回文串，然后更新起始点，O(N^2)。另一种解法遍历每个字符，沿两侧展开，更新起始点和最大长度，O(N^2)。
+
+DP，TP。查找字符串中的最长回文子串。
+
+* DP方法：使用DP判断每个子串是否为回文串，若子串为回文串且长度大于已知最长回文子串的长度，则更新最长回文子串的起止点，时间复杂度和空间复杂度均为$O(N^2)$
+* TP：遍历每个字符，沿两侧展开，更新起始点和最大长度，时间复杂度为$O(N^2)$，空间复杂度为$O(1)$。
 
 
 9: Palindrome Number
@@ -1355,7 +1365,8 @@ stack。使用将string转为stack，遇到'#'且栈非空则删除栈顶元素�
 93: Restore IP Addresses
 
 https://leetcode.com/problems/restore-ip-addresses/#/description
-DFS。count记录ip段数，start记录起始位。
+
+DFS。count记录ip段数，start记录起始位，path记录当前解析的结果。
 
 
 22: Generate Parentheses
@@ -1970,7 +1981,7 @@ BFS。“之”字层序遍历二叉树。
 	* 奇数层： 先入左子再入右子
 	* 偶数层：先入右子再入左子
 
-使用`deque`和`stack`都只有一种顺序是正确的，显然基于`stack`的方法更简单。
+使用`deque`和`stack`都只有一种顺序是正确的，显然**基于`stack`的方法更简单**。
 
 150: Evaluate Reverse Polish Notation
 
@@ -2171,7 +2182,7 @@ BFS，实际上是个概率题，初始情况下，随机选定一个word作为t
 
 https://leetcode.com/problems/surrounded-regions/description/
 
-dfs。不能从所有单元格出发进行dfs或者bfs，而是从四条边界出发使用dfs或者bfs即可。、
+DFS，BFS。而是从四条边界出发使用DFS或BFS即可，状态不必回溯。
 
 
 865: Shortest Path to Get All Keys
@@ -2679,7 +2690,9 @@ https://leetcode.com/problems/delete-node-in-a-bst/description/
 
 https://leetcode.com/problems/populating-next-right-pointers-in-each-node/description/
 
-BFS。双queue实现的BFS空间复杂度为O(N)，不满足要求。利用next指针可以实现BFS，空间复杂度仅为O(1)。BFS的思想：遍历本层，链接下一层并记录下一层的起始节点。
+BFS。双queue实现的BFS空间复杂度为O(N)，不满足要求。利用next指针可以实现BFS，空间复杂度仅为O(1)。
+
+使用三个指针即可实现BFS，`cur`记录本层的访问位置，`next_start`指向下一层的起始位置，`next_end`指向下一层的末端。每次访问`cur`，如果有左子或右子，都要判断是否将子节点作为`next_start`或者添加到`next_end`之后。 
 
 
 117: Populating Next Right Pointers in Each Node II
