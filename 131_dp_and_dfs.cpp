@@ -4,11 +4,8 @@ public:
         int l = s.size();
         vector<vector<bool>> dp(l, vector<bool>(l, false));
         for (int i = 0; i < l; i++) dp[i][i] = true;
-        for (int len = 2; len <= l; len++) {
-            for (int i = 0; i + len - 1 < l; i++) {
-                int j = i + len - 1;
-                dp[i][j] = s[i] == s[j] && (i + 1 > j - 1 || dp[i + 1][j - 1]);
-            }
+        for (int j = 1; j < l; j++) {
+            for (int i = 0; i < j; i++) dp[i][j] = s[i] == s[j] && (i + 1 > j - 1 || dp[i + 1][j - 1]);
         }
         vector<string> path;
         vector<vector<string>> res;

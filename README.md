@@ -62,8 +62,7 @@ https://leetcode.com/contest/weekly-contest-84/problems/sum-of-distances-in-tree
 
 https://leetcode.com/problems/longest-palindrome/
 
-比较简单，如果字母个数为偶数，直接加，字母个数为奇数，加上减一后的值，由于回文串中间可以放一个长度为一的子串，因此如果有个数为奇数的字母，最后结果要加一。
-一刷统计小写字母的出现次数时，条件写反了。计算最后结果时注意处理出现次数为奇数的字符。二刷一次ac。
+HashMap。记录每个字母的个数，是偶数的话可以直接分两部分拼到结果palindrome的两侧对称的位置，如果字母个数为奇数个，选择偶数个分两部分拼到结果palindrome的两侧对称位置。如果有字母个数为奇数，可以将剩余的那个作为结果palindrome的轴。
 
 
 448: Find All Numbers Disappeared in an Array
@@ -502,32 +501,41 @@ https://leetcode.com/problems/set-matrix-zeroes/?tab=Description
 62: Unique Paths
 
 https://leetcode.com/problems/unique-paths/?tab=Description
-DP。
+
+DP。二维DP递推表达式为$dp[i][j] = dp[i-1][j] + dp[i][j-1]$，可以简化为一维DP。
 
 
 63: Unique Paths II
 
 https://leetcode.com/problems/unique-paths-ii/?tab=Description
-DP。同62。
 
+DP。同62。
 
 64: Minimum Path Sum
 
 https://leetcode.com/problems/minimum-path-sum/?tab=Description
+
 DP。同62。
 
 
 53: Maximum Subarray
 
 https://leetcode.com/problems/maximum-subarray/?tab=Description
-DP，可以降为0维DP。累加，当加到a[i]时候如果当前sum小于0。就把[0-i]都扔掉 重新加起。画了个函数图像，感觉稍微好些。序列中的每个数都是sum的导数，这么看的话就可以理解。DP算法好些可以解释连续的问题。和LCS很相似，DP解法构造子问题形式的思路相同，$DP[i]$表示以[i]结尾的sub序列。
+
+DP，可以降为0维DP。设有长度为$n$的数组$a$用`sum`和`res`分别记录当前的累加和与最终的结果。从$a_1$开始累加，当加到$a_i$时候如果`sum < 0`，将`sum`清零，相当于把前面的一个连续子数组扔掉，如果`sum > 0`更新result。这样做的原因是如果上述算法中出现$\sum_{k = i}^{j}a_k < 0$，则必有$\sum_{k=i}^{j+\lambda}a_k < a_{j+\lambda}, \lambda \in [1, n-j]$ 因此可以将$a[i,j]$这部分直接扔掉，从$j+1$开始继续查找和最大的连续子数组。
 
 
 72: Edit Distance
 
 https://leetcode.com/problems/edit-distance/description/
 
-DP，知道思路，没能将问题降级为子问题。需要继续理解！
+DP。用二维数组记录$s[0,i]$与$p[0,j]$的距离。
+* 初始化: `dp[0][j] = j`，`dp[i][0] = i`
+* 二重循环递推: 
+	* `s[i] == p[j]`：`dp[i][j] = min(dp[i-1][j-1], 1+dp[i-1][j], 1+dp[i][j-1])`，`min`函数中的三项分别表示在该处对进行**改、删、增**的操作。
+	* `s[i] != p[j]`：`dp[i][j] = min(1+dp[i-1][j-1], 1+dp[i-1][j], 1+dp[i][j-1])`，`min`函数中的三项分别表示在该处对进行**改、删、增**的操作。
+	
+	上述两种情况的区别在于**改**操作导致的结果不同，相同的时候是不需要改的，所以少了`+1`。
 
 
 486: Predict the Winner
@@ -673,7 +681,8 @@ BS。BS查找下界和上界两类问题存在区别，区别在于求下界时m
 33: Search in Rotated Sorted Array
 
 https://leetcode.com/problems/search-in-rotated-sorted-array/?tab=Description
-BS。$a[mid]$和$a[low]$比较，是为了确定$a[mid]$在较大的前半部分还是较小的后半部分，$a[mid]$在前半部分的条件就是$a[low] <= a[mid]$。
+
+BS。先拿$a_{mid}$和$a_{low}$比较，是为了确定$a[mid]$在较大的前半部分还是较小的后半部分，$a_{mid}$在前半部分的条件就是$a_{low} \leq a_{mid}$。然后再根据$target$所处的位置分类。不能先用$target$进行分类，因为$target$可能不存在于数组中。
 
 
 81: Search in Rotated Sorted Array II
@@ -1293,6 +1302,7 @@ BFS，DFS。我更喜欢用bfs.
 336: Palindrome Pairs
 
 https://leetcode.com/problems/palindrome-pairs/#/description
+
 想有个好点的算法比较难，还不太理解讨论区大神的算法，一刷没AC。忘记边界拿了WA，再刷！
 
 
@@ -1549,7 +1559,12 @@ DP,DFS。先用dp计算任意子串是否为回文，再使用dfs收集合法的
 
 https://leetcode.com/problems/palindrome-partitioning-ii/description/
 
-DP。partition的DP递推公式和判断回文的递推公式不同，[i,j]不满足回文的时候，不能只考虑[i+1,j]和[i,j-1]令其较小值+1，因为[i+1,j]和[i,j-1]虽然可能组成最长的回文子串，也可能partition次数很多！因此要再用一个minCut数组存储最小的cut.
+DP。找出将字符串$s$分割为多个palindrome子串的最小的切割次数。
+
+用二维数组$f$记录子串$s[i,j]$是否为palindrome，用一维数组$h$记录子串$s[0,j]$的最小分割。
+* 判断palindrome与上题无异
+* 若$f[i][j]$`== true`，$h[j] = min (1 + h[i-1], h[j])$。
+* 判断palindrome可以先遍历$j$再遍历$i$，两层循环即可。
 
 
 79: Word Search
