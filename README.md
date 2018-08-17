@@ -726,7 +726,7 @@ TP。将序列模仿出来即可。
 
 https://leetcode.com/problems/container-with-most-water/?tab=Description
 
-TP。左右指针分别从数组两端开始，两指针夹逼过程中，矩形的长变小，只有宽增大，面积才会增大。
+TP。左右指针分别从数组两端开始，两指针夹逼过程中，矩形的长变小，只有宽增大，面积才可能增大。
 
 
 67. Add Binary
@@ -983,6 +983,7 @@ $$l + x = kc$$
 92: Reverse Linked List II
 
 https://leetcode.com/problems/reverse-linked-list-ii/#/description
+
 TP，头插法。分别用pre和end记录要翻转的部分的前一个节点和后一个节点，然后使用头插法即可。
 
 
@@ -990,7 +991,7 @@ TP，头插法。分别用pre和end记录要翻转的部分的前一个节点和
 
 https://leetcode.com/problems/reverse-nodes-in-k-group/description/
 
-链表分组反转，头插法。使用pre和cur分别记录当前组和下一组的头结点，设置dummy node作为结果链表的起始，记录新链表的尾部，因为没插入一个新的组之后就要更新这个尾部，再进行头插法。
+链表分组反转，头插法。使用`pre`和`cur`分别记录当前组和下一组的头结点，设置dummy node作为结果链表的起始，记录新链表的尾部，因为没插入一个新的组之后就要更新这个尾部，再进行头插法。
 
 
 61: Rotate List
@@ -1334,6 +1335,7 @@ https://leetcode.com/problems/validate-ip-address/#/description
 一刷没AC，getline在这个题目中有妙用！题目不难，但是边界条件非常多！坑很多！再刷！
 
 811: Subdomain Visit Count
+
 string，map。使用istringstream和getline对字符串进行处理，用map进行存储。
 
 
@@ -1589,17 +1591,11 @@ dfs。和maze那道题对比，本题需要回溯，原因是本题中解空间�
 
 https://leetcode.com/problems/gray-code/description/
 
-递归。从0开始，不断从起始位或者终止位补0和1(从起始位补的话不必补0，更简洁)，当时从终止位补0或1出错，不知道为啥。
-
-
-211: Add and Search Word - Data structure design
-
-https://leetcode.com/problems/add-and-search-word-data-structure-design/description/
-
-挺难！一刷调试了4个小时才AC！理解严重不够！多刷！还不能完整地写出来，再刷！二刷没有AC，对外层for循环和run的更新有了更深的理解。但是对于返回值的判定还是理解不够，再刷！
+Math。从0开始，不断从起始位或者终止位补0和1(从起始位补的话不必补0，更简洁)，当时从终止位补0或1出错，不知道为啥。
 
 
 674: Longest Continuous Increasing Subsequence My SubmissionsBack to Contest
+
 https://leetcode.com/contest/leetcode-weekly-contest-49/problems/longest-continuous-increasing-subsequence/
 
 比较简单，但是这种题我是比较害怕的！还要继续总结！多总结！这才是进步的捷径！
@@ -2119,14 +2115,14 @@ https://leetcode.com/problems/matchsticks-to-square/description/
 https://leetcode.com/problems/valid-sudoku/description/
 
 暴力法：检查行 检查列 检查每个小矩阵就行，这种方法要遍历board3次。
-更巧妙的方法：记录每行、每列、每个小方块中每个数字是否使用过，如果使用过了，就是invalid，这种方法只需遍历1次board。注意数组的初始化！
+更巧妙的方法：记录每行、每列、每个小方块中每个数字是否使用过，如果使用过了，就是invalid，这种方法只需遍历1次board，用空间换时间。注意数组的初始化！
 
 
 37: Sudoku Solver
 
 https://leetcode.com/problems/sudoku-solver/description/
 
-dfs。注意使用上题的方式判断valid。注意row_used, col_used和box_used要先初始化！
+dfs。注意使用上题的方式判断valid。注意`row_used`, `col_used`和`box_used`要先初始化！
 
 
 102: Binary Tree Level Order Traversal
@@ -2776,7 +2772,7 @@ https://leetcode.com/problems/peeking-iterator/description/
 
 https://leetcode.com/problems/implement-trie-prefix-tree/description/
 
-系统设计题，实现前缀树。注意要用c - 'a'而不是直接用c来索引后继节点！
+系统设计题，实现前缀树。注意要用`c - 'a'`而不是直接用`c`来索引后继节点！
 
 
 14: Longest Common Prefix
@@ -2790,7 +2786,13 @@ Trie。
 
 https://leetcode.com/problems/replace-words/description/
 
-Trie
+Trie。
+
+211: Add and Search Word - Data structure design
+
+https://leetcode.com/problems/add-and-search-word-data-structure-design/description/
+
+Trie。注意查找的时候如果碰到`'.'`，需要使用DFS，把所有可能的路径均遍历结束后如果都没有找到正确结果，返回`false`。
 
 
 307: Range Sum Query - Mutable
