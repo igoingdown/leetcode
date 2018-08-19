@@ -1,6 +1,6 @@
 class MyStack {
 private:
-    deque<int> s;
+    queue<int> q1, q2;
 public:
     /** Initialize your data structure here. */
     MyStack() {
@@ -9,24 +9,38 @@ public:
     
     /** Push element x onto stack. */
     void push(int x) {
-        s.push_back(x);
+        if (q1.empty()) swap(q1, q2);
+        q1.push(x);
     }
     
     /** Removes the element on top of the stack and returns that element. */
     int pop() {
-        int res = s.back();
-        s.pop_back();
+        if (q1.empty()) swap(q1, q2);
+        while (q1.size() > 1) {
+            q2.push(q1.front());
+            q1.pop();
+        }
+        int res = q1.front();
+        q1.pop();
         return res;
     }
     
     /** Get the top element. */
     int top() {
-        return s.back();
+        if (q1.empty()) swap(q1, q2);
+        while (q1.size() > 1) {
+            q2.push(q1.front());
+            q1.pop();
+        }
+        int res = q1.front();
+        q2.push(q1.front());
+        q1.pop();
+        return res;
     }
     
     /** Returns whether the stack is empty. */
     bool empty() {
-        return s.size() == 0;
+        return q1.empty() && q2.empty();
     }
 };
 

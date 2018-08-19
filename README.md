@@ -2339,6 +2339,7 @@ math。在一个单向成环的道路(类比单链表成一个完整环)上有$N
 重复以上过程直到遍历结束，如果$\sum_{i=1}^N l_i >= 0$，则一定有解，且最后一次选中的作为起点的$G_i$就是一个解。
 
 808: Soup Servings
+
 math，DP，DFS，BFS。难点在于空间和时间限制很死，而题目结果是有极限的，要发现问题的结果的规律，简化求解过程。概率随着N的增大而显著增大，概率最大值为1，这就要自己去试探边界。BFS导致TLE，DFS + memo可以接近临界情况，但是还是不够，必须发现概率随N递增规律才能解出这道题。DP要考虑空间开销，我用的二维DP，有解法优化到了一维DP。
 
 
@@ -2359,48 +2360,64 @@ https://leetcode.com/problems/wiggle-sort-ii/description/
 225: Implement Stack using Queues
 
 https://leetcode.com/problems/implement-stack-using-queues/submissions/1
-用deque很简单。一刷没AC，pop函数和普通的stack的pop不同，要返回栈顶元素。
+
+queue。`pop`函数和普通的`stack`的`pop`不同，要返回栈顶元素。
 
 
 42: Trapping Rain Water
 
-https://leetcode.com/problems/trapping-rain-water/description/
+<https://leetcode.com/problems/trapping-rain-water/description/>
 
-stack，单调栈。出栈情况下不必更新遍历指针，下次循环会自然地继续出栈或者入栈。出栈时用循环向前将造成递增的元素全部出栈，这样容易理解，但是代码显得过于冗长。
+stack，单调递减栈。
 
+栈中存放的是可以作为当前水槽的左边界或底板的数的index，如果后面出现了较大的数，则新的数可以作为水槽的右边界。对于要出栈的情况，即出现右边界时，如果栈中有两个及以上的元素，则当前栈顶可以作为水槽底板，底板出栈后的那个栈顶就是左边界，当前水槽可以容纳的水就是`min(left_bound, right_bound) - bottom * width`。
 
 739: Daily Temperatures
-https://leetcode.com/contest/weekly-contest-61/problems/daily-temperatures/
 
-stack，单调栈。注意存的是index，循环用while比较好，更简洁。
+<https://leetcode.com/contest/weekly-contest-61/problems/daily-temperatures/>
 
+stack，单调递减栈。
 
-84: Largest Rectangle in Histogram
-stack，单调栈。注意要计算的矩形宽度不是(i - 出栈元素的index)，而是(i - 出栈后的栈顶 + 1)，这么做的原因是因为，当前元素可能是洼地，这么计算就不会少算了。
-
+类似42，栈中存放的是可能有更高温度出现的日期的index。
 
 246: Sliding Window Maximum
 
 https://leetcode.com/problems/sliding-window-maximum/description/
 
-单调递减双端队列或堆。使用deque时维护一个单调递减栈（存索引），对于每个可以生成结果的元素，将队头元素插入结果中。使用优先级队列时直接存索引，按照数字大小构建大根堆即可。注意c++实现优先级队列不好写，可以使用java实现。
+queue，单调递减双端队列或堆。
 
+* 使用deque: 类似42，维护一个单调递减栈（存索引）可以知道一定范围的数组的最大值，而且最大值就是栈的最底端的元素。由于需要取出窗口中的最大值（即需要访问栈的最底端元素），另外当窗口滑过当前最大值所在的位置时，需要将最大值删除（删除栈的最底端元素），综合以上需求，双端队列是最理想的数据结构！
+* 使用优先级队列: 直接存索引，按照数字大小构建大根堆即可。注意c++实现优先级队列不好写，需要构造一个带参数的函数类。
+
+84: Largest Rectangle in Histogram
+
+<https://leetcode.com/problems/largest-rectangle-in-histogram/description/>
+
+stack，单调递增栈。
+
+栈中存储的是可能作为矩形的高并可以向右延伸的数的index。在需要出栈的情况下，
+* 如果栈中元素个数大于1: 矩形的高为`arr[s.top()]`，矩形的长是`(i - 出栈后的栈顶 + 1)`。
+* 如果栈中元素个数为1：当前栈顶为全局洼地！矩形高为`arr[s.top()]`，长为`arr.size()`。
 
 735: Asteroid Collision
-https://leetcode.com/contest/weekly-contest-60/problems/asteroid-collision/
 
-利用stack的特性，注意分类，debug很久！
+<https://leetcode.com/contest/weekly-contest-60/problems/asteroid-collision/>
+
+利用stack的特性，注意分类！
 
 
 296: Best Meeting Point
-这是一道锁定题。横轴纵轴互不影响，可以将两个维度直接拆开，每个维度排序之后去掉单个的中间节点，加上剩余配对的节点直接的距离即可。一刷没AC，计算sum的时候横轴和纵轴分到两个循环了，在一个循环就可以了，因为长度都一样，注意end初始应该设为posList.size() - 1。
 
+这是一道锁定题。横轴纵轴互不影响，可以将两个维度直接拆开，每个维度排序之后去掉单个的中间节点，加上剩余配对的节点之间的距离即可。
 
 164: Maximum Gap
 
 https://leetcode.com/problems/maximum-gap/description/
 
-一刷使用暴力算法，先sort然后遍历，O(NlogN)的时间复杂度。题目要求O(N)的时间和空间复杂度，桶排序可以满足要求。二刷使用桶排序算法，时间和空间复杂度都是O(N)。由于bucket size设置不当（应该再加1），导致运行时出现除零操作RE。bucket size并不是非常重要的参数，bucket的个数也不需要非常严格，但是一定要保证大于需要的桶的个数。
+Bucket Sort。 
+
+* 暴力算法：先sort然后遍历，O(NlogN)的时间复杂度。
+* Bucket sort: 题目要求O(N)的时间和空间复杂度，桶排序可以满足要求，时间和空间复杂度都是O(N)。每个bucket的size并不是非常重要的参数，bucket的个数也不需要非常严格，但是一定要保证大于需要的桶的个数。
 
 
 23: Merge k Sorted Lists
@@ -2418,6 +2435,7 @@ Heap。和merge sort的merge算法类似，区别在于本题需要访问priorit
 
 
 846: Hand of Straights
+
 https://leetcode.com/contest/weekly-contest-87/problems/hand-of-straights/
 
 map。跟上面的那道题有异曲同工之妙，因为map基于红黑树实现，默认根据key的大小排序！用map记录数组中数字的频率，每组的起点一定是当前map的key的起点，每组要消耗一个数，消耗完就将其移除这个key。只要出现一次key的缺失，则失败！
