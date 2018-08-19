@@ -135,20 +135,17 @@ https://leetcode.com/problems/majority-element-ii/
 看了一篇博客，恍然大悟，很开心，就喜欢这种感觉。原博地址：http://blog.neoshell.moe/leetcode229.html
 BM多数投票算法（Boyer-Moore Majority Vote algorithm）。要注意变量的初始化，将n1，n2初始化为任意两个不同的数就行，对应counter设置为0是关键。还要注意一点第一次遍历结束只是明确了n1，n2是出现频率最高的数，但是对应的counter是不准的，需要重新计数！最后需要查看counter是否满足条件。
 
-
 228: Summary Ranges
 
-https://leetcode.com/problems/summary-ranges/
+<https://leetcode.com/problems/summary-ranges/>
 
 用b记录本次范围的起始位置，用i作为索引。注意更新i和b时先更新i再更新b，而且是拿第i个元素和第i+1个元素比较，这样就不必在循环体外单独处理最后一个元素了。
 
-
 547: Friend Circles
 
-https://leetcode.com/problems/friend-circles/description/
+<https://leetcode.com/problems/friend-circles/description/>
 
 一刷使用DFS，也可以使用并查集解决。
-
 
 721: Accounts Merge
 
@@ -699,21 +696,28 @@ https://leetcode.com/problems/koko-eating-bananas/description/
 
 BS。有$N$堆香蕉，记为$P$，每堆有$P_i$个香蕉，KOKO要在$H$小时内把香蕉吃完，KOKO可以控制自己每小时吃的最多香蕉数$K$，而且每小时只选择一个香蕉堆吃香蕉，计算KOKO完成吃香蕉任务最小的$K$。
 
-$K \in  [\sum_{i} P_i, \max_i{P_i}]$，已知上界和下界，用BS找目标元素$t$即可，目标元素$t$需要满足$\sum_{i} P_i / t的上界 <= H$。
+$K \in  [\sum_{i} P_i, \max_i{P_i}]$，已知上界和下界，用BS找目标元素$t$即可，目标元素$t$需要满足$\sum_{i}P_i/t$的上界 $<= H$。
 
 
 31: Next Permutation
 
 https://leetcode.com/problems/next-permutation/?tab=Description
+
 math。先从后将降序序列反转，然后找反转序列的前一个数字在反转序列中的上界与该数字替换。
 
 
 41: First Missing Positive
 
-https://leetcode.com/problems/first-missing-positive/description/
+<https://leetcode.com/problems/first-missing-positive/description/>
 
-math。鸽巢原理，第一个missing的正整数的范围一定是$[1, array.size() + 1]$。扫描原数组，用额外的数组记录已经出现的正整数，再扫描新数组，第一个没访问过的数就是第一个missing的正整数。有更好的方法，不需要额外的空间，详见[这篇博客](http://www.cnblogs.com/AnnieKim/archive/2013/04/21/3034631.html)。
+math，鸽巢原理，第一个missing的正整数的范围一定是$[1, array.size() + 1]$。类似小米实习面试题。
 
+遍历数组中的每个坑，向坑中填入应该填入的数，规则是:第$i$个坑中填入的数为$i+1$，即$nums[i-1]=i$，对于每个坑$i$，只要不满足以下3个条件：
+* $nums[i] \leq n$ `&&` $nums[i] > 0$
+* $nums[i] - 1 \neq i$
+* $nums[i] \neq nums[nums[i] - 1]$（防止因为有重复的数而导致死循环）
+
+就执行`swap(nums[i], nums[nums[i] - 1])`将$nums[i]$装入到应该出现的位置(第$nums[i]-1$个坑)，此时第$i$个坑出现了一个新的数，重复以上步骤直到以上条件不满足或者第$i$个坑中填入了正确的数。
 
 38: Count and Say
 
