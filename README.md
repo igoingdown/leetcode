@@ -466,19 +466,11 @@ https://leetcode.com/problems/special-binary-string/description/
 	2. 允许交换两个相邻的special binary substring，可以得到所有special binary substring的全排列，因此最大的special binary string就是所有special binary substring按递减排序得到的结果。
 	分析得知以上两点就容易想到递归算法，将special binary string分成尽可能多的special binary substrings,对每个special binary substring进行递归得到special binary substring的最大值，然后将按降序排序后的special binary substrings连接起来就是要求的结果。
 
-75: Sort Colors
-
-https://leetcode.com/problems/sort-colors/
-
-排序，手写快排、堆排等时间复杂度都是O(NlogN)。
-暴力法第一次遍历记录0，1，2的数量，第二次遍历按照数量赋值上去，$O(N)$。
-TP，$O(N)$。令index_0和index_2分别表示下一个0和2应该填进去的坑，扫一遍数组，将0放在swap到前面，2swap到后面，1自然就被swap到中间了。
-变式题是阿里的二面算法题。RGB无序序列排成RGBRGB形式的序列，三指针。
-
 
 74: Search a 2D Matrix
 
 https://leetcode.com/problems/search-a-2d-matrix/?tab=Description
+
 BS，将矩阵降为视为一维数组用BS。index的映射关系:`matrix[mid / n][mid % n]`。
 
 
@@ -545,23 +537,29 @@ https://leetcode.com/problems/predict-the-winner/description/
 
 45: Jump Game II
 
+<https://leetcode.com/problems/jump-game-ii/description/>
 
-https://leetcode.com/problems/jump-game-ii/description/
+DP,BFS。
 
+* DP： 复杂度为$O(N^2)$，自己写的DP，遍历nums，填充并修改dp，如果dp[i]都有效，遍历[1, nums[i]]，更新dp[i+j]，这种方式会超时。师姐的dp跟我不太一样，为了得到dp[i]，遍历dp[0, i-1]，如果一步可以到i则直接跳出，师姐的dp思路才是真正的dp思路。
+* BFS：时间复杂度$O(N)$，从0开始，对于每层更新能到达的最远的元素，然后从那个元素开始，直到能够到最后一个元素位置。
 
-DP,BFS。DP复杂度为O(N^2)，自己写的DP，遍历nums，填充并修改dp，如果dp[i]都有效，遍历[1, nums[i]]，更新dp[i+j]，这种方式会超时。师姐的dp跟我不太一样，为了得到dp[i]，遍历dp[0, i-1]，如果一步可以到i则直接跳出，师姐的dp思路才是真正的dp思路。BFS的复杂度为O(N)，从0开始，对于每层更新能到达的最远的元素，然后从那个元素开始，直到能够到最后一个元素位置。
+55: Jump Game
 
+<https://leetcode.com/problems/jump-game/?tab=Description>
+
+同45。DP，BFS两种方法都可以，还有一种直接循环法，是BFS的简化版。
+* 直接循环法：遍历数组中的每个元素$a_i$，不断更新能到达的最远处`max_reach`，遍历过程中还要保证$i\leq$`max_reach`。最后返回`i==a.size()`。
 
 85: Maximal Rectangle
 
-
 https://leetcode.com/problems/maximal-rectangle/description/
-
 
 DP。把原来的1010矩阵变成直方图矩阵。外层遍历每一行，内层遍历每一列，下一行只要需要使用上一行的信息，所以可以简化为一维DP。height,left和right更新的先后顺序无所谓。关键是理解left[j]和right[j]为什么可以表示最高的（高度为height[j]）的全1向量的左右边界,原因是当matrix[i][j]为1时，left和right的更新会取当前行的边界cur和上一行的对应列的最小值(对right)或者最大值(left)。
 
 
 837: New 21 Game
+
 https://leetcode.com/contest/weekly-contest-85/problems/new-21-game/
 
 DP。给定K,N,W，当牌的点数小于K时，从$[1, W]$的牌中等概论随机抽取一张，计算手牌的面值之和$<=N$的概率。使用pre记录当前牌面值总和之前的概率总，相当于前缀和，使用dp记录当前牌面值的概率。dp[i]最多只跟$[i - 1, i-1-W]$的牌面值概率的总和sum有关，$dp = sum / W$, 使用b记录相关牌面值的起点，使用e记录牌面值的终点。每次计算dp之后，$pre[i + 1] = pre[i] + dp[i]$。
@@ -584,12 +582,6 @@ https://leetcode.com/contest/weekly-contest-88/problems/rectangle-area-ii/
 DP。计算二维坐标系内所有非旋转矩形（所有矩形的边均和X或Y轴平行）重叠的面积。基本思想是将所有矩形分成小块，所有部分都只计算一次。
   * 我自己的思路：使用priority_queue，将所有矩形按照$\{X_1, X_2, Y_1, Y_2\}$的优先级进行排序，每次取出前两个矩形，每次将重复的部分保留，计算多出的部分。我的思路有个bug，当多出的部分与后续的矩形有重复时，这个方法就有了重复计算。
   * **正确方法**：将所有出现过的X，Y分别提取出来。遍历每个矩形，找到其左下角和右上角两个坐标的位置$\{X_1, Y_1, X_2, Y_2\}$在X和Y中对应的index：$\{i_1, j_1, i_2, j_2\}$，遍历所有小矩形$\{x_1, y_1, x_2, y_2\}$，其中$i_1 <= x_1 < x_2 <= i_2, j_1 <= y_1 < y_2 <= j_2$。由于$x_1$和$x_2$必然在X中相邻，$y_1$和$y2$必然在Y中相邻，因此只需标记$\{x_1, y_1\}$即可，可以用二维DP记录应该访问的小矩形，$DP[x_1][y_1] =true$就表示小矩形$\{x_1, y_1, x_2, y_2\}$的面积应该被计入最后的结果中。
-
-
-55: Jump Game
-
-https://leetcode.com/problems/jump-game/?tab=Description
-同45。三种方法，性能由差到好。
 
 
 56: Merge Intervals
@@ -617,19 +609,20 @@ sort。使用lambda表达式进行sort，然后将每个元素插到`res.begin()
 
 54: Spiral Matrix
 
-https://leetcode.com/problems/spiral-matrix/?tab=Description
+<https://leetcode.com/problems/spiral-matrix/?tab=Description>
 
 math。内循环每次从$(i,i)$开始，向右走到$(i, n - i - 1)$, 再向下走到$(m - i - 1, n - i - 1)$，再向左走到$(m - i - 1, i)$, 最后向上走到$(i + 1, i)$。注意去重，即后遍历一圈的过程中，前后两次沿相反的方向遍历的不能是同一行或者同一列！
 
 
 59: Spiral Matrix II
 
-https://leetcode.com/problems/spiral-matrix-ii/?tab=Description
+<https://leetcode.com/problems/spiral-matrix-ii/?tab=Description>
 
 同54。
 
 835: Image Overlap
-https://leetcode.com/contest/weekly-contest-84/problems/image-overlap/
+
+<https://leetcode.com/contest/weekly-contest-84/problems/image-overlap/>
 
 math。空间考察，两个大小一样的方阵A，B重叠，有四种可能的情况，固定A，B可以与A重叠左上角，左下角，右上角，右下角。遍历A的格，作为重叠的部分在A内的一角，遍历B的每个格，根据重叠部分在A的方位（四个，所以有四种情况），计算重叠的格在A中对应的行和列，判断两者的值并分别计数。
 
@@ -654,12 +647,12 @@ math。给定整数N，找出一个回文质数p，要求p是满足$p >= N$的�
 
 https://leetcode.com/problems/rotate-image/?tab=Description
 
-math。矩阵顺时针旋转，先将矩阵进行上下翻转(上换到下)，然后对角互换(左下换到左上)，于是左上就换到了右上，左下换到了左上，右上换到了右下，右下换到了左下，实现了顺时针旋转90度。对于逆时针旋转先上下翻转，然后左上与右下互换。
+math。矩阵顺时针旋转，先将矩阵进行上下翻转(上换到下)，然后对角互换(左下换到右上)，于是左上就换到了右上，左下换到了左上，右上换到了右下，右下换到了左下，实现了顺时针旋转90度。也可以先进行左右翻转，然后将左上和右下互换，由于左上与右下互换不如左下与右上来的简单，因此第一种方案更好一点。对于逆时针旋转先上下翻转，然后左上与右下互换。
 
 
 66: Plus One
 
-https://leetcode.com/problems/plus-one/description/
+<https://leetcode.com/problems/plus-one/description/>
 
 math。初始化令最低位进位c=1,可以按照统一的模式解决。
 
@@ -667,12 +660,14 @@ math。初始化令最低位进位c=1,可以按照统一的模式解决。
 35: Search Insert Position
 
 https://leetcode.com/problems/search-insert-position/?tab=Description
+
 BS。可以直接用`upper_bound`或者`lower_bound`来做。
 
 
 34: Search for a Range
 
 https://leetcode.com/problems/search-for-a-range/?tab=Description
+
 BS。BS查找下界和上界两类问题存在区别，区别在于求下界时mid要靠近low，求上界的时候mid要靠近high；这种区别决定在每次循环更新要找的那个界限（low或者high）。也可以直接使用STL的`upper_bound`和`lower_bound`。
 
 
@@ -733,19 +728,26 @@ https://leetcode.com/problems/container-with-most-water/?tab=Description
 TP。左右指针分别从数组两端开始，两指针夹逼过程中，矩形的长变小，只有宽增大，面积才可能增大。
 
 
-67. Add Binary
+67: Add Binary
 
 https://leetcode.com/problems/add-binary/description/
 
 TP。双指针后向遍历，最后将得到的结果逆转。
+
+75: Sort Colors
+
+<https://leetcode.com/problems/sort-colors/>
+
+* 排序算法：手写快排、堆排等时间复杂度都是O(NlogN)。
+* 暴力法：第一次遍历记录0，1，2的数量，第二次遍历按照数量赋值上去，$O(N)$。
+* TP：$O(N)$。令$index_0$和$index_2$分别表示下一个0和2应该填进去的坑，扫一遍数组，将0放在swap到前面，2swap到后面，1自然就被swap到中间了。
+* 变式题是阿里的二面算法题。RGB无序序列排成RGBRGB形式的序列，三指针。
 
 821: Shortest Distance to a Character
 
 https://leetcode.com/contest/weekly-contest-81/problems/shortest-distance-to-a-character/
 
 TP。string中里指定字符最近的距离，分别从左侧和右侧使用TP进行遍历。
-
-
 
 820: Short Encoding of Words
 
@@ -855,24 +857,28 @@ HashMap。`Solution`类内部定义的`MyCompare`要用static关键字，因为�
 438: Find All Anagrams in a String
 
 https://leetcode.com/problems/find-all-anagrams-in-a-string/#/description
+
 没思路，一刷没AC，注意滑动窗口，这是个等大小的窗口，只是用vector而不是用map的算法效率不高。
 
 
 380: Insert Delete GetRandom O(1)
 
 https://leetcode.com/problems/insert-delete-getrandom-o1/#/description
+
 一刷没AC，注意get_random的时候index不能为0！
 
 
 274: H-Index
 
 https://leetcode.com/problems/h-index/#/description
+
 一刷没思路！注意vector和Hashmap的查找复杂度都是O(1)！开数组，多加一个元素用于存储引用数大于size的个数。
 
 
 166: Fraction to Recurring Decimal
 
 https://leetcode.com/problems/fraction-to-recurring-decimal/#/description
+
 一刷没AC，磕磕碰碰，花了很长时间，但是最后肉眼debug成功了。再刷！ 注意极端情况如0，如负数，还有超出界限的问题。效率不高。
 discuss区c++第一名的算法非常简洁，和我思路一样。
 
@@ -880,10 +886,12 @@ discuss区c++第一名的算法非常简洁，和我思路一样。
 138: Copy List with Random Pointer
 
 https://leetcode.com/problems/copy-list-with-random-pointer/#/description
+
 HashMap。使用hashmap记录就链表节点到新链表节点的对照，然后按单链表的顺序复制即可。
 
 
 822: Card Flipping Game
+
 https://leetcode.com/contest/weekly-contest-81/problems/card-flipping-game/
 
 Hashmap。要求正面字符不能出现在反面，考察规律，出去正反面数字相同的牌，一定有一种方式，将所有相同数字全都排在正面。因此只要记录正反面相同的牌的数字，除去这些数字，找牌上出现的最小的数字即可。
@@ -1002,7 +1010,7 @@ https://leetcode.com/problems/reverse-nodes-in-k-group/description/
 
 https://leetcode.com/problems/rotate-list/#/description
 
-TP。注意要首先得出链表长度len，再将旋转次数对len取模，避免多余计算和可能的错误。
+TP。注意要首先得出链表长度`len`，再将旋转次数对`len`取模，避免多余计算和可能的错误。指针先走`k%len`步，慢指针跟上，一直走到快指针走到尾节点，将尾节点链到头结点上，慢指针指向的节点就是新的头结点！
 
 
 83: Remove Duplicates from Sorted List
@@ -1336,6 +1344,7 @@ https://leetcode.com/problems/delete-operation-for-two-strings/#/description
 468: Validate IP Address
 
 https://leetcode.com/problems/validate-ip-address/#/description
+
 一刷没AC，getline在这个题目中有妙用！题目不难，但是边界条件非常多！坑很多！再刷！
 
 811: Subdomain Visit Count
@@ -1471,7 +1480,7 @@ https://leetcode.com/problems/binary-watch/description/
 
 113: Path Sum II
 
-https://leetcode.com/problems/path-sum-ii/description/
+<https://leetcode.com/problems/path-sum-ii/description/>
 
 dfs。遍历解空间，收集合法解。不用去重，比较简单。
 
@@ -1494,7 +1503,7 @@ dfs。面试趋势是这种题目变为解决问题其中的一步。
 
 https://leetcode.com/problems/permutations-ii/description/
 
-DFS。比46难一点，其实把解空间画出来，是一样的，因为每个分支的子问题规模完全相同，只是递归深度不同而已。只是有了虽然有了重复元素，但是用map可以去重，顺带可以统计频率，46中的visited的功能也可以用map来代替。
+DFS。比46难一点，把解空间画出来会发现其实都是一样的，因为每个问题的子问题规模（分支个数）完全相同，递归深度因为有了重复元素会增大。`map`可以去重，还可以统计频率，`map`的key的个数就是分支数的上线。46中的`visited`的功能在本题中被`map`代替了。
 
 
 77: Combinations
@@ -1724,12 +1733,13 @@ https://leetcode.com/problems/unique-substrings-in-wraparound-string/description
 
 大神思路理解不透彻，时间复杂度O(N)，空间复杂度O(1)。一刷理解大神思路的基础上自己实现一次AC。再刷一次！但是这个解法真的是DP吗？
 
-
 97: Interleaving String
 
 https://leetcode.com/problems/interleaving-string/description/
 
-dp。二维填表，逐行填充，母问题可以转化为两个子问题。dp[i][j]表示s1的前i个字符和s2的前j个字符是否可以按照题目规定的方式组合成s3的前i+j个字符。
+DP。二维DP，`dp[i][j]`表示`s1`的子串$s1[0, i]$和`s2`的子串$s2[0,j]$是否可以组合成`s3`的子串$s3[0, i+j]$。由于`s1`和`s2`组合为`s3`时，来自`s1`和`s2`的字符在源串中的相互顺序不变，因此`dp[i][j] == true`有两种情况：
+1. `s3[i+j]`来自`s1`：即`s3[i+j] == s1[i]`，此时还要有`dp[i-1][j] == true`
+2. `s3[i+j]`来自`s2`：即`s3[i+j] == s2[j]`，此时还要有`dp[i][j-1] == true`
 
 
 221: Maximal Square
@@ -1798,7 +1808,7 @@ DP，可以降为子问题，典型的0-1背包问题。要继续思考，细嚼
 
 115: Distinct Subsequences
 
-https://leetcode.com/problems/distinct-subsequences/description/
+<https://leetcode.com/problems/distinct-subsequences/description/>
 
 DP。二维填表题，i-1和j-1分别是s和t的index，使用s[i-1]的匹配数为s[i-1]==t[j-1]时的dp[i-1][j-1]，不使用s[i-1]时的匹配数为dp[i-1]][j]。
 
@@ -2216,13 +2226,11 @@ https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/
 
 一刷使用基于先序遍历的递归方法没AC，没有将val转为string。思路就是先用pre_order遍历，生成字符串，再按pre_order顺序还原二叉树。
 
-
 99: Recover Binary Search Tree
 
 https://leetcode.com/problems/recover-binary-search-tree/description/
 
-递归中序遍历。BST的中序遍历结果必定是单调递增的，如果进行替换，一定两次出现前一个比后一个大的情况，第一次出现时，被调换的那个一定是较大的那个，而第二次出现的时候被调换的那个一定是较小的那个。用全局变量first,second,pre分别记录被调换的第一个、第二个、上一次访问的元素，遍历完之后调换first和second节点的val即可。
-
+递归。BST的中序遍历结果必定是单调递增的，错误发生时，一定两次出现前一个节点的`val`比后一个节点的`val`大的情况。第一次出现时，出错的是较大的那个；第二次出现时，出错的是较小的那个。用`first`,`second`,`pre`分别记录出错的两个节点和中序遍历过程中上一次访问的节点，遍历完之后调换`first`和`second`节点的`val`即可。**注意二重指针的使用**。
 
 87: Scramble String
 
@@ -2395,7 +2403,7 @@ queue，单调递减双端队列或堆。
 
 stack，单调递增栈。
 
-栈中存储的是可能作为矩形的高并可以向右延伸的数的index。在需要出栈的情况下，
+栈中存储的是可能作为矩形的高使矩形可以向右延伸的数的index。在需要出栈的情况下，
 * 如果栈中元素个数大于1: 矩形的高为`arr[s.top()]`，矩形的长是`(i - 出栈后的栈顶 + 1)`。
 * 如果栈中元素个数为1：当前栈顶为全局洼地！矩形高为`arr[s.top()]`，长为`arr.size()`。
 
@@ -2509,14 +2517,14 @@ https://leetcode.com/problems/contiguous-array/description/
 
 76: Minimum Window Substring
 
-https://leetcode.com/problems/minimum-window-substring/description/
+<https://leetcode.com/problems/minimum-window-substring/description/>
 
 TP，将直通硅谷老师的思路改进如下：
-1. 分别用aMap与tMap（vector实现）存储符合条件的子串($[i,...,j]$)与T中的字符及频率。 
-2. for循环遍历j（每轮循环先更新j，然后固定j更新i）:
-  1. 先将s[j]添加到aMap中
-  2. 尝试更新count和include
-  3. 如果[i, ……, j]满足条件,使用while循环尝试右移i,移动过程中优先更新min_len和min_start，如果不能再右移直接退出while循环。
+1. 分别用`aMap`与`tMap`存储符合条件的子串($S[i,j]$)与$T$中的字符及对应的频率。 
+2. for循环优先开拓右边界`j`，如果左、右边界限定范围内的子串包含$T$，然后逐渐压缩左边界`i`至无法压缩为止，此时的子串$S[i,j]$为一个候选解:
+	1. 先将$S[j]$添加到`aMap`中
+	2. 尝试更新`count`（记录当前时刻$T$中没有被子串$S[i,j]$包含的字符个数）
+	3. 如果子串$S[i,j]$满足条件`count == 0`,使用`while`循环右移`i`至无法右移为止，右移结束后，更新`min_len`和`min_start`。
 
 
 207: Course Schedule
@@ -2643,7 +2651,7 @@ https://leetcode.com/problems/maximum-binary-tree/description/
 
 101: Symmetric Tree
 
-https://leetcode.com/problems/symmetric-tree/description/
+<https://leetcode.com/problems/symmetric-tree/description/>
 
 递归。对左右子树判断对称性。
 
@@ -2656,7 +2664,7 @@ https://leetcode.com/problems/binary-tree-postorder-traversal/description/
 
 872: Leaf-Similar Trees
 
-https://leetcode.com/contest/weekly-contest-94/problems/leaf-similar-trees/
+<https://leetcode.com/contest/weekly-contest-94/problems/leaf-similar-trees/>
 
 递归。定义如果两棵树的叶子节点按从左到右的顺序访问，得到结果列表相同，则两棵树相似。给定两棵树，判断两棵树是否相似。
 
@@ -2664,7 +2672,7 @@ https://leetcode.com/contest/weekly-contest-94/problems/leaf-similar-trees/
 
 655: Print Binary Tree
 
-https://leetcode.com/problems/print-binary-tree/description/
+<https://leetcode.com/problems/print-binary-tree/description/>
 
 合并左右子树的时候思路要清晰，分情况，不是两边一直用空串填充，而是每个元素两侧都使用空串填充！一步步简化代码，对容器的insert函数用熟了！
 
