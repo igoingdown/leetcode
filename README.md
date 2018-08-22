@@ -2353,7 +2353,8 @@ DP。给定一段时间内一支股票每天的价格数组$P$，计算本金充
 
 <https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/>
 
-DP，AC自动机。同122，用`buy1,sell1,buy2,sell2`分别记录买1次，买2次，卖1次和卖2次的最大收益。上述4个变量表示4种状态，这些状态呈链式连接关系。
+DP，AC自动机。同122，用`buy1,sell1,buy2,sell2`分别记录买1次，买2次，卖1次和卖2次的最大收益。上述4个变量表示4种状态，这些状态呈链式连接关系，如下图所示:![image](https://github.com/igoingdown/public-notes/blob/master/images/ac_auto_machine.png?raw=true)
+
 `sell2 = max(sell2, buy2 + prices[i])`
 `buy2 = max(buy2, sell1 - prices[i])`
 `sell1 = max(sell1, buy1 + prices[i])`
