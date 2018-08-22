@@ -21,13 +21,14 @@ public:
     void put(int key, int value) {
         if (cache.find(key) == cache.end()) {
             if (items.size() == _capacity) {
-                cache.erase(items.back().first); items.pop_back();
+                cache.erase(items.back().first); 
+                items.pop_back();
             }
             items.push_front({key, value});
             cache[key] = items.begin(); 
         } else {
             items.splice(items.begin(), items, cache[key]); 
-            cache[key] = items.begin(); 
+            cache[key] = items.begin();
             cache[key]->second = value;
         }
     }

@@ -198,9 +198,12 @@ https://leetcode.com/problems/01-matrix/description/
 
 30: Substring with Concatenation of All Words
 
-https://leetcode.com/problems/substring-with-concatenation-of-all-words/description/
+<https://leetcode.com/problems/substring-with-concatenation-of-all-words/description/>
 
-一刷先用KMP得到每个关键字在母串中出现的所有位置，然后使用DFS得到解，这种方式会超时。二刷使用TP，使用两个map，一个map记录每个模式串的个数，另一个用于匹配，两层循环，外循环遍历母串（注意遍历的范围是0~ss - ws * l），内循环进行匹配，每次匹配都从母串中取出长为l的子串，看是否在map中，在map中则修改map，知道map为空，这时产生了一个答案，继续外循环即可。
+TP。
+
+* KMP：使用KMP得到每个关键字在母串中出现的所有位置，然后使用DFS得到解，这种方式超时。
+* TP：使用`map`记录每个模式串及对应的频率，两层循环，外循环遍历母串，遍历的范围是$0,ss - ws* l$，内循环进行匹配，每次匹配都从母串中取出长为l的子串，看是否在`map`中，在`map`中则修改`map`，直到`map`为空，这时产生了一个答案。此时继续外循环即可。
 
 
 417: Pacific Atlantic Water Flow
@@ -247,17 +250,16 @@ https://leetcode.com/problems/maximum-product-subarray/
 
 136: Single Number
 
-https://leetcode.com/problems/single-number/
+<https://leetcode.com/problems/single-number/>
 
-位运算（异或）经典题目。想象一个多层公寓，每个公寓住着0或者1，异或像如来神掌一样将每一位从上而下压缩。
+位操作。想象一个多层公寓，每个公寓住着0或者1，异或像如来神掌一样将每一位从上而下压缩。
 
 
 137: Single Number II
 
-https://leetcode.com/problems/single-number-ii/description/
+<https://leetcode.com/problems/single-number-ii/description/>
 
-每一位都有规律，仍然可以按照上题的思路思考，每一位上都是这样的规律$sum = x_1 * 3 + x_2 * 3 + ... + x_{n-1} * 3 + y$，要得到y对sum模3即可。
-
+位操作。每一位都有规律，仍然可以按照上题的思路思考，每一位上都是这样的规律$sum = x_1 * 3 + x_2 * 3 + ... + x_{n-1} * 3 + y$，要得到y对sum模3即可。
 
 260: Single Number III
 
@@ -265,13 +267,11 @@ https://leetcode.com/problems/single-number-iii/description/
 
 位操作，按第一个不同的位将nums分为两派即可。思路同前两道题。
 
-
 461: Hamming Distance
 
 https://leetcode.com/problems/hamming-distance/description/
 
 位运算，与和异或。
-
 
 477: Total Hamming Distance
 
@@ -408,18 +408,6 @@ Hashmap。给定一个边界无限的二维平面和一个初始处于这个平�
 
 从原点出发，模拟机器人执行命令的路线，更新能够导到的最远距离。只要比较每条命令执行完机器人所处的位置到原点的距离和已知最大距离即可，因为移动过程中的位置不可能是最大值。
 
-120: Triangle
-
-https://leetcode.com/problems/triangle/
-
-DP。自底向上，`dp[c] = min(dp[c], dp[c+1]) + triangle[r][c]`，$O(N^2)$。
-
-
-799: Champagne Tower
-DP。与120类似。
-`dp[r][c] = (dp[r-1][c-1] >= 1 : dp[r-1][c-1] - 1 : 0) / 2 + (dp[r-1][c] >= 1 ? dp[r-1][c] - 1 : 0) / 2`。
-
-
 
 105: Construct Binary Tree from Preorder and Inorder Traversal
 
@@ -507,6 +495,17 @@ https://leetcode.com/problems/minimum-path-sum/?tab=Description
 
 DP。同62。
 
+120: Triangle
+
+<https://leetcode.com/problems/triangle/>
+
+DP。自底向上，每个问题只有两个小的子问题，同62。`dp[c] = min(dp[c], dp[c+1]) + triangle[r][c]`，$O(N^2)$。
+
+799: Champagne Tower
+
+DP。同120。
+
+`dp[r][c] = (dp[r-1][c-1] >= 1 : dp[r-1][c-1] - 1 : 0) / 2 + (dp[r-1][c] >= 1 ? dp[r-1][c] - 1 : 0) / 2`。
 
 53: Maximum Subarray
 
@@ -577,6 +576,7 @@ DP。二维DP记录每个子串中不重复的回文子序列的个数，先固�
 2. $s[i] != s[j]$:$DP[i][j] = DP[i+1][j] + DP[i][j-1] - DP[i+1][j-1]$。
 
 731: Rectangle Area II
+
 https://leetcode.com/contest/weekly-contest-88/problems/rectangle-area-ii/
 
 DP。计算二维坐标系内所有非旋转矩形（所有矩形的边均和X或Y轴平行）重叠的面积。基本思想是将所有矩形分成小块，所有部分都只计算一次。
@@ -698,7 +698,7 @@ $K \in  [\sum_{i} P_i, \max_i{P_i}]$，已知上界和下界，用BS找目标元
 
 https://leetcode.com/problems/next-permutation/?tab=Description
 
-math。先从后将降序序列反转，然后找反转序列的前一个数字在反转序列中的上界与该数字替换。
+math。先从后将降序序列反转，然后找被反转序列的前一个数字在反转序列中的上界与该数字替换。
 
 
 41: First Missing Positive
@@ -889,20 +889,17 @@ https://leetcode.com/problems/copy-list-with-random-pointer/#/description
 
 HashMap。使用hashmap记录就链表节点到新链表节点的对照，然后按单链表的顺序复制即可。
 
+133: Clone Graph
+
+<https://leetcode.com/problems/clone-graph/description/>
+
+graph的dfs, 注意图中可能有环，和138非常相似。
 
 822: Card Flipping Game
 
 https://leetcode.com/contest/weekly-contest-81/problems/card-flipping-game/
 
 Hashmap。要求正面字符不能出现在反面，考察规律，出去正反面数字相同的牌，一定有一种方式，将所有相同数字全都排在正面。因此只要记录正反面相同的牌的数字，除去这些数字，找牌上出现的最小的数字即可。
-
-
-133: Clone Graph
-
-https://leetcode.com/problems/clone-graph/description/
-
-graph的dfs, 注意图中可能有环，和138非常相似。
-
 
 94: Binary Tree Inorder Traversal
 
@@ -933,8 +930,9 @@ TP。双指针找到中点，递归排序再merge。
 
 147: Insertion Sort List Add to List
 
-https://leetcode.com/problems/insertion-sort-list/#/description
-指针。使用dummy node作为新的头结点，将原链表的节点依次插入到新链表中。
+<https://leetcode.com/problems/insertion-sort-list/#/description>
+
+TP。使用dummy node作为新的头结点，将原链表的节点依次插入到新链表中。
 
 
 143: Reorder List
@@ -1162,9 +1160,9 @@ https://leetcode.com/problems/powx-n/#/description
 
 60: Permutation Sequence
 
-https://leetcode.com/problems/permutation-sequence/#/description
+<https://leetcode.com/problems/permutation-sequence/#/description>
 
-题目不简单，看别人的代码很难，对思路还不是很清晰，再刷！
+Math。$N$个数字的所有排列方式为$N!$种，在由前到后确定每一位上的数字的过程中，单位不同，根据单位和当前剩余的`k`决定填充哪个数字，并用`set`记录已经使用过的数字。
 
 
 43: Multiply Strings
@@ -1367,12 +1365,13 @@ stack。判断各种括号的组合是否合法，用栈。遍历字符串，遇
 
 71: Simplify Path
 
-https://leetcode.com/problems/simplify-path/#/description
-stack。用vector代替stack更简单，stringstream要用熟，getline(stream, buffer, char)的第三个参数表示分隔符。最后多出来一个"/"要去掉。
+<https://leetcode.com/problems/simplify-path/#/description>
 
+stack。用`vector`代替`stack`更简单，`stringstream`要用熟，`getline(in_stream, buffer, char)`的第三个参数表示分隔符。最后结果中多出来的一个`"/"`要去掉。
 
 844: Backspace String Compare
-https://leetcode.com/contest/weekly-contest-87/problems/backspace-string-compare/
+
+<https://leetcode.com/contest/weekly-contest-87/problems/backspace-string-compare/>
 
 stack。使用将string转为stack，遇到'#'且栈非空则删除栈顶元素，否则将字符压入栈中。
 
@@ -1489,7 +1488,7 @@ dfs。遍历解空间，收集合法解。不用去重，比较简单。
 
 https://leetcode.com/problems/binary-tree-maximum-path-sum/description/
 
-dfs。一种方法是两个递归，小的递归找出以root为起点以任意节点为终点的所有path sum的最大值，大的递归找出以任意节点为root的子树的最大path sum作为结果；就是说遍历解空间，大递归遍历以任意节点为根的子树，对子树调用小递归，更新大递归的解。以这种方法存在大量的重复计算，效率低。另一种方法将大递归和小递归融合成一个递归，在小递归中更新全局最优解，但是返回小递归的解。
+dfs。递归函数`f`返回包括根节点`root`在内的单侧路径最大值。在函数体内分别对左子树和右子树调用`f`分别得到左子树上的带根单侧路径最大值`left`和右子树上的带根单侧路径最大值`right`，拿`right + left + root->val`和用于存储全局解的`res`相比，更新`res`，返回`max(left, right) + root->val`。
 
 
 46: Permutations
@@ -1627,6 +1626,7 @@ https://leetcode.com/contest/leetcode-weekly-contest-49/problems/implement-magic
 
 
 675: Cut Off Trees for Golf Event
+
 https://leetcode.com/contest/leetcode-weekly-contest-49/problems/cut-off-trees-for-golf-event/
 
 不太难的一道BFS的题目，但是非常繁琐！DEBUG了非常长的时间！对于树而言BFS就是层序遍历，DFS就是后续遍历！代码我到最后都不知道为什么AC了！这份代码非常经典，要拿出来再刷，再总结！
@@ -1650,37 +1650,80 @@ https://leetcode.com/problems/house-robber-ii/description/
 
 https://leetcode.com/problems/unique-binary-search-trees/description/
 
-DP思路是：将1到n分别作为根，左右两侧都是一个规模更小的子问题，左右两侧结果相乘就是一种情况，枚举所有情况求和即可。一刷AC，二刷没AC，思路不够熟。三刷没思路，看了注释之后AC。四刷使用数组没有初始化WA，应该使用vector。这道题和矩阵相乘的那道题很类似，都是从序列中间取一个元素，分割序列将问题转化为规模更小的子问题，同时分割元素可以是序列中的任意一个元素，这类的递推函数很常见。DP问题的解不仅可以由一个小规模子问题的解得到，还可以由多个甚至所有小规模子问题的解的组合得到。
+DP。
+
+* 初始化: $dp[0] = 1, dp[1] = 1$。
+* 递推关系: $dp[i] = \sum_{j=1}^i (dp[j-1] * dp[i-j])$
+
+将1到n分别作为根，左右两侧一个规模更小的子问题，左右两侧结果相乘就是一种情况，枚举所有情况求和即可。
+
+这道题和矩阵相乘的那道题很类似，都是从序列中间取一个元素，分割序列将问题转化为规模更小的子问题，同时分割元素可以是序列中的任意一个元素，这类的递推函数很常见。DP问题的解不仅可以由一个小规模子问题的解得到，还可以由多个甚至所有小规模子问题的解的组合得到。
 
 
 95: Unique Binary Search Trees II
 
-https://leetcode.com/problems/unique-binary-search-trees-ii/description/
+<https://leetcode.com/problems/unique-binary-search-trees-ii/description/>
 
-BFS或递归。BFS从1到n，逐渐扩充res，然后遍历上一个节点加入后的res列表，在每棵树上添加新的节点（每个可能的右子树），时间复杂度O(N^2logN)~O(N^3logN)。递归将问题转化为区间的BST生成，遍历范围，选取元素为根，2个子问题分别生成所有左子树left与所有右子树right，然后按照96的思路将所有左右子树的组合得到就是结果。
-
+BFS，DFS。
+* BFS：从1到n，逐渐扩充res，然后遍历上一个节点加入后的res列表，在每棵树上添加新的节点（每个可能的右子树），时间复杂度$O(N^2\log N)$~$O(N^3 \log N)$。
+* DFS：递归函数`f`返回由区间$[begin, end]$中所有整数生成的所有BST的列表。`f`内部遍历区间中的每个元素`i`，选其为根，对区间$[begin, i-1]$调用`f`生成所有左子树`left`，对区间$[i+1, end]$调用`f`生成所有右子树`right`，然后按照96的思路将所有左、右子树的组合就是结果。
 
 300: Longest Increasing Subsequence
 
 https://leetcode.com/problems/longest-increasing-subsequence/#/description
-一刷AC，使用patient sort算法，时间复杂度为O(NLOGN)，但是不太理解。二刷一次AC，仍然不太理解。三刷使用java刷，算法使用一维DP，时间复杂度为O(N^2)，效率略低，思路很简单，没AC，要注意重复数字不能计入length。patient sort是专门应对这个题的算法！和95相似，这两个问题的DP算法都有一点弯。四刷一次AC。
 
+DP，patient sort。
+* patient sort：patient sort是专门应对这个问题的算法，时间复杂度为$O(N \log N)$。
+* DP：时间复杂度为$O(N^2)$，效率略低，**注意重复数字不能计入length**，和95相似。
 
 32: Longest Valid Parentheses
 
 https://leetcode.com/problems/longest-valid-parentheses/description/
 
-一维DP，每一个元素记录以当前字符结尾的最长合法串的长度。
-1. s[i] == '('， dp[i] = 0；
-2. s[i] == ')'， 如果s[i - 1] == '(' 则dp[i] = dp[i- 2] + 2， 如果s[i - dp[i-1]-1] == '(', 则dp[i] = dp[i-dp[i-1]-2] + dp[i-1]+2；
+DP，stack，TP。TP是最高效的。
 
+* DP: `dp[i]`记录的是以字符`s[i]`结尾的合法括号序列的长度，分两种基本情况：
+	* `s[i] == '('`: 此时有`dp[i] = 0`；
+	* `s[i] == ')'`: 此时根据`s[i-1]`的值分两种情况：
+		* `s[i - 1] == '('`:此时`s[i]`和`s[i-1]`刚好配对， `dp[i] = dp[i- 2] + 2`
+		* `s[i-1] == ')'`: 此时如果`s[i - dp[i-1] - 1]`（`'('`）和`s[i]`（`')'`）刚好可以将以`s[i-1]`结尾长度为`dp[i-1]`的合法子串包住，则有`dp[i] = dp[i-dp[i-1]-2] + dp[i-1]+2`。**注意：这种情况下，新的合法子串不仅包括被包住的合法子串，还包括被包住的合法子串之前的能够和新包住的合法子串拼接成更长的合法子串的部分**。
+* stack: 栈中保存的是上一个非法字符的index，初始化栈顶为`-1`。
+* TP：先后进行两次遍历，正向一次，反向一次，并用`left`记录当前有可能合法的子串中左括号`'('`的个数，用`right`记录当前有可能合法的子串中右括号`')'`的个数，用`result`记录全局的解。
+	* 正向遍历会出现三种情况
+		1. `left > right`：说明子串有可能合法的，因为后面可能会出现一些`')'`与前面多出的`'('`配对
+		2. `left < right`：说明当前子串一定不合法，此时两个变量全部归零；
+		3. `left == right`： 说明当前子串完全合法，此时应该更新`result`。
+	* 反向遍历也会出现类似的三种情况：
+		1. `left < right`：说明子串有可能合法的，因为前方可能会出现一些`'('`与后面多出的`')'`配对
+		2. `left > right`：说明当前子串一定不合法，此时两个变量全部归零；
+		3. `left == right`： 说明当前子串完全合法，此时应该更新`result`。
+	* 一次遍历无法解决问题的原因：举个例子，当输入字符串为`((())`时，前向遍历得到的结果是0，因为最前面的那个`(`在后续遍历过程中一直无法找到可以与之配对的`')'`，而`left > right`始终成立。正向遍历优先匹配`'('`，而反向遍历优先遍历`')'`，这两种情况是互斥的，而且只有这两种元素，因此双向遍历是有效的。
 
 647: Palindromic Substrings
 
 https://leetcode.com/problems/palindromic-substrings/description/
 
-一刷使用DP算法AC，时间复杂度和空间复杂度都是O(N^2)。讨论区应该有更好的解法，再刷尝试！讨论区有一个经典的解决字符串中回文子串的算法叫“曼彻斯特算法”，后面要对这种类型进行总结！
+DP，曼彻斯特算法。
 
+* DP：时间复杂度和空间复杂度都是$O(N^2)$。
+* 曼彻斯特算法：专门用于解决字符串中回文子串长度的算法，下面的说明来自[知乎高票答案](https://www.zhihu.com/question/37289584)。
+	* 变量含义：
+		* 字符串`str`：未添加`'#'`之前的原始字符串。
+		* 字符串`buffer`：代表添加了`'#'`后的字符串。
+		* 数组`max_len`：与`buffer`长度相同，`max_len[i]`表示以第i个字符为中心的回文串的最大半径。
+		* 变量`max_pos`：表示当前**已经匹配完毕的结尾最远的回文串**到达了`buffer`数组的第`max_pos`个字符。
+		* 变量`ID`：表示当前**已经匹配完毕的结尾最远的回文串**的中心字符index。
+	
+	* 不难发现，`max_len[i]-1`即以字符`buffer[i]`为中心的最长回文子串除去`'#'`的长度。
+	
+	* 当前字符`buffer[i]`已经被包含在曾经被判断过的回文串内（即`max_pos>i`)，那么它在这个回文串中相对应的那个字符`buffer[2*ID-i]`，应当已经被计算过以它为中心的回文串可以有多长了。那么以`buffer[i]`为中心的回文串长度，就有了第一个下限`max_len[2*ID-i]`（运用回文串的对称性）。另外以`buffer[2*ID-i]`为中心的回文串，它可能延展到了以`buffer[ID]`为中心的回文串之外。这样我们就不能保证以`buffer[i]`为中心的回文串包括了以`buffer[ID]`为中心的回文串之外的部分，于是我们得到了第二个下限：`max_pos-i`。综上，在`max_pos>i`时，我们就得到了`max_len[i]=min(max_len[2*ID-i],max_pos-i)`。这时我们只得到了一个可怜的下限，因此我们要在这个下限的基础上继续向外扩展。最后更新`max_pos`和`ID`。
+	
+	* 算法复杂度分析：考虑当前字符`buffer[i]`，我们可以分为三种情况:
+		1. `max_len[i]=1`，说明`max_pos`没有覆盖超过`buffer[i]`，那么`max_pos`在这一步后一定会增加。
+		2. `max_len[i]=max_pos-i`，说明以`buffer[i]`为中心的回文串至少到达了`max_pos`，那么`max_pos`在这之后不会减少。
+		3. `max_len[i]=max_len[ID*2-i]`，说明可怜的以`buffer[i]`为中心的回文子串最长只有这么长，已经匹配不出去了。
+	
+		Mx的値是单调的，并且始终不会超过字符串长度Len，那么对于所有的`i`，**1**、**2**两种种情况的执行时间总和不会超过`Len`。因此总时间复杂度依旧是O(n)。
 
 416: Partition Equal Subset Sum
 
@@ -1697,24 +1740,31 @@ https://discuss.leetcode.com/topic/67539/0-1-knapsack-detailed-explanation
 
 139: Word Break
 
-https://leetcode.com/problems/word-break/description/
+<https://leetcode.com/problems/word-break/description/>
 
-一维DP，不用管前面，每次从后面看，将s[0, j]分成两部分s[0, i]和s[i+1, j]，如果s[i+1, j]在字典中，s[0,i]可以由词典中的词拼成，则s[0, j]也可以由字典中的词拼成。注意dp[0]=true的初始化。dp[0]对结果没有意义，但是在dp更新时有用。O(N^2*M)。
+DP。将$s[0, j]$分成两部分$s[0, i]$和$s[i+1, j]$，如果`dp[i] == true`且$s[i+1, j]$是字典中的词，则`DP[j] == true`。可以令`i`从`j-1`遍历到`0`，只要发现符合上述情况的`i`就跳出循环，处理下一个`j`。时间复杂度$O(N^2)$，空间复杂度$O(N)$。
 
 
 140: Word Break II
 
-https://leetcode.com/problems/word-break-ii/description/
+<https://leetcode.com/problems/word-break-ii/description/>
 
-和上题的思路相同，但是使用的是递归+MEMO，因为要把所有可能的结果都保存下来。
-f(s[0, j]) = f(s[0, i]) + word(s[i + 1, j]) 
+DFS。dfs+memo，因为要把所有可能的结果都保存下来，加入memo效率更高。dfs照例可以画解空间树来做，递归函数`f`返回当前字符串的所有可能的分离结果`res`，在`f`的函数体内，由后向前找出所有字典里出现的单词`word`，对剩下的部分调用`f`得到子串的分离结果`children`，对于`children`中的每一个字符串`child`在后面拼接上`word`就是`res`的一个元素。
+$\forall i, s[i+1,j]\in word\_dict$, $f(s[0, j]) = f(s[0, i]) + s[i + 1, j]$
 
 
 135: Candy
-BFS或DP。BFS算法将问题转化为拓扑排序，O(N^2)的复杂度，超时。一维DP先从左向右扫描数组，与左侧元素比较更新DP，之后反向扫描数组，根据元素与右侧元素的关系修改DP。可以将空间复杂度降到O(1)，同时保留O(N)的时间复杂度。
+
+<https://leetcode.com/problems/candy/description/>
+
+BFS，DP。
+
+* BFS：将问题转化为拓扑排序，O(N^2)的复杂度，超时。
+* DP：先从左向右扫描数组，与左侧元素比较更新DP，之后反向扫描数组，根据元素与右侧元素的关系修改DP。时、空间复杂度均为$O(N)$。
 
 
 845: Longest Mountain in Array
+
 https://leetcode.com/contest/weekly-contest-87/problems/longest-mountain-in-array/
 
 DP。分别使用前向和后向DP记录左侧和右侧能与该元素形成单调递严格减的序列的长度，正向遍历填充前向DP，逆向遍历填充后向DP，最后结合两个DP结果给出答案。
@@ -1797,7 +1847,7 @@ DP问题首先看问题能否降为子问题，如果能将问题分解为规模
 
 https://leetcode.com/problems/coin-change-2/description/
 
-DP.与上题不同的是要去重，这里计算的是目标组合的个数。相比于这题，Climbing Stairs相比，这里因为计算的是合法组合数，去重更困难。思路是先控制使用的coin的面值，逐个加入新面值，改变组合数。
+DP。与上题不同的是要去重，这里计算的是目标组合的个数。相比于这题，Climbing Stairs相比，这里因为计算的是合法组合数，去重更困难。思路是先控制使用的coin的面值，逐个加入新面值，改变组合数。
 
 
 740: Delete and Earn
@@ -1810,8 +1860,9 @@ DP，可以降为子问题，典型的0-1背包问题。要继续思考，细嚼
 
 <https://leetcode.com/problems/distinct-subsequences/description/>
 
-DP。二维填表题，i-1和j-1分别是s和t的index，使用s[i-1]的匹配数为s[i-1]==t[j-1]时的dp[i-1][j-1]，不使用s[i-1]时的匹配数为dp[i-1]][j]。
-
+DP。二维DP，`dp[i][j]`表示$S$的子串$S[0,i-1]$中包含$T$的子串$T[0,j-1]$这样的子序列的个数。$T[0,0]$表示空串，初始化令$\forall i \in[0, S.size()]$，`dp[i][0]=1`表示$S$的任意子串都包含一个空的子序列。后面分为两种情况：
+* 基本情况：`dp[i][j] += dp[i-1][j]`，这种情况下在任意条件下都成立，表示不使用$S[i-1]$进行匹配
+* 附加情况：当$S[i-1]$`==`$T[j-1]$时，`dp[i][j] += dp[i-1][j-1]`，当$S[i-1]$和$T[j-1]$相同时，还要加上去掉这两个字符之后的匹配结果。
 
 
 494: Target Sum
@@ -2275,39 +2326,47 @@ https://leetcode.com/contest/weekly-contest-93/problems/advantage-shuffle/
 
 https://leetcode.com/problems/task-scheduler/description/
 
-一刷没思路，讨论区使用的算法没有看出什么门道，就是找出最频繁的字母，按公式给出结果。公式是：循环体size * 循环次数(频繁字母频率-1) + 剩余的频繁字母个数。公式有特例如3个A，3个B，3个C，1个D，n=2时就不对，此时res=tasks.size()。再刷！
+Math。找出最频繁的字母，按公式给出结果。公式是：循环体size * 循环次数(频繁字母频率-1) + 剩余的频繁字母个数。公式有特例如3个A，3个B，3个C，1个D，n=2时就不对，此时res=tasks.size()。
 
 
 121: Best Time to Buy and Sell Stock
 
-https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
-
+<https://leetcode.com/problems/best-time-to-buy-and-sell-stock/>
 
 DP。给定一段时间内一支股票每天的价格数组$P$，计算本金充足只允许一次买入和一次卖出的条件下能获得的最大收益。
 
-遍历每天的股价$P_i$，记录历史(包括今天的)最低价$min\_price$(初始化为`INT_MAX`)和今天卖出能够得到的最大收益$max\_profit$(初始化为$0$)，递推公式为：
-$$min\_price = min(min_price, P_i)$$
-$$max\_profit = max(max\_profit, P_i - min\_price)$$
-
+可以这么思考：卖出操作可以在任意一天进行，而只能在卖出日之前买入。遍历每天的股价$P_i$，尝试在这天卖出，记录历史(包括今天的)最低价$min\_price$作为买入价格，计算出收益就是今天卖出的最大收益，全局最大收益就是每天的最大收益的最大值。
 
 122: Best Time to Buy and Sell Stock II
 
-https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
+<https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/>
 
-贪心算法或DP。给定一段时间内一支股票每天的价格数组$P$，计算本金充足允许多次买入和一次卖出的条件下能获得的最大收益。
+贪心算法，DP。给定一段时间内一支股票每天的价格数组$P$，计算本金充足允许多次买入和一次卖出的条件下能获得的最大收益。
 
-贪心算法不涨就买，涨就卖。DP使用sell和buy两个数组分别记录当天买入或卖出可能的最大收益，递推公式为：
-sell[i] = max(sell[i-1], buy[i-1] + prices[i])
-buy[i] = max(buy[i-1], sell[i-1] - prices[i])
+* 贪心算法：由于我们知道了股票最终的走势，在不限制交易次数，仅限制买入在卖出之前的话，穷举所有可能的操作，我们可以获得这支股票的理论收益最大值，这个问题其实跟买入卖出操作关系不大。在已知未来的情况下，我们可以根据未来发生的事情选择现在的行为，如果已知明天要涨，今天买然后明天卖掉就行，每天都这么操作，见涨就执行买入和卖出交易各一次就可以获得理论上的收益最大值。
+* DP：使用`buy`和`sell`数组分别记录**上一次执行的操作是买入或卖出得到的最大收益**，初始化`sell[0] = 0`，`buy[0]=INT_MIN`，递推公式为：
+`sell[i] = max(sell[i-1], buy[i-1] + prices[i])`
+`buy[i] = max(buy[i-1], sell[i-1] - prices[i])`
 
 
 123: Best Time to Buy and Sell Stock III
 
-DP。同122，只是要用四个变量分别记录买1次，买2次，卖1次和卖2次的最大收益。
-$$sell2[i] = max(sell[i-1], buy2[i-1] + prices[i])$$
-$$buy2[i] = max(buy2[i], sell1[i-1] - prices[i])$$
-$$sell1[i] = max(sell[i-1], buy1[i] + prices[i])$$
-$$buy1[i] = max(buy1[i-1], -prices[i])$$
+<https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/>
+
+DP，AC自动机。同122，用`buy1,sell1,buy2,sell2`分别记录买1次，买2次，卖1次和卖2次的最大收益。上述4个变量表示4种状态，这些状态呈链式连接关系。
+`sell2 = max(sell2, buy2 + prices[i])`
+`buy2 = max(buy2, sell1 - prices[i])`
+`sell1 = max(sell1, buy1 + prices[i])`
+`buy1 = max(buy1, - prices[i])`
+
+188: Best Time to Buy and Sell Stock IV
+
+<https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/>
+
+greedy，DP，AC自动机。本题实际上是122和123的合体。
+
+* 当限制交易的次数`k`$\in$`[0, prices.size() / 2)`时：用123中的AC自动机解法可解决，区别是这里的状态转移链更长，共计`2*k`个状态，其中`buy`和`sell`分别占`k`个。
+* 当`k >= prices.size()/2`时：这个题退化到122，用贪心算法直接计算最大收益即可。
 
 
 714: Best Time to Buy and Sell Stock with Transaction Fee
@@ -2316,20 +2375,17 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-f
 
 一刷使用自己设计的贪心算法：先买，涨了就卖，这样是不对的！[1,3,7,5,10,3]这个case就不对。二刷使用s0和s1分别记录两种状态，这是有限状态自动机的概念，s0是手里没有股票的收益，s1是手里有一支股票的收益，在两个状态之间切换，和309很像。
 
-
 309: Best Time to Buy and Sell Stock with Cooldown
 
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/
 
-一刷没思路，使用基于有限状态机的DP，一刷AC，时间复杂度和空间复杂度均为O(N)。s0,s1,s2三个状态分别表示最后一个操作为rest, buy, sell的当天maxprofit。再刷！
-
+DP。使用基于有限状态机的DP，时间复杂度和空间复杂度均为$O(N)$。`s0,s1,s2`三个状态分别表示最后一个操作为`rest`, `buy`, `sell`的当天`max_profit`。
 
 649: Dota2 Senate
 
 https://leetcode.com/problems/dota2-senate/description/
 
-一刷使用自己设计的贪心算法，分别使用2个参数(count, skip)为双方计数，WA。总计81个case，卡在第78个。分析发现自己对于题目理解有问题，被ban掉的人没有投票权，拥有投票权的人均属于同一方才算赢，这是一个多轮次的游戏。二刷基于queue对游戏进行模拟，思路是一方将另一方ban掉，靠前的那一方ban，靠后的那一方被ban，而且ban的那一方经过这一轮之后下一轮仍然可以投票，所以要将这个数加上N之后放到队列末尾。二刷AC。
-
+queue。用queue对游戏进行模拟，一方将另一方ban掉，靠前的那一方ban，靠后的那一方被ban，而且ban的那一方经过这一轮之后下一轮仍然可以投票，所以要将这个数加上N之后放到队列末尾。二刷AC。
 
 134: Gas Station
 
@@ -2340,9 +2396,9 @@ math。在一个单向成环的道路(类比单链表成一个完整环)上有$N
 定义$l_i = g_i - c_i$，遍历每个加油站$G_i$(尝试以$G_i$为起点)，如果$G_i$可以成为起点则返回$i$，如果$G_i$不能成为起点，即从$G_i$出发最远只能到达$G_j$，则$[G_i, G_{i+1}, \cdots ,G_j]$中任意一个加油站都不能成为起点，这是因为：
 
 1. 对于$[G_i, G_{i+1}, \cdots ,G_j]$的任意一个加油站$G_k$，有$\sum_{k=i}^j l_k < 0$和$\sum_{x=i}^k l_x \geq 0$
-2. 根据**1**和**2**，有$l_j < 0$，$\sum_{k=i}^{j-1} l_k \geq 0$和$|l[j]|> \sum_{k=i}^{j-1} l_k$
-3. 故$\sum_{x=k}^{j-1} l_x < \sum_{x=i}^{j-1} l_k$
-4. 于是$\sum{x=k}^j l_x<0$，即从$G_k$不可能到达$G_j$。
+2. 根据**1**，有$l_j < 0$，$\sum_{k=i}^{j-1} l_k \geq 0$和$|l[j]|> \sum_{k=i}^{j-1} l_k$
+3. 故$\sum_{x=k}^{j-1} l_x < \sum_{x=i}^{j-1} l_x$
+4. 于是$\sum_{x=k}^j l_x<0$，即从$G_k$不可能到达$G_j$。
 
 重复以上过程直到遍历结束，如果$\sum_{i=1}^N l_i >= 0$，则一定有解，且最后一次选中的作为起点的$G_i$就是一个解。
 
@@ -2480,14 +2536,23 @@ https://leetcode.com/problems/reconstruct-itinerary/description/
 
 dfs和heap结合，时间复杂度？思想是path先添加无路可走的节点，使用链表的头插法。c++的list数据结构基于链表实现，接口很多，非常方便，相当于java中的LinkedList。分别使用c++和java刷过，但是都没有一次AC。三刷忘记了基于heap的方法，使用纯DFS加排序。两种算法的时间复杂度在搜索解空间时有较大区别，还需要认真分析。
 
-
 146: LRU Cache
 
-https://leetcode.com/problems/lru-cache/description/
+<https://leetcode.com/problems/lru-cache/description/>
 
-`Hashmap`和`list`。主要利用了`STL`的`list`基于双向循环链表实现的性质及其提供的`splice`接口，因为`list`底层使用了双向循环链表，插入、删除都可以控制在O(1)。`splice`接口可以直接将`list`中刚刚使用过的元素调度到`list`的首部，这是LRU的核心思想。而基于`hashmap`的查找、插入和删除同样是O(1)。注意`put`操作的实现中，不仅要修改`list`和相应的迭代器，还有`list`中的值和`map`。使用这两种数据结构,元素优先级越高，使用越频繁，在`list`中的位置越靠前，删除只会在`list`的尾部进行，而`hashmap`的删除操作随时随时都可以进行。
-`list<pair<int, int>> items; unordered_map<int, list<pair<int, int>>::iterator> cache`。`cache`存储key到list中key-value对的迭代器，可以脑补图形。
+`Hashmap`和`list`。
 
+* 主要利用了`STL`的`list`基于双向循环链表实现的性质及其提供的`splice`接口，因为`list`底层使用了双向循环链表，插入、删除都可以控制在O(1)。`splice`接口可以直接将`list`中刚刚使用过的元素调度到`list`的首部，这是LRU的核心思想。
+* 而基于`hashmap`的查找、插入和删除同样是O(1)。
+* `put`操作的实现中，不仅要修改`list`和相应的迭代器，还有`list`中的值和`map`。
+* 这种实现中元素优先级越高，使用越频繁，在`list`中的位置越靠前，删除只会在`list`的尾部进行，而`hashmap`的删除操作随时随时都可以进行。
+* `list<pair<int, int>> items`存储K-V对
+* `unordered_map<int, list<pair<int, int>>::iterator> cache`存储key到`list`中key-value对的迭代器的map，可以脑补图形。
+* `splice`函数的三种原型:
+	* `void splice (iterator position, list& x);`
+	* `void splice (iterator position, list& x, iterator i);`
+	* `void splice (iterator position, list& x, iterator first, iterator last);`
+	三种原型的作用都是将`x`中的一个或多个元素插入到`position`处，并将`x`中原来的元素删除，这个函数很好实现，就是双向循环链表的拼接。
 
 290: Word Pattern
 
@@ -2497,12 +2562,14 @@ https://leetcode.com/problems/word-pattern/description/
 
 
 291: Word Pattern II
+
 https://www.programcreek.com/2014/07/leetcode-word-pattern-ii-java/
 
-双map和dfs结合，一刷没AC，strStart应该更新为i + 1而不是i。
+双map和dfs结合。strStart应该更新为i + 1而不是i。
 
 
 734: Sentence Similarity
+
 https://leetcode.com/contest/weekly-contest-60/problems/sentence-similarity/
 
 map，没理解题意，sentence相似要求每个位置的word都相似！第一次用python刷题，比c++快多了，在数据结构涉及set，string等结构时，python非常方便。
@@ -2635,7 +2702,7 @@ https://leetcode.com/problems/find-mode-in-binary-search-tree/description/
 双递归，子递归设计要注意Mode中的数字对应节点不一定都连着，利用BST的性质！
 
 
-687: Longest Univalue Path
+687:  Longest Univalue Path
 
 https://leetcode.com/problems/longest-univalue-path/description/
 
@@ -2714,18 +2781,20 @@ https://leetcode.com/problems/delete-node-in-a-bst/description/
 
 116: Populating Next Right Pointers in Each Node
 
-https://leetcode.com/problems/populating-next-right-pointers-in-each-node/description/
+<https://leetcode.com/problems/populating-next-right-pointers-in-each-node/description/>
 
 BFS。双queue实现的BFS空间复杂度为O(N)，不满足要求。利用next指针可以实现BFS，空间复杂度仅为O(1)。
 
-使用三个指针即可实现BFS，`cur`记录本层的访问位置，`next_start`指向下一层的起始位置，`next_end`指向下一层的末端。每次访问`cur`，如果有左子或右子，都要判断是否将子节点作为`next_start`或者添加到`next_end`之后。 
+使用三个指针即可实现BFS，`cur`记录本层的访问位置，`next_start`指向下一层的起始位置，`next_end`指向下一层的末端。每次访问`cur`，如果有左子或右子，都要根据`next_start`进行判断：
+1. `next_start == NULL`:将该子节点作为`next_start`并且让`next_end`也指向该节点
+2. `next_start != NULL`: 将该子节点添加到`next_end`之后。 
 
 
 117: Populating Next Right Pointers in Each Node II
 
-https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/description/
+<https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/description/>
 
-BFS。同116。
+BFS。和116完全相同。
 
 
 847: Shortest Path Visiting All Nodes
@@ -2748,8 +2817,6 @@ BFS。题目的场景和**leetcode 134**很像，给定一辆油箱无限大的�
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/
 
 两个节点的LCA，非常经典！O(N)时间复杂度，递归找path，选出最后一个相同节点，这是最蠢的方法！
-
-
 
 866: Smallest Subtree with all the Deepest Nodes
 
@@ -2780,12 +2847,14 @@ https://leetcode.com/problems/find-duplicate-subtrees/description/
 
 
 752: Open the Lock
+
 https://leetcode.com/contest/weekly-contest-64/problems/open-the-lock/
 
 BFS，很简单，比赛的时候网站报的出问题case不对，出问题的原因是没有对"0000"这一状态进行检测就加入了队列，但是网站上给的提示case不是这个。感觉DP也能做，但是想不到能从小到大填空的思路。
 
 
 747: Largest Number Greater Than Twice of Others
+
 https://leetcode.com/contest/weekly-contest-64/problems/largest-number-greater-than-twice-of-others/
 
 数组最大值，简单题
@@ -2802,7 +2871,7 @@ https://leetcode.com/problems/peeking-iterator/description/
 
 https://leetcode.com/problems/implement-trie-prefix-tree/description/
 
-系统设计题，实现前缀树。注意要用`c - 'a'`而不是直接用`c`来索引后继节点！
+Trie。系统设计题，实现前缀树。注意要用`c - 'a'`而不是直接用`c`来索引后继节点！
 
 
 14: Longest Common Prefix
