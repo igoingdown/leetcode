@@ -1834,24 +1834,29 @@ https://leetcode.com/problems/longest-palindromic-subsequence/description/
 
 322: Coin Change
 
-https://leetcode.com/problems/coin-change/description/
+<https://leetcode.com/problems/coin-change/description/>
 
-DP。dfs+贪心剪枝，WA，错在使用贪心算法剪枝并不一定得到最优解！如([10, 25, 30], 50)这个反例，因为问题要找最短的，这相当于提示用BFS，但是BFS会导致MLE。一维DP最简单，[0, amount]全序列DP，子问题规模就是coin的面值种类。
+DFS，BFS，DP。
 
-一般面试能碰到的DP可以分为3类，第一类是一维DP（LCS， final_term 第4题），第二类和第三类都是二维DP，其中第二类的下标i和j表示的含义相同，是对称的 (Longest Palindromic Substring, Unique Binary Search Tree, Triangle) ，第三类是下表i和j的含义是不同的，不是对称的 (0-1背包问题，Best Time to Buy and Sell Stock IV)，其实还有三维DP（87: Scramble String）。刷题要精刷，每道题做完都要看discuss区找最优解！
+* DFS：不能进行贪心剪枝，使用贪心剪枝并不一定得到最优解！如([10, 25, 30], 50)这个反例，
+* BFS：因为问题要找最短的解，这相当于提示用BFS，但是BFS会导致MLE。
+* DP：对$\forall$`i`$\in[0, amount]$，$DP[i] = \sum_k {DP[i - coins_k]}，i \geq coins_k$。
 
-DP问题首先看问题能否降为子问题，如果能将问题分解为规模更小的问题，那就很可能用Buttom-up的DP方法。子问题可能是两个（Climb Stairs, Unique Paths, Minimum Path Sum, Delete and Earn），三个及多个（Coin Change）或者全部更小规模子问题（final term第4道题）。
-
+DP问题首先看问题能否降为子问题，如果能将原始问题分解为两个或更多规模更小的子问题，那就很可能用Buttom-up的DP方法，这里面寻找最优子结构是最难的。一般面试能碰到的DP可以分为几类:
+* 一维DP：如LCS、本题，
+* 二维DP，`i`和`j`的含义相同：代表的是找回文子串(不用曼彻斯特算法的情况)
+* 二维DP，`i`和`j`表示的含义不同：代表是0-1背包问题
 
 518: Coin Change 2
 
-https://leetcode.com/problems/coin-change-2/description/
+<https://leetcode.com/problems/coin-change-2/description/>
 
 DP。与上题不同的是要去重，这里计算的是目标组合的个数。相比于这题，Climbing Stairs相比，这里因为计算的是合法组合数，去重更困难。思路是先控制使用的coin的面值，逐个加入新面值，改变组合数。
 
 
 740: Delete and Earn
-https://leetcode.com/contest/weekly-contest-61/problems/delete-and-earn/
+
+<https://leetcode.com/contest/weekly-contest-61/problems/delete-and-earn/>
 
 DP，可以降为子问题，典型的0-1背包问题。要继续思考，细嚼慢咽还是很有收获的。
 
@@ -1867,15 +1872,16 @@ DP。二维DP，`dp[i][j]`表示$S$的子串$S[0,i-1]$中包含$T$的子串$T[0,
 
 494: Target Sum
 
-https://leetcode.com/problems/target-sum/description/
+<https://leetcode.com/problems/target-sum/description/>
 
-一刷没有好思路，看了大神的解析，将问题转化为一个之前解决过的相似问题，自己使用DFS解决了，但是过程不够顺畅，对于set的计数不能再t=0时直接返回，而应该结果+1。时间复杂度为O(N^2)再刷！二刷使用DP没AC，对`vector::resize()`理解不对，resize并不会对vector原有的数据进行重置，只会将其截断或者在后端补充，应该先用clear。再刷！
-DFS思路：将num分为正集合P和负集合N，于是有下面的推导
-$$sum(P) - sum(N) = target$$
-$$sum(P) + sum(N) + sum(P) - sum(N) = target + sum(P) + sum(N)$$
-$$2 * sum(P) = target + sum(nums)$$
-现在问题也就变成了寻求满足条件的P的个数，可以用DFS。官方给每道题都给了答案，而且每道题的答案不止一种，再刷可以重点看看官方答案。
+DP，DFS。
+* DP：`vecotr<T>::resize()`并不会对`vector`原有的数据进行重置，只会将其截断或者在后端补充，应该先用`clear()`清空数据之后再复用`vector`。
+* DFS思路：将num分为正集合P和负集合N，于是有下面的推导
+	1. $sum(P) - sum(N) = target$
+	2. $sum(P) + sum(N) + sum(P) - sum(N) = target + sum(P) + sum(N)$
+	3. $2 * sum(P) = target + sum(nums)$
 
+	现在问题也就变成了寻求满足条件的P的个数，可以用DFS。
 
 491: Increasing Subsequences
 
