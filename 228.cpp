@@ -1,56 +1,14 @@
-//
-//  main.cpp
-//  228
-//
-//  Created by 赵明星 on 2016/12/8.
-//  Copyright © 2016年 赵明星. All rights reserved.
-//
-
-#include <iostream>
-#include <vector>
-#include <string>
-
-using namespace std;
-
-vector<string> summaryRanges(vector<int>& nums);
-
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    vector<int> nums = {};
-    for (auto s : summaryRanges(nums)) {
-        cout << s << endl;
-    }
-    std::cout << "Hello, World!\n";
-    return 0;
-}
-
-
-vector<string> summaryRanges(vector<int>& nums) {
-    vector<string> res(0);
-    if (! nums.size()) {
-        return res;
-    }
-    int beg = 0, i = 1;
-    while(i < nums.size()) {
-        i = beg + 1;
-        while(nums[i] == nums[i - 1] + 1 && i < nums.size()) {
-            i++;
+class Solution {
+public:
+    vector<string> summaryRanges(vector<int>& nums) {
+        vector<string> ans;
+        int b = 0, e = 0;
+        while (e < nums.size()) {
+            while (e < nums.size() && (e == b || nums[e] == nums[e - 1] + 1)) e++;
+            if (e - b > 1) ans.push_back(to_string(nums[b]) + "->" + to_string(nums[e - 1]));
+            else ans.push_back(to_string(nums[b]));
+            b = e;
         }
-        if (beg != i - 1) {
-            res.push_back(to_string(nums[beg]) + "->" + to_string(nums[i - 1]));
-        } else {
-            res.push_back(to_string(nums[beg]));
-        }
-        beg = i;
-        //cout << i << endl;
+        return ans;
     }
-    if (beg != i) {
-        if (beg == i - 1) {
-            res.push_back(to_string(nums[beg]));
-        } else {
-            res.push_back(to_string(nums[beg]) + "->" + to_string(nums.size()- 1));
-        }
-       
-    }
-    return res;
-}
+};

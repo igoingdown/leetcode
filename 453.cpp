@@ -1,15 +1,12 @@
 class Solution {
 public:
     int minMoves(vector<int>& nums) {
-        if(nums.size() == 0)
-            return 0;
-        int sum = 0, min_n = nums[0];
-        for (auto n: nums)
-        {
-            sum += n;
-            if(n < min_n)
-                min_n = n;
+        int min_elem = INT_MAX, sum = 0, n = nums.size();
+        if (n == 0) return 0;
+        for (int num : nums) {
+            min_elem = min(min_elem, num);
+            sum += num;
         }
-        return sum - min_n * nums.size();
+        return sum - min_elem * n;
     }
 };

@@ -15,163 +15,154 @@ tags:
 
 463: Island Perimeter
 
-https://leetcode.com/problems/island-perimeter/
+<https://leetcode.com/problems/island-perimeter/>
 
-就是逐一遍历所有的cell，用分离的cell总的的边数减去重叠的边的数目即可。在查找重叠的边的数目的时候有一点小技巧，就是沿着其中两个方向就好，这种题目都有类似的规律，就是可以沿着上三角或者下三角形的方向来做。一刷一次ac，但是还没开始注意codestyle的问题，需要再刷一遍。
-
+Matb。遍历所有的cell，用分离的cell总的的边数减去重叠的边的数目即可。在查找重叠的边的数目的时候有一点小技巧，就是沿着其中两个方向就好，可以沿着上三角或者下三角形的方向来做。
 
 455: Assign Cookies
 
-https://leetcode.com/problems/assign-cookies/
+<https://leetcode.com/problems/assign-cookies/>
 
-给出两个序列，一个序列中的元素代表cookie的size，另外一个序列代表能满足孩子要求的最小cookie的size，问如何分配使得到的满意的孩子最多。先将两个序列都按从小到大顺序排序，然后按双路指针的方式解决。一刷一次ac，但是对于C++默认的sort函数的排序方式（从小到大还是从大大小）并不是很清楚。
-算法库中的sort(beg, end, comp)函数实际使用快排，其中的comp是函数或者函数指针，签名是 bool comp(elem_type first_arg, elem_type second_arg)，返回的bool值的含义是第一个参数是否应该排在第二个参数的前面。而且默认参数会将较小的参数排在前面，即sort函数默认是从小到大排序！
+TP，greedy。给出两个序列$g$和$s$，$g_i$代表能满足第$i$个孩子要求的最小cookie的size，$s_j$表示第$j$个cookie的size。问如何分配使得到满意的孩子最多。
+
+先将两个序列$s$和$g$升序排序，然后按双路指针的方式解决。思路是为每个孩子分配一个能满足需求的cookie，有点贪心算法的味道。STL的`algorithm`库中的`sort(beg, end, comp)`函数实际使用快排，其中的`comp`是函数对象或者函数指针，签名是 `bool comp(elem_type first_arg, elem_type second_arg)`，返回的`bool`值的含义是第一个参数是否应该排在第二个参数的前面。而且默认参数会将较小的参数排在前面，即`sort`函数默认升序排序！
 
 453: Minimum Moves to Equal Array Elements
 
-https://leetcode.com/problems/minimum-moves-to-equal-array-elements/
+<https://leetcode.com/problems/minimum-moves-to-equal-array-elements/>
 
-一开始自己对题目的理解出错了，浪费了不少时间。每次移动要求同时将n-1个元素加1，我看成了每次移动将其中2个元素加1。搞清楚题目真正含义之后，不太会做，参考了一下其他人的解题思路：给数组中的n-1个元素加1的操作等价于数组中“不加1的那个元素“减去1，然后数组中的所有元素都加1。我们知道，给所有的元素都加1并不能改变原数组中的数之间的差值。所以这题就转化为求最少的减1操作。而要使数组中的元素全部相等，又要使用减法。那么最少的次数就是让这些元素全部都等于数组中最小的数。所以得到的结果就是sum（所有元素和）-n*数组中最小元素。
-注意看题目！一刷由于c++的api用的不熟。
+Math。给定长度为$n$的数组$A$，定义$A$上的一个元操作：**将数组中的n-1个元素加1**，最少经过多少次元操作可以使数组中元素都相等?
+
+**将数组中的n-1个元素加1**等价于**数组中不加1的那个元素减去1，然后数组中的所有元素都加1**。将所有的元素都加1并不能改变原数组中的数之间的差值，于是本题就转化为求**最少的减1操作**。而要使数组中的元素全部相等，又要使用减法，那么最少的次数就是让这些元素全部都等于数组中最小的数。于是`answer = `$\sum_{i=1}^{n}A_i - min(A) * n$。
 
 383: Ransom Note
 
-https://leetcode.com/problems/ransom-note/
+<https://leetcode.com/problems/ransom-note/>
 
-就是用后一个串合成前一个串，条件是后一个串的每个字符只能用一次，这种题都可以利用c++的字符和int型转换来构建一个长为26的数组，每个数组表示一个key（前提是全大写或者全小写）。
-一刷for循环中的计数器i没有声明类型（int），编译错误。二刷一次ac。
-
+HashMap。判断能否用后一个串合成前一个串，只要后一个串的每个字符的频率都不小于前一个串的字符频率即可。
 
 404: Sum of Left Leaves
 
-https://leetcode.com/problems/sum-of-left-leaves/
+<https://leetcode.com/problems/sum-of-left-leaves/>
 
-* 递归:
-  1. 只要想明白一个节点的情况，其他节点都一样。对于每个节点如果指针为空，返回0；如果该节点非空且左子树为叶子节点，则返回左叶子节点和右子树递归结果的和，否则返回左右子树的递归结果的和。
-  2. 还有一种写了两个函数的算法，其实差不多。一刷第一次调用dfs函数参数给错了，只有一个root节点不算左叶子结点。
+* 递归:只要想明白一个节点的情况，其他节点都一样。对于每个节点如果指针为空，返回0；如果左子为叶子节点，结果要加上左子的值，否则要加上左子树的递归结果，最后加上右子树的递归结果返回即可。
 * 非递归。利用栈，处理栈顶元素的时候直接处理栈顶元素，应该处理栈顶元素的左右结点。
 
-
 834: Sum of Distances in Tree
-https://leetcode.com/contest/weekly-contest-84/problems/sum-of-distances-in-tree/
 
-用图的思路解决树的问题。先用DFS算出跟节点到其他节点的距离之和tot，并且在计算过程中连带算出以每个节点为根节点的子树的节点个数c[0, i, .., n - 1]，这两个问题都是比较简单的问题。然后DFS遍历所有节点，已知根节点到所有其他节点的距离之和的情况下，算任意一个子节点到其他所有节点的距离之和的公式是: s[v] = (s[u] - c[v]) + (n - c[v])。这是因为已知根节点u到所有其他节点的距离之和s[u]，求所有其他节点到一个u的一个子节点v的距离之和s[v]，可以将所有节点分为两部分，其中一部分是以v为根节点的子树，另一部分是整个树的其余部分。以v为根节点的子树上的每个节点到u的距离减1就是这些节点到v的距离，树的另一部分上的每个节点到u的距离+1就是他们到v的距离。反映在最终结果(距离加和)上，前一部分需要在s[u]的基础上减掉c[v]，后一部分需要在s[u]的基础上加上(n - c[v])，于是就有了上面的公式。
+<https://leetcode.com/contest/weekly-contest-84/problems/sum-of-distances-in-tree/>
 
+DFS。用图的思路解决树的问题。先用DFS算出根节点到其他节点的距离之和`tot`，在计算过程中连带算出以任意节点$Node_i$为根节点的子树的节点个数$c_i$，这两个问题都是比较简单的问题。然后DFS遍历所有节点，已知根节点到所有其他节点的距离之和`s[cur]`的情况下，算任意一个子节点到其他所有节点的距离之和`s[child]`的公式是: `s[child] = (s[cur] - c[child]) + (tot - c[child])`。这是因为已知根节点`cur`到所有其他节点的距离之和`s[cur]`，求所有其他节点到一个子节点`child`的距离之和`s[child]`，可以将所有节点分为两部分，其中一部分是以`child`为根节点的子树，另一部分是整个树的其余部分。以`child`为根节点的子树上的每个节点到`cur`的距离减1就是这些节点到`child`的距离，树的另一部分上的每个节点到`cur`的距离+1就是他们到`child`的距离。反映在最终结果(距离加和)上，前一部分需要在`s[cur]`的基础上减掉`c[child]`，后一部分需要在`s[cur]`的基础上加上`(tot - c[child])`，于是就有了上面的公式。
 
 409: Longest Palindrome
 
-https://leetcode.com/problems/longest-palindrome/
+<https://leetcode.com/problems/longest-palindrome/>
 
 HashMap。记录每个字母的个数，是偶数的话可以直接分两部分拼到结果palindrome的两侧对称的位置，如果字母个数为奇数个，选择偶数个分两部分拼到结果palindrome的两侧对称位置。如果有字母个数为奇数，可以将剩余的那个作为结果palindrome的轴。
 
 
 448: Find All Numbers Disappeared in an Array
 
-https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
+<https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/>
 
-要求不能使用额外空间，只能在原数组上进行改动，将提到的元素对应的索引上的值加上负号，对后续的遍历操作影响不大（取绝对值就行）。由于在遍历到i之前已经将i后到元素置为负值，因此要在遍历到时候就加上绝对值。一刷中括号写成了小括号（取数组元素写成了函数调用，这两者的区别大了），在加入结果的时候少写了if语句。二刷一次ac。
-
+Math。在原数组上进行改动，对于$\forall i$，将$A_{|A_i|}$变为负数以标记出现过的数。之后遍历`i`$\in [1, n]$，如果$A_i > 0$，则`i`是missing的。
 
 442: Find All Duplicates in an Array
 
-https://leetcode.com/problems/find-all-duplicates-in-an-array/
+<https://leetcode.com/problems/find-all-duplicates-in-an-array/>
 
-题目和上面那道题差不多，而且更简单！可是我没想到。和上一题的区别在于在处理重复赋值时直接就加入结果队列了。一刷一次ac。
+同448。区别在于遇到重复值时直接就加入结果列表即可。
 
 
 414: Third Maximum Number
 
-https://leetcode.com/problems/third-maximum-number/
+<https://leetcode.com/problems/third-maximum-number/>
 
-找出n个数中的第m（m < n）大的数，这是个经典问题，我去望京面试的时候就被问到，我当时真菜，不然暑假可以拿好多钱，哼！当m不太大（m<4）时，都可以按同一种思路解决 ，就是同时设置多个max，遍历数组元素，分条件更新max。注意两点，一是max的初始化一定要比当前数组元素类型的最小值要小；二是max更新条件要写全，“=”的情况要排除。
-一刷各max的更新顺序写反了，max更新条件没写全，没有用更大范围的数据类型。二刷一次ac。
+找出`n`个数中的第`m`（`m <= n`）大的数，这是个经典问题
 
+* `m`不太大（`m<4`）时：同时设置多个max，遍历数组元素，分条件更新max。注意两点，一是max的初始化一定要比当前数组元素类型的最小值要小；二是max更新条件要写全，“=”的情况要排除。
+* 当`m >= 4`时：可以借用快排的partition操作来做。
 
 289: Game of Life
 
-https://leetcode.com/problems/game-of-life/
+<https://leetcode.com/problems/game-of-life/>
 
-一刷判断自身的条件写错，死而复生的判断条件写错，代码效率不高。二刷代码结构有优化，但是效率还是不高，判断语句中==写成赋值号=，cell周环遍历数列写错（1写成-1）。三刷没有ac是因为不理解c++_11新特性。(auto n : vec)中的n是临时变量，修改n不能改变原来vector中的元素，因此在不需要修改vector中元素时遍历可以用auto，但是要修改vector中的元素，还是需要迭代器或者下标。
-
+位操作。遍历每个cell，每个cell的状态由分为0和1，可以将右侧第一位视为本轮的状态，右侧第二位视为下一轮的状态。由于0视为2位表示时是00，1视为2位表示时是01，这种表示不影响本轮的状态，而且可以在原地进行操作，更新下一轮的状态。最后将所有cell的状态右移1位就瞬间变为下一轮的状态了。
 
 287: Find the Duplicate Number
 
-https://leetcode.com/problems/find-the-duplicate-number/
+<https://leetcode.com/problems/find-the-duplicate-number/>
 
-BS，TP。TP将问题转化为链表内部环检测的问题。
-
+BS，TP。TP是将问题转化为链表内部环检测的问题，因为这种存储结构实际上是一种*P**字形的逻辑结构，就是要招链表环的起点。
 
 2: Add Two Numbers
 
-https://leetcode.com/problems/add-two-numbers/description/
+<https://leetcode.com/problems/add-two-numbers/description/>
 
 链表尾插法。
 
 445: Add Two Numbers II
 
-https://leetcode.com/problems/add-two-numbers-ii/#/description
+<https://leetcode.com/problems/add-two-numbers-ii/#/description>
 
-链表。先反转链表，然后按上题来做。不允许反转链表可以先求二者长度，然后从后向前遍历。
-
+链表。先反转链表，然后按第2题做。不允许反转链表可以先求二者长度，然后从后向前遍历。
 
 24: Swap Nodes in Pairs
 
-https://leetcode.com/problems/swap-nodes-in-pairs/description/
+<https://leetcode.com/problems/swap-nodes-in-pairs/description/>
 
 链表尾插法。一次走两步，注意使用`dummy_node`时，如果原链表只有一个元素直接返回`dummy_node->next`是错误的，要对这种情况进行判别。
 
 
 268: Missing Number
 
-https://leetcode.com/problems/missing-number/
+<https://leetcode.com/problems/missing-number/>
 
-一开始掉进了前面的解法的坑里，老想着把元素当作索引，将正值变负值，然后找改变后的数组中的正值对应的元素，由于同时有n和0，这两种情况不能有效区分，而且也没说可以改动数组，故抛弃了这种解法。求和再做减法更方便，由于担心溢出，用了范围更大的数据结构，好像没什么用。
-
+Math。求和再做减法最方便，为了防止溢出需要用范围更大的数据结构。
 
 229: Majority Element II
 
-https://leetcode.com/problems/majority-element-ii/
+<https://leetcode.com/problems/majority-element-ii/>
 
-看了一篇博客，恍然大悟，很开心，就喜欢这种感觉。原博地址：http://blog.neoshell.moe/leetcode229.html
-BM多数投票算法（Boyer-Moore Majority Vote algorithm）。要注意变量的初始化，将n1，n2初始化为任意两个不同的数就行，对应counter设置为0是关键。还要注意一点第一次遍历结束只是明确了n1，n2是出现频率最高的数，但是对应的counter是不准的，需要重新计数！最后需要查看counter是否满足条件。
+Math。数组中最多有两个数`n1,n2`的频数`>n/3`。
+
+BM多数投票算法（Boyer-Moore Majority Vote algorithm）。将n1，n2初始化为任意两个不同的数就行，对应counter1和counter2初始化为0。还要注意一点第一次遍历结束只是明确了n1，n2是出现频率最高的数，但是对应的counter是不准的，需要重新计数后再查看counter是否满足条件。
 
 228: Summary Ranges
 
 <https://leetcode.com/problems/summary-ranges/>
 
-用b记录本次范围的起始位置，用i作为索引。注意更新i和b时先更新i再更新b，而且是拿第i个元素和第i+1个元素比较，这样就不必在循环体外单独处理最后一个元素了。
+TP。用`b,e`分别记录当前range的起、止index，每次循环向后挪动`e`至range末尾的下一个元素，将当前range加入到结果列表中，令`b=e`即可。
 
 547: Friend Circles
 
 <https://leetcode.com/problems/friend-circles/description/>
 
-一刷使用DFS，也可以使用并查集解决。
+DFS，并查集。并查集的`find(x,parents)`函数不用递归最好，可以在循环过程中缩减树的深度，增加树的宽度，达到提高效率的目的。
 
 721: Accounts Merge
 
-https://leetcode.com/problems/accounts-merge/description/
+<https://leetcode.com/problems/accounts-merge/description/>
 
-一刷使用DFS，C++版debug很久，用python写debug方便很多，但是超时了。二刷使用并查集。上面那道题是并查集的简单题，这道属于并查集比较难的题。
-
+DFS，并查集。
 
 839: Similar String Groups
-https://leetcode.com/contest/weekly-contest-85/problems/similar-string-groups/
 
-并查集。并查集在逻辑上构造一个森林，先将每个节点都初始化为森林中的一棵树，group为N。然后遍历所有的边，对于每一条边，如果两个节点所在树的根节点不同，就将后一个节点所在的树的根节点作为前一个节点所在树的根节点的子节点，同时group减一。这样就可以解决并查集的第一类题目，就是求group的数量。另一种题目要求不仅分出group，并且要给出每个group具体有哪些节点，这时候需要遍历每个节点，找出其所在树的根节点，按根节点分离每个group即可。547，839属于第一类，721属于第二类。
+<https://leetcode.com/contest/weekly-contest-85/problems/similar-string-groups/>
 
+并查集。并查集在逻辑上构造一个森林，先将每个节点都初始化为森林中的一棵树，group为N。然后遍历所有的边，对于每一条边，如果两个节点所在树的根节点不同，就将后一个节点所在的树的根节点作为前一个节点所在树的根节点的子节点，同时group减1。这样就可以解决并查集的第一类题目，就是求group的数量。另一种题目要求不仅分出group，并且要给出每个group具体有哪些节点，这时候需要遍历每个节点，找出其所在树的根节点，按根节点分离每个group即可。547，839属于第一类，721属于第二类。
 
 720: Longest Word in Dictionary
 
-https://leetcode.com/problems/longest-word-in-dictionary/description/
+<https://leetcode.com/problems/longest-word-in-dictionary/description/>
 
-Trie和DFS结合，一次AC。
-
+Trie+DFS或者Trie+BFS。
 
 677: Map Sum Pairs
 
 https://leetcode.com/problems/map-sum-pairs/description/
 
-Trie和BFS结合，一次AC。
+Trie和BFS结合。
 
 
 842: Split Array into Fibonacci Sequence
@@ -1513,14 +1504,14 @@ dfs。
 
 39: Combination Sum
 
-https://leetcode.com/problems/combination-sum/?tab=Description
+<https://leetcode.com/problems/combination-sum/?tab=Description>
 
 dfs。可以画出解空间来理解解题过程。
 
 
 40: Combination Sum II
 
-https://leetcode.com/problems/combination-sum-ii/?tab=Description
+<https://leetcode.com/problems/combination-sum-ii/?tab=Description>
 
 DFS。首先要排序（对于去重很重要），之后要对照解空间写递归过程。
 
@@ -1536,7 +1527,7 @@ DFS。解空间树画出来就有了。
 
 https://leetcode.com/problems/combination-sum-iv/description/
 
-DFS,DP。top-down的DFS超时，加入memo实现DP后，AC。这个题很经典，和之前整理的回溯法有强关联！注意理解DP的含义，我现在仍然不知道这样做是不是就叫做DP。
+DFS，DP。top-down的DFS超时，加入memo实现DP后，AC。这个题很经典，和之前整理的回溯法有强关联！注意理解DP的含义，我现在仍然不知道这样做是不是就叫做DP。
 
 除了上一种top-down的DP方法，还有一种bottom-up的DP方法，这种方法在我看来更像DP。
 
@@ -1558,9 +1549,9 @@ dfs，先排序，对着解空间写递归，注意去重。
 
 51: N-Queens
 
-https://leetcode.com/problems/n-queens/description/
+<https://leetcode.com/problems/n-queens/description/>
 
-DFS。让$col$递增，逐个选择合法的$row$，存储$path$，$path$的含义是$(path[i], i)$位置可以放一个Queen，之后将合法$path$转为棋局排列。DFS的解空间是一个N*N的树，每层表示固定的行号，每个节点的n个分支表示可能的行号，遍历解空间的时间复杂度为$O(N^2)$，由于需要判断冲突，所以总的时间复杂度为$O(N^3)$。
+DFS。让$col$递增，逐个选择合法的$row$，存储$path$，$path$的含义是$(path[i], i)$位置可以放一个Queen，之后将合法$path$转为棋局排列。DFS的解空间是一个N叉树，第$j$层表示第$j$列的可能情况，第$j$层的每个节点的n个分支表示该列的Queen可能处于的行号，遍历解空间的时间复杂度为$O(N^2)$，由于需要判断冲突，所以总的时间复杂度为$O(N^3)$。
 
 判断冲突有三个条件：
 1. $row_1 \neq row_2$，两个Queen不在同一行
@@ -1569,7 +1560,7 @@ DFS。让$col$递增，逐个选择合法的$row$，存储$path$，$path$的含�
 
 52: N-Queens II
 
-https://leetcode.com/problems/n-queens-ii/description/
+<https://leetcode.com/problems/n-queens-ii/description/>
 
 dfs，思路与上题完全相同。
 
@@ -1648,7 +1639,7 @@ https://leetcode.com/problems/house-robber-ii/description/
 
 96: Unique Binary Search Trees
 
-https://leetcode.com/problems/unique-binary-search-trees/description/
+<https://leetcode.com/problems/unique-binary-search-trees/description/>
 
 DP。
 
@@ -1659,14 +1650,13 @@ DP。
 
 这道题和矩阵相乘的那道题很类似，都是从序列中间取一个元素，分割序列将问题转化为规模更小的子问题，同时分割元素可以是序列中的任意一个元素，这类的递推函数很常见。DP问题的解不仅可以由一个小规模子问题的解得到，还可以由多个甚至所有小规模子问题的解的组合得到。
 
-
 95: Unique Binary Search Trees II
 
 <https://leetcode.com/problems/unique-binary-search-trees-ii/description/>
 
 BFS，DFS。
 * BFS：从1到n，逐渐扩充res，然后遍历上一个节点加入后的res列表，在每棵树上添加新的节点（每个可能的右子树），时间复杂度$O(N^2\log N)$~$O(N^3 \log N)$。
-* DFS：递归函数`f`返回由区间$[begin, end]$中所有整数生成的所有BST的列表。`f`内部遍历区间中的每个元素`i`，选其为根，对区间$[begin, i-1]$调用`f`生成所有左子树`left`，对区间$[i+1, end]$调用`f`生成所有右子树`right`，然后按照96的思路将所有左、右子树的组合就是结果。
+* DFS：递归函数`f`返回由区间$[begin, end]$中所有整数生成的所有BST的列表。`f`内部对$\forall$`i`$\in[begin, end]$，选其为根，对区间$[begin, i-1]$调用`f`生成所有左子树`left`，对区间$[i+1, end]$调用`f`生成所有右子树`right`，然后按照96的思路将所有左、右子树的组合就是结果。
 
 300: Longest Increasing Subsequence
 
@@ -1678,7 +1668,7 @@ DP，patient sort。
 
 32: Longest Valid Parentheses
 
-https://leetcode.com/problems/longest-valid-parentheses/description/
+<https://leetcode.com/problems/longest-valid-parentheses/description/>
 
 DP，stack，TP。TP是最高效的。
 
@@ -1701,7 +1691,7 @@ DP，stack，TP。TP是最高效的。
 
 647: Palindromic Substrings
 
-https://leetcode.com/problems/palindromic-substrings/description/
+<https://leetcode.com/problems/palindromic-substrings/description/>
 
 DP，曼彻斯特算法。
 
@@ -1727,7 +1717,7 @@ DP，曼彻斯特算法。
 
 416: Partition Equal Subset Sum
 
-https://leetcode.com/problems/partition-equal-subset-sum/description/
+<https://leetcode.com/problems/partition-equal-subset-sum/description/>
 
 一刷没AC，使用时间复杂度为O(N!)的backtracing算法，出现很多CE！最后TLE。也有人说时间复杂度为O(pow(2, N))的！这是个典型的0/1背包问题，0/1背包问题的特点是从一组数中选取某些数达到一定的值。对0/1背包问题的一个很好的解释在下面的链接中：
 

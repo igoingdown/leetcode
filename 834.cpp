@@ -1,40 +1,41 @@
 class Solution {
 private:
     int n;
-    vector<vector<int>> es;
-    vector<int> ss;
+    vector<vector<int>> graph;
+    vector<int> nodes;
     vector<int> ans;
 public:
     vector<int> sumOfDistancesInTree(int N, vector<vector<int>>& edges) {
         n = N;
-        es.resize(N, vector<int>(0));
-        ss.resize(N);
+        graph.resize(N, vector<int>(0));
+        nodes.resize(N);
         ans.resize(N);
         for (const auto &edge : edges) {
-            es[edge[0]].push_back(edge[1]);
-            es[edge[1]].push_back(edge[0]);
+            graph[edge[0]].push_back(edge[1]);
+            graph[edge[1]].push_back(edge[0]);
         }
-        g(0, -1, f(0, -1, 0));
+        int tot = f(0, -1, 0);
+        g(0, -1, tot);
         return ans;
     }
     
-    int f(int u, int p, int d) {
+    int f(int cur, int parent, int d) {
         int ds = d;
-        ss[u] = 1;
-        for (int v : es[u]) {
-            if (v != p) {
-                ds += f(v, u, d + 1);
-                ss[u] += ss[v];
+        nodes[cur] = 1;
+        for (int child : graph[cur]) {
+            if (child != parent) {
+                ds += f(child, cur, d + 1);
+                nodes[cur] += nodes[child];
             }
         }
         return ds;
     }
     
-    void g(int u, int p, int tot) {
-        ans[u] = tot;
-        for (int v : es[u]) {
-            if (v != p) {
-                g(v, u, tot - ss[v] * 2 + n);
+    void g(int cur, int parent, int tot) {
+        ans[cur] = tot;
+        for (int child : graph[cur]) {
+            if (child != parent) {
+                g(child, cur, tot - nodes[child] * 2 + n);
             }
         }
     }
