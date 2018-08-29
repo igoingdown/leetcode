@@ -160,32 +160,27 @@ Trie+DFS或者Trie+BFS。
 
 677: Map Sum Pairs
 
-https://leetcode.com/problems/map-sum-pairs/description/
+<https://leetcode.com/problems/map-sum-pairs/description/>
 
-Trie和BFS结合。
-
+Trie+BFS。
 
 842: Split Array into Fibonacci Sequence
 
-https://leetcode.com/contest/weekly-contest-86/problems/split-array-into-fibonacci-sequence/
+<https://leetcode.com/contest/weekly-contest-86/problems/split-array-into-fibonacci-sequence/>
 
-DFS. 记录起始位置，分离结果，设置终止条件，将问题转为子问题。
-
+DFS. 记录起始位置和分离结果，设置终止条件，将问题转为子问题，注意处理起始字符为`0`和解析出的数`>= INT_MAX`的情况。
 
 743: Network Delay Time
 
-https://leetcode.com/problems/network-delay-time/description/
+<https://leetcode.com/problems/network-delay-time/description/>
 
-一刷使用DFS没AC，debug很久,没理解错哪了，二刷使用BFS就AC了。三刷使用Dijkstra算法，效率不如BFS，实现效率不高，可以继续改进。BFS是Dijkstra的降级。
-原来leetcode后端是用python写的！以后用pycharm写python或者intelij idea写java来debug也不错！
-
+DFS，BFS，Dijkstra。Dijkstra算法效率不如BFS，问题在于我实现的版本效率不高，可以继续改进。BFS是Dijkstra的降级。
 
 542: 01 Matrix
 
-https://leetcode.com/problems/01-matrix/description/
+<https://leetcode.com/problems/01-matrix/description/>
 
-一刷使用朴素的BFS一次AC，二刷加了一点trick，in-place的方式，题目要找到所有格到0格的最短距离，从0格出发不断修改到达非0格的距离，这种转换在DFS和BFS类的题目中非常常见！时间复杂度？？
-
+BFS。从`0`出发，初始化将所有位`0`的cell入队，作为第0层，然后BFS将后面访问的cell的值设为层数即可。
 
 30: Substring with Concatenation of All Words
 
@@ -194,50 +189,37 @@ https://leetcode.com/problems/01-matrix/description/
 TP。
 
 * KMP：使用KMP得到每个关键字在母串中出现的所有位置，然后使用DFS得到解，这种方式超时。
-* TP：使用`map`记录每个模式串及对应的频率，两层循环，外循环遍历母串，遍历的范围是$0,ss - ws* l$，内循环进行匹配，每次匹配都从母串中取出长为l的子串，看是否在`map`中，在`map`中则修改`map`，直到`map`为空，这时产生了一个答案。此时继续外循环即可。
-
+* TP：使用`map`记录每个模式串及对应的频率，两层循环，外循环遍历母串中可以作为拼接串起始位置的index `i`$\in [0,ss - ws * l)$，内循环进行匹配，每次匹配都从母串中取出长为`l`的子串，看是否在`map`中，在`map`中则修改`map`，直到`map`为空，这时产生了一个答案。此时继续外循环即可。
 
 417: Pacific Atlantic Water Flow
 
-https://leetcode.com/problems/pacific-atlantic-water-flow/description/
+<https://leetcode.com/problems/pacific-atlantic-water-flow/description/>
 
-一刷使用相反的方式，从内到外查看一个节点是否能到达P或者A，终止条件不对，debug很久。二刷使用由外到内的方式，没理解终止条件中的mark参数的意义。
-
-209: Minimum Size Subarray Sum
-
-https://leetcode.com/problems/minimum-size-subarray-sum/
-
-一开始把题目意思理解错了，浪费了很多时间。subarray是原array的连续子序列，就像substring是原string的连续子序列一样。基于错误的理解，我使用dfs来解决，后来超时才反应过来。一定要好好看题，正确理解题意，往往事半功倍！正确地理解了题意之后，一刷很快ac。二刷更新min_size时没有判别，代码有小幅更新（能用while就不要用for）。
-用sum和left记录当前subarray的和与起始位置，注意同时更新sum和left，每次更新min_size之前需要对当前subarray的size进行判别。
-
+DFS，从外侧（海洋）向内部蔓延。用`visited`数组中的元素最后一位表示能否从大西洋过来，倒数第二位可以用于表示能否从太平洋过来，如果两个都可以过来，标识为3，只能从大西洋过来标识为1，只能从太平洋过来标识为2，都过不来标识为0。
 
 162: Find Peak Element
 
-https://leetcode.com/problems/find-peak-element/
+<https://leetcode.com/problems/find-peak-element/>
 
-BF，$O(N)$。写了一半发现可疑从两头一起开始遍历，但是时间复杂度并没有明显改善。
-BS，$O(logN)$。可以把自己的二分法固定下来，while里面填`low < high`, 更新方式为`high = mid`， `low = mid + 1`， 返回low。这样以来，写代码的时候实际要判断的只有更新条件了！二分法还可以用递归的方式表现。
+BS。二分法可以用递归和非递归的方式实现现，复杂度为$O(logN)$。本题是一维数组找极值，MS有道题是二维数组找极值，思路相同，二分，$O(N)$时间找行的最小值，跟相邻行比较，如果是极值点则结束，不是就找更小的那个子矩阵。fun的水滴证明法相当直观！
 
 154: Find Minimum in Rotated Sorted Array II
 
-https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/
+<https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/>
 
-原来algorithm库中是有min（max）函数的，也有min(max)_element函数的！但是min（max）函数只接受两个参数，没什么实用价值，min(max)_element函数也没什么大的使用价值，返回迭代器。
-其实比较简单，一刷一次ac。说实在的，自己被这个hard标志吓得不轻。
+BS。
 
 164: Find Minimum in Rotated Sorted Array
 
-https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+<https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/>
 
 和154一模一样。
 
-
 152: Maximum Product Subarray
 
-https://leetcode.com/problems/maximum-product-subarray/
+<https://leetcode.com/problems/maximum-product-subarray/>
 
-原理是dp，但是我对dp并不熟！关键在于当前的max和min并不是全局的max和min，每遍历一个元素就要更新全局的max（res）。一刷变量名写错，效率也不高。二刷由于不理解DP，更新过程写错！三刷一次AC。
-
+DP。用`f_max[i],f_min[i]`分别记录以`nums[i]`结尾的sub-array的乘积最大值和最小值。初始化`f_max[0] = nums[0]; f_min[0] = nums[0];`，然后遍历`i`$\in$`[1, nums.size()）`，更新规则分别为`f_max[i] = max(nums[i], max(f_max[i - 1] * nums[i], f_min[i - 1] * nums[i]));`和`f_min[i] = min(nums[i], min(f_max[i - 1] * nums[i], f_min[i - 1] * nums[i]));`。对本题比较熟练的情况下，可以使用2个变量来代替1维DP。
 
 136: Single Number
 
@@ -254,124 +236,115 @@ https://leetcode.com/problems/maximum-product-subarray/
 
 260: Single Number III
 
-https://leetcode.com/problems/single-number-iii/description/
+<https://leetcode.com/problems/single-number-iii/description/>
 
 位操作，按第一个不同的位将nums分为两派即可。思路同前两道题。
 
 461: Hamming Distance
 
-https://leetcode.com/problems/hamming-distance/description/
+<https://leetcode.com/problems/hamming-distance/description/>
 
 位运算，与和异或。
 
 477: Total Hamming Distance
 
-https://leetcode.com/problems/total-hamming-distance/description/
+<https://leetcode.com/problems/total-hamming-distance/description/>
 
 位运算，分两派，该位为0和该位为1，分别记录每派的count，相乘加到结果上即可。
 
 
 201: Bitwise AND of Numbers Range
 
-https://leetcode.com/problems/bitwise-and-of-numbers-range/description/
+<https://leetcode.com/problems/bitwise-and-of-numbers-range/description/>
 
 位运算
 
 
 405: Convert a Number to Hexadecimal
 
-https://leetcode.com/problems/convert-a-number-to-hexadecimal/description/
+<https://leetcode.com/problems/convert-a-number-to-hexadecimal/description/>
 
 位运算，注意0的问题，算术右移和逻辑右移的区别。
 
 
 421: Maximum XOR of Two Numbers in an Array
 
-https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/description/
+<https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/description/>
 
-Bit，Math。没太明白关键一步异或的操作的含义。再刷。
-
+位操作，Math。
 
 190: Reverse Bits
 
-https://leetcode.com/problems/reverse-bits/description/
+<https://leetcode.com/problems/reverse-bits/description/>
 
-Bit。将一个32位无符号数的2进制表示reverse，利用进制，采用10进制的方式来做即可，低位的权重更高。
+位操作。将一个32位无符号数的2进制表示reverse，利用进制，采用10进制的方式来做即可，低位的权重更高。
 
 
 7: Reverse Integer
 
-https://leetcode.com/problems/reverse-integer/description/
+<https://leetcode.com/problems/reverse-integer/description/>
 
 Math。和190相似，注意INT_MAX、INT_MIN和正负号，参考**atoi**。
 
 
 476: Number Complement
 
-https://leetcode.com/problems/number-complement/description/
+<https://leetcode.com/problems/number-complement/description/>
 
 位运算，求补码，从符号位开始0变为1，然后取反。
 
 
 342: Power of Four
 
-https://leetcode.com/problems/power-of-four/description/
+<https://leetcode.com/problems/power-of-four/description/>
 
-位运算，搞了很久，没抓住主要性质。
-
+位运算。
 
 318: Maximum Product of Word Lengths
 
-https://leetcode.com/problems/maximum-product-of-word-lengths/description/
+<https://leetcode.com/problems/maximum-product-of-word-lengths/description/>
 
-位运算，一刷做的不是最优解！
-
+位运算。
 
 104: Maximum Depth of Binary Tree
 
-https://leetcode.com/problems/maximum-depth-of-binary-tree/
+<https://leetcode.com/problems/maximum-depth-of-binary-tree/>
 
-一刷使用层序遍历（BFS），一次AC，效率不高。二刷使用DFS，一行解决问题，效率也非常高，一次AC。
-
+BFS，DFS。
 
 389: Find the Difference
 
-https://leetcode.com/problems/find-the-difference/
+<https://leetcode.com/problems/find-the-difference/>
 
-对于字符串的常用方法，将字符转为数组下表，从而将空间复杂度降到O(N)。二刷一次AC。
-
+HashMap。对于字符串的常用方法，将字符转为数组下表，从而将空间复杂度降到O(N)。
 
 226: Invert Binary Tree
 
-https://leetcode.com/problems/invert-binary-tree/
+<https://leetcode.com/problems/invert-binary-tree/>
 
-使用递归，较简单，二刷一次AC。
-
+DFS，递归。
 
 169: Majority Element
 
-https://leetcode.com/problems/majority-element/
+<https://leetcode.com/problems/majority-element/>
 
-math,鸽巢原理，投票法。同权投票众数的票数最多，一定胜出。
-
+Math，鸽巢原理，投票法。同权投票众数的票数最多，一定胜出。
 
 100: Same Tree
 
-https://leetcode.com/problems/same-tree/
+<https://leetcode.com/problems/same-tree/>
 
-使用递归，教简单，二刷改善了codestyle，逻辑也更清晰，一次AC。
-
+DFS，递归。
 
 128: Longest Consecutive Sequence
 
-https://leetcode.com/problems/longest-consecutive-sequence/
+<https://leetcode.com/problems/longest-consecutive-sequence/>
 
 HashMap，空间换时间。可以使用师姐的思路，每次遇到没访问过的元素，访问之，并查看该元素所在最长连续序列的长度，更新结果，$O(N^2)$。使用unordered_map记录访问元素的最大长度。当n-1和n+1都访问过后，将序列两端的元素对应的最大长度更新。因为之后序列内部的元素就不考虑了，只会考虑序列外的元素，而序列外的元素跟该序列可能链接的地方只有左右两端，这个题很像DP，注意要将该元素设为访问过的状态，要向map中添加pair，$O(N)$。
 
-
 719: Find K-th Smallest Pair Distance
 
-https://leetcode.com/problems/find-k-th-smallest-pair-distance/description/
+<https://leetcode.com/problems/find-k-th-smallest-pair-distance/description/>
 
 Hashmap，已知距离的范围，用vector对所有的距离进行计数，最后找出第k小的距离。
 
@@ -1189,27 +1162,32 @@ HashMap,Math。上题的逆过程，扫一遍字符串，如果当前字符比�
 567: Permutation in String
 
 https://leetcode.com/problems/permutation-in-string/#/description
-一个简单的滑动窗口的题目，没思路，真是菜！一刷AC，还要再刷！
 
+滑动窗口，TP。
 
 532: K-diff Pairs in an Array
 
-https://leetcode.com/problems/k-diff-pairs-in-an-array/#/description
-很简单，没有一次AC，再刷！
+<https://leetcode.com/problems/k-diff-pairs-in-an-array/#/description>
 
+很简单，没有一次AC，再刷！
 
 524: Longest Word in Dictionary through Deleting
 
 https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/#/description
-思路不是自己的。一刷因为多个变量在同一行中定义写法出错拿个CE！对于pj的增长方式还是没办法提出比较容易理解的模型。再刷！！
 
+思路不是自己的。一刷因为多个变量在同一行中定义写法出错拿个CE！对于pj的增长方式还是没办法提出比较容易理解的模型。再刷！！
 
 3: Longest Substring Without Repeating Characters
 
-https://leetcode.com/problems/longest-substring-without-repeating-characters/#/description
+<https://leetcode.com/problems/longest-substring-without-repeating-characters/#/description>
 
 滑动窗口，TP。使用一个长为256的`vector`记录每个`char`上次出现的位置，用`start`记录当前无重复字符子串的起始位置，窗口右侧遇到一个已经访问过的`char`，窗口左侧`start`移到该`char`上次出现位置的后一位。
 
+209: Minimum Size Subarray Sum
+
+<https://leetcode.com/problems/minimum-size-subarray-sum/>
+
+TP，滑动窗口。同第3题思路相同，用`i,j`分别记录当前subarray的和与起、止位置，用`sum`记录subarray的和，当`sum >= s`时尽量左移`i`，左移结束更新`ans`。
 
 557: Reverse Words in a String III
 
