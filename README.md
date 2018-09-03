@@ -366,91 +366,90 @@ Hashmap。给定一个数组$A$，找出其中最长的满足斐波那契规律�
 
 874: Walking Robot Simulation
 
-https://leetcode.com/problems/walking-robot-simulation/description/
+<https://leetcode.com/problems/walking-robot-simulation/description/>
 
 Hashmap。给定一个边界无限的二维平面和一个初始处于这个平面上原点面向$Y$轴正向的机器人，二维平面上有些障碍物$O$无法通过，给定一组命令$C$，每条命令为一个整数，正整数表示前进的距离，$-1$表示右转，$-2$表示左转。机器人执行命令，前进过程中如果遇到障碍物会停下，直到转向绕过障碍物。问机器人**执行命令过程中到原点的最远欧式距离**。
 
-从原点出发，模拟机器人执行命令的路线，更新能够导到的最远距离。只要比较每条命令执行完机器人所处的位置到原点的距离和已知最大距离即可，因为移动过程中的位置不可能是最大值。
+从原点出发，模拟机器人执行命令的路线，更新能够导到的最远距离。只要比较每条命令执行完机器人所处的位置到原点的距离和已知最大距离即可，因为沿着单一方向移动过程中的，机器人所处的位置到原点的欧式距离不可能有极（最）大值，只有中间停顿处才可能出现极（最）大值。
 
 
 105: Construct Binary Tree from Preorder and Inorder Traversal
 
-https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+<https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/>
 
 递归。
 
 
 106: Construct Binary Tree from Inorder and Postorder Traversal
 
-https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
+<https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/>
 
 递归。同105，由于树中无重复元素，可以用map记录inorder中元素到index的映射，这样就不用在生成树时遍历inorder查找元素了，这样可以把时间复杂度降为$O(N^2)$。
 
 
 108: Convert Sorted Array to Binary Search Tree
 
-https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/
+<https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/>
 
 递归，二分查找。
 
 
 109: Convert Sorted List to Binary Search Tree
 
-https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/#/description
+<https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/#/description>
 
 同108，区别在于本题中`mid`要通过快慢指针来找。
 
-
 114: Flatten Binary Tree to Linked List
 
-https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/
+<https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/>
 
 递归，将左右分别flattern之后，将左侧链接到右侧。
 
 761: Special Binary String
 
-https://leetcode.com/problems/special-binary-string/description/
+<https://leetcode.com/problems/special-binary-string/description/>
 
 * BFS:每次选字符串中两个special binary substring交换，如果结果没有访问过就将其放入队列中，这种解法是我自己的解法，有大量重复计算，超时。
-* 递归：题目中暗藏两个规律:
-	1. 所有special binary string均以1开头，以0结尾
-	2. 允许交换两个相邻的special binary substring，可以得到所有special binary substring的全排列，因此最大的special binary string就是所有special binary substring按递减排序得到的结果。
-	分析得知以上两点就容易想到递归算法，将special binary string分成尽可能多的special binary substrings,对每个special binary substring进行递归得到special binary substring的最大值，然后将按降序排序后的special binary substrings连接起来就是要求的结果。
+* 递归：根据题意可以将special binary string类比为valid parenthesis，其中`1`类比为`(`，`0`类比为`)`，字母顺序更大可以类比为我们倾向与将**更深**的valid parenthesis排在前面。于是很容易想到递归算法，递归函数`f`的函数体：
+	* 将valid parenthes分成多个连续的valid sub-parenthesis
+	* 对每个valid sub-parenthesis除去最外层的`()`的部分调用递归函数`f`，得到相应的字母顺序最**大**的valid sub-parenthesis
+	* 将上一步得到的结果按**更深的valid sub-parenthesis排在更前面**的规则排序并将排序后的子串拼接起来返回即可。
+* 不管是`0,1`，还是`()`都是一种逻辑的代号，`0,1`不如`()`直观，详情可以参考[这篇解释](https://leetcode.com/problems/special-binary-string/discuss/155621/Logical-Thinking-with-Clear-Code)。
 
 74: Search a 2D Matrix
 
-https://leetcode.com/problems/search-a-2d-matrix/?tab=Description
+<https://leetcode.com/problems/search-a-2d-matrix/?tab=Description>
 
 BS，将矩阵降为视为一维数组用BS。index的映射关系:`matrix[mid / n][mid % n]`。
 
 240: Search a 2D Matrix II
 
-https://leetcode.com/problems/search-a-2d-matrix-ii/description/
+<https://leetcode.com/problems/search-a-2d-matrix-ii/description/>
 
 math，BS的变形，所选的哨兵为角上的元素，每次将范围缩减一行或一列，$O(\max(M,N))$。暴力方法是对每一行进行BS，$O(MlogN)$。
 
 73: Set Matrix Zeroes
 
-https://leetcode.com/problems/set-matrix-zeroes/?tab=Description
+<https://leetcode.com/problems/set-matrix-zeroes/?tab=Description>
 
 将第一行(或第一列)作为标志，第一行(或第一列)用其他标志。从$(0, 0)$到$(m-1, n-1)$前向遍历将标志置0，从$(m-1, n-1)$到$(0, 0)$逆序遍历按标志将元素置0。时间复杂度$O(MN)$。
 
 62: Unique Paths
 
-https://leetcode.com/problems/unique-paths/?tab=Description
+<https://leetcode.com/problems/unique-paths/?tab=Description>
 
 DP。二维DP递推表达式为$dp[i][j] = dp[i-1][j] + dp[i][j-1]$，可以简化为一维DP。
 
-
 63: Unique Paths II
 
-https://leetcode.com/problems/unique-paths-ii/?tab=Description
+<https://leetcode.com/problems/unique-paths-ii/?tab=Description>
 
 DP。同62。
 
 64: Minimum Path Sum
 
-https://leetcode.com/problems/minimum-path-sum/?tab=Description
+<https://leetcode.com/problems/minimum-path-sum/?tab=Description>
 
 DP。同62。
 
@@ -462,33 +461,33 @@ DP。自底向上，每个问题只有两个小的子问题，同62。`dp[c] = m
 
 799: Champagne Tower
 
-DP。同120。
+<https://leetcode.com/contest/weekly-contest-75/problems/champagne-tower/>
 
-`dp[r][c] = (dp[r-1][c-1] >= 1 : dp[r-1][c-1] - 1 : 0) / 2 + (dp[r-1][c] >= 1 ? dp[r-1][c] - 1 : 0) / 2`。
+BFS。
 
 53: Maximum Subarray
 
-https://leetcode.com/problems/maximum-subarray/?tab=Description
+<https://leetcode.com/problems/maximum-subarray/?tab=Description>
 
-DP，可以降为0维DP。设有长度为$n$的数组$a$用`sum`和`res`分别记录当前的累加和与最终的结果。从$a_1$开始累加，当加到$a_i$时候如果`sum < 0`，将`sum`清零，相当于把前面的一个连续子数组扔掉，如果`sum > 0`更新result。这样做的原因是如果上述算法中出现$\sum_{k = i}^{j}a_k < 0$，则必有$\sum_{k=i}^{j+\lambda}a_k < a_{j+\lambda}, \lambda \in [1, n-j]$ 因此可以将$a[i,j]$这部分直接扔掉，从$j+1$开始继续查找和最大的连续子数组。
+DP，可以降为0维DP。设有长度为$n$的数组$a$用`sum`和`res`分别记录当前的累加和与最终的结果。从$a_1$开始累加，当加到$a_i$时候如果`sum < 0`，将`sum`清零，相当于把前面的一个连续子数组扔掉，如果`sum > 0`更新result。这样做的原因是如果上述算法中出现$\sum_{k = i}^{j}a_k < 0$，则必有$\sum_{k=i}^{j+\lambda}a_k < a_{j+\lambda}, \lambda \in [1, n-j]$ 因此可以将$a[i,j]$这部分直接扔掉，从`j+1`开始继续查找和最大的连续子数组。
 
 72: Edit Distance
 
-https://leetcode.com/problems/edit-distance/description/
+<https://leetcode.com/problems/edit-distance/description/>
 
 DP。用二维数组记录$s[0,i]$与$p[0,j]$的距离。
 * 初始化: `dp[0][j] = j`，`dp[i][0] = i`
 * 二重循环递推: 
-	* `s[i] == p[j]`：`dp[i][j] = min(dp[i-1][j-1], 1+dp[i-1][j], 1+dp[i][j-1])`，`min`函数中的三项分别表示在该处对进行**改、删、增**的操作。
-	* `s[i] != p[j]`：`dp[i][j] = min(1+dp[i-1][j-1], 1+dp[i-1][j], 1+dp[i][j-1])`，`min`函数中的三项分别表示在该处对进行**改、删、增**的操作。
+	* `s[i] == p[j]`：`dp[i][j] = min(dp[i-1][j-1], 1+dp[i-1][j], 1+dp[i][j-1])`，`min`函数中的三项分别表示在该处对进行**改、增、删**的操作。
+	* `s[i] != p[j]`：`dp[i][j] = min(1+dp[i-1][j-1], 1+dp[i-1][j], 1+dp[i][j-1])`，`min`函数中的三项分别表示在该处对进行**改、增、删**的操作。
 	
 	上述两种情况的区别在于**改**操作导致的结果不同，相同的时候是不需要改的，所以少了`+1`。
 
 486: Predict the Winner
 
-https://leetcode.com/problems/predict-the-winner/description/
+<https://leetcode.com/problems/predict-the-winner/description/>
 
-二维DP，一维亦可，二维DP易于理解。两个维度坐标含义相同，填表方式是沿对角线填表，这取决于子问题的结构。子问题比较容易看出来，对于$dp[i][j]$,取头剩$dp[i+1][j]$,取尾剩$dp[i][j-1]$，但是剩下的是对手的盘，因此要将dp中存储的元素设置为一手比二手玩家多得的分，这样对手的盘就是负值！
+DP。二维DP比一维DP更易于理解。两个维度坐标含义相同，填表方式是先填长度比较小的范围，沿对角线填表。`dp[i][j] = min(nums[i] - dp[i + 1][j], nums[j] - dp[i][j - 1])`，每次都是1号玩家先取，1号玩家取完之后2号玩家就成了“1”号玩家，但是对于1号玩家来说，2号玩家充当“1”号玩家时得到的分数实际上就是1号玩家失掉的分数。当两者都是用最优的策略进行游戏时，一个玩家取了一个数之后，问题规模减1，而问题的结构是完全相同的，于是有了上式。
 
 45: Jump Game II
 
@@ -508,30 +507,30 @@ DP,BFS。
 
 85: Maximal Rectangle
 
-https://leetcode.com/problems/maximal-rectangle/description/
+<https://leetcode.com/problems/maximal-rectangle/description/>
 
 DP。把原来的1010矩阵变成直方图矩阵。外层遍历每一行，内层遍历每一列，下一行只要需要使用上一行的信息，所以可以简化为一维DP。height,left和right更新的先后顺序无所谓。关键是理解left[j]和right[j]为什么可以表示最高的（高度为height[j]）的全1向量的左右边界,原因是当matrix[i][j]为1时，left和right的更新会取当前行的边界cur和上一行的对应列的最小值(对right)或者最大值(left)。
 
 837: New 21 Game
 
-https://leetcode.com/contest/weekly-contest-85/problems/new-21-game/
+<https://leetcode.com/contest/weekly-contest-85/problems/new-21-game/>
 
 DP。给定K,N,W，当牌的点数小于K时，从$[1, W]$的牌中等概论随机抽取一张，计算手牌的面值之和$<=N$的概率。使用pre记录当前牌面值总和之前的概率总，相当于前缀和，使用dp记录当前牌面值的概率。dp[i]最多只跟$[i - 1, i-1-W]$的牌面值概率的总和sum有关，$dp = sum / W$, 使用b记录相关牌面值的起点，使用e记录牌面值的终点。每次计算dp之后，$pre[i + 1] = pre[i] + dp[i]$。
 
 730: Count Different Palindromic Subsequences
 
-https://leetcode.com/problems/count-different-palindromic-subsequences/description/
+<https://leetcode.com/problems/count-different-palindromic-subsequences/description/>
 
 DP。二维DP记录每个子串中不重复的回文子序列的个数，先固定长度，然后遍历起点。对于$DP[i][j]$，分两种情况:
 1. $s[i] == s[j]$:假设$s[i+1:j-1]$的不重复的回文子序列为$\{y_1, y_2, ..., y_k\}$，$s[i]=s[j]=a$，不考虑具体的细节粗略估计应该有$DP[i][j]=DP[i+1][j-1] * 2 + 2$，这是因为$s[i:j]$的不重复回文子串粗略想想应该有$\{y_1, y_2, ..., y_n, ay_1a, ay_2a, ..., ay_na, a, aa\}$，下面考虑可能出现的重复，当$s[i:j]$的模式为`axxxaxxxaxxxa`时，就会出现重复，因此可以用TP的方法，分别从$s[i+1]$和$s[j-1]$向内查找$a$，设出现的位置分别为$l$和$r$。
-  * $l < r$：即$s[i:j]$的模式是`axxxaxxaxxxa`，因此重复的就是最里面的`xx`的非重复回文子序列个数，此时$DP[i][j] = DP[i+1][j-1]*2 - DP[l+1][r-1]$。
-  * $l = r$：即$s[i:j]$的模式是`axxxaxxxa`，此时$DP[i][j] = DP[i + 1][j-1] * 2 + 1$
-  * $l > r$: 即不存在重复，$s[i:j]$的模式是`axxxa`，此时$DP[i][j] = DP[i+1][j-1] * 2 + 2$。
+ 	* $l < r$：即$s[i:j]$的模式是`axxxaxxaxxxa`，因此重复的就是最里面的`xx`的非重复回文子序列个数，此时$DP[i][j] = DP[i+1][j-1]*2 - DP[l+1][r-1]$。
+	* $l = r$：即$s[i:j]$的模式是`axxxaxxxa`，此时$DP[i][j] = DP[i + 1][j-1] * 2 + 1$
+	* $l > r$: 即不存在重复，$s[i:j]$的模式是`axxxa`，此时$DP[i][j] = DP[i+1][j-1] * 2 + 2$。
 2. $s[i] != s[j]$:$DP[i][j] = DP[i+1][j] + DP[i][j-1] - DP[i+1][j-1]$。
 
 731: Rectangle Area II
 
-https://leetcode.com/contest/weekly-contest-88/problems/rectangle-area-ii/
+<https://leetcode.com/contest/weekly-contest-88/problems/rectangle-area-ii/>
 
 DP。计算二维坐标系内所有非旋转矩形（所有矩形的边均和X或Y轴平行）重叠的面积。基本思想是将所有矩形分成小块，所有部分都只计算一次。
   * 我自己的思路：使用priority_queue，将所有矩形按照$\{X_1, X_2, Y_1, Y_2\}$的优先级进行排序，每次取出前两个矩形，每次将重复的部分保留，计算多出的部分。我的思路有个bug，当多出的部分与后续的矩形有重复时，这个方法就有了重复计算。
@@ -553,9 +552,9 @@ https://leetcode.com/problems/insert-interval/description/
 
 406: Queue Reconstruction by Height
 
-https://leetcode.com/problems/queue-reconstruction-by-height/description/
+<https://leetcode.com/problems/queue-reconstruction-by-height/description/>
 
-sort。使用lambda表达式进行sort，然后将每个元素插到`res.begin()+p.second`的位置上。
+sort。使用lambda表达式进行sort，然后将每个元素插到`res`的`res.begin()+p.second`的位置上。C++中的lambda表达式的书写规范为:`[](const T &a, const T &b){return a < b}`。
 
 54: Spiral Matrix
 
@@ -585,16 +584,15 @@ math。全镜面正方形二维房间，一束光从一角照进来，控制入�
 
 https://leetcode.com/contest/weekly-contest-92/problems/prime-palindrome/
 
-math。给定整数N，找出一个回文质数p，要求p是满足$p >= N$的第一个回文质数。 由于题目条件$N < 10^8$而且N为`int`型，因此可以遍历$i \in [0, 10000]$，作为回文数的左侧部分，然后通过`mirror`函数，将右侧补全。补全的过程中可以在左右两部分的中间添加一位数字$j \in [-1, 9]$($j=-1$表示不添加)。如果`mirror`函数的结果p满足$p >= N$且p是回文数，则答案正确。
+math。给定整数N，找出一个回文质数`p`，要求`p`是满足`p >= N`的第一个回文质数。 由于题目条件`N < `$10^8$而且`N`为`int`型，因此可以遍历$i \in [0, 10000]$，作为回文数的左侧部分，然后通过`mirror`函数，将右侧补全。补全的过程中可以在左右两部分的中间添加一位数字$j \in [-1, 9]$($j=-1$表示不添加)。如果`mirror`函数的结果`p`满足$p >= N$且`p`是回文数，则答案正确。
 
 上面的解法有个小trick，仔细分析`mirror`函数的遍历过程会发现，每次遍历的时候都是先产生一个$2k$位的整数，然后再产生10个$2k+1$位的整数，这就产生了一个问题:为什么先遍历大的整数，再遍历小的整数结果却不会出错？其实这是因为符合模式为`xx`(`x`表示一个整数)的质数只有11一个，这个结论需要证明！
 
 48: Rotate Image
 
-https://leetcode.com/problems/rotate-image/?tab=Description
+<https://leetcode.com/problems/rotate-image/?tab=Description>
 
 math。矩阵顺时针旋转，先将矩阵进行上下翻转(上换到下)，然后对角互换(左下换到右上)，于是左上就换到了右上，左下换到了左上，右上换到了右下，右下换到了左下，实现了顺时针旋转90度。也可以先进行左右翻转，然后将左上和右下互换，由于左上与右下互换不如左下与右上来的简单，因此第一种方案更好一点。对于逆时针旋转先上下翻转，然后左上与右下互换。
-
 
 66: Plus One
 
@@ -602,13 +600,11 @@ math。矩阵顺时针旋转，先将矩阵进行上下翻转(上换到下)，�
 
 math。初始化令最低位进位c=1,可以按照统一的模式解决。
 
-
 35: Search Insert Position
 
 https://leetcode.com/problems/search-insert-position/?tab=Description
 
 BS。可以直接用`upper_bound`或者`lower_bound`来做。
-
 
 34: Search for a Range
 
@@ -1235,26 +1231,28 @@ TP或者看逆数与原数是否相等，注意本题中负数不合法。
 385: Mini Parser
 
 https://leetcode.com/problems/mini-parser/#/description
+
 不算简单，用到istringstream，不好理解！子函数对流修改后，父函数要clear()才能得到正确的指针！一刷AC但是不太理解递归，再刷！
 
 
 6: ZigZag Conversion
 
 https://leetcode.com/problems/zigzag-conversion/#/description
+
 比较简单，一刷没AC，没有认真考虑边界条件。numRows为0直接返回原串即可。
 
 
 556: Next Greater Element III
 
 https://leetcode.com/problems/next-greater-element-iii/#/description
-不难，但是忘记怎么求下一个排列的算法了。标准库有api可以用！再刷！
 
+不难，但是忘记怎么求下一个排列的算法了。标准库有api可以用！再刷！
 
 7: Basic Calculator II
 
 https://leetcode.com/problems/basic-calculator-ii/#/description
-istringstream非常好用，可以从中直接读取任意数据类型，读取字符串直接用getline操作。注意用op来对term进行正负修饰，只有第一次读入加号或者减号的时候需要。一刷没思路，二刷term的正负没写对位置。
 
+istringstream非常好用，可以从中直接读取任意数据类型，读取字符串直接用getline操作。注意用op来对term进行正负修饰，只有第一次读入加号或者减号的时候需要。一刷没思路，二刷term的正负没写对位置。
 
 224: Basic Calculator
 
@@ -1280,8 +1278,8 @@ https://leetcode.com/problems/palindrome-pairs/#/description
 539: Minimum Time Difference
 
 https://leetcode.com/problems/minimum-time-difference/#/description
-一刷没AC，一开始没看懂题意导致WA。看了解答区的算法手写各种CE！再刷！
 
+一刷没AC，一开始没看懂题意导致WA。看了解答区的算法手写各种CE！再刷！
 
 583: Delete Operation for Two Strings Add to List
 
