@@ -2847,13 +2847,11 @@ https://leetcode.com/problems/add-and-search-word-data-structure-design/descript
 
 Trie。注意查找的时候如果碰到`'.'`，需要使用DFS，把所有可能的路径均遍历结束后如果都没有找到正确结果，返回`false`。
 
-
 307: Range Sum Query - Mutable
 
 https://leetcode.com/problems/range-sum-query-mutable/description/
 
 一刷使用暴力解法AC，时间复杂度为O(N)。用线段树和二分索引树做时间复杂度可以降到O(log N)。
-
 
 530: Minimum Absolute Difference in BST
 
@@ -2866,8 +2864,7 @@ https://leetcode.com/problems/minimum-absolute-difference-in-bst/description/
 
 https://leetcode.com/problems/my-calendar-i/description/
 
-线段交集，感觉跟线段树或者二分索引书有关，不清楚！要继续思考，一刷AC。
-
+TreeMap。判断多条线段是否存在交集，可以用java的TreeMap轻松实现。对于任意一个新加入的线段，分别判断起点start的floorKey和ceilingKey记录的线段与新加入的线段是否有重叠即可。
 
 731: My Calendar II
 
