@@ -2048,6 +2048,15 @@ https://leetcode.com/problems/top-k-frequent-words/description/
 一刷暴力解决，AC。二刷使用基于heap sort的方法，WA。有一点不太理解，为什么最后的结果的顺序和我想的相反？
 
 
+668: Kth Smallest Number in Multiplication Table
+
+https://leetcode.com/problems/kth-smallest-number-in-multiplication-table/
+
+heap: 用一个小根堆模拟排序过程，小根堆中每个元素是pair，来分别存储乘法表中的基数和乘积，用乘积排序。每次出队列的时候，如果乘积加上基数之后的值在乘法表范围内，将增大的乘积加回队列。
+
+BS: 每一行中比目标值小的数的个数通过一次除法即可算得，这个发现可以直接将算法的计算复杂度降级。我发现了这一点，但是一直想在坐标和排序之间建立联系！BS就是通过一个指标，将一个区间严格分为两半。对于BS的理解又深了一点！
+
+
 355: Design Twitter
 
 https://leetcode.com/problems/design-twitter/description/
