@@ -1,28 +1,27 @@
 class Solution {
 public:
     int splitArray(vector<int>& nums, int m) {
-        long long low = 0, high = 0, mid = 0;
-        for (int& n : nums) {
-            long long num = n;
-            low = max(low, num);
-            high += n;
+        long low = 0, high = 0, mid;
+        for (int& num : nums) {
+            low = max(low, long(num));
+            high += num;
         }
-        while (low <= high) {
+        while (low < high) {
             mid = low + ((high - low) >> 1);
-            if (valid(nums, mid, m)) low = mid +1;
-            else high = mid - 1;
+            if (valid(nums, mid, m)) low = mid + 1;
+            else high = mid;
         }
         return low;
     }
     
-    bool valid(vector<int>& nums, int t, int m) {
+    bool valid(vector<int>& nums, long long t, int m) {
         int count = 1;
-        long long sum = 0;
-        for (int& n : nums) {
-            sum += n;
+        long sum = 0;
+        for (int& num : nums) {
+            sum += num;
             if (sum > t) {
-                sum = n;
-                count += 1;
+                count++;
+                sum = num;
             }
             if (count > m) return true;
         }

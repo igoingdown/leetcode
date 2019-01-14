@@ -2039,8 +2039,6 @@ https://leetcode.com/problems/top-k-frequent-elements/description/
 一刷使用map统计频率，按频率倒排，使用lambda表达式简化代码，O(NlogN)。二刷使用堆排，O(NlogN)。三刷使用快搜，O(N)。四刷使用priority_queue，O(NlogN),其实就是完全堆排。五刷简化四刷使用的方法，不再使用函数对象。五刷使用桶排序，bucket_size为1，将每个可能的频率都视为一个bucket，O(N)。建堆时间复杂度证明：http://blog.csdn.net/anonymalias/article/details/8807895
 
 
-
-
 692: Top K Frequent Words
 
 https://leetcode.com/problems/top-k-frequent-words/description/
@@ -2057,6 +2055,19 @@ heap: 用一个小根堆模拟排序过程，小根堆中每个元素是pair，�
 BS: 每一行中比目标值小的数的个数通过一次除法即可算得，这个发现可以直接将算法的计算复杂度降级。我发现了这一点，但是一直想在坐标和排序之间建立联系！BS就是通过一个指标，将一个区间严格分为两半。对于BS的理解又深了一点！
 
 
+410: Split Array Largest Sum
+
+https://leetcode.com/problems/split-array-largest-sum/
+
+BS：左边界为0，右边界为sum。将数组按连续的方式分组，每组的和不大于mid。分组个数大于m说明mid不够，更新low；否则更新high。BS有两种写法，这两种写法是等价的！
+
+778: Swim in Rising Water
+
+https://leetcode.com/problems/swim-in-rising-water/
+
+BS+DFS:提示比较明显了。用BS找解，用DFS验证解的合理性。注意用DFS验证的时候有一个小trick：可以直接修改visited，不用回溯！因为这道题中回溯是没有意义的！回溯还是过不去！加了回溯超时，去掉立马就AC了！
+
+
 355: Design Twitter
 
 https://leetcode.com/problems/design-twitter/description/
@@ -2067,7 +2078,7 @@ https://leetcode.com/problems/design-twitter/description/
 490: Maze
 锁定了，写不了。
 但是比较简单，至少有两种写法。
-一是使用visited，而是将访问过的区域设置为阻隔，有个非常相似的题目，但是我给忘了。
+一是使用visited，二是将访问过的区域设置为阻隔，有个非常相似的题目，但是我给忘了。
 
 
 110: Balanced Binary Tree
