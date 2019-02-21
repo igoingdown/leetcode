@@ -1564,7 +1564,14 @@ https://leetcode.com/contest/leetcode-weekly-contest-49/problems/longest-continu
 
 https://leetcode.com/problems/number-of-longest-increasing-subsequence/description/
 
-跟上一题很像！怪不得邓邓把上一道题看成这道题！DP难在算法的理解。看了半天没理解，看了大神的注释之后豁然开朗！一刷AC，但是理解不够，再刷！二刷DEBUG了很久，还是理解不够，心不在焉漏洞百出！再刷！
+LIS，跟上一题很像！怪不得邓邓把上一道题看成这道题！DP难在算法的理解。看了半天没理解，看了大神的注释之后豁然开朗！一刷AC，但是理解不够，再刷！二刷DEBUG了很久，还是理解不够，心不在焉漏洞百出！再刷！
+
+
+354: Russian Doll Envelopes
+
+https://leetcode.com/problems/russian-doll-envelopes/
+
+LIS的变种，将二维数据其中一个维度升序另一个维度降序排序之后只关注降序排序的维度就是LIS。这个题很有意思，很有思考价值！
 
 
 676: Implement Magic Dictionary
