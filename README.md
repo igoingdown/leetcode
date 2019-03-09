@@ -469,7 +469,15 @@ BFS。
 
 <https://leetcode.com/problems/maximum-subarray/?tab=Description>
 
-DP，可以降为0维DP。设有长度为$n$的数组$a$用`sum`和`res`分别记录当前的累加和与最终的结果。从$a_1$开始累加，当加到$a_i$时候如果`sum < 0`，将`sum`清零，相当于把前面的一个连续子数组扔掉，如果`sum > 0`更新result。这样做的原因是如果上述算法中出现$\sum_{k = i}^{j}a_k < 0$，则必有$\sum_{k=i}^{j+\lambda}a_k < a_{j+\lambda}, \lambda \in [1, n-j]$ 因此可以将$a[i,j]$这部分直接扔掉，从`j+1`开始继续查找和最大的连续子数组。
+DP，可以降为0维DP，即kadane算法。设有长度为$n$的数组$a$用`sum`和`res`分别记录当前的累加和与最终的结果。从$a_1$开始累加，当加到$a_i$时候如果`sum < 0`，将`sum`清零，相当于把前面的一个连续子数组扔掉，如果`sum > 0`更新result。这样做的原因是如果上述算法中出现$\sum_{k = i}^{j}a_k < 0$，则必有$\sum_{k=i}^{j+\lambda}a_k < a_{j+\lambda}, \lambda \in [1, n-j]$ 因此可以将$a[i,j]$这部分直接扔掉，从`j+1`开始继续查找和最大的连续子数组。
+
+
+363: Max Sum of Rectangle No Larger Than K
+
+<https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/>
+
+BS，DP：本题实际上是53题的升级版，BS的解法实际上糅合了kadane算法（即53题经典解法）和有界最大连续子数组。首先通过遍历所有可能的矩形左右边的组合，然后用dp求和，因为多加一列的话可以应用之前几列的求和结果。对于每行的和，应用最大kadane算法的思想可以得出和最大的矩形，而应用有界最大子数组算法可以求出有界情况下和最大的矩形。时间复杂度：$O((col)^2row\log(row))，空间复杂度为O(row)。暴力解法是遍历每个矩形可能的左右、上下边，利用dp计算累加和，时间复杂度O((row)^2(col)^2)，空间复杂度为O(row)。
+
 
 72: Edit Distance
 
