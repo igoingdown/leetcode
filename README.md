@@ -643,6 +643,21 @@ BS。有$N$堆香蕉，记为$P$，每堆有$P_i$个香蕉，KOKO要在$H$小时
 $K \in  [\sum_{i} P_i, \max_i{P_i}]$，已知上界和下界，用BS找目标元素$t$即可，目标元素$t$需要满足$\sum_{i}P_i/t$的上界 $<= H$。
 
 
+483: Smallest Good Base
+
+<https://leetcode.com/problems/smallest-good-base/>
+
+BS。将一个数分解为多个项，每一项系数都是1，但是基数成等比数列。项数范围是[2,63]，逆序遍历项数，BS查找底数。注意防溢出，用除法判断溢出是最好的。
+
+
+
+786: K-th Smallest Prime Fraction
+
+<https://leetcode.com/problems/k-th-smallest-prime-fraction/>
+
+多种解法，这是一类题，跟微软小冰组的那个找定基数不定指数的第k大问题类似，用priority_queue解决很简单。本题更好的方法是bs，二维bs。leetcode上有个人总结了这类题，看着还挺好的，链接是<https://leetcode.com/problems/k-th-smallest-prime-fraction/discuss/115819/Summary-of-solutions-for-problems-%22reducible%22-to-LeetCode-378>。
+
+
 31: Next Permutation
 
 https://leetcode.com/problems/next-permutation/?tab=Description
