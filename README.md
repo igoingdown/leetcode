@@ -138,7 +138,7 @@ TP。用`b,e`分别记录当前range的起、止index，每次循环向后挪动
 
 <https://leetcode.com/problems/friend-circles/description/>
 
-DFS，并查集。并查集的`find(x,parents)`函数不用递归最好，可以在循环过程中缩减树的深度，增加树的宽度，达到提高效率的目的。
+DFS，并查集。并查集的`find(x,parents)`函数不用递归最好，可以在循环过程中缩减树的深度，增加树的宽度，达到提高效率的目的, 递归也可以有效缩减束身，增加树的宽度。
 
 721: Accounts Merge
 
