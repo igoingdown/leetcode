@@ -2,6 +2,22 @@
 #include <vector>
 #include <queue>
 
+using namespace std;
+
+void handle(vector<int> &res, queue<int> &q) {
+	int head = q.front();
+	q.pop();
+	res.push_back(head);
+	int n = res.size(), i = n - 1;
+	while (i > 0 && res[i - 1] != head) i--;
+	if (i > 0) {
+		while (n >= i) {
+			q.push(res[n - 1]);
+			res.pop_back();
+			n--;
+		}
+	}
+}
 
 bool vs(vector<int> &ha, vector<int> &heng) {
 	queue<int> haq, hengq;
@@ -11,39 +27,19 @@ bool vs(vector<int> &ha, vector<int> &heng) {
 		haq.push(n);
 	}
 	for (int n : heng) {
-		hengq.push(n)
+		hengq.push(n);
 	}
 	while (!hengq.empty() && !haq.empty()) {
-		int head = haq.front();
-		haq.pop();
-		res.push_back(head);
-		int n = res.size(), i = n - 1;
-		while (i > 0 && res[i - 1] != head) i--;
-		if (i > 0) {
-			while (n >= i) {
-				hap.push(res[n - 1]);
-				res.pop_back();
-				n--;
-			}
-		}
+		handle(res, haq);
 		if (haq.empty()) return false;
-		head = hengq.front();
-		hengq.pop();
-		res.push_back(head);
-		n = res.size(), i = n - 1;
-		while (i > 0 && res[i - 1] != head) i--;
-		if (i > 0) {
-			while (n >= i) {
-				hengq.push(res[n - 1]);
-				res.pop_back();
-				n--;
-			}
-		}
+		handle(res, hengq);
 		if (hengq.empty()) return true;
 	}
 	return true;
 }
 
 int main() {
-
+	vector<int> a = {2,4,1,2,5,6};
+	vector<int> b = {3,1,3,5,6,4};
+	cout << vs(a, b) << endl;
 }
