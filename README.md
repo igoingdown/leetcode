@@ -17,55 +17,100 @@ tags:
 
 <https://leetcode.com/problems/island-perimeter/>
 
-Matb。遍历所有的cell，用分离的cell总的的边数减去重叠的边的数目即可。在查找重叠的边的数目的时候有一点小技巧，就是沿着其中两个方向就好，可以沿着上三角或者下三角形的方向来做。
+枚举。遍历所有的cell，判断每个cell的每个边是否为Island的边界，是边界则`perimeter+1`。
+
+----
 
 455: Assign Cookies
 
 <https://leetcode.com/problems/assign-cookies/>
 
-TP，greedy。给出两个序列$g$和$s$，$g_i$代表能满足第$i$个孩子要求的最小cookie的size，$s_j$表示第$j$个cookie的size。问如何分配使得到满意的孩子最多。
+TP。给出两个序列`g`和`s`，![](http://latex.codecogs.com/gif.latex?{g_i})代表能满足第`i`个孩子要求的最小cookie的size，
+![](http://latex.codecogs.com/gif.latex?{s_j})表示第`j`个cookie的size。问如何分配使得到满意的孩子最多。
 
-先将两个序列$s$和$g$升序排序，然后按双路指针的方式解决。思路是为每个孩子分配一个能满足需求的cookie，有点贪心算法的味道。STL的`algorithm`库中的`sort(beg, end, comp)`函数实际使用快排，其中的`comp`是函数对象或者函数指针，签名是 `bool comp(elem_type first_arg, elem_type second_arg)`，返回的`bool`值的含义是第一个参数是否应该排在第二个参数的前面。而且默认参数会将较小的参数排在前面，即`sort`函数默认升序排序！
+先将`s`和`g`升序排序，然后用双指针解决，
+这个方法的核心思路是优先给需求低的孩子分配cookie，这么做可以最大化收益：将得到满足的孩子个数最大化。
+
+STL的`algorithm`库中的`sort(beg, end, comp)`函数实际使用快排，其中的`comp`是函数对象或者函数指针，
+签名是 `bool comp(elem_type first_arg, elem_type second_arg)`，
+返回的`bool`值的含义是第一个参数是否应该排在第二个参数的前面，默认参数会将较小的参数排在前面，即`sort`函数默认升序排序。
+
+如果需要降序排列，可以用STL中的`greater`，比如讲一个`vector<int> a`降序排序，可以调用`sort(a.begin(), a.end(), greater<int>())`
+
+----
 
 453: Minimum Moves to Equal Array Elements
 
 <https://leetcode.com/problems/minimum-moves-to-equal-array-elements/>
 
-Math。给定长度为$n$的数组$A$，定义$A$上的一个元操作：**将数组中的n-1个元素加1**，最少经过多少次元操作可以使数组中元素都相等?
+Math。给定长度为`n`的数组`A`，定义`A`上的一个元操作：**将数组中的`n-1`个元素加1**，最少经过多少次元操作可以使数组中元素都相等?
+**将数组中的`n-1`个元素加1**等价于**数组中不加1的那个元素减去1，然后数组中的所有元素都加1**。
+将所有的元素都加1并不能改变原数组中的数之间的差值，于是本题就转化为求**最少的减1操作**。
+而要使数组中的元素全部相等，又要使用减法，那么最少的次数就是让这些元素全部都等于数组中最小的数。
+于是有 ![](http://latex.codecogs.com/gif.latex?{answer=\\sum_{i=1}^{n}A_i-min(S)\*n})。
 
-**将数组中的n-1个元素加1**等价于**数组中不加1的那个元素减去1，然后数组中的所有元素都加1**。将所有的元素都加1并不能改变原数组中的数之间的差值，于是本题就转化为求**最少的减1操作**。而要使数组中的元素全部相等，又要使用减法，那么最少的次数就是让这些元素全部都等于数组中最小的数。于是`answer = `$\sum_{i=1}^{n}A_i - min(A) * n$。
+[【这里有详细解释】](https://leetcode.com/problems/minimum-moves-to-equal-array-elements/discuss/311290/Easy-Java-solution-with-explanation)。
+
+----
 
 383: Ransom Note
 
 <https://leetcode.com/problems/ransom-note/>
 
-HashMap。判断能否用后一个串合成前一个串，只要后一个串的每个字符的频率都不小于前一个串的字符频率即可。
+HashMap。用串`a`合成串`b`，只要串`b`中的每个字符的频数都不大于串`a`中对应的字符频数即可。
+
+----
 
 404: Sum of Left Leaves
 
 <https://leetcode.com/problems/sum-of-left-leaves/>
 
-* 递归:只要想明白一个节点的情况，其他节点都一样。对于每个节点如果指针为空，返回0；如果左子为叶子节点，结果要加上左子的值，否则要加上左子树的递归结果，最后加上右子树的递归结果返回即可。
+* 递归:只要想明白一个节点的情况，其他节点都一样。如果节点为空，返回0；
+如果左子为叶子节点，返回左子的值+右子树的递归结果；其余情况分别对左右子树进行递归并把结果求和即可。
 * 非递归。利用栈，处理栈顶元素的时候直接处理栈顶元素，应该处理栈顶元素的左右结点。
+
+----
 
 834: Sum of Distances in Tree
 
 <https://leetcode.com/contest/weekly-contest-84/problems/sum-of-distances-in-tree/>
 
-DFS。用图的思路解决树的问题。先用DFS算出根节点到其他节点的距离之和`tot`，在计算过程中连带算出以任意节点$Node_i$为根节点的子树的节点个数$c_i$，这两个问题都是比较简单的问题。然后DFS遍历所有节点，已知根节点到所有其他节点的距离之和`s[cur]`的情况下，算任意一个子节点到其他所有节点的距离之和`s[child]`的公式是: `s[child] = (s[cur] - c[child]) + (tot - c[child])`。这是因为已知根节点`cur`到所有其他节点的距离之和`s[cur]`，求所有其他节点到一个子节点`child`的距离之和`s[child]`，可以将所有节点分为两部分，其中一部分是以`child`为根节点的子树，另一部分是整个树的其余部分。以`child`为根节点的子树上的每个节点到`cur`的距离减1就是这些节点到`child`的距离，树的另一部分上的每个节点到`cur`的距离+1就是他们到`child`的距离。反映在最终结果(距离加和)上，前一部分需要在`s[cur]`的基础上减掉`c[child]`，后一部分需要在`s[cur]`的基础上加上`(tot - c[child])`，于是就有了上面的公式。
+DFS。有两种方法，第一种为暴力法，第二种方法是暴力法的优化，复用了暴力法计算出的结果。
+* 暴力法：枚举。分别以每个节点为根节点，令该节点为`i`，DFS计算出节点`i`到其他所有节点的距离之和ans[i]
+* 优化方法：用暴力法中的DFS先计算出`ans[0]`，
+DFS过程中同时算出以任意节点`i`为根节点的子树的节点个数
+![](http://latex.codecogs.com/gif.latex?{{treeNodes}_i})，这两个问题都是比较简单的问题。
+然后再利用上述结果，一次DFS计算出所有的ans。具体做法是DFS遍历所有节点，已知`ans[parent]`的情况下，
+`parent`节点的任意一个子节点`child`对应的`ans[child]`的公式是: 
+`ans[child] = (ans[parent] - treeNodes[child]) + (N - treeNodes[child])`。
+这是因为已知`ans[parent]`，求所有其他节点到一个子节点`child`的距离之和`ans[child]`时，
+可以将所有节点分为两部分，一部分是以`child`为根节点的子树，记为`a`；另一部分记为`b`。
+`a`中的每个节点到`parent`的距离减1就是这些节点到`child`的距离，
+`b`中每个节点到`parent`的距离+1就是该节点到`child`的距离。
+反映在`ans`上时，`a`部分需要在`ans[parent]`的基础上减掉`treeNodes[child]`，
+`b`部分需要在`ans[parent]`的基础上加上`(N - treeNodes[child])`，于是就有了上面的公式。
+
+----
 
 409: Longest Palindrome
 
 <https://leetcode.com/problems/longest-palindrome/>
 
-HashMap。记录每个字母的个数，是偶数的话可以直接分两部分拼到结果palindrome的两侧对称的位置，如果字母个数为奇数个，选择偶数个分两部分拼到结果palindrome的两侧对称位置。如果有字母个数为奇数，可以将剩余的那个作为结果palindrome的轴。
+HashMap。记录每个字母的个数，是偶数的话可以直接分两部分拼到结果的两侧，如果字母个数为奇数个，剩下一个其余分两部分拼到结果的两侧。
+如果有字母个数为奇数，可以将剩余的那个作为结果palindrome的轴（轴只有1个）。
+
+----
 
 
 448: Find All Numbers Disappeared in an Array
 
 <https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/>
 
-Math。在原数组上进行改动，对于$\forall i$，将$A_{|A_i|}$变为负数以标记出现过的数。之后遍历`i`$\in [1, n]$，如果$A_i > 0$，则`i`是missing的。
+Math。在原数组上进行改动，对于数组`A`中的任意元素`A[i]`。将`A[A[i]]`标记为负数之后遍历按下标遍历`A`
+如果`A[i]`为正，则`i`没出现过。 
+
+----
+
 
 442: Find All Duplicates in an Array
 
@@ -73,6 +118,7 @@ Math。在原数组上进行改动，对于$\forall i$，将$A_{|A_i|}$变为负
 
 同448。区别在于遇到重复值时直接就加入结果列表即可。
 
+----
 
 414: Third Maximum Number
 
@@ -80,26 +126,30 @@ Math。在原数组上进行改动，对于$\forall i$，将$A_{|A_i|}$变为负
 
 找出`n`个数中的第`m`（`m <= n`）大的数，这是个经典问题
 
-* `m`不太大（`m<4`）时：同时设置多个max，遍历数组元素，分条件更新max。注意两点，一是max的初始化一定要比当前数组元素类型的最小值要小；二是max更新条件要写全，“=”的情况要排除。
+* `m`不太大（`m<4`）时：同时设置多个max，遍历数组元素，分条件更新max。注意以下两点
+  1. max的初始化一定要比当前数组元素类型的最小值要小；
+  1. max更新条件要写全，“=”的情况要排除。
 * 当`m >= 4`时：可以借用快排的partition操作来做。
+
+----
 
 289: Game of Life
 
 <https://leetcode.com/problems/game-of-life/>
 
-位操作。遍历每个cell，每个cell的状态由分为0和1，可以将右侧第一位视为本轮的状态，右侧第二位视为下一轮的状态。由于0视为2位表示时是00，1视为2位表示时是01，这种表示不影响本轮的状态，而且可以在原地进行操作，更新下一轮的状态。最后将所有cell的状态右移1位就瞬间变为下一轮的状态了。
+Math，位操作。遍历每个cell，每个cell的状态由分为0和1，可以将右侧第一位视为本轮的状态，右侧第二位视为下一轮的状态。
+由于0视为2位表示时是00，1视为2位表示时是01，这种表示不影响本轮的状态，而且可以在原地进行操作，更新下一轮的状态。
+最后将所有cell的状态右移1位就瞬间变为下一轮的状态了。
 
-287: Find the Duplicate Number
-
-<https://leetcode.com/problems/find-the-duplicate-number/>
-
-BS，TP。TP是将问题转化为链表内部环检测的问题，因为这种存储结构实际上是一种*P**字形的逻辑结构，就是要招链表环的起点。
+----
 
 2: Add Two Numbers
 
 <https://leetcode.com/problems/add-two-numbers/description/>
 
-链表尾插法。
+链表尾插法。模拟实现硬件中的串行加法器，注意进位即可。
+
+----
 
 445: Add Two Numbers II
 
@@ -107,12 +157,15 @@ BS，TP。TP是将问题转化为链表内部环检测的问题，因为这种�
 
 链表。先反转链表，然后按第2题做。不允许反转链表可以先求二者长度，然后从后向前遍历。
 
+----
+
 24: Swap Nodes in Pairs
 
 <https://leetcode.com/problems/swap-nodes-in-pairs/description/>
 
 链表尾插法。一次走两步，注意使用`dummy_node`时，如果原链表只有一个元素直接返回`dummy_node->next`是错误的，要对这种情况进行判别。
 
+----
 
 268: Missing Number
 
@@ -120,25 +173,37 @@ BS，TP。TP是将问题转化为链表内部环检测的问题，因为这种�
 
 Math。求和再做减法最方便，为了防止溢出需要用范围更大的数据结构。
 
+----
+
 229: Majority Element II
 
 <https://leetcode.com/problems/majority-element-ii/>
 
 Math。数组中最多有两个数`n1,n2`的频数`>n/3`。
 
-BM多数投票算法（Boyer-Moore Majority Vote algorithm）。将n1，n2初始化为任意两个不同的数就行，对应counter1和counter2初始化为0。还要注意一点第一次遍历结束只是明确了n1，n2是出现频率最高的数，但是对应的counter是不准的，需要重新计数后再查看counter是否满足条件。
+BM多数投票算法（Boyer-Moore Majority Vote algorithm）。将n1，n2初始化为任意两个不同的数就行，
+对应counter1和counter2初始化为0。还要注意一点第一次遍历结束只是明确了n1，n2是出现频率最高的数，
+但是对应的counter是不准的，需要重新计数后再查看counter是否满足条件。
+
+----
 
 228: Summary Ranges
 
 <https://leetcode.com/problems/summary-ranges/>
 
-TP。用`b,e`分别记录当前range的起、止index，每次循环向后挪动`e`至range末尾的下一个元素，将当前range加入到结果列表中，令`b=e`即可。
+TP。用`b,e`分别记录range的起、止index，
+初始化`b,e`均为range的起始index，然后尝试将`e`后移，移出该range后将该range加入结果列表，
+然后`b`初始化为`e`，开始下一轮尝试。
+
+----
+
+#### 并查集专题
 
 547: Friend Circles
 
 <https://leetcode.com/problems/friend-circles/description/>
 
-DFS，并查集。并查集的`find(x,parents)`函数不用递归最好，可以在循环过程中缩减树的深度，增加树的宽度，达到提高效率的目的, 递归也可以有效缩减束身，增加树的宽度。
+DFS，并查集。
 
 721: Accounts Merge
 
@@ -150,7 +215,27 @@ DFS，并查集。
 
 <https://leetcode.com/contest/weekly-contest-85/problems/similar-string-groups/>
 
-并查集。并查集在逻辑上构造一个森林，先将每个节点都初始化为森林中的一棵树，group为N。然后遍历所有的边，对于每一条边，如果两个节点所在树的根节点不同，就将后一个节点所在的树的根节点作为前一个节点所在树的根节点的子节点，同时group减1。这样就可以解决并查集的第一类题目，就是求group的数量。另一种题目要求不仅分出group，并且要给出每个group具体有哪些节点，这时候需要遍历每个节点，找出其所在树的根节点，按根节点分离每个group即可。547，839属于第一类，721属于第二类。
+并查集。并查集在逻辑上构造一个森林，先将每个节点都初始化为森林中的一棵树，group为N。
+然后遍历所有的边，对于每一条边，如果两个节点所在树的根节点不同，
+就将后一个节点所在的树的根节点作为前一个节点所在树的根节点的子节点，同时group减1。
+这样就可以解决并查集的第一类题目，就是求group的数量。
+另一种题目要求不仅分出group，并且要给出每个group具体有哪些节点，
+这时候只需要遍历每个节点，找出其所在树的根节点，按根节点分离每个group即可。
+547，839属于第一类，721属于第二类。
+
+并查集的`find(x,parents)`函数用不用递归均可，
+一个非常重要的点是在查询过程中进行优化，即在查询过程中增加森林中的树的宽度，
+降低树的高度，提升后续的查询效率：
+  * 递归方式的优化：参考recursion解法,找到一棵树的根节点后，
+  即递归过程结束后，可以将当前节点的父节点直接设为递归结果，
+  这样一来，凡是查询路径上的节点的根节点都设成了该树当前时刻的根节点
+  * 非递归方式的优化：与递归方式类似，每次循环时，
+  都将当前节点的父节点设置为父节点的父节点，即减少一层。
+
+
+----
+
+#### Trie专题
 
 720: Longest Word in Dictionary
 
@@ -158,11 +243,45 @@ DFS，并查集。
 
 Trie+DFS或者Trie+BFS。
 
+
+208: Implement Trie (Prefix Tree)
+
+https://leetcode.com/problems/implement-trie-prefix-tree/description/
+
+Trie。系统设计题，实现前缀树。注意要用`c - 'a'`而不是直接用`c`来索引后继节点！
+
+
+14: Longest Common Prefix
+
+<https://leetcode.com/problems/longest-common-prefix/description/>
+
+Trie。
+
+
+648: Replace Words
+
+<https://leetcode.com/problems/replace-words/description/>
+
+Trie。
+
+211: Add and Search Word - Data structure design
+
+<https://leetcode.com/problems/add-and-search-word-data-structure-design/description/>
+
+Trie。注意查找的时候如果碰到`'.'`，需要使用DFS，把所有可能的路径均遍历结束后如果都没有找到正确结果，返回`false`。
+
+
 677: Map Sum Pairs
 
 <https://leetcode.com/problems/map-sum-pairs/description/>
 
 Trie+BFS。
+
+
+`microsoft_c#_trie.csharp`: 这是微软的trie的实现，非常经典，跟小爽看了老长时间才看明白！
+要自己去试着转为C++版
+
+----
 
 842: Split Array into Fibonacci Sequence
 
@@ -930,16 +1049,21 @@ TP。同26。遍历元素，更新len。使用count记录重复个数，只有�
 原地操作，删除数组中的固定值的元素。
 TP。
 
+----
 
 142: Linked List Cycle II
 
-https://leetcode.com/problems/linked-list-cycle-ii/#/description
+<https://leetcode.com/problems/linked-list-cycle-ii/#/description>
 
-链表成环检测。快慢指针，快指针每次走两步，慢指针每次走一步，如果两者相遇则有环。此时令快指针从头开始走，快慢指针一次走一步，知道两者相遇，相遇点就是环的起点。
+TP，链表成环检测。设置快慢指针，快指针每次走两步，慢指针每次走一步，如果两者相遇则有环。
+此时令快指针从头开始走，快慢指针一次走一步，直到两者相遇，相遇点就是环的起点。
 
-数学解释：记链表起点`head1`到环的起点`head2`的距离为$l$，从环起点`head2`出发到快慢指针相遇点`P`至少要经过的距离为$x$，环长为$c$，则有一下推论:
-$$l + x + mc = 2(l + x + nc) $$
-$$l + x = kc$$
+数学解释：记链表起点`head1`到环的起点`head2`的距离为`l`，从环起点`head2`出发到快慢指针
+相遇点`P`至少要经过的距离为`x`，环长为`c`，则有以下推论:
+
+1. ![](http://latex.codecogs.com/gif.latex?{l+x+m\*c=2(l+x+n\*c)})
+1. ![](http://latex.codecogs.com/gif.latex?{l+x=k\*c})
+
 * 链表环相关问题：
   1. 是否有环（slow和fast是否相遇）
   2. 环长（相遇后以原方式继续走，到两者再次相遇（还是到碰撞点，可画函数图像），记录走过的距离即可）
@@ -950,9 +1074,24 @@ $$l + x = kc$$
     2. 一个有环，一个没环，不可能相交
     3. 两个都有环，看一个链表的碰撞点是否在另一个链表的环内，因为若相交，环一定共享！
 
+----
+
+287: Find the Duplicate Number
+
+<https://leetcode.com/problems/find-the-duplicate-number/>
+
+BS，TP。TP是将问题转化为链表成环检测问题，
+将数组下标视为指针，数组元素视为链表节点值，则题目条件中的数组构成了一种**P**字形的逻辑结构，
+因为必有一个节点存在两个指针入口，一个指针出口，切入口和出口之间呈环形结构，区别只是环的大小而已。
+找重复元素就是找指针入口，即找环的起点。
+
+----
+
 143: Reverse Linked List
+
 链表头插法。
 
+----
 
 92: Reverse Linked List II
 
@@ -2872,33 +3011,6 @@ https://leetcode.com/contest/weekly-contest-64/problems/largest-number-greater-t
 https://leetcode.com/problems/peeking-iterator/description/
 
 系统设计题，考的是拷贝构造函数的应用。
-
-
-208: Implement Trie (Prefix Tree)
-
-https://leetcode.com/problems/implement-trie-prefix-tree/description/
-
-Trie。系统设计题，实现前缀树。注意要用`c - 'a'`而不是直接用`c`来索引后继节点！
-
-
-14: Longest Common Prefix
-
-https://leetcode.com/problems/longest-common-prefix/description/
-
-Trie。
-
-
-648: Replace Words
-
-https://leetcode.com/problems/replace-words/description/
-
-Trie。
-
-211: Add and Search Word - Data structure design
-
-https://leetcode.com/problems/add-and-search-word-data-structure-design/description/
-
-Trie。注意查找的时候如果碰到`'.'`，需要使用DFS，把所有可能的路径均遍历结束后如果都没有找到正确结果，返回`false`。
 
 307: Range Sum Query - Mutable
 

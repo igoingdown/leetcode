@@ -1,41 +1,48 @@
 class Solution {
 private:
-    int n;
-    vector<vector<int>> graph;
-    vector<int> nodes;
     vector<int> ans;
+    vector<int> treeNodes; //以节点0位root时，每个节点作为root的子树的节点个数
+    vector<vector<int>> graph;
 public:
     vector<int> sumOfDistancesInTree(int N, vector<vector<int>>& edges) {
-        n = N;
-        graph.resize(N, vector<int>(0));
-        nodes.resize(N);
         ans.resize(N);
-        for (const auto &edge : edges) {
+        graph.resize(N, vector<int>());
+        treeNodes.resize(N);
+
+        // 构建graph
+        for (auto &edge : edges) {
             graph[edge[0]].push_back(edge[1]);
             graph[edge[1]].push_back(edge[0]);
         }
-        int tot = f(0, -1, 0);
-        g(0, -1, tot);
+
+        //通过DFS计算root(节点0)到其他所有节点的距离之和(ans[0])和以节点0为根节点进行DFS时，任意节点i所在的以自身为根节点的子树中节点的个数(treeNodes[i])。
+        ans[0] = dfs(0, -1, 0);
+        
+        //再通过DFS从节点0开始一次计算出所有子节点的ans，复用父节点的ans
+        //有公式 ans[child] = ans[parent] + N - 2 * treeNodes[child]
+        getAns(0, -1, N);
+
         return ans;
+        
     }
     
-    int f(int cur, int parent, int d) {
-        int ds = d;
-        nodes[cur] = 1;
+    int dfs(int cur, int parent, int dist) {
+        int distSum = dist;
         for (int child : graph[cur]) {
             if (child != parent) {
-                ds += f(child, cur, d + 1);
-                nodes[cur] += nodes[child];
+                distSum += dfs(child, cur, dist+1);
+                treeNodes[cur] += treeNodes[child];
             }
         }
-        return ds;
+        treeNodes[cur]++;
+        return distSum;
     }
     
-    void g(int cur, int parent, int tot) {
-        ans[cur] = tot;
-        for (int child : graph[cur]) {
+    void getAns(int cur, int parent, int N) {
+        for (auto child : graph[cur]) {
             if (child != parent) {
-                g(child, cur, tot - nodes[child] * 2 + n);
+                ans[child] = ans[cur] + N - 2 * treeNodes[child];
+                getAns(child, cur, N);
             }
         }
     }
