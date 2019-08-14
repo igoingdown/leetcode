@@ -15,7 +15,7 @@ public:
         for (string word: words) {
             Node* tmp = root;
             for (char c : word) {
-                if (!tmp->next[c - 'a']) tmp->next[c - 'a'] = new Node;
+                if (!tmp->next[c - 'a']) tmp->next[c - 'a'] = new Node();
                 tmp = tmp->next[c - 'a'];
             }
             tmp->end = true;
