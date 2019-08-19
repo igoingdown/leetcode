@@ -3,7 +3,6 @@ public:
     vector<int> findSubstring(string s, vector<string>& words) {
         vector<vector<int>> indice(words.size(), vector<int>(0));
         for (int i = 0; i < words.size(); i++) findMatchIndice(s, words[i], indice[i]);
-        // dfs
         for (auto v : indice) {
             for (auto i : v) cout << i << " ";
             cout << endl;

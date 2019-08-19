@@ -1,36 +1,39 @@
 class Solution {
 public:
-    class Node{
+    class Node {
     public:
-        bool end;
         vector<Node*> next;
-        Node() {
-            end = false;
-            next.resize(26, NULL);
-        }
+        bool end;
+        Node(): next(vector<Node*>(26, NULL)), end(false){};
     };
-    Node* root = new Node();
     string longestWord(vector<string>& words) {
-        root->end = true;
-        for (string word: words) {
-            Node* tmp = root;
-            for (char c : word) {
+        Node *trie = new Node();
+        trie->end = true;
+        build(trie, words);
+        string path = "", res = "";
+        dfs(trie, path, res);
+        return res;
+    }
+    
+    void build(Node* root, vector<string> &words) {
+        Node *tmp = NULL;
+        for (string & word: words) {
+            tmp = root;
+            for (char c: word) {
                 if (!tmp->next[c - 'a']) tmp->next[c - 'a'] = new Node();
                 tmp = tmp->next[c - 'a'];
             }
             tmp->end = true;
         }
-        string res = "", path = "";
-        dfs(root, res, path);
-        return res;
     }
-    void dfs(Node* cur, string& res, string& path) {
-        if (!cur || !cur->end) return;
-        if (path.size() > res.size()) res = path; 
+    
+    void dfs(Node* root, string &path, string &res) {
+        if (!root || !root->end) return;
+        if (path.size() > res.size()) res = path;
         for (int i = 0; i < 26; i++) {
             path.push_back('a' + i);
-            dfs(cur->next[i], res, path);
+            dfs(root->next[i], path, res);
             path.pop_back();
         }
-    }
+    } 
 };

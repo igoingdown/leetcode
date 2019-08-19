@@ -1,33 +1,39 @@
+string find(string s, map<string, string> &parents) {
+    if (s == parents[s]) return s;
+    else {
+        parents[s] = find(parents[s], parents);
+        return parents[s];
+    }
+}
 class Solution {
 public:
     vector<vector<string>> accountsMerge(vector<vector<string>>& accounts) {
-        if (accounts.empty()) return accounts;
         map<string, string> parents, owner;
-        for (int i = 0; i < accounts.size(); i++) {
-            for (int j = 1; j < accounts[i].size(); j++) {
-                parents[accounts[i][j]] = accounts[i][j];
-                owner[accounts[i][j]] = accounts[i][0];
+        for (auto &personAccounts : accounts) {
+            string person = personAccounts[0];
+            for (int i = 1; i < personAccounts.size(); i++) {
+                parents[personAccounts[i]] = personAccounts[i];
+                owner[personAccounts[i]] = person;
             }
         }
-        for (int i = 0; i < accounts.size(); i++) {
-            string p = find(accounts[i][1], parents);
-            for (int j = 2; j < accounts[i].size(); j++) parents[find(accounts[i][j], parents)] = p;
+        for (auto &personAccounts : accounts) {
+            int n = personAccounts.size();
+            if (n < 2) continue;
+            string firstParent = find(personAccounts[1], parents);
+            for (int i = 2; i < personAccounts.size(); i++) {
+                parents[find(personAccounts[i], parents)] = firstParent;
+            }
         }
-        map<string, set<string>> unions;
-        for (int i = 0; i < accounts.size(); i++) {
-            for (int j = 1; j < accounts[i].size(); j++) unions[find(accounts[i][j], parents)].insert(accounts[i][j]);
+        map<string, set<string>> m;
+        for (auto &p: owner) {
+            parents[p.first] = find(p.first, parents);
+            m[parents[p.first]].insert(p.first);
         }
         vector<vector<string>> res;
-        for (auto p : unions) {
-            vector<string> emails(p.second.begin(), p.second.end());
-            sort(emails.begin(), emails.end());
-            emails.insert(emails.begin(), owner[p.first]);
-            res.push_back(emails);
+        for (auto &p : m) {
+            res.push_back({owner[p.first], });
+            for (auto &s: p.second) res.back().push_back(s);
         }
         return res;
-    }
-    
-    string find(string x, map<string, string>& parents) {
-        return x == parents[x] ? x : find(parents[x], parents);
     }
 };

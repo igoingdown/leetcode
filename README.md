@@ -626,15 +626,27 @@ dfs，遇到叶子节点就把num(表示path)加到res上。如果follow up将�
 
 ----
 
+#### KMP专题
 
+28: Implement strStr()
 
+https://leetcode.com/problems/implement-strstr/description/
 
+暴力匹配和KMP算法。KMP算法分两步：
+1. 求解`next`数组。`next`数组全部初始化为-1;`i,j`初始化为0和-1，
+然后对`next`数组对应的`needle`字符串自身进行模式匹配。
+1. 模式匹配。`i,j`均初始化为0，然后对`haystack`和`needle`进行模式匹配。
 
-542: 01 Matrix
+模式匹配代码模板：
+```c++
+if (j == -1 || s1[i] == s2[j]) { //上述模式匹配步骤中，s1即haystack, s2即needle；
+							    	//求解next数组步骤中，s1和s2均为needle
+	i++;
+	j++;
+	// next[i] = j; // 求解next数组需要修改next数组
+} else j = next[j];
+```
 
-<https://leetcode.com/problems/01-matrix/description/>
-
-BFS。从`0`出发，初始化将所有位`0`的cell入队，作为第0层，然后BFS将后面访问的cell的值设为层数即可。
 
 30: Substring with Concatenation of All Words
 
@@ -644,46 +656,29 @@ BFS。从`0`出发，初始化将所有位`0`的cell入队，作为第0层，然
 
 * KMP：使用KMP得到每个关键字在母串中出现的所有位置，然后使用DFS得到解，这种方式超时。
 * TP：使用`map`记录每个模式串及对应的频率，两层循环，外循环遍历母串中可以作为拼接串起始位置的
-index `i`$\in [0,ss - ws * l)$，内循环进行匹配，每次匹配都从母串中取出长为`l`的子串，
+index ![](http://latex.codecogs.com/gif.latex?{i\in[0,ss-ws*l}) 内循环进行匹配，
+每次匹配都从母串中取出长为`l`的子串，
 看是否在`map`中，在`map`中则修改`map`，直到`map`为空，这时产生了一个答案。此时继续外循环即可。
 
+-------
 
-162: Find Peak Element
-
-<https://leetcode.com/problems/find-peak-element/>
-
-BS。二分法可以用递归和非递归的方式实现现，复杂度为$O(logN)$。本题是一维数组找极值，MS有道题是二维数组找极值，思路相同，二分，$O(N)$时间找行的最小值，跟相邻行比较，如果是极值点则结束，不是就找更小的那个子矩阵。fun的水滴证明法相当直观！
-
-154: Find Minimum in Rotated Sorted Array II
-
-<https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/>
-
-BS。
-
-164: Find Minimum in Rotated Sorted Array
-
-<https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/>
-
-和154一模一样。
-
-152: Maximum Product Subarray
-
-<https://leetcode.com/problems/maximum-product-subarray/>
-
-DP。用`f_max[i],f_min[i]`分别记录以`nums[i]`结尾的sub-array的乘积最大值和最小值。初始化`f_max[0] = nums[0]; f_min[0] = nums[0];`，然后遍历`i`$\in$`[1, nums.size()）`，更新规则分别为`f_max[i] = max(nums[i], max(f_max[i - 1] * nums[i], f_min[i - 1] * nums[i]));`和`f_min[i] = min(nums[i], min(f_max[i - 1] * nums[i], f_min[i - 1] * nums[i]));`。对本题比较熟练的情况下，可以使用2个变量来代替1维DP。
+#### 位运算专题
 
 136: Single Number
 
 <https://leetcode.com/problems/single-number/>
 
-位操作。想象一个多层公寓，每个公寓住着0或者1，异或像如来神掌一样将每一位从上而下压缩。
+位操作。想象一个四四方方的多层公寓，每层有32（也可以更多）个房间，
+每个房间住着0或者1，异或像如来神掌一样将每一位从上而下压缩。
 
 
 137: Single Number II
 
 <https://leetcode.com/problems/single-number-ii/description/>
 
-位操作。每一位都有规律，仍然可以按照上题的思路思考，每一位上都是这样的规律$sum = x\_1 * 3 + x\_2 * 3 + ... + x\_{n-1} * 3 + y$，要得到y对sum模3即可。
+位操作。每一位都有规律，仍然可以按照上题的思路思考，每一位上都是这样的规律。
+![](http://latex.codecogs.com/gif.latex?{sum=x_1*3+x_2*3+...+x_{n-1}*3+y})
+要得到y对sum模3即可。
 
 260: Single Number III
 
@@ -728,14 +723,14 @@ DP。用`f_max[i],f_min[i]`分别记录以`nums[i]`结尾的sub-array的乘积�
 
 <https://leetcode.com/problems/reverse-bits/description/>
 
-位操作。将一个32位无符号数的2进制表示reverse，利用进制，采用10进制的方式来做即可，低位的权重更高。
+位运算。将一个32位无符号数的2进制表示reverse，利用进制，采用10进制的方式来做即可，低位的权重更高。
 
 
 7: Reverse Integer
 
 <https://leetcode.com/problems/reverse-integer/description/>
 
-Math。和190相似，注意INT_MAX、INT_MIN和正负号，参考**atoi**。
+位操作，Math。和190相似，注意INT\_MAX、INT\_MIN和正负号，参考**atoi**。
 
 
 476: Number Complement
@@ -756,6 +751,43 @@ Math。和190相似，注意INT_MAX、INT_MIN和正负号，参考**atoi**。
 <https://leetcode.com/problems/maximum-product-of-word-lengths/description/>
 
 位运算。
+
+----
+
+542: 01 Matrix
+
+<https://leetcode.com/problems/01-matrix/description/>
+
+BFS。从`0`出发，初始化将所有位`0`的cell入队，作为第0层，然后BFS将后面访问的cell的值设为层数即可。
+
+
+162: Find Peak Element
+
+<https://leetcode.com/problems/find-peak-element/>
+
+BS。二分法可以用递归和非递归的方式实现现，复杂度为$O(logN)$。本题是一维数组找极值，
+MS有道题是二维数组找极值，思路相同，二分，$O(N)$时间找行的最小值，跟相邻行比较，
+如果是极值点则结束，不是就找更小的那个子矩阵。fun的水滴证明法相当直观！
+
+
+154: Find Minimum in Rotated Sorted Array II
+
+<https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/>
+
+BS。
+
+164: Find Minimum in Rotated Sorted Array
+
+<https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/>
+
+和154一模一样。
+
+152: Maximum Product Subarray
+
+<https://leetcode.com/problems/maximum-product-subarray/>
+
+DP。用`f_max[i],f_min[i]`分别记录以`nums[i]`结尾的sub-array的乘积最大值和最小值。初始化`f_max[0] = nums[0]; f_min[0] = nums[0];`，然后遍历`i`$\in$`[1, nums.size()）`，更新规则分别为`f_max[i] = max(nums[i], max(f_max[i - 1] * nums[i], f_min[i - 1] * nums[i]));`和`f_min[i] = min(nums[i], min(f_max[i - 1] * nums[i], f_min[i - 1] * nums[i]));`。对本题比较熟练的情况下，可以使用2个变量来代替1维DP。
+
 
 389: Find the Difference
 
@@ -3214,12 +3246,7 @@ https://leetcode.com/contest/weekly-contest-66/problems/employee-free-time/
 
 最大公约数、多个数的最大公约数、轮询调度
 
-
-28: Implement strStr()
-
-https://leetcode.com/problems/implement-strstr/description/
-
-暴力匹配和KMP算法，KMP算法关键在于求解next数组。求解next数组和模式匹配过程相似，模式匹配中i,j均初始化为0；求解过程需要修改next数组,i,j初始化为0和-1，next数组初始化为全零，next[0]=-1。
+--------
 
 
 762: Prime Number of Set Bits in Binary Representation
