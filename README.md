@@ -71,26 +71,6 @@ HashMap。用串`a`合成串`b`，只要串`b`中的每个字符的频数都不�
 
 ----
 
-834: Sum of Distances in Tree
-
-<https://leetcode.com/contest/weekly-contest-84/problems/sum-of-distances-in-tree/>
-
-DFS。有两种方法，第一种为暴力法，第二种方法是暴力法的优化，复用了暴力法计算出的结果。
-* 暴力法：枚举。分别以每个节点为根节点，令该节点为`i`，DFS计算出节点`i`到其他所有节点的距离之和ans[i]
-* 优化方法：用暴力法中的DFS先计算出`ans[0]`，
-DFS过程中同时算出以任意节点`i`为根节点的子树的节点个数
-![](http://latex.codecogs.com/gif.latex?{{treeNodes}_i})，这两个问题都是比较简单的问题。
-然后再利用上述结果，一次DFS计算出所有的ans。具体做法是DFS遍历所有节点，已知`ans[parent]`的情况下，
-`parent`节点的任意一个子节点`child`对应的`ans[child]`的公式是: 
-`ans[child] = (ans[parent] - treeNodes[child]) + (N - treeNodes[child])`。
-这是因为已知`ans[parent]`，求所有其他节点到一个子节点`child`的距离之和`ans[child]`时，
-可以将所有节点分为两部分，一部分是以`child`为根节点的子树，记为`a`；另一部分记为`b`。
-`a`中的每个节点到`parent`的距离减1就是这些节点到`child`的距离，
-`b`中每个节点到`parent`的距离+1就是该节点到`child`的距离。
-反映在`ans`上时，`a`部分需要在`ans[parent]`的基础上减掉`treeNodes[child]`，
-`b`部分需要在`ans[parent]`的基础上加上`(N - treeNodes[child])`，于是就有了上面的公式。
-
-----
 
 409: Longest Palindrome
 
@@ -132,15 +112,6 @@ Math。在原数组上进行改动，对于数组`A`中的任意元素`A[i]`。�
 * 当`m >= 4`时：可以借用快排的partition操作来做。
 
 ----
-
-289: Game of Life
-
-<https://leetcode.com/problems/game-of-life/>
-
-Math，位操作。遍历每个cell，每个cell的状态由分为0和1，可以将右侧第一位视为本轮的状态，右侧第二位视为下一轮的状态。
-由于0视为2位表示时是00，1视为2位表示时是01，这种表示不影响本轮的状态，而且可以在原地进行操作，更新下一轮的状态。
-最后将所有cell的状态右移1位就瞬间变为下一轮的状态了。
-
 ----
 
 2: Add Two Numbers
@@ -197,562 +168,6 @@ TP。用`b,e`分别记录range的起、止index，
 
 ----
 
-#### 并查集专题
-
-547: Friend Circles
-
-<https://leetcode.com/problems/friend-circles/description/>
-
-DFS，并查集。
-
-721: Accounts Merge
-
-<https://leetcode.com/problems/accounts-merge/description/>
-
-DFS，并查集。
-
-839: Similar String Groups
-
-<https://leetcode.com/contest/weekly-contest-85/problems/similar-string-groups/>
-
-并查集。并查集在逻辑上构造一个森林，先将每个节点都初始化为森林中的一棵树，group为N。
-然后遍历所有的边，对于每一条边，如果两个节点所在树的根节点不同，
-就将后一个节点所在的树的根节点作为前一个节点所在树的根节点的子节点，同时group减1。
-这样就可以解决并查集的第一类题目，就是求group的数量。
-另一种题目要求不仅分出group，并且要给出每个group具体有哪些节点，
-这时候只需要遍历每个节点，找出其所在树的根节点，按根节点分离每个group即可。
-547，839属于第一类，721属于第二类。
-
-并查集的`find(x,parents)`函数用不用递归均可，
-一个非常重要的点是在查询过程中进行优化，即在查询过程中增加森林中的树的宽度，
-降低树的高度，提升后续的查询效率：
-  * 递归方式的优化：参考recursion解法,找到一棵树的根节点后，
-  即递归过程结束后，可以将当前节点的父节点直接设为递归结果，
-  这样一来，凡是查询路径上的节点的根节点都设成了该树当前时刻的根节点
-  * 非递归方式的优化：与递归方式类似，每次循环时，
-  都将当前节点的父节点设置为父节点的父节点，即减少一层。
-
-
-----
-
-#### Trie专题
-
-720: Longest Word in Dictionary
-
-<https://leetcode.com/problems/longest-word-in-dictionary/description/>
-
-Trie+DFS或者Trie+BFS。
-
-
-208: Implement Trie (Prefix Tree)
-
-https://leetcode.com/problems/implement-trie-prefix-tree/description/
-
-Trie。系统设计题，实现前缀树。注意要用`c - 'a'`而不是直接用`c`来索引后继节点！
-
-
-14: Longest Common Prefix
-
-<https://leetcode.com/problems/longest-common-prefix/description/>
-
-Trie。
-
-
-648: Replace Words
-
-<https://leetcode.com/problems/replace-words/description/>
-
-Trie。
-
-211: Add and Search Word - Data structure design
-
-<https://leetcode.com/problems/add-and-search-word-data-structure-design/description/>
-
-Trie。注意查找的时候如果碰到`'.'`，需要使用DFS，把所有可能的路径均遍历结束后如果都没有找到正确结果，返回`false`。
-
-
-677: Map Sum Pairs
-
-<https://leetcode.com/problems/map-sum-pairs/description/>
-
-Trie+BFS。
-
-
-`microsoft_c#_trie.csharp`: 这是微软的trie的实现，非常经典，跟小爽看了老长时间才看明白！
-要自己去试着转为C++版
-
-----
-
-
-#### DFS专题
-
-
-2018.1.10.1 Eat Cheese I
-
-房间里有多块奶酪(x,y)，小老鼠一开始在(0,0)，问小老鼠吃掉所有奶酪要走的最短距离。
-
-dfs + 剪枝。
-
-2018.1.10.2 Eat Cheese II
-
-房间表示为二维数组, 元素值0，1，2分别不可走，可走，奶酪。小老鼠从左上起点出发，吃掉所有奶酪，到达右下终点需要的最短路径。
-
-dfs + bfs。
-
-
-778: Swim in Rising Water
-
-https://leetcode.com/problems/swim-in-rising-water/
-
-BS+DFS:提示比较明显了。用BS找解，用DFS验证解的合理性。注意用DFS验证的时候有一个小trick：
-可以直接修改visited，不用回溯！因为这道题中回溯是没有意义的！回溯还是过不去！加了回溯超时，去掉立马就AC了！
-
-
-
-797: All Paths From Source to Target
-
-dfs。从指定起点出发到达指定终点。
-
-
-399: Evaluate Division
-
-https://leetcode.com/problems/evaluate-division/description/
-
-DFS。图的dfs,一刷虽然有些typo，但是一次AC！我感觉自己刷题真的变厉害了，套路题我不怕了！
-
-
-
-98: Validate Binary Search Tree
-
-https://leetcode.com/problems/validate-binary-search-tree/description/
-
-DFS。根据采用的参数量不同分为两种方法：
-* 方法一：使用两个标识量$minValue$和$maxValue$记录BST的值的下界和上界，DFS每次判断时要判断`root->val`是否处于区间$(minValue, maxValue)$内。
-* 方法二：利用BST的中序遍历一定是递增序列的性质，使用一个标识量$lastVisited$(初始化为`INT_MIN`)记录DFS中序遍历树时上次访问的节点的值，每次访问一个节点时只要确保`lastVisited < root->val`即可。
-
-以上两种方法的区别在于**方法一**中参数足够，不需要指定DFS的遍历顺序；而**方法二**中必须按照先访问左子树再访问根节点最后访问右子树的中序遍历顺序，因为这个方法利用的就是BST的中序遍历严格递增的性质，全局只有一个参数`last_visited`，而且这个参数依赖遍历过程中的赋值。
-
-
-842: Split Array into Fibonacci Sequence
-
-<https://leetcode.com/contest/weekly-contest-86/problems/split-array-into-fibonacci-sequence/>
-
-DFS. 记录起始位置和分离结果，设置终止条件，将问题转为子问题，注意处理起始字符为`0`和解析出的数`>= INT_MAX`的情况。
-
-743: Network Delay Time
-
-<https://leetcode.com/problems/network-delay-time/description/>
-
-DFS，BFS，Dijkstra。Dijkstra算法效率不如BFS，问题在于我实现的版本效率不高，可以继续改进。BFS是Dijkstra的降级。
-
-
-417: Pacific Atlantic Water Flow
-
-<https://leetcode.com/problems/pacific-atlantic-water-flow/description/>
-
-DFS，位操作。从外侧（海洋）向内部蔓延。用`visited`数组中的元素最后一位表示能否从大西洋过来，
-倒数第二位可以用于表示能否从太平洋过来，如果两个都可以过来，标识为3，
-只能从大西洋过来标识为1，只能从太平洋过来标识为2，都过不来标识为0。
-
-
-110: Balanced Binary Tree
-
-https://leetcode.com/problems/balanced-binary-tree/description/
-
-dfs。一种优化可以使用memo避开一些重复计算。另一种优化转为计算树的高度的问题，高度为-1表示不平衡，可以实现短路计算。
-
-
-733: Flood Fill
-
-https://leetcode.com/contest/weekly-contest-60/problems/flood-fill/
-
-dfs, 注意将访问过的节点设置为特殊字符，然后再变回来，防止死循环。
-
-
-
-690: Employee Importance
-
-https://leetcode.com/problems/employee-importance/description/
-
-一刷使用DFS暴力递归AC。效率低，时间复杂度为O(LN)，空间复杂度为O(L)，L为下属员工总个数（包括非直接下属），N为员工总数。再刷尝试高效解法。
-
-
-513: Find Bottom Left Tree Value
-
-https://leetcode.com/problems/find-bottom-left-tree-value/description/
-
-一刷使用DFS暴力递归AC，效率低。时、空间复杂度O(L^2)，因为递归深度为L，
-查深度和查最左下元素都要递归到最底层。再刷要使用高效解法。二刷使用大神的DFS解法，不太理解，再刷！
-
-
-
-104: Maximum Depth of Binary Tree
-
-<https://leetcode.com/problems/maximum-depth-of-binary-tree/>
-
-BFS，DFS。
-
-
-226: Invert Binary Tree
-
-<https://leetcode.com/problems/invert-binary-tree/>
-
-DFS，递归。
-
-
-100: Same Tree
-
-<https://leetcode.com/problems/same-tree/>
-
-DFS，递归。
-
-133: Clone Graph
-
-<https://leetcode.com/problems/clone-graph/description/>
-
-DFS。graph的dfs, 注意图中可能有环，和138非常相似。
-
-
-17: Letter Combinations of a Phone Number Add to List
-
-https://leetcode.com/problems/letter-combinations-of-a-phone-number/#/description
-
-BFS，DFS。我更喜欢用bfs.
-
-
-93: Restore IP Addresses
-
-https://leetcode.com/problems/restore-ip-addresses/#/description
-
-DFS。count记录ip段数，start记录起始位，path记录当前解析的结果。
-
-
-22: Generate Parentheses
-
-https://leetcode.com/problems/generate-parentheses/#/description
-
-DFS。左括号只要有剩余就可以选，右括号只有在已生成的串中左括号多于右括号才可以选。
-
-
-113: Path Sum II
-
-<https://leetcode.com/problems/path-sum-ii/description/>
-
-DFS。遍历解空间，收集合法解。不用去重，比较简单。
-
-
-124: Binary Tree Maximum Path Sum
-
-https://leetcode.com/problems/binary-tree-maximum-path-sum/description/
-
-DFS。递归函数`f`返回包括根节点`root`在内的单侧路径最大值。
-在函数体内分别对左子树和右子树调用`f`分别得到左子树上的带根单侧路径最大值`left`和
-右子树上的带根单侧路径最大值`right`，拿`right + left + root->val`和
-用于存储全局解的`res`相比，更新`res`，返回`max(left, right) + root->val`。
-
-
-46: Permutations
-
-https://leetcode.com/problems/permutations/description/
-
-dfs。面试趋势是这种题目变为解决问题其中的一步。
-
-
-47: Permutations II
-
-https://leetcode.com/problems/permutations-ii/description/
-
-DFS。比46难一点，把解空间画出来会发现其实都是一样的，因为每个问题的子问题规模（分支个数）完全相同，递归深度因为有了重复元素会增大。`map`可以去重，还可以统计频率，`map`的key的个数就是分支数的上线。46中的`visited`的功能在本题中被`map`代替了。
-
-
-77: Combinations
-
-https://leetcode.com/problems/combinations/description/
-
-dfs。
-
-39: Combination Sum
-
-<https://leetcode.com/problems/combination-sum/?tab=Description>
-
-dfs。可以画出解空间来理解解题过程。
-
-
-40: Combination Sum II
-
-<https://leetcode.com/problems/combination-sum-ii/?tab=Description>
-
-DFS。首先要排序（对于去重很重要），之后要对照解空间写递归过程。
-
-
-216: Combination Sum III
-
-https://leetcode.com/problems/combination-sum-iii/
-
-DFS。解空间树画出来就有了。
-
-
-377: Combination Sum IV
-
-https://leetcode.com/problems/combination-sum-iv/description/
-
-DFS，DP。top-down的DFS超时，加入memo实现DP后，AC。这个题很经典，和之前整理的回溯法有强关联！注意理解DP的含义，我现在仍然不知道这样做是不是就叫做DP。
-
-除了上一种top-down的DP方法，还有一种bottom-up的DP方法，这种方法在我看来更像DP。
-
-两种方法的空间复杂度都是O(N)，时间复杂度均为O(MN)，top-down方法虽然使用递归，但是这个时间复杂度容易分析。
-
-
-78: Subsets
-
-https://leetcode.com/problems/subsets/
-
-dfs。
-
-
-90: Subsets II
-
-https://leetcode.com/problems/subsets-ii/description/
-
-dfs，先排序，对着解空间写递归，注意去重。
-
-51: N-Queens
-
-<https://leetcode.com/problems/n-queens/description/>
-
-DFS。让$col$递增，逐个选择合法的$row$，存储$path$，$path$的含义是$(path[i], i)$位置可以放一个Queen，之后将合法$path$转为棋局排列。DFS的解空间是一个N叉树，第$j$层表示第$j$列的可能情况，第$j$层的每个节点的n个分支表示该列的Queen可能处于的行号，遍历解空间的时间复杂度为$O(N^2)$，由于需要判断冲突，所以总的时间复杂度为$O(N^3)$。
-
-判断冲突有三个条件：
-1. $row_1 \neq row_2$，两个Queen不在同一行
-2. $row_1 + col_1 \neq row_2 + col_2$，两个Queen不在一个斜对角线上
-3. $row_1 - col_1 \neq row_2 - col_2$，两个Queen不在一个正对角线上
-
-52: N-Queens II
-
-<https://leetcode.com/problems/n-queens-ii/description/>
-
-dfs，思路与上题完全相同。
-
-
-
-79: Word Search
-
-https://leetcode.com/problems/word-search/description/
-
-dfs。和maze那道题对比，本题需要回溯，原因是本题中解空间中两个分支同时经过运动空间的一个节点时，表示的含义不同，两个分支很有可能是两个不同的单词（也有可能是一个单词，只是路径不同），因此当第二个分支经过运动空间中的这个节点时，后续状态仍然需要遍历！而maze那道题不需要，因为后续状态一定走不通，结果是必然的！而且回溯不会造成死循环，回溯只是为了确保解空间的完整性！
-
-
-393: UTF-8 Validation
-
-https://leetcode.com/problems/utf-8-validation/description/
-
-dfs，1，2，3，4个字符表示一个UTF8码分别对应4个子问题。注意位运算的优先级没有判断符号优先级高！
-位运算的优先级很低！注意递归要先设定基础情况，注意判断index不能越界！
-
-
-
-140: Word Break II
-
-<https://leetcode.com/problems/word-break-ii/description/>
-
-DFS。dfs+memo，因为要把所有可能的结果都保存下来，加入memo效率更高。dfs照例可以画解空间树来做，递归函数`f`返回当前字符串的所有可能的分离结果`res`，在`f`的函数体内，由后向前找出所有字典里出现的单词`word`，对剩下的部分调用`f`得到子串的分离结果`children`，对于`children`中的每一个字符串`child`在后面拼接上`word`就是`res`的一个元素。
-$\forall i, s[i+1,j]\in word\_dict$, $f(s[0, j]) = f(s[0, i]) + s[i + 1, j]$
-
-
-491: Increasing Subsequences
-
-https://leetcode.com/problems/increasing-subsequences/description/
-
-dfs，有点小trick，去重时要遍历之前的所有元素，查看是否有重复，因为题目不允许sort。
-
-95: Unique Binary Search Trees II
-
-<https://leetcode.com/problems/unique-binary-search-trees-ii/description/>
-
-BFS，DFS。
-* BFS：从1到n，逐渐扩充res，然后遍历上一个节点加入后的res列表，在每棵树上添加新的节点（每个可能的右子树），时间复杂度$O(N^2\log N)$~$O(N^3 \log N)$。
-* DFS：递归函数`f`返回由区间$[begin, end]$中所有整数生成的所有BST的列表。`f`内部对$\forall$`i`$\in[begin, end]$，选其为根，对区间$[begin, i-1]$调用`f`生成所有左子树`left`，对区间$[i+1, end]$调用`f`生成所有右子树`right`，然后按照96的思路将所有左、右子树的组合就是结果。
-
-
-869: Reordered Power of 2
-
-https://leetcode.com/contest/weekly-contest-93/problems/reordered-power-of-2/
-
-DFS。将一个整数$N$的各位上的数字打乱，将这些数字重新组合，是否存在一个组合能使组合得到的数字$n$(0不可以出现在首位)是$2$的幂。
-这是个典型的DFS的题目，用一个map记录数字到频率的映射，然后DFS遍历所有组合，在DFS的过程中判断$n$是否是$2$的幂，
-判断依据很简单，当且仅当$n$的二进制表示中只有一位为1时，$n$为$2$的幂。如果$n$是$2$的幂，则立即中断DFS。
-
-我一开始的解法设计是先用DFS遍历出所有可能的组合，再从中查找是否有满足条件的组合，这种做法的时间和空间复杂度都极高，以至于TLE了。 
-
-
-866: Smallest Subtree with all the Deepest Nodes
-
-https://leetcode.com/contest/weekly-contest-92/problems/smallest-subtree-with-all-the-deepest-nodes/
-
-dfs，多个节点的LCA。递归找path，选出最后一个相同节点，在这个场景下这个解法还不错。
-
-
-37: Sudoku Solver
-
-https://leetcode.com/problems/sudoku-solver/description/
-
-dfs。注意使用上题的方式判断valid。注意`row_used`, `col_used`和`box_used`要先初始化！
-
-
-
-130: Surrounded Regions
-
-https://leetcode.com/problems/surrounded-regions/description/
-
-DFS，BFS。而是从四条边界出发使用DFS或BFS即可，状态不必回溯。
-
-
-332: Reconstruct Itinerary
-
-https://leetcode.com/problems/reconstruct-itinerary/description/
-
-dfs和heap结合，时间复杂度？思想是path先添加无路可走的节点，使用链表的头插法。
-c++的list数据结构基于链表实现，接口很多，非常方便，相当于java中的LinkedList。
-分别使用c++和java刷过，但是都没有一次AC。三刷忘记了基于heap的方法，使用纯DFS加排序。
-两种算法的时间复杂度在搜索解空间时有较大区别，还需要认真分析。
-
-
-129: Sum Root to Leaf Numbers
-
-https://leetcode.com/problems/sum-root-to-leaf-numbers/description/
-
-dfs，遇到叶子节点就把num(表示path)加到res上。如果follow up将节点的数只有1位的限制去掉，可以使用vector表示path。
-
-
-----
-
-#### KMP专题
-
-28: Implement strStr()
-
-https://leetcode.com/problems/implement-strstr/description/
-
-暴力匹配和KMP算法。KMP算法分两步：
-1. 求解`next`数组。`next`数组全部初始化为-1;`i,j`初始化为0和-1，
-然后对`next`数组对应的`needle`字符串自身进行模式匹配。
-1. 模式匹配。`i,j`均初始化为0，然后对`haystack`和`needle`进行模式匹配。
-
-模式匹配代码模板：
-```c++
-if (j == -1 || s1[i] == s2[j]) { //上述模式匹配步骤中，s1即haystack, s2即needle；
-							    	//求解next数组步骤中，s1和s2均为needle
-	i++;
-	j++;
-	// next[i] = j; // 求解next数组需要修改next数组
-} else j = next[j];
-```
-
-
-30: Substring with Concatenation of All Words
-
-<https://leetcode.com/problems/substring-with-concatenation-of-all-words/description/>
-
-两种方法KMP和TP，只有TP能AC。
-
-* KMP：使用KMP得到每个关键字在母串中出现的所有位置，然后使用DFS得到解，这种方式超时。
-* TP：使用`map`记录每个模式串及对应的频率，两层循环，外循环遍历母串中可以作为拼接串起始位置的
-index ![](http://latex.codecogs.com/gif.latex?{i\in[0,ss-ws*l}) 内循环进行匹配，
-每次匹配都从母串中取出长为`l`的子串，
-看是否在`map`中，在`map`中则修改`map`，直到`map`为空，这时产生了一个答案。此时继续外循环即可。
-
--------
-
-#### 位运算专题
-
-136: Single Number
-
-<https://leetcode.com/problems/single-number/>
-
-位操作。想象一个四四方方的多层公寓，每层有32（也可以更多）个房间，
-每个房间住着0或者1，异或像如来神掌一样将每一位从上而下压缩。
-
-
-137: Single Number II
-
-<https://leetcode.com/problems/single-number-ii/description/>
-
-位操作。每一位都有规律，仍然可以按照上题的思路思考，每一位上都是这样的规律。
-![](http://latex.codecogs.com/gif.latex?{sum=x_1*3+x_2*3+...+x_{n-1}*3+y})
-要得到y对sum模3即可。
-
-260: Single Number III
-
-<https://leetcode.com/problems/single-number-iii/description/>
-
-位操作，按第一个不同的位将nums分为两派即可。思路同前两道题。
-
-461: Hamming Distance
-
-<https://leetcode.com/problems/hamming-distance/description/>
-
-位运算，与和异或。
-
-477: Total Hamming Distance
-
-<https://leetcode.com/problems/total-hamming-distance/description/>
-
-位运算，分两派，该位为0和该位为1，分别记录每派的count，相乘加到结果上即可。
-
-
-201: Bitwise AND of Numbers Range
-
-<https://leetcode.com/problems/bitwise-and-of-numbers-range/description/>
-
-位运算
-
-
-405: Convert a Number to Hexadecimal
-
-<https://leetcode.com/problems/convert-a-number-to-hexadecimal/description/>
-
-位运算，注意0的问题，算术右移和逻辑右移的区别。
-
-
-421: Maximum XOR of Two Numbers in an Array
-
-<https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/description/>
-
-位操作，Math。
-
-190: Reverse Bits
-
-<https://leetcode.com/problems/reverse-bits/description/>
-
-位运算。将一个32位无符号数的2进制表示reverse，利用进制，采用10进制的方式来做即可，低位的权重更高。
-
-
-7: Reverse Integer
-
-<https://leetcode.com/problems/reverse-integer/description/>
-
-位操作，Math。和190相似，注意INT\_MAX、INT\_MIN和正负号，参考**atoi**。
-
-
-476: Number Complement
-
-<https://leetcode.com/problems/number-complement/description/>
-
-位运算，求补码，从符号位开始0变为1，然后取反。
-
-
-342: Power of Four
-
-<https://leetcode.com/problems/power-of-four/description/>
-
-位运算。
-
-318: Maximum Product of Word Lengths
-
-<https://leetcode.com/problems/maximum-product-of-word-lengths/description/>
-
-位运算。
-
-----
 
 542: 01 Matrix
 
@@ -765,7 +180,7 @@ BFS。从`0`出发，初始化将所有位`0`的cell入队，作为第0层，然
 
 <https://leetcode.com/problems/find-peak-element/>
 
-BS。二分法可以用递归和非递归的方式实现现，复杂度为$O(logN)$。本题是一维数组找极值，
+BS。二分法可以用递归和非递归的方式实现，复杂度为$O(logN)$。本题是一维数组找极值，
 MS有道题是二维数组找极值，思路相同，二分，$O(N)$时间找行的最小值，跟相邻行比较，
 如果是极值点则结束，不是就找更小的那个子矩阵。fun的水滴证明法相当直观！
 
@@ -781,12 +196,6 @@ BS。
 <https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/>
 
 和154一模一样。
-
-152: Maximum Product Subarray
-
-<https://leetcode.com/problems/maximum-product-subarray/>
-
-DP。用`f_max[i],f_min[i]`分别记录以`nums[i]`结尾的sub-array的乘积最大值和最小值。初始化`f_max[0] = nums[0]; f_min[0] = nums[0];`，然后遍历`i`$\in$`[1, nums.size()）`，更新规则分别为`f_max[i] = max(nums[i], max(f_max[i - 1] * nums[i], f_min[i - 1] * nums[i]));`和`f_min[i] = min(nums[i], min(f_max[i - 1] * nums[i], f_min[i - 1] * nums[i]));`。对本题比较熟练的情况下，可以使用2个变量来代替1维DP。
 
 
 389: Find the Difference
@@ -907,115 +316,11 @@ math，BS的变形，所选的哨兵为角上的元素，每次将范围缩减�
 
 将第一行(或第一列)作为标志，第一行(或第一列)用其他标志。从$(0, 0)$到$(m-1, n-1)$前向遍历将标志置0，从$(m-1, n-1)$到$(0, 0)$逆序遍历按标志将元素置0。时间复杂度$O(MN)$。
 
-62: Unique Paths
-
-<https://leetcode.com/problems/unique-paths/?tab=Description>
-
-DP。二维DP递推表达式为$dp[i][j] = dp[i-1][j] + dp[i][j-1]$，可以简化为一维DP。
-
-63: Unique Paths II
-
-<https://leetcode.com/problems/unique-paths-ii/?tab=Description>
-
-DP。同62。
-
-64: Minimum Path Sum
-
-<https://leetcode.com/problems/minimum-path-sum/?tab=Description>
-
-DP。同62。
-
-120: Triangle
-
-<https://leetcode.com/problems/triangle/>
-
-DP。自底向上，每个问题只有两个小的子问题，同62。`dp[c] = min(dp[c], dp[c+1]) + triangle[r][c]`，$O(N^2)$。
-
 799: Champagne Tower
 
 <https://leetcode.com/contest/weekly-contest-75/problems/champagne-tower/>
 
 BFS。
-
-53: Maximum Subarray
-
-<https://leetcode.com/problems/maximum-subarray/?tab=Description>
-
-DP，可以降为0维DP，即kadane算法。设有长度为$n$的数组$a$用`sum`和`res`分别记录当前的累加和与最终的结果。从$a_1$开始累加，当加到$a_i$时候如果`sum < 0`，将`sum`清零，相当于把前面的一个连续子数组扔掉，如果`sum > 0`更新result。这样做的原因是如果上述算法中出现$\sum_{k = i}^{j}a_k < 0$，则必有$\sum_{k=i}^{j+\lambda}a_k < a_{j+\lambda}, \lambda \in [1, n-j]$ 因此可以将$a[i,j]$这部分直接扔掉，从`j+1`开始继续查找和最大的连续子数组。
-
-
-363: Max Sum of Rectangle No Larger Than K
-
-<https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/>
-
-BS，DP：本题实际上是53题的升级版，BS的解法实际上糅合了kadane算法（即53题经典解法）和有界最大连续子数组。首先通过遍历所有可能的矩形左右边的组合，然后用dp求和，因为多加一列的话可以应用之前几列的求和结果。对于每行的和，应用最大kadane算法的思想可以得出和最大的矩形，而应用有界最大子数组算法可以求出有界情况下和最大的矩形。时间复杂度：$O((col)^2row\log(row))，空间复杂度为O(row)。暴力解法是遍历每个矩形可能的左右、上下边，利用dp计算累加和，时间复杂度O((row)^2(col)^2)，空间复杂度为O(row)。
-
-
-72: Edit Distance
-
-<https://leetcode.com/problems/edit-distance/description/>
-
-DP。用二维数组记录$s[0,i]$与$p[0,j]$的距离。
-* 初始化: `dp[0][j] = j`，`dp[i][0] = i`
-* 二重循环递推: 
-	* `s[i] == p[j]`：`dp[i][j] = min(dp[i-1][j-1], 1+dp[i-1][j], 1+dp[i][j-1])`，`min`函数中的三项分别表示在该处对进行**改、增、删**的操作。
-	* `s[i] != p[j]`：`dp[i][j] = min(1+dp[i-1][j-1], 1+dp[i-1][j], 1+dp[i][j-1])`，`min`函数中的三项分别表示在该处对进行**改、增、删**的操作。
-	
-	上述两种情况的区别在于**改**操作导致的结果不同，相同的时候是不需要改的，所以少了`+1`。
-
-486: Predict the Winner
-
-<https://leetcode.com/problems/predict-the-winner/description/>
-
-DP。二维DP比一维DP更易于理解。两个维度坐标含义相同，填表方式是先填长度比较小的范围，沿对角线填表。`dp[i][j] = min(nums[i] - dp[i + 1][j], nums[j] - dp[i][j - 1])`，每次都是1号玩家先取，1号玩家取完之后2号玩家就成了“1”号玩家，但是对于1号玩家来说，2号玩家充当“1”号玩家时得到的分数实际上就是1号玩家失掉的分数。当两者都是用最优的策略进行游戏时，一个玩家取了一个数之后，问题规模减1，而问题的结构是完全相同的，于是有了上式。
-
-45: Jump Game II
-
-<https://leetcode.com/problems/jump-game-ii/description/>
-
-DP,BFS。
-
-* DP： 复杂度为$O(N^2)$，自己写的DP，遍历nums，填充并修改dp，如果dp[i]都有效，遍历[1, nums[i]]，更新dp[i+j]，这种方式会超时。师姐的dp跟我不太一样，为了得到dp[i]，遍历dp[0, i-1]，如果一步可以到i则直接跳出，师姐的dp思路才是真正的dp思路。
-* BFS：时间复杂度$O(N)$，从0开始，对于每层更新能到达的最远的元素，然后从那个元素开始，直到能够到最后一个元素位置。
-
-55: Jump Game
-
-<https://leetcode.com/problems/jump-game/?tab=Description>
-
-同45。DP，BFS两种方法都可以，还有一种直接循环法，是BFS的简化版。
-* 直接循环法：遍历数组中的每个元素$a_i$，不断更新能到达的最远处`max_reach`，遍历过程中还要保证$i\leq$`max_reach`。最后返回`i==a.size()`。
-
-85: Maximal Rectangle
-
-<https://leetcode.com/problems/maximal-rectangle/description/>
-
-DP。把原来的1010矩阵变成直方图矩阵。外层遍历每一行，内层遍历每一列，下一行只要需要使用上一行的信息，所以可以简化为一维DP。height,left和right更新的先后顺序无所谓。关键是理解left[j]和right[j]为什么可以表示最高的（高度为height[j]）的全1向量的左右边界,原因是当matrix[i][j]为1时，left和right的更新会取当前行的边界cur和上一行的对应列的最小值(对right)或者最大值(left)。
-
-837: New 21 Game
-
-<https://leetcode.com/contest/weekly-contest-85/problems/new-21-game/>
-
-DP。给定K,N,W，当牌的点数小于K时，从$[1, W]$的牌中等概论随机抽取一张，计算手牌的面值之和$<=N$的概率。使用pre记录当前牌面值总和之前的概率总，相当于前缀和，使用dp记录当前牌面值的概率。dp[i]最多只跟$[i - 1, i-1-W]$的牌面值概率的总和sum有关，$dp = sum / W$, 使用b记录相关牌面值的起点，使用e记录牌面值的终点。每次计算dp之后，$pre[i + 1] = pre[i] + dp[i]$。
-
-730: Count Different Palindromic Subsequences
-
-<https://leetcode.com/problems/count-different-palindromic-subsequences/description/>
-
-DP。二维DP记录每个子串中不重复的回文子序列的个数，先固定长度，然后遍历起点。对于$DP[i][j]$，分两种情况:
-1. $s[i] == s[j]$:假设$s[i+1:j-1]$的不重复的回文子序列为$\{y_1, y_2, ..., y_k\}$，$s[i]=s[j]=a$，不考虑具体的细节粗略估计应该有$DP[i][j]=DP[i+1][j-1] * 2 + 2$，这是因为$s[i:j]$的不重复回文子串粗略想想应该有$\{y_1, y_2, ..., y_n, ay_1a, ay_2a, ..., ay_na, a, aa\}$，下面考虑可能出现的重复，当$s[i:j]$的模式为`axxxaxxxaxxxa`时，就会出现重复，因此可以用TP的方法，分别从$s[i+1]$和$s[j-1]$向内查找$a$，设出现的位置分别为$l$和$r$。
- 	* $l < r$：即$s[i:j]$的模式是`axxxaxxaxxxa`，因此重复的就是最里面的`xx`的非重复回文子序列个数，此时$DP[i][j] = DP[i+1][j-1]*2 - DP[l+1][r-1]$。
-	* $l = r$：即$s[i:j]$的模式是`axxxaxxxa`，此时$DP[i][j] = DP[i + 1][j-1] * 2 + 1$
-	* $l > r$: 即不存在重复，$s[i:j]$的模式是`axxxa`，此时$DP[i][j] = DP[i+1][j-1] * 2 + 2$。
-2. $s[i] != s[j]$:$DP[i][j] = DP[i+1][j] + DP[i][j-1] - DP[i+1][j-1]$。
-
-731: Rectangle Area II
-
-<https://leetcode.com/contest/weekly-contest-88/problems/rectangle-area-ii/>
-
-DP。计算二维坐标系内所有非旋转矩形（所有矩形的边均和X或Y轴平行）重叠的面积。基本思想是将所有矩形分成小块，所有部分都只计算一次。
-  * 我自己的思路：使用priority_queue，将所有矩形按照$\{X_1, X_2, Y_1, Y_2\}$的优先级进行排序，每次取出前两个矩形，每次将重复的部分保留，计算多出的部分。我的思路有个bug，当多出的部分与后续的矩形有重复时，这个方法就有了重复计算。
-  * **正确方法**：将所有出现过的X，Y分别提取出来。遍历每个矩形，找到其左下角和右上角两个坐标的位置$\{X_1, Y_1, X_2, Y_2\}$在X和Y中对应的index：$\{i_1, j_1, i_2, j_2\}$，遍历所有小矩形$\{x_1, y_1, x_2, y_2\}$，其中$i_1 <= x_1 < x_2 <= i_2, j_1 <= y_1 < y_2 <= j_2$。由于$x_1$和$x_2$必然在X中相邻，$y_1$和$y2$必然在Y中相邻，因此只需标记$\{x_1, y_1\}$即可，可以用二维DP记录应该访问的小矩形，$DP[x_1][y_1] =true$就表示小矩形$\{x_1, y_1, x_2, y_2\}$的面积应该被计入最后的结果中。
-
 56: Merge Intervals
 
 https://leetcode.com/problems/merge-intervals/?tab=Description
@@ -1603,12 +908,6 @@ https://leetcode.com/problems/ugly-number-ii/#/description
 和313题很像，我也是用的313题的方法，效率还不错，一刷AC。
 
 
-50: Pow(x, n)
-
-https://leetcode.com/problems/powx-n/#/description
-
-位操作。直接视为进制题型，指数视为二进制表示，每位的权重是前一位权重的平方。末位的权重为x，从后向前依次遍历指数的每一位即可。注意先将负数转为整数，负指数转我正指数。
-
 
 60: Permutation Sequence
 
@@ -1923,15 +1222,6 @@ https://leetcode.com/problems/binary-watch/description/
 一刷没好的思路，看了discuss区之后，发现真的是直接遍历解空间！由于不理解表的的实际运行换算进制搞错得了WA，再刷！
 
 
-
-
-
-
-131: Palindrome Partitioning
-
-https://leetcode.com/problems/palindrome-partitioning/description/
-
-DP,DFS。先用dp计算任意子串是否为回文，再使用dfs收集合法的partition。
 
 132: Palindrome Partitioning II
 
@@ -2415,34 +1705,35 @@ https://leetcode.com/problems/top-k-frequent-words/description/
 
 https://leetcode.com/problems/kth-smallest-number-in-multiplication-table/
 
-heap: 用一个小根堆模拟排序过程，小根堆中每个元素是pair，来分别存储乘法表中的基数和乘积，用乘积排序。每次出队列的时候，如果乘积加上基数之后的值在乘法表范围内，将增大的乘积加回队列。
+heap: 用一个小根堆模拟排序过程，小根堆中每个元素是pair，来分别存储乘法表中的基数和乘积，用乘积排序。
+每次出队列的时候，如果乘积加上基数之后的值在乘法表范围内，将增大的乘积加回队列。
 
-BS: 每一行中比目标值小的数的个数通过一次除法即可算得，这个发现可以直接将算法的计算复杂度降级。我发现了这一点，但是一直想在坐标和排序之间建立联系！BS就是通过一个指标，将一个区间严格分为两半。对于BS的理解又深了一点！
+BS: 每一行中比目标值小的数的个数通过一次除法即可算得，这个发现可以直接将算法的计算复杂度降级。
+我发现了这一点，但是一直想在坐标和排序之间建立联系！BS就是通过一个指标，
+将一个区间严格分为两半。对于BS的理解又深了一点！
 
 
 410: Split Array Largest Sum
 
 https://leetcode.com/problems/split-array-largest-sum/
 
-BS：左边界为0，右边界为sum。将数组按连续的方式分组，每组的和不大于mid。分组个数大于m说明mid不够，更新low；否则更新high。BS有两种写法，这两种写法是等价的！
-
-
-
+BS：左边界为0，右边界为sum。将数组按连续的方式分组，每组的和不大于mid。
+分组个数大于m说明mid不够，更新low；否则更新high。BS有两种写法，这两种写法是等价的！
 
 
 355: Design Twitter
 
 https://leetcode.com/problems/design-twitter/description/
 
-一刷使用基于堆排序的方法AC，效率并不是很高。明白了为什么有时候会和结果反序，这是因为我写的堆排序的结果是升序，而这种题目一般要求要降序输出结果。
+一刷使用基于堆排序的方法AC，效率并不是很高。明白了为什么有时候会和结果反序，
+这是因为我写的堆排序的结果是升序，而这种题目一般要求要降序输出结果。
 
 
 490: Maze
+
 锁定了，写不了。
 但是比较简单，至少有两种写法。
 一是使用visited，二是将访问过的区域设置为阻隔，有个非常相似的题目，但是我给忘了。
-
-
 
 
 
@@ -2494,7 +1785,8 @@ https://leetcode.com/problems/number-of-islands/description/
 
 https://leetcode.com/problems/matchsticks-to-square/description/
 
-一刷递归，效率低，有大量重复计算，自己的逻辑不清晰，TLE。二刷发现大神的DFS思路和我一致，按照大神的思路改完之后效率提高很多，但是仍然有优化的空间，重复计算问题并没有完全解决。
+一刷递归，效率低，有大量重复计算，自己的逻辑不清晰，TLE。二刷发现大神的DFS思路和我一致，
+按照大神的思路改完之后效率提高很多，但是仍然有优化的空间，重复计算问题并没有完全解决。
 
 
 36: Valid Sudoku
@@ -2502,9 +1794,8 @@ https://leetcode.com/problems/matchsticks-to-square/description/
 https://leetcode.com/problems/valid-sudoku/description/
 
 暴力法：检查行 检查列 检查每个小矩阵就行，这种方法要遍历board3次。
-更巧妙的方法：记录每行、每列、每个小方块中每个数字是否使用过，如果使用过了，就是invalid，这种方法只需遍历1次board，用空间换时间。注意数组的初始化！
-
-
+更巧妙的方法：记录每行、每列、每个小方块中每个数字是否使用过，如果使用过了，
+就是invalid，这种方法只需遍历1次board，用空间换时间。注意数组的初始化！
 
 
 
@@ -2519,15 +1810,20 @@ https://leetcode.com/problems/binary-tree-level-order-traversal/description/
 
 https://leetcode.com/problems/word-ladder/description/
 
-双queue实现BFS。这种需要记录BFS中遍历层数的题不用着急在构建next的时候返回，在访问当前层的时候返回效果没多大差别，而且逻辑会更清晰。
+双queue实现BFS。这种需要记录BFS中遍历层数的题不用着急在构建next的时候返回，
+在访问当前层的时候返回效果没多大差别，而且逻辑会更清晰。
 
 
 126: Word Ladder II
 
 https://leetcode.com/problems/word-ladder-ii/
 
-方法一：BFS+DFS。先用BFS生成每个次到其前缀的map(string, set<string>)，利用这个map使用DFS生成所有路径,vector前向插入不便的情景可以使用list，方法比较复杂，其实完全不需要使用DFS，纯BFS就行。
-方法二：单向BFS。双queue实现BFS，同时用两个对应的queue记录从beginWord到达之前两个queue中每个元素的path。注意visited的修改，层内不用更新visited，要使用layer_visited_words记录每层有哪些新的元素被访问到了，在一层访问完之后用layer_visited_words一并更新visited。其实直接用两个queue存path即可，每个path的终点就是最后一层的元素，也就是说只存元素的queue是完全多余的。
+方法一：BFS+DFS。先用BFS生成每个次到其前缀的map(string, set<string>)，
+利用这个map使用DFS生成所有路径,vector前向插入不便的情景可以使用list，方法比较复杂，其实完全不需要使用DFS，纯BFS就行。
+方法二：单向BFS。双queue实现BFS，同时用两个对应的queue记录从beginWord到达之前两个queue中每个元素的path。
+注意visited的修改，层内不用更新visited，要使用`layer_visited_words`记录每层有哪些新的元素被访问到了，
+在一层访问完之后用`layer_visited_words`一并更新visited。其实直接用两个queue存path即可，
+每个path的终点就是最后一层的元素，也就是说只存元素的queue是完全多余的。
 方法三：双向BFS，分别保存从beginWord和endWord两个方向出发的path，如果两条path能接上，则结果找到。有点tricky。
 
 
@@ -2552,9 +1848,17 @@ BFS，一刷AC。
 
 
 843: Guess the Word
+
 https://leetcode.com/contest/weekly-contest-86/problems/guess-the-word/
 
-BFS，实际上是个概率题，初始情况下，随机选定一个word作为target，wordlist中的每个词与target match的character的个数分别为0,1,2,...,6。概率分布为$\{1 * 25^6/26^6, 6 * 25^5/ 26^6, ..., 1 * 1/ 26^6\}$，随机选出一个word调用guess，设该word与target match的字母数为r，从原始wordlist中过滤出所有与word match的字母数为r的单词（target一定包含在其中）组成新的wordlist，依次类推，知道找到target或者guess次数超过10次。由初始状态知道，match为0的概率最大，因此每次随机选择的word与target的match的字母数均为0的概率最大，为$26 * 25 * 24 * ,..., * 17 / 26 ** 10 = 6.48e-6$。因此guess一定会得到target。
+BFS，实际上是个概率题，初始情况下，随机选定一个word作为target，
+wordlist中的每个词与target match的character的个数分别为0,1,2,...,6。
+概率分布为$\{1 * 25^6/26^6, 6 * 25^5/ 26^6, ..., 1 * 1/ 26^6\}$，
+随机选出一个word调用guess，设该word与target match的字母数为r，
+从原始wordlist中过滤出所有与word match的字母数为r的单词（target一定包含在其中）组成新的wordlist，
+以此类推，知道找到target或者guess次数超过10次。由初始状态知道，match为0的概率最大，
+因此每次随机选择的word与target的match的字母数均为0的概率最大，
+为$26 * 25 * 24 * ,..., * 17 / 26 ** 10 = 6.48e-6$。因此guess一定会得到target。
 
 
 
@@ -2562,11 +1866,19 @@ BFS，实际上是个概率题，初始情况下，随机选定一个word作为t
 
 https://leetcode.com/problems/shortest-path-to-get-all-keys/description/
 
-BFS。和Maze那一系列的题目非常相似，尤其是MazeII。给定一个由二维字符数组`grid`表示的区域，`'@'`表示起点，`'#'`表示墙，`'.'`表示空白，小写字母表示钥匙，与小写字母对应的大写字母表示锁。计算从起点出发到集齐所有钥匙走的最短步数。我的BFS方法中使用Queue记录需要遍历的状态，每个状态包括当前位置与当前拥有的钥匙串，这个状态是唯一的，可以用visited集合记录已经遍历过的状态，BFS直到状态遍历完或者集齐所有的钥匙为止，BFS的层数就是结果。我的算法效率不高，TLE了。
+BFS。和Maze那一系列的题目非常相似，尤其是MazeII。给定一个由二维字符数组`grid`表示的区域，
+`'@'`表示起点，`'#'`表示墙，`'.'`表示空白，小写字母表示钥匙，与小写字母对应的大写字母表示锁。
+计算从起点出发到集齐所有钥匙走的最短步数。我的BFS方法中使用Queue记录需要遍历的状态，
+每个状态包括当前位置与当前拥有的钥匙串，这个状态是唯一的，可以用visited集合记录已经遍历过的状态，
+BFS直到状态遍历完或者集齐所有的钥匙为止，BFS的层数就是结果。我的算法效率不高，TLE了。
 
 跟AC算法相比，我对题目的数据限制分析不够到位，AC算法有以下两个优化：
-1. 题目限制锁的个数最多为6个，这是一个非常重要的限制条件，这意味着不需要用set记录当前收集到的钥匙，只需要一个整数即可(后6个比特每个比特分别表示一个锁)。
-2. 由于`grid`的长和宽均限制在30以内，加上**1**中的分析，state的空间其实不大($30 * 30 * 2^6$)，直接使用一个三维数组`distance`存储即可，`distance`的元素初始化全部为-1，表示没有遍历过，这个条件可以用于判断是否要讲新发现的状态加入下一层要遍历的队列中。另外`distance`还可以记录起点到当前点的距离，用于返回结果。
+1. 题目限制锁的个数最多为6个，这是一个非常重要的限制条件，
+这意味着不需要用set记录当前收集到的钥匙，只需要一个整数即可(后6个比特每个比特分别表示一个锁)。
+2. 由于`grid`的长和宽均限制在30以内，加上**1**中的分析，state的空间其实不大($30 * 30 * 2^6$)，
+直接使用一个三维数组`distance`存储即可，`distance`的元素初始化全部为-1，表示没有遍历过，
+这个条件可以用于判断是否要讲新发现的状态加入下一层要遍历的队列中。
+另外`distance`还可以记录起点到当前点的距离，用于返回结果。
 
 以上这两点优化非常重要，将BFS过程中非常频繁的查找操作的时间复杂度从$O(logN)$降到了$O(1)$。
 
