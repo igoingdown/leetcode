@@ -432,3 +432,38 @@ c++的list数据结构基于链表实现，接口很多，非常方便，相当�
 https://leetcode.com/problems/sum-root-to-leaf-numbers/description/
 
 dfs，遇到叶子节点就把num(表示path)加到res上。如果follow up将节点的数只有1位的限制去掉，可以使用vector表示path。
+
+
+
+691: Stickers to Spell Word
+
+https://leetcode.com/problems/stickers-to-spell-word/description/
+
+带memo的DFS。时、空间复杂度为O(N)，递归深度也是N。
+
+
+473: Matchsticks to Square
+
+https://leetcode.com/problems/matchsticks-to-square/description/
+
+* 递归，效率低，有大量重复计算，TLE。
+* DFS: 仍然有优化的空间，重复计算问题并没有完全解决。
+
+
+695: Max Area of Island
+
+https://leetcode.com/problems/max-area-of-island/description/
+
+DFS，利用queue存储中间结果，原地更改数组。时间复杂度为O(M\*N)，空间复杂度为O(1)。
+
+
+694: Number of Distinct Islands
+
+https://leetcode.com/contest/leetcode-weekly-contest-53/problems/number-of-distinct-islands/
+
+一刷没有想到怎么表示多个岛之间的“translation”的关系，题意不太理解，跟695很像，
+只需要用set记录编码之后的island的所有node，最后返回set的长度即可。
+还学到了访问matrix一个元素四周邻居的更省空间的方式，数组bias设置为[1, 0, -1, 0, 1]即可，
+每次访问row的bias为bias[i],column的bias为bias[i + 1]，非常巧妙！
+
+
