@@ -35,18 +35,12 @@ tags:
 ----
 
 
-
-
 73: Set Matrix Zeroes
 
 <https://leetcode.com/problems/set-matrix-zeroes/?tab=Description>
 
 将第一行(或第一列)作为标志，第一行(或第一列)用其他标志。
 从$(0, 0)$到$(m-1, n-1)$前向遍历将标志置0，从$(m-1, n-1)$到$(0, 0)$逆序遍历按标志将元素置0。时间复杂度$O(MN)$。
-
-
-
-
 
 
 535: Encode and Decode TinyURL
@@ -179,8 +173,6 @@ https://leetcode.com/problems/ugly-number-ii/#/description
 
 https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/#/description
 
-一刷因为多个变量在同一行中定义写法出错拿个CE！对于pj的增长方式还是没办法提出比较容易理解的模型。
-
 
 520: Detect Capital
 
@@ -221,7 +213,7 @@ https://leetcode.com/problems/zigzag-conversion/#/description
 
 https://leetcode.com/problems/next-greater-element-iii/#/description
 
-不难，但是忘记怎么求下一个排列的算法了。标准库有api可以用！再刷！
+不难，但是忘记怎么求下一个排列的算法了。
 
 
 7: Basic Calculator II
@@ -244,8 +236,6 @@ sign只存储一个数字的符号。上题适合使用stringstream，本题不�
 
 https://leetcode.com/problems/palindrome-pairs/#/description
 
-想有个好点的算法比较难，还不太理解讨论区大神的算法，一刷没AC。忘记边界拿了WA，再刷！
-
 
 539: Minimum Time Difference
 
@@ -256,64 +246,55 @@ https://leetcode.com/problems/minimum-time-difference/#/description
 
 https://leetcode.com/problems/validate-ip-address/#/description
 
-getline在这个题目中有妙用！题目不难，但是边界条件非常多！坑很多！
+getline在这个题目中有妙用！题目不难，但是边界条件非常多！
 
 
 522: Longest Uncommon Subsequence II
 
 https://leetcode.com/problems/longest-uncommon-subsequence-ii/#/description
 
-思路不是自己的，一刷废了很大劲没AC。用了两种方法，直接构造带有cmp函数的map失效，还没弄明白原因！再刷！
+两种方法，直接构造带有cmp函数的map失效，还没弄明白原因！
 
 
 475: Heaters
 
 https://leetcode.com/problems/heaters/#/description
 
-比较简单，但是没有好的思路。一刷没有一次AC，而是各种CE！再刷！
-从解答区选择的思路也不是最好的！二刷没有一次AC，不太懂upper_bound和lower_bound的区别拿了WA，再刷！三刷一次AC。
+要弄懂懂`upper_bound`和`lower_bound`的区别。
 
 
 436: Find Right Interval
 
 https://leetcode.com/problems/find-right-interval/#/description
 
-比较简单，很久没刷，手很生，一刷没AC，各种CE，WA和RE，
-思路是对的，但是时间复杂度太高。解答区的算法很好，值得借鉴，但是思路不是自己的，再刷！
-
 
 275: H-Index II
 
 https://leetcode.com/problems/h-index-ii/#/description
 
-是274的附加题。题意很难懂，真的很难懂！很久没刷，找找感觉先！一刷各种错误，有CE也有WA，再刷！
+274的附加题。题意很难懂。
 
 
 378: Kth Smallest Element in a Sorted Matrix
 
 https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/description/
 
-不算难，但是要找到二分查找中间的判定条件比较困难！看了一遍大神解法之后，一刷AC，
-但是对算法了解其实没那么深，尤其是如何将一个不在matrix中的值逼近到在matrix中的值。
-二刷对算法理解更透彻一些，对运算优先级把握不准，得了WA。再刷！
+BS。要找到二分查找中间的判定条件比较困难！
+如何将一个不在matrix中的值逼近到在matrix中的值的根本技巧需要再深入思考。
 
 
 658: Find K Closest Elements
 
 https://leetcode.com/problems/find-k-closest-elements/description/
 
-不太难，一刷没AC，思路大致正确但是实现有些细节错误！对lower_bound和upper_bound理解不太对，导致WA。
-lower_bound得到第一个不小于val的元素的迭代器，而upper_bound得到第一个大于val的元素的迭代器。
-判断条件有精妙，没能完全理解。二刷代码不需要写，试着解释了一个问题就是为什么要去掉low，保留high，
+`lower_bound`得到第一个不小于val的元素的迭代器，而`upper_bound`得到第一个大于val的元素的迭代器。
+明白了一个问题就是为什么要去掉low，保留high，
 因为low是有问题的，相当于数轴上的空心点！一定是high离得近，所以最后舍弃了low！
-注意考虑边界问题，感觉现在有种做高中物理题的节奏了！再刷！！
 
 
 670: Maximum Swap
 
 https://leetcode.com/contest/leetcode-weekly-contest-48/problems/maximum-swap/
-
-不难，但是我的方法不太好，应该有很好很简单的方法，可以专门研究一下discuss区的好方法！
 
 
 401: Binary Watch
@@ -321,7 +302,6 @@ https://leetcode.com/contest/leetcode-weekly-contest-48/problems/maximum-swap/
 https://leetcode.com/problems/binary-watch/description/
 
 直接遍历解空间！不理解表的的实际运行换算进制搞错！
-
 
 
 674: Longest Continuous Increasing Subsequence My SubmissionsBack to Contest
@@ -335,7 +315,7 @@ https://leetcode.com/contest/leetcode-weekly-contest-49/problems/longest-continu
 
 https://leetcode.com/problems/number-of-longest-increasing-subsequence/description/
 
-LIS，跟上一题很像！怪不得邓邓把上一道题看成这道题！DP难在算法的理解。
+LIS，跟上一题很像！DP难在算法的理解。
 
 
 354: Russian Doll Envelopes
@@ -346,9 +326,10 @@ LIS的变种，将二维数据其中一个维度升序另一个维度降序排�
 
 
 676: Implement Magic Dictionary
+
 https://leetcode.com/contest/leetcode-weekly-contest-49/problems/implement-magic-dictionary/
 
-一开始想用set或者vector实现，发现效率太低，就改为用字典树实现，字典树实现太难调试了！之后使用set实现，舒服多了！
+set或者vector实现效率太低，字典树实现太难调试。使用set实现舒服多了！
 
 
 416: Partition Equal Subset Sum
@@ -369,39 +350,38 @@ https://leetcode.com/contest/leetcode-weekly-contest-49/problems/implement-magic
 
 https://leetcode.com/problems/can-i-win/description/
 
-自己没思路，大神思路不太理解。时间复杂度为（dfs导致递归，时间复杂度不会分析），空间复杂度为O(2^N)。
+时间复杂度为（dfs导致递归，时间复杂度不会分析），空间复杂度为O(2^N)。
 
 
 467: Unique Substrings in Wraparound String
 
 https://leetcode.com/problems/unique-substrings-in-wraparound-string/description/
 
-大神思路理解不透彻，时间复杂度O(N)，空间复杂度O(1)。
-一刷理解大神思路的基础上自己实现一次AC。再刷一次！但是这个解法真的是DP吗？
+时间复杂度O(N)，空间复杂度O(1)。
+在理解大神思路的基础上自己实现一次AC。再刷一次！但是这个解法真的是DP吗？
 
 
 221: Maximal Square
 
 https://leetcode.com/problems/maximal-square/description/
 
-一刷AC，自己的思路和大神的思路相似，我的思路不够简洁，大神使用square的边长表示square。二刷初始化参数写错，RE。
+自己的思路和大神的思路相似，我的思路不够简洁，大神使用square的边长表示square。
 状态方程的理解：(i, j)是square,则(i-1, j-1), (i-1, j),(i, j-1)必定是size的square！
-如果三者的size不同，则(i, j)取三者最小的加1。时间复杂度和空间复杂度都是O(M*N)。
+如果三者的size不同，则(i, j)取三者最小的加1。时间复杂度和空间复杂度都是O(M\*N)。
 
 
 576: Out of Boundary Paths
 
 https://leetcode.com/problems/out-of-boundary-paths/description/
 
-一刷按照自己的思路初始时没判断参数有可能的异常，RE。
-思路正确，效率不高，时间复杂度和空间复杂度均为O(N*n*m)。再刷！二刷使用大神的高效解法。
+思路正确，效率不高，时间复杂度和空间复杂度均为O(N\*n\*m)。大神的高效解法太好了。
 
 
 693: Binary Number with Alternating Bits
 
 https://leetcode.com/problems/binary-number-with-alternating-bits/description/
 
-一刷没AC，忘记更新ex。时间复杂度为O(log N)，空间复杂度为O(1)。没有再刷的必要。
+时间复杂度为O(log N)，空间复杂度为O(1)。
 
 
 341: Flatten Nested List Iterator
@@ -413,8 +393,8 @@ https://leetcode.com/problems/flatten-nested-list-iterator/description/
 
 https://leetcode.com/problems/binary-search-tree-iterator/description/
 
-一刷按照和上题相似的思路，初始化时，遍历查找最左节点没有更新root，导致内存溢出。
-时间复杂度为O(N)，空间复杂度为O(H)。二刷一次AC，精简了代码。
+和上题相似的思路，初始化时，遍历查找最左节点没有更新root会导致内存溢出。
+时间复杂度为O(N)，空间复杂度为O(H)。
 
 
 838: Push Dominoes
@@ -438,8 +418,7 @@ https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/des
 
 https://leetcode.com/problems/132-pattern/description/
 
-一刷没思路，使用大神的算法，一次AC，但是理解不透彻。
-关键不太理解为什么要用while循环，是为了使用更大的中间值？再刷。
+不太理解为什么要用while循环，是为了使用更大的中间值？
 
 
 402: Remove K Digits
@@ -451,8 +430,6 @@ https://leetcode.com/problems/remove-k-digits/description/
 
 https://leetcode.com/problems/exclusive-time-of-functions/description/
 
-一刷没有想清楚怎么将中间退栈时得到的中间时间段存下来WA。
-二刷使用大神的算法，和我的算法相似，但是使用了stringstream，
 并且自己设计了新的struct，效率可能会受影响，但是非常清晰。中间没对stack判空RE。再刷。
 
 
@@ -460,7 +437,7 @@ https://leetcode.com/problems/exclusive-time-of-functions/description/
 
 https://leetcode.com/problems/design-twitter/description/
 
-一刷使用基于堆排序的方法AC，效率并不是很高。明白了为什么有时候会和结果反序，
+Heap。Heap效率并不是很高。明白了为什么有时候会和结果反序，
 这是因为我写的堆排序的结果是升序，而这种题目一般要求要降序输出结果。
 
 
@@ -475,10 +452,6 @@ https://leetcode.com/problems/design-twitter/description/
 659: Split Array into Consecutive Subsequences
 
 https://leetcode.com/problems/split-array-into-consecutive-subsequences/description/
-
-一刷没思路，找了一个比较容易理解的思路看了半天！一刷没有写temp[i]--，
-思路很好，但是还有继续理解！时间和空间复杂度均为O(N)。
-
 
 
 36: Valid Sudoku
