@@ -1,0 +1,14 @@
+*.swp
+tmp/
+*.log
+demosrv/
+output/
+*~
+*.swm
+*.swn
+*.swo
+.idea/
+/idl
+.DS_Store
+*.out.*
+*.out
