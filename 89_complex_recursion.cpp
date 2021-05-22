@@ -16,14 +16,14 @@ public:
     }
 
     void f(vector<int>& res, unordered_set<int>& res_set, int n, int num) {
-        if (res.size() == pow(2, n)) {
+        if (res.size() == (1 << n)) {
             return;
         }
         if (res_set.find(num) != res_set.end()) {
             return;
         }
         res.push_back(num);
-        if (res.size() == pow(2, n)) {
+        if (res.size() == (1 << n)) {
             return;
         }
         res_set.insert(num);
