@@ -543,3 +543,13 @@ DP。找出将字符串$s$分割为多个palindrome子串的最小的切割次�
 * 判断palindrome可以先遍历$j$再遍历$i$，两层循环即可。
 
 
+
+321: Create Maximum Number
+
+https://leetcode.com/problems/create-maximum-number/
+
+
+DP。我跟小爽几想到的是笨方法，需要两次 DP。
+* 第一次 DP: 找出用 n 个数字,保持数字相对顺序，用其中 i([1,n]) 个数字能找到的最大值
+* 第二次 DP: 将 x 和 y 两个数组合成一个数，并保持内部相对顺序不变，要判断 每一位是选择 x 还是 y
+
