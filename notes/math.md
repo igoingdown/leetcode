@@ -249,3 +249,10 @@ https://leetcode.com/contest/leetcode-weekly-contest-48/problems/bulb-switcher-i
 Math。没有发现规律，需要再理解一下！
 
 
+463: Island Perimeter
+
+<https://leetcode.com/problems/island-perimeter/>
+
+遍历。有两种做法
+* 方法一:遍历所有的cell，判断每个cell的每个边是否为Island的边界，是边界则`perimeter+1`。
+* 方法一:遍历所有的cell，每个 cell 带来 4 个长度的周长，减掉被重复计算的部分即可。
