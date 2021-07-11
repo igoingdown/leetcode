@@ -4,7 +4,7 @@
 
 <https://leetcode.com/problems/add-two-numbers/description/>
 
-链表尾插法。模拟实现硬件中的串行加法器，注意进位即可。
+链表尾插法。模拟实现硬件中的串行加法器，注意进位。
 
 ----
 
