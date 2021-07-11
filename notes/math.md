@@ -7,6 +7,20 @@ https://leetcode.com/problems/next-permutation/?tab=Description
 math。先从后将降序序列反转，然后找被反转序列的前一个数字在反转序列中的上界与该数字替换。
 
 
+
+414: Third Maximum Number
+
+<https://leetcode.com/problems/third-maximum-number/>
+
+math。找出`n`个数中的第`m`（`m <= n`）大的数，这是个经典问题=?
+
+* `m`不太大（`m<4`）时：同时设置多个max，遍历数组元素，分条件更新max。注意以下两点
+  1. max的初始化一定要比当前数组元素类型的最小值要小；
+  1. max更新条件要写全，“=”的情况要排除。
+* 当`m >= 4`时：可以借用快排的partition操作来做。
+
+
+
 41: First Missing Positive
 
 <https://leetcode.com/problems/first-missing-positive/description/>

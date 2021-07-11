@@ -15,26 +15,8 @@ tags:
 [interviews](interviews/jiukun/README.md)
 
 
-463: Island Perimeter
-
-<https://leetcode.com/problems/island-perimeter/>
-
-枚举。有两种做法
-* 方法一:遍历所有的cell，判断每个cell的每个边是否为Island的边界，是边界则`perimeter+1`。
-* 方法一:遍历所有的cell，每个 cell 带来 4 个长度的周长，减掉被重复计算的部分即可。
-
 ----
 
-414: Third Maximum Number
-
-<https://leetcode.com/problems/third-maximum-number/>
-
-找出`n`个数中的第`m`（`m <= n`）大的数，这是个经典问题=?
-
-* `m`不太大（`m<4`）时：同时设置多个max，遍历数组元素，分条件更新max。注意以下两点
-  1. max的初始化一定要比当前数组元素类型的最小值要小；
-  1. max更新条件要写全，“=”的情况要排除。
-* 当`m >= 4`时：可以借用快排的partition操作来做。
 
 ----
 
