@@ -12,12 +12,16 @@ tags:
   - 算法
 ---
 
+[interviews](interviews/jiukun/README.md)
+
 
 463: Island Perimeter
 
 <https://leetcode.com/problems/island-perimeter/>
 
-枚举。遍历所有的cell，判断每个cell的每个边是否为Island的边界，是边界则`perimeter+1`。
+枚举。有两种做法
+* 方法一:遍历所有的cell，判断每个cell的每个边是否为Island的边界，是边界则`perimeter+1`。
+* 方法一:遍历所有的cell，每个 cell 带来 4 个长度的周长，减掉被重复计算的部分即可。
 
 ----
 
@@ -39,24 +43,26 @@ tags:
 
 <https://leetcode.com/problems/set-matrix-zeroes/?tab=Description>
 
-将第一行(或第一列)作为标志，第一行(或第一列)用其他标志。
-从$(0, 0)$到$(m-1, n-1)$前向遍历将标志置0，从$(m-1, n-1)$到$(0, 0)$逆序遍历按标志将元素置0。时间复杂度$O(MN)$。
+将第一行和第一列作为标志，第一行(或第一列) 单独配置一个标志。
+从$(0, 0)$到$(m-1, n-1)$前向遍历将标志置零， 置零表示改行和该列都应该被置零。
+从$(m-1, n-1)$到$(0, 0)$逆序遍历按标志将元素置0。
+逆序的好处是不用最后再把标志行和标识列再处理一遍。
 
 
 535: Encode and Decode TinyURL
 
 https://leetcode.com/problems/encode-and-decode-tinyurl/#/description
 
+存储 origin_url 和 code 两个方向的映射。随机生成 code，遇到碰撞就再来一次，直到不碰撞为止。
+参考https://dev.to/seanpgallivan/solution-encode-and-decode-tinyurl-4mji
+
 
 508: Most Frequent Subtree Sum
 
 https://leetcode.com/problems/most-frequent-subtree-sum/#/description
 
-最大的那个count可以在遍历树的过程中找到，
-我是遍历完树之后再遍历map找的，map中的元素可以自动初始化，
-这种情况和python不一样，不用判断键是否存在！
-经过优化之后，代码非常简洁而且效率提高了一倍。
-注意iterator的操作不能使用<，只能使用!=和=。
+递归遍历树，构建`map[sum]count` 并在构建过程中算出 max_count；
+构建 map 结束，遍历 map 返回 `val==max_count` 的 key 的列表。
 
 
 
@@ -64,14 +70,16 @@ https://leetcode.com/problems/most-frequent-subtree-sum/#/description
 
 https://leetcode.com/problems/find-all-anagrams-in-a-string/#/description
 
-没思路，一刷没AC，注意滑动窗口，这是个等大小的窗口，只是用vector而不是用map的算法效率不高。
+参考 https://www.cnblogs.com/grandyang/p/6014408.html
+
+使用滑动窗口。窗口内部只要每个字符的个数一致即可。
 
 
 380: Insert Delete GetRandom O(1)
 
 https://leetcode.com/problems/insert-delete-getrandom-o1/#/description
 
-一刷没AC，注意get\_random的时候index不能为0！
+get\_random的时候index不能为0！
 
 
 274: H-Index
