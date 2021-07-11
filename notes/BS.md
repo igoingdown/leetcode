@@ -10,7 +10,7 @@ BS。
 
 <https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/>
 
-和154一模一样。
+同154。
 
 
 74: Search a 2D Matrix
