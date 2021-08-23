@@ -63,4 +63,11 @@ https://leetcode.com/problems/top-k-frequent-words/description/
 Heap。基于heap sort的方法解决。
 
 
+264: Ugly Number II
+
+https://leetcode.com/problems/ugly-number-ii/#/description
+
+两种解法
+Heap: 最小堆
+DP: dp[i] = min(dp[p2] * 2, dp[p3] * 3, dp[p5] * 5)
 
