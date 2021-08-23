@@ -137,21 +137,22 @@ https://leetcode.com/problems/largest-divisible-subset/#/description
 https://leetcode.com/problems/water-and-jug-problem/#/description
 
 巨硬笔试题，数论问题，挺难的！
-最大公约数GCD和最小公倍数LCM还不太会弄！一刷一次AC。但是思路理解起来还是挺费劲的！再刷！
+最大公约数GCD和最小公倍数LCM
 
 
 313: Super Ugly Number
 
 https://leetcode.com/problems/super-ugly-number/#/description
 
-比较复杂，我有个思路，但是没有想到怎么实现。看了讨论区算法才搞明白，思路不是自己的，一次AC，还要再刷！
 
 
 264: Ugly Number II
 
 https://leetcode.com/problems/ugly-number-ii/#/description
 
-和313题很像，我也是用的313题的方法，效率还不错，一刷AC。
+两种解法
+Heap: 最小堆
+DP: dp[i] = min(dp[p2] * 2, dp[p3] * 3, dp[p5] * 5)
 
 
 532: K-diff Pairs in an Array
