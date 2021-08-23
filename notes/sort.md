@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/merge-intervals/?tab=Description
 
-sort。sort的第三个参数为重载了"<"的函数，可以自己写myCompare函数实现"<"逻辑，
+sort。sort的第三个参数为重载了`<`的函数，可以自己写myCompare函数实现`<`逻辑，
 也可以写函数类用于构建函数对象，也可以利用C++11新特性lambda表达式实现，
 编译器会根据lambda表达式生成函数对象。
 
