@@ -1,4 +1,5 @@
-#include "data_buffer.cpp"
+#include <iostream>
+#include "data_buffer.h"
 
 int main() {
     data_buffer *b  = new(data_buffer);

@@ -1,4 +1,4 @@
 #!/bin/sh
 
+make all && ./data_buffer
 
-g++ -std=c++11 -v main.cpp -o data_buffer && ./data_buffer

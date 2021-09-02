@@ -1,6 +1,6 @@
 #pragma once
-#include "ring.cpp"
-#include "intervals.cpp"
+#include "ring.h"
+#include "intervals.h"
 
 class data_buffer {
 public:
