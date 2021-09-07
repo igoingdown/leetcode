@@ -13,3 +13,4 @@ output/
 *.out.*
 *.out
 *.dSYM/
+*.o
