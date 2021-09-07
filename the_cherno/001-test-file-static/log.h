@@ -1,2 +1,2 @@
 #pragma once
-static void log();
+void log();
