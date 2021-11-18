@@ -1,12 +1,12 @@
 .text
 .global start
 
-msg:
+db:
 	.ascii "hello, world\n"
 
 start:
 	movl $1, %edi
-	leaq msg(%rip), %rsi
+	leaq db(%rip), %rsi
 	movl $13, %edx
 	movl $0x02000004, %eax
 	syscall
