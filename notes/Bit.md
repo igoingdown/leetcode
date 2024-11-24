@@ -73,19 +73,20 @@
 
 [https://leetcode.com/problems/number-complement/description/](https://leetcode.com/problems/number-complement/description/)
 
-位操作，求补码，从符号位开始0变为1，然后取反。
+位操作，求补码，高位连续的 0 全换成 1，其他位不变，最后整体取反。
 
 342: Power of Four
 
 [https://leetcode.com/problems/power-of-four/description/](https://leetcode.com/problems/power-of-four/description/)
 
-位操作。
+位操作。4 的幂次二进制表示中只有一个 1（n&(n-1)==0）且在奇数位上，且均 > 0
 
 318: Maximum Product of Word Lengths
 
 [https://leetcode.com/problems/maximum-product-of-word-lengths/description/](https://leetcode.com/problems/maximum-product-of-word-lengths/description/)
 
-位操作。
+位操作。将单词按字母的出现情况映射为一个二进制数，二进制位为 1 表示该字母出现过，二进制位为 0 表示该字母没有出现过。
+然后遍历所有的单词对，判断两个单词的二进制数按位与是否为 0，为 0 表示没有相同的字母，计算长度乘积并更新最大值。
 
 50: Pow(x, n)
 
