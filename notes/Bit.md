@@ -48,13 +48,14 @@
 
 [https://leetcode.com/problems/convert-a-number-to-hexadecimal/description/](https://leetcode.com/problems/convert-a-number-to-hexadecimal/description/)
 
-位操作，注意0的问题，算术右移和逻辑右移的区别。
+位操作，先把负数转为无符号数，0 提前处理掉，一个小技巧是将数字到字母的映射通过字符串表示（简化版 map）。
 
 421: Maximum XOR of Two Numbers in an Array
 
 [https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/description/](https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/description/)
 
-位操作，Math。
+位操作，构建 trie，树的节点有 2 个子节点；每个根节点到叶子节点表示数组中的数，数字的每一位
+为 0 或 1，分别对应 trie 的第 0或 1 个子节点。完成构建后，对于每个数；从最高位找出与该数异或的最大值。
 
 190: Reverse Bits
 

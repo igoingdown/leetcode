@@ -1,19 +1,56 @@
 class Solution {
+    class TreeNode {
+public:
+    TreeNode* children[2];
+    TreeNode() {
+        children[0] = nullptr;
+        children[1] = nullptr;
+    }
+};
+class Trie {
+public:
+    TreeNode *root;
+    Trie() {
+        root = new TreeNode();
+    }
+    void insert(int n) {
+        TreeNode *node = root;
+        for (int i = 31; i >= 0; --i) {
+            int bitNum = (n >> i) & 1;
+            if (!node->children[bitNum]) {
+                node -> children[bitNum] = new TreeNode();
+            }
+            node = node -> children[bitNum];
+        }
+    }
+
+    int findMaxXor(int n) {
+        int res = 0;
+        TreeNode *node = root;
+        for (int i = 31; i >= 0; --i) {
+            int bitNum = (n >> i) & 1;
+            if (node->children[1-bitNum]) {
+                res |= (1 << i);
+                node = node -> children[1-bitNum];
+            } else {
+                node = node -> children[bitNum];
+            }
+        }
+        return res;
+    }
+
+};
+
+
 public:
     int findMaximumXOR(vector<int>& nums) {
-        int mask = 0, res = 0, tmp = 0;
-        set<int> s;
-        for (int i = 31; i >= 0; i--) {
-            mask |= (1 << i);
-            for (int n : nums) s.insert(n & mask);
-            tmp = res | (1 << i);
-            for (auto i = s.begin(); i != s.end(); i++) {
-                if (s.find((*i) ^ tmp) != s.end()) {
-                    res = tmp;
-                    break;
-                }
-            }
-            s.clear();
+        Trie *t = new Trie();
+        for (int num : nums) {
+            t->insert(num);
+        }
+        int res = 0;
+        for (int num : nums) {
+            res = max(res, t->findMaxXor(num));
         }
         return res;
     }
