@@ -4,7 +4,7 @@
 
 <https://leetcode.com/contest/weekly-contest-75/problems/champagne-tower/>
 
-BFS。
+双 vector 实现 BFS。先把第一层放满，自顶向下把每一层过满的香槟杯倒入下一层，分流的规则是下层的左子和右子分别获得一半溢出的香槟。
 
 102: Binary Tree Level Order Traversal
 
