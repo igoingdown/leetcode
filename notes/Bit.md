@@ -38,7 +38,11 @@
 
 [https://leetcode.com/problems/bitwise-and-of-numbers-range/description/](https://leetcode.com/problems/bitwise-and-of-numbers-range/description/)
 
-位操作
+暴力法：遍历并进行与操作，时间复杂度O(n)。
+位操作：取 m 和 n 的公共前缀，公共前缀后面补 0 就是答案。
+公共前缀后面的部分 每一位在连续数字序列中一定有 0 ，只要有 0 这一位所有数与的结果一定为 0 ，
+这一点可以用反证法证明，假设公共前缀后某一位没有 0，取公共前缀不变其他位均为 0 的数
+这个数一定在序列中，与假设的数的连续数字序列中没有 0 矛盾。
 
 405: Convert a Number to Hexadecimal
 
