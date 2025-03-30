@@ -2,22 +2,26 @@ class Solution {
 public:
     bool canVisitAllRooms(vector<vector<int>>& rooms) {
         int n = rooms.size();
-        vector<bool> dp(n);
-        dp[0] = true;
-        queue<int> q, next;
-        q.push(0);
-        while(!q.empty()) {
-            while (!q.empty()) {
-                int cur = q.front(); q.pop();
-                for (int room : rooms[cur]) {
-                    if (!dp[room]) next.push(room);
+        vector<bool> visited(n);
+        queue<int> cur, next;
+        visited[0] = true;
+        cur.push(0);
+        while (!cur.empty()) {
+            while (!cur.empty()) {
+                int node = cur.front(); cur.pop();
+                for (auto key: rooms[node]) {
+                    if (!visited[key]) {
+                        next.push(key);
+                    }
+                    visited[key] = true;
                 }
-                dp[cur] = true;
             }
-            swap(q, next);
+            swap(cur, next);
         }
-        for (const bool &open : dp) {
-            if (!open) return false;
+        for (auto b : visited) {
+            if (!b) {
+                return false;
+            }
         }
         return true;
     }

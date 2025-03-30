@@ -4,30 +4,37 @@
  *     int val;
  *     TreeNode *left;
  *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
 class Solution {
 public:
     vector<int> largestValues(TreeNode* root) {
         vector<int> res;
-        if (!root) return res;
-        queue<TreeNode*> q;
-        q.push(root);
-        int local_max = INT_MIN, last_level = 1;
-        while (!q.empty()) {
-            auto cur = q.front();
-            q.pop();
-            last_level--;
-            local_max = max(local_max, cur->val);
-            if (cur->left) q.push(cur->left);
-            if (cur->right) q.push(cur->right);
-            if (last_level == 0) {
-                res.push_back(local_max);
-                local_max = INT_MIN;
-                last_level = q.size();
+        queue<TreeNode*> cur, next;
+        if (root) {
+            cur.push(root);
+        }
+        while(!cur.empty()) {
+            int layer_max = numeric_limits<int>::min();
+            while (!cur.empty()) {
+                TreeNode *node = cur.front(); cur.pop();
+                if (node) {
+                    layer_max = max(layer_max, node->val);
+                    if (node->left) {
+                        next.push(node->left);
+                    }
+                    if (node->right) {
+                        next.push(node->right);
+                    }
+                }
             }
+            res.push_back(layer_max);
+            swap(cur, next);
         }
         return res;
+
     }
 };

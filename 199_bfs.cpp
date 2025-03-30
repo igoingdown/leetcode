@@ -4,27 +4,34 @@
  *     int val;
  *     TreeNode *left;
  *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
 class Solution {
 public:
     vector<int> rightSideView(TreeNode* root) {
         vector<int> res;
-        if (!root) return res;
-        queue<TreeNode*> q;
-        q.push(root);
-        int last_level = 1;
-        while (!q.empty()) {
-            auto cur = q.front();
-            q.pop();
-            last_level--;
-            if (cur->left) q.push(cur->left);
-            if (cur->right) q.push(cur->right);
-            if (last_level == 0) {
-                res.push_back(cur->val);
-                last_level = q.size();
+        queue<TreeNode*> cur, next;
+        if (root) {
+            cur.push(root);
+        }
+        while(!cur.empty()) {
+            while(!cur.empty()) {
+                TreeNode* node = cur.front(); cur.pop();
+                if (cur.empty()) {
+                    // 将最右侧元素写入结果
+                    res.push_back(node->val);
+                }
+                 if (node->left) {
+                     next.push(node->left);
+                 }
+                 if (node->right) {
+                     next.push(node->right);
+                 }
             }
+            swap(cur, next);
         }
         return res;
     }
