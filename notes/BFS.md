@@ -58,6 +58,7 @@ BFS。
 
 https://leetcode.com/contest/weekly-contest-86/problems/guess-the-word/
 
+不太常见，找工作刷题一开始过滤掉这种题。
 BFS，实际上是个概率题，初始情况下，随机选定一个word作为target，
 wordlist中的每个词与target match的character的个数分别为0,1,2,...,6。
 概率分布为$\{1 * 25^6/26^6, 6 * 25^5/ 26^6, ..., 1 * 1/ 26^6\}$，
