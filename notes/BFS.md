@@ -37,7 +37,7 @@ https://leetcode.com/problems/word-ladder-ii/
 841: Keys and Rooms
 https://leetcode.com/contest/weekly-contest-86/problems/keys-and-rooms/
 
-BFS. 从0号房间取钥匙，然后访问0号房间中钥匙对应的房间，以此类推，典型的BFS，一开始没反应过来！
+BFS. 从0号房间取钥匙，然后访问0号房间中钥匙对应的房间，以此类推，典型的BFS！
 
 
 515: Find Largest Value in Each Tree Row
@@ -95,7 +95,7 @@ BFS直到状态遍历完或者集齐所有的钥匙为止，BFS的层数就是�
 https://leetcode.com/problems/remove-invalid-parentheses/description/
 
 * DFS: 注意从左向右走，分三种情况考虑，左括号，右括号和字母。
-* BFS
+* BFS：每层都是一组候选，上层元素删除一个左括号或右括号成为下层候选，生成候选用set去重
 
 
 851: Loud and Rich
@@ -222,7 +222,7 @@ https://leetcode.com/problems/average-of-levels-in-binary-tree/description/
 
 https://leetcode.com/problems/minimum-height-trees/description/
 
-BFS。graph的拓扑排序。
+BFS。graph的拓扑排序。有2 个重要性质，叶子节点无法成为最小高度树的根（否则邻接点作为根会更优）;每次删除所有叶子节点后，剩余图的拓扑性质不变。每次删除叶子节点，记录每一层节点，返回最后一层节点。
 
 
 623: Add One Row to Tree
