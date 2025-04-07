@@ -54,7 +54,13 @@
 
 [https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/description/](https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/description/)
 
-位操作，构建 trie，树的节点有 2 个子节点；每个根节点到叶子节点表示数组中的数，数字的每一位
+解法 1：原生位操作
+诸位处理：从最高位（第30位）到最低位依次处理。
+前缀集合：用掩码提取当前处理的前缀位，存入哈希集合。
+假设验证：假设当前位为1，计算临时最大值 temp，若存在两个前缀异或等于 temp，则更新最大值。
+
+解法 2：trie 优化
+构建 trie，树的节点有 2 个子节点；每个根节点到叶子节点表示数组中的数，数字的每一位
 为 0 或 1，分别对应 trie 的第 0或 1 个子节点。完成构建后，对于每个数；从最高位找出与该数异或的最大值。
 
 190: Reverse Bits
