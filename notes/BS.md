@@ -4,7 +4,10 @@
 
 <https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/>
 
-BS。
+BS，核心是比较右端点和中间值缩小查找范围，针对无法判断的场景退化为单步前进。
+BS 注意几个点
+1. low 不可以赋值为 mid，否则会无限循环
+2. 边界退出条件，一般是 low < high，取决于逼近方式和寻找的元素特征。
 
 164: Find Minimum in Rotated Sorted Array
 
@@ -92,8 +95,14 @@ BS。可以直接用`upper_bound`或者`lower_bound`来做。
 
 https://leetcode.com/problems/search-for-a-range/?tab=Description
 
-BS。BS查找下界和上界两类问题存在区别，区别在于求下界时mid要靠近low，求上界的时候mid要靠近high；
-这种区别决定在每次循环更新要找的那个界限（low或者high）。也可以直接使用STL的`upper_bound`和`lower_bound`。
+BS。BS查找下界和上界思路相同，一个小小的窍门求下界时mid靠近low（low+1=high时，low 的计算结果为 mid），求上界时mid靠近high；
+如果不使用这个窍门，求上界逻辑会比较复杂，当 a[mid]==target时，需要额外判定a[mid+1]和 target 的关系
+
+具体方式：
+* 求下界：mid = (low + high) / 2
+* 求下界：mid = (low + high + 1) / 2
+
+也可以直接使用STL的`upper_bound`和`lower_bound`。
 
 33: Search in Rotated Sorted Array
 
@@ -108,7 +117,7 @@ $a_{mid}$在前半部分的条件就是$a_{low} \leq a_{mid}$。
 
 https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
 
-BS。同33，只是数组中存在重复元素，$a[mid] = a[low]$时分类不明显，直接拎出来，令`low++`(相当于遍历)，其余不变。
+BS。同33，只是数组中存在重复元素，$a[mid] = a[high]$时分类不明显，直接拎出来，令`high--`(相当于遍历)，其余不变。
 
 
 875: Koko Eating Bananas
