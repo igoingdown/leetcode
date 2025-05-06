@@ -14,73 +14,68 @@
 
 <https://leetcode.com/problems/unique-paths-ii/?tab=Description>
 
-DP。同62。
+* DP，同62。
 
 64: Minimum Path Sum
 
 <https://leetcode.com/problems/minimum-path-sum/?tab=Description>
 
-DP。同62。
+* DP，同62。
 
 120: Triangle
 
 <https://leetcode.com/problems/triangle/>
 
-DP。自底向上，每个问题只有两个小的子问题，同62。
+* DP
+  * 自底向上：每个问题只有两个小的子问题，同62。
 `dp[c] = min(dp[c], dp[c+1]) + triangle[r][c]`，$O(N^2)$。
+  * 自顶向下：每个问题都是上一层的两个相邻父节点的较小值加上当前节点值
 
 
 152: Maximum Product Subarray
 
 <https://leetcode.com/problems/maximum-product-subarray/>
 
-DP。用`f_max[i],f_min[i]`分别记录以`nums[i]`结尾的sub-array的乘积最大值和最小值。
-初始化`f_max[0] = nums[0]; f_min[0] = nums[0];`，然后遍历`i`$\in$`[1, nums.size()）`，
-更新规则分别为`f_max[i] = max(nums[i], max(f_max[i - 1] * nums[i], f_min[i - 1] * nums[i]));`
-和`f_min[i] = min(nums[i], min(f_max[i - 1] * nums[i], f_min[i - 1] * nums[i]));`。
-对本题比较熟练的情况下，可以使用2个变量来代替1维DP。
+* DP
+  * 使用两个数组`max_dp`和`min_dp`分别维护到第`i`个元素为止的最大和最小乘积。对于第 `i+1`个元素，有3种可能得到最大乘积
+    * 当前元素本身
+    * 当前元素乘以之前的最大值
+	* 当前元素乘以之前的最小值
+  * 以上3种情况的最大和最小值就是当前的max_dp和min_dp的值，同时 max_dp 的值也是全局最大值。
+  * 对本题比较熟练的情况下，可以使用2个变量来代替1维DP。
+  * 子数组的和、乘积等聚合性质都可以用这种思路，算法基础是递推关系明确，规模为 `n+1` 的问题可以降级为规模为`n`的子问题。记录包含第`n`个元素的子数组的聚合信息和全局最值，可以保证不重不漏，考虑加入第 `n+1`个元素的情况，只需考虑包含第 `n+1`个元素的新组合，不包含第`n+1` 元素的组合更小规模的子问题已经全部解决了。
 
 
 53: Maximum Subarray
 
 <https://leetcode.com/problems/maximum-subarray/?tab=Description>
 
-DP，可以降为0维DP，即kadane算法。设有长度为$n$的数组$a$用`sum`和`res`分别记录当前的累加和与最终的结果。
-从 ![](http://latex.codecogs.com/gif.latex?{a_1}) 开始累加，当加到$a_i$时候如果`sum < 0`，将`sum`清零，相当于把前面的一个连续子数组扔掉，如果`sum > 0`更新result。
-
-这样做的原因是如果上述算法中出现$\sum_{k = i}^{j}a_k < 0$，
-则必有$\sum_{k=i}^{j+\lambda}a_k < a_{j+\lambda}, \lambda \in [1, n-j]$ 因此可以将$a[i,j]$这部分直接扔掉，从`j+1`开始继续查找和最大的连续子数组。
-
+* DP，同 152
 
 363: Max Sum of Rectangle No Larger Than K
 
 <https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/>
 
-BS，DP：本题实际上是53题的升级版，BS的解法实际上糅合了kadane算法（即53题经典解法）和有界最大连续子数组。
-首先通过遍历所有可能的矩形左右边的组合，然后用dp求和，因为多加一列的话可以应用之前几列的求和结果。
-对于每行的和，应用最大kadane算法的思想可以得出和最大的矩形，而应用有界最大子数组算法可以求出有界情况下和最大的矩形。
-时间复杂度：$O((col)^2row\log(row))，空间复杂度为O(row)。
-暴力解法是遍历每个矩形可能的左右、上下边，利用dp计算累加和，时间复杂度O((row)^2(col)^2)，空间复杂度为O(row)。
+* BS：糅合有界前缀和，跟 DP 关系不大，DP 适合解决最值，有界值还是要用二分查找和前缀和
 
 
 72: Edit Distance
 
 <https://leetcode.com/problems/edit-distance/description/>
 
-DP。用二维数组记录$s[0,i]$与$p[0,j]$的距离。
-* 初始化: `dp[0][j] = j`，`dp[i][0] = i`
-* 二重循环递推: 
-	* `s[i] == p[j]`：`dp[i][j] = min(dp[i-1][j-1], 1+dp[i-1][j], 1+dp[i][j-1])`，`min`函数中的三项分别表示在该处对进行**改、增、删**的操作。
-	* `s[i] != p[j]`：`dp[i][j] = min(1+dp[i-1][j-1], 1+dp[i-1][j], 1+dp[i][j-1])`，`min`函数中的三项分别表示在该处对进行**改、增、删**的操作。
-	
-	上述两种情况的区别在于**改**操作导致的结果不同，相同的时候是不需要改的，所以少了`+1`。
+* DP。用二维数组记录$s[0,i]$与$p[0,j]$的距离。
+  * 字符相等​：无需操作，直接继承前一步结果：`dp[i][j] = dp[i-1][j-1]`
+  * ​字符不等​：取三种操作的最小值 + 1，dp[i][j] = min(插入, 删除, 替换) + 1。其中：
+    * ​插入​：dp[i][j-1] + 1（在 word1 尾部插入 word2[j]）
+    * 删除​：dp[i-1][j] + 1（删除 word1[i]）
+	* 替换​：dp[i-1][j-1] + 1（将 word1[i] 替换为 word2[j]）
 
 486: Predict the Winner
 
 <https://leetcode.com/problems/predict-the-winner/description/>
 
-DP。二维DP比一维DP更易于理解。两个维度坐标含义相同，填表方式是先填长度比较小的范围，沿对角线填表。
-`dp[i][j] = min(nums[i] - dp[i + 1][j], nums[j] - dp[i][j - 1])`，每次都是1号玩家先取，
+* DP。二维DP比一维DP更易于理解。两个维度坐标含义相同，填表方式是先填长度比较小的范围，沿对角线填表。DP状态定义​：`dp[i][j]` 表示当剩余数组为 nums[i...j] 时，当前玩家与对手的得分差的最大值 
+`dp[i][j] = max(nums[i] - dp[i + 1][j], nums[j] - dp[i][j - 1])`，每次都是1号玩家先取，
 1号玩家取完之后2号玩家就成了“1”号玩家，但是对于1号玩家来说，2号玩家充当“1”号玩家时得到的分数实际上就是1号玩家失掉的分数。
 当两者都是用最优的策略进行游戏时，一个玩家取了一个数之后，问题规模减1，而问题的结构是完全相同的，于是有了上式。
 
