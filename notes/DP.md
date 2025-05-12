@@ -83,16 +83,14 @@
 
 <https://leetcode.com/problems/jump-game-ii/description/>
 
-DP,BFS。
-
-* DP： 复杂度为$O(N^2)$，自己写的DP，遍历nums，填充并修改dp，如果dp[i]都有效，遍历[1, nums[i]]，更新dp[i+j]，这种方式会超时。师姐的dp跟我不太一样，为了得到dp[i]，遍历dp[0, i-1]，如果一步可以到i则直接跳出，师姐的dp思路才是真正的dp思路。
-* BFS：时间复杂度$O(N)$，从0开始，对于每层更新能到达的最远的元素，然后从那个元素开始，直到能够到最后一个元素位置。
+* DP： 复杂度为$O(N^2)$，自己写的DP，遍历nums，填充并修改dp，如果dp[i]都有效，遍历[1, nums[i]]，更新dp[i+j]，这种方式会超时，时间复杂度为。
+* **贪心算法**：时间复杂度$O(N)$，从0开始，计算每增加一步能到达的最远的位置，如果这个最远元素包括 n-1，当遍历到上一步到达的最右侧时，步数+1。
 
 55: Jump Game
 
 <https://leetcode.com/problems/jump-game/?tab=Description>
 
-同45。DP，BFS两种方法都可以，还有一种直接循环法，是BFS的简化版。
+同45。DP， 贪心两种方法都可以，还有一种直接循环法，是BFS的简化版。
 * 直接循环法：遍历数组中的每个元素$a_i$，不断更新能到达的最远处`max_reach`，遍历过程中还要保证$i\leq$`max_reach`。最后返回`i==a.size()`。
 
 85: Maximal Rectangle

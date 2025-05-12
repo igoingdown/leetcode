@@ -34,12 +34,13 @@ Hashmap，已知距离的范围，用vector对所有的距离进行计数，最�
 
 <https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/description/>
 
-Hashmap。使用`map`记录`val`到`val`在`nums`中出现的index的list `indices`的映射，
-`nums`记录的是一个个的pair，由`val`和`val`在`indices`中对应的index组成。
-有如下的关系`map[nums[i].first][nums[i].second] = i`。
-`random`函数只要随机从nums中任选一个即可，因为这种情况下数组中每个元素被选中的概率相同，
-满足`一个val的被选中的概率与其出现的次数成线性关系`的条件。
-[详细思路看这里](https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/discuss/85541/C++-128m-Solution-Real-O(1)-Solution)。
+* Hashmap
+  * 使用`map`和 `set`记录下标，加速访问与删除操作，`map`的 key 为数组元素，`val` 为 `set`，`set`记录`val`在 `nums`的下标
+
+  * 插入和删除都只能从数组 `nums` 的尾部进行，因此删除的不是数组尾部元素时，需要先调换再删除，确保时间复杂度为 $O(1)$
+
+  * `random`函数只要随机从nums中任选一个即可，因为这种情况下数组中每个元素被选中的概率相同，
+
 
 
 873: Length of Longest Fibonacci Subsequence
@@ -50,7 +51,7 @@ Hashmap。给定一个数组$A$，找出其中最长的满足斐波那契规律�
 
 由于题目只需要知道最长的斐波那契子序列的长度，可以暴力解决。
 为了方便查找，将数组拷贝一份到Hashmap中，遍历所有可能的子序列，
-开头分别是$A_i$和$A_j$($i\<j$)，如果Hashmap包含$sum = A_i + A_j$，则令$A_i = A_j, A_j = sum$，
+开头分别是$A_i$和$A_j$，$i<j$，如果Hashmap包含$sum = A_i + A_j$，则令$A_i = A_j, A_j = sum$，
 重复以上过程，记录可能得到的最大长度，时间复杂度为$O(N_3)$。
 
 
