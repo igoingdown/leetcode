@@ -122,19 +122,12 @@ HashMap,Math。上题的逆过程，扫一遍字符串，如果当前字符比�
 
 Hashmap和list。
 
-* 主要利用了`STL`的`list`基于双向循环链表实现的性质及其提供的`splice`接口，因为`list`底层使用了双向循环链表，
-插入、删除都可以控制在O(1)。`splice`接口可以直接将`list`中刚刚使用过的元素调度到`list`的首部，这是LRU的核心思想。
-* 而基于`hashmap`的查找、插入和删除同样是O(1)。
+* `STL`的`list`基于双向循环链表实现，不用自己写链表，简化了代码
+* `list`提供`splice`接口，`splice` 意为“通过交织两股绳子的末端实现连接”，这一操作被水手广泛用于绳结的加固。其核心含义是 ​​“无痕连接”​​ 或 ​​“重组”​，实际上就是双向链表的节点插入操作的细化，先拆链，再插链，有 3 种重载实现形式，可以插入单点、部分链表和完整链表。
+* 将`list`中刚刚使用过的元素调度到`list`的首部，这是LRU的核心思想
 * `put`操作的实现中，不仅要修改`list`和相应的迭代器，还有`list`中的值和`map`。
 * 这种实现中元素优先级越高，使用越频繁，在`list`中的位置越靠前，删除只会在`list`的尾部进行，而`hashmap`的删除操作随时随时都可以进行。
-* `list<pair<int, int>> items`存储K-V对
-* `unordered_map<int, list<pair<int, int>>::iterator> cache`存储key到`list`中key-value对的迭代器的map，可以脑补图形。
-* `splice`函数的三种原型:
-	* `void splice (iterator position, list& x);`
-	* `void splice (iterator position, list& x, iterator i);`
-	* `void splice (iterator position, list& x, iterator first, iterator last);`
-	三种原型的作用都是将`x`中的一个或多个元素插入到`position`处，并将`x`中原来的元素删除，这个函数很好实现，就是双向循环链表的拼接。
-
+* 注意：`stl`的`front`和`back`的实现都是返回元素的可变引用，`begin`和 `end`的实现均返回迭代器，且`end`遵循迭代器左闭右开约定，返回的是最后一个元素的后一个位置
 
 290: Word Pattern
 
