@@ -1,20 +1,22 @@
 class Solution {
 public:
     int longestPalindrome(string s) {
-        vector<int> f(52);
-        for (char c: s) {
-            if (islower(c)) f[c - 'a']++;
-            else if (isupper(c)) f[c - 'A' + 26]++;
-        }
-        int res = 0, flag = 0;
-        for (int n : f) {
-            if ((n & 1) == 0) res += n;
-            else {
-                res += n - 1;
-                flag = 1;
+        int a[100] = {};
+        int res = 0;
+        for (auto c: s) {
+            if (a[c - 'A']) {
+                res += 2;
+                a[c - 'A']--;
+            } else {
+                a[c - 'A']++;
             }
         }
-        res += flag;
+        for (int i = 0; i < 52; i++) {
+            if (a[i]) {
+                res++;
+                break;
+            }
+        }
         return res;
     }
 };

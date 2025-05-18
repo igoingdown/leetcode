@@ -1,28 +1,30 @@
 class Solution {
 public:
-    bool wordPattern(string pattern, string str) {
-        map<char, string> m1;
-        map<string, char> m2;
-        stringstream ss(str);
-        string tmp;
-        vector<string> strs;
-        while (getline(ss, tmp, ' ')) {
-            strs.push_back(tmp);
-        }
-        int m = strs.size(), n = pattern.size();
-        if (m != n) return false;
-        for (int i = 0; i < n; i++) {
-            if (m1.find(pattern[i]) == m1.end()) {
-                if (m2.find(strs[i]) != m2.end()) return false;
-                else {
-                    m1[pattern[i]] = strs[i];
-                    m2[strs[i]] = pattern[i];
-                }
-            } else {
-                if (m2.find(strs[i]) == m2.end()) return false;
-                else if (m2[strs[i]] != pattern[i] || m1[pattern[i]] != strs[i]) return false;
+    bool wordPattern(string pattern, string s) {
+        stringstream ss(s);
+        map<char, string> p_to_s;
+        map<string, char> s_to_p;
+        string word;
+        int pos = 0;
+        while (ss >> word) {
+            if (pos >= pattern.size()) {
+                return false;
             }
+            if (p_to_s.find(pattern[pos]) == p_to_s.end() && s_to_p.find(word) == s_to_p.end()) {
+                p_to_s[pattern[pos]] = word;
+                s_to_p[word] = pattern[pos];
+                ++pos;
+                continue;
+            }
+            if (p_to_s.find(pattern[pos]) != p_to_s.end() && p_to_s[pattern[pos]] != word) {
+                return false;
+            }
+            if (s_to_p.find(word) != s_to_p.end() && s_to_p[word] != pattern[pos]) {
+                return false;
+            }
+            ++pos;
         }
-        return true;
+
+        return pos == pattern.size();
     }
 };

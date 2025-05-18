@@ -134,6 +134,7 @@ Hashmap和list。
 <https://leetcode.com/problems/word-pattern/description/>
 
 双map。
+* 很好的一道题，注意双向 map 匹配和size 匹配，用 stringstream 挨个读很容易漏掉最后一步 size 匹配。
 
 
 771: Jewels and Stones
@@ -141,7 +142,6 @@ Hashmap和list。
 <https://leetcode.com/contest/weekly-contest-69/problems/jewels-and-stones/>
 
 HashMap。
-
 
 
 383: Ransom Note
@@ -176,22 +176,10 @@ HashMap。`Solution`类内部定义的`MyCompare`要用static关键字，
 因为在调用排序函数的时候编译器没有`Solution`类对象信息!map使用[]操作查询时，
 不存在的键会自动生成！而值会调用相应的默认构造函数！
 
+
 760: Find Anagram Mappings
 
 https://leetcode.com/contest/weekly-contest-66/problems/find-anagram-mappings/
-
-291: Word Pattern II
-
-https://www.programcreek.com/2014/07/leetcode-word-pattern-ii-java/
-
-双map和dfs结合。strStart应该更新为i + 1而不是i。
-
-
-734: Sentence Similarity
-
-https://leetcode.com/contest/weekly-contest-60/problems/sentence-similarity/
-
-Hashmap，没理解题意，sentence相似要求每个位置的word都相似！第一次用python刷题，比c++快多了，在数据结构涉及set，string等结构时，python非常方便。
 
 
 291: Word Pattern II
@@ -214,7 +202,6 @@ https://leetcode.com/contest/weekly-contest-87/problems/hand-of-straights/
 Hashmap。跟上面的那道题有异曲同工之妙，因为map基于红黑树实现，默认根据key的大小排序！
 用map记录数组中数字的频率，每组的起点一定是当前map的key的起点，
 每组要消耗一个数，消耗完就将其移除这个key。只要出现一次key的缺失，则失败！
-
 
 
 811: Subdomain Visit Count

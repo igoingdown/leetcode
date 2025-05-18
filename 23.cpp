@@ -1,49 +1,39 @@
-#include <iostream>
-#include <vector>
-#include <queue>
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 
-using namespace std;
-
-
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
-};
-
-ListNode* mergeKLists(vector<ListNode*>& lists);
-
-int main() {
-    ListNode* a = new ListNode(0);
-    ListNode* b = new ListNode(2);
-    vector<ListNode*> v = {a, b};
-    auto h = mergeKLists(v);
-    cout << h->val << endl;
-    return 0;
-}
-
-
-
-class Comparison{
+class myCmp {
 public:
-    bool operator() (ListNode* a, ListNode* b) {
+    bool operator() (ListNode *a, ListNode *b) {
         return a->val > b->val;
     }
 };
-
-
-ListNode* mergeKLists(vector<ListNode*>& lists) {
-    priority_queue<ListNode*, vector<ListNode*>, [](const ListNode* a, const ListNode* b) {return a->val > b->val;}> q;
-    for (auto n : lists) {
-        if (n) q.push(n);
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        // 使用函数模版类，实例化之后出来的就是入参 2 个指针，出参为 bool 的函数对象
+        priority_queue<ListNode*, vector<ListNode*>, myCmp> q;
+        for (auto n : lists) {
+            if (n) {
+                q.push(n);
+            }
+        }
+        ListNode *head = new ListNode(), *tmp = head;
+        while (!q.empty()) {
+            tmp->next = q.top();
+            tmp = tmp->next;
+            q.pop();
+            if (tmp->next) {
+                q.push(tmp->next);
+            }
+        }
+        return head->next;
     }
-    ListNode* head = new ListNode(0), *tmp = head;
-    while (!q.empty()) {
-        auto cur = q.top();
-        q.pop();
-        tmp->next = cur;
-        tmp = cur;
-        if (cur->next) q.push(cur->next);
-    }
-    return head->next;
-}
+};
