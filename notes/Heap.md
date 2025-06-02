@@ -54,7 +54,7 @@ Heap。这是个非常好的题目！场景是给公司制定招人策略，给�
 
 https://leetcode.com/problems/find-k-pairs-with-smallest-sums/description/
 
-Heap。要先把所有可能的组合都存下了，然后再用堆排序找出前k个，要注意提升效率。
+Heap。将 `nums1` 中的每个元素与 `nums2` 的组合视为一个有序链表，视为 `nums1` 长度个链表进行归并，选择小根堆，找出 top k 个。
 
 
 692: Top K Frequent Words
