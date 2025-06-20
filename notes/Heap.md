@@ -18,8 +18,6 @@ map基于红黑树实现，自动对key进行排序，而且可以通过迭代�
 保证队列中存有每个list中的最小的数，队列的队头和队尾之间的距离的最小值就是题目的解，每次更新结果后，
 扔掉队头，并将队头所在的list中下一个元素添加到队列中。将map作为可以两端同时访问的priority_queue的想法真是要逆天了！
 
-
-
 295: Find Median from Data Stream
 
 https://leetcode.com/problems/find-median-from-data-stream/description/
@@ -27,8 +25,6 @@ https://leetcode.com/problems/find-median-from-data-stream/description/
 Heap。
 * 使用小根堆存大的那部分，用大根堆存储较小的部分
 * 保持大根堆的 size >= 小根堆的 size
-
-
 
 857: Minimum Cost to Hire K Workers
 
@@ -49,20 +45,17 @@ Heap。这是个非常好的题目！场景是给公司制定招人策略，给�
 这是因为当前候选人的`wage/quality`一定是最大的。
 当q的候选人数大于K(为K+1)时，先把quality最大的候选人出队列(不要他了，因为他太优秀了)，然后按前一种情况处理即可。
 
-
 373: Find K Pairs with Smallest Sums
 
 https://leetcode.com/problems/find-k-pairs-with-smallest-sums/description/
 
 Heap。将 `nums1` 中的每个元素与 `nums2` 的组合视为一个有序链表，视为 `nums1` 长度个链表进行归并，选择小根堆，找出 top k 个。
 
-
 692: Top K Frequent Words
 
 https://leetcode.com/problems/top-k-frequent-words/description/
 
 Heap。基于heap sort的方法解决。
-
 
 264: Ugly Number II
 
@@ -71,4 +64,3 @@ https://leetcode.com/problems/ugly-number-ii/#/description
 两种解法
 Heap: 最小堆
 DP: dp[i] = min(dp[p2] * 2, dp[p3] * 3, dp[p5] * 5)
-
