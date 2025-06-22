@@ -20,8 +20,7 @@
 
 <https://leetcode.com/problems/swap-nodes-in-pairs/description/>
 
-链表尾插法。一次走两步，注意使用`dummy_node`时，
-如果原链表只有一个元素直接返回`dummy_node->next`是错误的，要对这种情况进行判别。
+链表：尾插法，dummy node 全局不动使用 tmp 遍历链表，每次走 2步。需要调整节点顺序搞4个变量 abcd 分别表示链表的 4 个节点，依次调整其next 指针即可，逻辑更清晰。
 
 328: Odd Even Linked List
 
