@@ -1,156 +1,170 @@
-# LeetCode Practice Repository - Architecture Overview
+# LeetCode Solutions Architecture Overview
 
 ## Project Overview
 
-This repository is a comprehensive collection of LeetCode problem solutions and algorithm implementations, primarily focused on competitive programming and technical interview preparation. The codebase contains solutions to 800+ LeetCode problems across various difficulty levels, organized by problem number and algorithmic approach.
+This repository is a comprehensive collection of algorithmic solutions and study materials for LeetCode problems, competitive programming, and technical interview preparation. The codebase serves as a personal knowledge base for algorithmic problem-solving with implementations in multiple programming languages.
 
-**Architecture Pattern**: Monolithic structure with modular organization by:
-- Problem-specific implementations (e.g., `10.cpp`, `101.cpp`)
-- Algorithmic technique groupings (e.g., `*_bfs.cpp`, `*_dp.cpp`, `*_recursion.cpp`)
-- Domain-specific collections (interviews, books, testing)
-
-**Primary Languages**: C++ (95%), Java (3%), Python (2%)
+### Architecture
+- **Core Structure**: Organized by problem domains and solution approaches
+- **Language Support**: Primarily C++ with some Java, Python, and C# implementations
+- **Documentation**: Each solution includes detailed algorithmic explanations and complexity analysis
+- **Modular Design**: Solutions are organized by problem type, difficulty, and source (LeetCode, interviews, books)
 
 ## Build & Commands
 
-### Compilation Commands
+### Build Systems
+- **Make**: Standard Makefiles for C++ compilation
+- **C++ Standard**: C++17 across all implementations
+- **Compilation**: g++ with verbose output for debugging
+
+### Common Commands
 ```bash
-# Individual problem compilation
-g++ -std=c++17 -O2 -Wall -o problem_name problem_name.cpp
+# Build specific problem
+make -C interviews/001-quant/001-kaidutouzi/
 
-# Directory-specific builds (using provided Makefiles)
-cd the_cherno/001-test-file-static && make
-cd test_asm && make
-cd interviews/001-quant/001-kaidutouzi && make
+# Build all C++ files in directory
+make -C the_cherno/001-test-file-static/
 
-# Clean builds
-make clean
+# Clean build artifacts
+make clean -C the_cherno/001-test-file-static/
+
+# Compile single file
+g++ -std=c++17 -o solution solution.cpp
 ```
 
 ### Development Workflow
-1. **Problem Selection**: Navigate to specific problem file (e.g., `104_BFS.cpp`)
-2. **Testing**: Use provided test files in subdirectories
-3. **Compilation**: Use standard g++ with C++17 features
-4. **Execution**: Run compiled binaries directly
-
-### Testing Commands
-```bash
-# Run individual test
-g++ -std=c++17 test_file.cpp && ./a.out
-
-# Test specific algorithm implementations
-cd sort_algorithms && g++ -std=c++17 quick_sort.cpp && ./a.out
-```
+1. **Problem Selection**: Choose from organized directories by topic/difficulty
+2. **Implementation**: Write solution in appropriate language directory
+3. **Testing**: Manual testing with provided test cases
+4. **Documentation**: Add complexity analysis and algorithm explanation
 
 ## Code Style
 
 ### Naming Conventions
-- **Files**: `problem_number[_algorithm].cpp` (e.g., `104_BFS.cpp`, `104_DFS.cpp`)
-- **Variables**: snake_case for C++, camelCase for Java
-- **Functions**: descriptive names indicating algorithm (e.g., `maxDepth_DFS`, `longestPalindrome_DP`)
-- **Classes**: PascalCase (e.g., `Solution`, `TreeNode`)
+- **Files**: `problem_number_description.cpp` (e.g., `104_BFS.cpp`)
+- **Functions**: camelCase for local functions, PascalCase for classes
+- **Variables**: descriptive names, lowercase with underscores for complex names
+- **Constants**: UPPERCASE with underscores
 
 ### Formatting Standards
-- **Indentation**: 2 spaces for C++, 4 spaces for Python
-- **Braces**: Opening brace on same line for C++
-- **Comments**: Chinese for problem insights, English for code documentation
-- **Headers**: Standard library includes grouped together
+- **Indentation**: 2 spaces (C++), 4 spaces (Python)
+- **Braces**: Opening brace on same line for control structures
+- **Comments**: 
+  - Single-line for simple logic
+  - Multi-line for complex algorithms
+  - Complexity analysis at function level
+- **Headers**: Always include necessary standard library headers
 
 ### Best Practices
-- Multiple solution approaches for single problems (e.g., `*_bfs.cpp`, `*_dfs.cpp`, `*_dp.cpp`)
-- Performance annotations in filenames (e.g., `*_tle.cpp` for time limit exceeded)
-- Memory optimization indicators (e.g., `*_mle.cpp` for memory limit exceeded)
+- **Memory Management**: RAII principles for C++
+- **Error Handling**: Graceful handling of edge cases
+- **Performance**: Time/space complexity analysis for each solution
+- **Readability**: Clear variable names and algorithmic explanations
 
 ## Testing
 
-### Framework
-- **Primary**: Custom test cases within each file
-- **Secondary**: Provided test files in subdirectories
-- **Validation**: LeetCode online judge compatibility
+### Testing Approach
+- **Manual Testing**: Each solution includes test cases in comments
+- **Edge Cases**: Comprehensive coverage of boundary conditions
+- **Performance Testing**: Time complexity validation for large inputs
+- **Regression Testing**: Re-run previous solutions when refactoring
 
 ### Test Structure
-```
-test_*/
-├── test.cpp          # Main test file
-├── test              # Compiled binary
-├── graph.txt         # Test data
-└── README.md         # Test instructions
+```cpp
+// Test cases embedded in solution files
+// Example test patterns:
+// - Empty input cases
+// - Single element cases
+// - Maximum constraint cases
+// - Random test cases
 ```
 
-### Testing Guidelines
-- Include edge cases in problem-specific implementations
-- Use provided test directories for algorithm validation
-- Document time/space complexity in comments
-- Test multiple approaches for comparison
+### Testing Commands
+```bash
+# Run compiled solution
+./solution < test_input.txt
+
+# Quick validation
+echo "test_input" | ./solution
+```
 
 ## Security
 
-### Data Protection
-- **No sensitive data**: Repository contains only algorithmic solutions
-- **Public information**: All problems are from public LeetCode platform
-- **Clean commits**: No API keys or personal information
+### Security Considerations
+- **Input Validation**: All solutions validate input constraints
+- **Memory Safety**: No buffer overflows or memory leaks
+- **Integer Safety**: Overflow protection for arithmetic operations
+- **File I/O**: Safe file operations with proper error handling
 
-### Code Security
-- **Input validation**: All solutions handle edge cases (empty inputs, boundary values)
-- **Memory safety**: Proper cleanup in C++ implementations
-- **Integer overflow**: Explicit handling in numerical problems
+### Data Protection
+- **No Sensitive Data**: Repository contains only algorithmic solutions
+- **No Credentials**: No API keys, tokens, or personal information
+- **Public Content**: All content is educational and publicly shareable
 
 ## Configuration
 
 ### Environment Setup
-```bash
-# Required tools
-g++ (GCC) 7.0+ with C++17 support
-Java 8+ (for .java files)
-Python 3.6+ (for .py files)
-make utility
-
-# Optional tools
-Valgrind for memory debugging
-GDB for debugging
-```
+- **Compiler**: g++ 7.0+ with C++17 support
+- **Build Tools**: GNU Make
+- **IDE Support**: Any C++ IDE (VS Code, CLion, etc.)
+- **Platform**: Cross-platform (Linux, macOS, Windows)
 
 ### Directory Structure
 ```
 leetcode/
-├── *.cpp              # Individual problem solutions
-├── notes/             # Algorithm documentation
-├── books/             # Algorithm book implementations
-├── interviews/        # Interview preparation problems
-├── sort_algorithms/   # Sorting implementations
-├── test_*/            # Testing subdirectories
-├── the_cherno/        # C++ feature testing
-└── tree_traversal/    # Tree algorithm implementations
+├── solutions/           # LeetCode problem solutions
+├── interviews/         # Interview-specific problems
+├── books/              # Algorithm book implementations
+├── notes/              # Algorithmic concepts and summaries
+├── sort_algorithms/    # Sorting algorithm implementations
+├── tree_traversal/     # Tree traversal algorithms
+└── the_cherno/         # C++ language feature demonstrations
 ```
 
-### Build Configuration
-- **Standard**: C++17 across all C++ files
-- **Warnings**: -Wall flag enabled
-- **Optimization**: -O2 for production builds
-- **Debug**: Debug builds use -g flag
+### Configuration Files
+- **Makefiles**: Build configuration for each module
+- **No Package Management**: Pure standard library implementations
+- **No External Dependencies**: Self-contained solutions
 
-## Quick Start
+## Key Components
 
-1. **Clone repository**
-2. **Navigate to problem**: `cd leetcode && ls 100.cpp`
-3. **Compile**: `g++ -std=c++17 -O2 100.cpp`
-4. **Run**: `./a.out`
-5. **Test alternatives**: Compare `*_bfs.cpp` vs `*_dfs.cpp` approaches
+### Solution Categories
+1. **LeetCode Solutions**: Numbered solutions 1-838
+2. **Interview Problems**: Company-specific coding challenges
+3. **Algorithm Implementations**: Core data structures and algorithms
+4. **Concept Demonstrations**: C++ language features and patterns
 
-## Key Algorithm Categories
+### Language Distribution
+- **C++**: 95% of solutions (primary language)
+- **Java**: Selected solutions for specific problems
+- **Python**: Algorithmic demonstrations and scripts
+- **C#**: Microsoft-specific implementations
 
-- **Graph**: BFS, DFS, Dijkstra, Union-Find
-- **Dynamic Programming**: 1D/2D DP, state machines
-- **Trees**: Traversal, LCA, BST operations
-- **Sorting**: All major algorithms with implementations
-- **String**: KMP, Trie, sliding window
-- **Math**: Number theory, combinatorics
+### Complexity Analysis
+Each solution includes:
+- Time complexity notation
+- Space complexity analysis
+- Algorithmic approach explanation
+- Optimization techniques used
 
-## Performance Indicators
+## Getting Started
 
-File suffixes indicate performance characteristics:
-- `*_tle.cpp`: Time Limit Exceeded (for learning purposes)
-- `*_mle.cpp`: Memory Limit Exceeded
-- `*_wa.cpp`: Wrong Answer (debugging versions)
-- `*_ac.cpp`: Accepted solution
-- `*_optimized.cpp`: Performance optimized version
+1. **Clone Repository**: `git clone git@github.com:igoingdown/leetcode.git`
+2. **Navigate to Problem**: Choose from organized directories
+3. **Build Solution**: Use provided Makefiles or direct compilation
+4. **Run Tests**: Execute with sample inputs
+5. **Study Algorithm**: Read inline documentation and complexity analysis
+
+## Maintenance
+
+### Regular Updates
+- **New Problems**: Add solutions for new LeetCode problems
+- **Refactoring**: Improve existing solutions with better algorithms
+- **Documentation**: Keep complexity analysis current
+- **Testing**: Validate solutions with updated test cases
+
+### Contribution Guidelines
+- **Code Style**: Follow established naming and formatting conventions
+- **Documentation**: Include algorithm explanation and complexity analysis
+- **Testing**: Provide comprehensive test cases
+- **Review**: Ensure solutions are optimal and well-documented
