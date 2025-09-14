@@ -58,10 +58,10 @@ https://leetcode.com/problems/evaluate-reverse-polish-notation/description/
 
 单调递减栈。
 
-栈中存放的是可以作为当前水槽的左边界或底板的数的index，如果后面出现了较大的数，
+栈中存放的是可以作为当前水槽的左边界或底板的数的index，如果后面出现了较大数，
 则新的数可以作为水槽的右边界。对于要出栈的情况，即出现右边界时，
 如果栈中有两个及以上的元素，则当前栈顶可以作为水槽底板，
-底板出栈后的那个栈顶就是左边界，当前水槽可以容纳的水就是`min(left_bound, right_bound) - bottom * width`。
+底板出栈后的那个栈顶就是左边界，当前水槽可以容纳的水就是`(min(left_bound, right_bound) - bottom) * width`。
 
 
 739: Daily Temperatures

@@ -113,8 +113,8 @@ TP。同108，区别在于本题中`mid`要通过快慢指针来找。
 <https://leetcode.com/problems/longest-substring-without-repeating-characters/#/description>
 
 滑动窗口，TP。使用一个长为256的`vector`记录每个`char`上次出现的位置，
-用`start`记录当前无重复字符子串的起始位置，窗口右侧遇到一个已经访问过的`char`，
-窗口左侧`start`移到该`char`上次出现位置的后一位。
+用`start`记录当前无重复字符子串的起点，窗口右侧遇到一个已经访问过的`char`，
+当窗口内出现重复字符时，将窗口左侧起点`start`移到该`char`上次出现位置的后一位。
 
 
 209: Minimum Size Subarray Sum
