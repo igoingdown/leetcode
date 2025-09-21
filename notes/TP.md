@@ -21,7 +21,23 @@ TP。将序列模仿出来即可。
 
 https://leetcode.com/problems/container-with-most-water/?tab=Description
 
-TP。左右指针分别从数组两端开始，两指针夹逼过程中，矩形的长变小，只有宽增大，面积才可能增大。
+TP。左右指针分别从数组两端开始，两指针夹逼过程中，矩形的长变小，只有宽增大，面积才可能增大。 以下是贪心算法的严谨证明
+
+* **算法描述**：初始化左指针 `left = 0` 和右指针 `right = n-1`（n为数组长度）。计算当前面积 `min(height[left], height[right]) * (right - left)`，并更新最大面积。然后，比较 `height[left]` 和 `height[right]`：
+   - 如果 `height[left] < height[right]`，移动左指针向右（`left++`）。
+   - 如果 `height[left] > height[right]`，移动右指针向左（`right--`）。
+   - 如果相等，移动任意一个指针（通常移动左指针）。
+   重复直到指针相遇。
+
+* **证明关键**：我们需要证明在指针移动过程中，不会错过最大面积的对（即最大容器的两个索引）。设最大面积由索引 `i` 和 `j`（`i < j`）决定，即 `S_max = min(height[i], height[j]) * (j - i)`。
+
+* **循环不变式**：在算法执行过程中，每次移动指针时，我们都排除了那些不可能比当前最大面积更大的对。具体来说：
+   - 当 `height[left] < height[right]` 时，移动左指针。对于所有以 `left` 为左端点的对 `(left, k)`（其中 `k < right`），其面积 `S(left, k) = min(height[left], height[k]) * (k - left)`。由于 `height[left]` 是固定的，且 `k - left < right - left`，因此 `S(left, k) ≤ height[left] * (k - left) ≤ height[left] * (right - left)`。而当前面积 `S(left, right) = height[left] * (right - left)`（因为 `height[left] < height[right]`），所以 `S(left, k) ≤ S(left, right)`。这意味着所有以 `left` 为左端点的对都不可能超过当前面积，因此移动左指针不会错过更大面积。
+   - 类似地，当 `height[left] > height[right]` 时，移动右指针。对于所有以 `right` 为右端点的对 `(k, right)`（其中 `k > left`），其面积 `S(k, right) = min(height[k], height[right]) * (right - k)`。由于 `height[right]` 是固定的，且 `right - k < right - left`，因此 `S(k, right) ≤ height[right] * (right - k) ≤ height[right] * (right - left)`。而当前面积 `S(left, right) = height[right] * (right - left)`（因为 `height[left] > height[right]`），所以 `S(k, right) ≤ S(left, right)`。因此移动右指针也不会错过更大面积。
+   - 当 `height[left] == height[right]` 时，移动任意一个指针都不会影响最终结果，因为移动后另一个指针可能提供更高的高度，且当前面积已经计算在内。
+
+* **结论**：通过每次移动高度较小的指针，算法系统地缩小了搜索空间，同时确保了所有被排除的对都不可能贡献更大的面积。因此，算法最终一定会找到最大面积，正确性得证。
+
 
 
 67: Add Binary
