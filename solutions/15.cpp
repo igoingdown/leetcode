@@ -32,7 +32,7 @@ public:
                     l++;
                     r--;
                     
-                    // 关键优化：跳过重复的数
+                    // 关键优化：跳过重复的数，跳过已经加入计算的数
                     while (l < r && nums[l] == nums[l - 1]) l++;
                     while (l < r && nums[r] == nums[r + 1]) r--;
                 }
