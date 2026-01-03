@@ -17,6 +17,9 @@
 
 #include <iostream>
 #include <atomic>
+#include <thread>
+#include <vector>
+#include <chrono>
 using namespace std;
 
 struct Node {
@@ -136,20 +139,186 @@ public:
     }
 };
 
+// 全局统计变量
+atomic<int> push_count(0);
+atomic<int> pop_count(0);
+atomic<bool> producers_done(false);
+
+// 生产者函数：每个线程 push 固定数量的数据
+void producer(LockFreeQueue& q, int thread_id, int items_per_thread) {
+    for (int i = 0; i < items_per_thread; i++) {
+        int value = thread_id * 10000 + i;  // 唯一标识每个值
+        q.push(value);
+        push_count.fetch_add(1, memory_order_relaxed);
+    }
+}
+
+// 消费者函数：持续 pop 直到队列为空且生产者完成
+void consumer(LockFreeQueue& q, int& local_pop_count) {
+    int value;
+    while (true) {
+        if (q.pop(value)) {
+            local_pop_count++;
+            pop_count.fetch_add(1, memory_order_relaxed);
+        } else {
+            // 队列为空，检查生产者是否完成
+            if (producers_done.load(memory_order_acquire)) {
+                // 再试一次，确保没有遗漏
+                if (!q.pop(value)) {
+                    break;  // 确实为空，退出
+                } else {
+                    local_pop_count++;
+                    pop_count.fetch_add(1, memory_order_relaxed);
+                }
+            } else {
+                // 生产者还在工作，稍等片刻
+                this_thread::yield();
+            }
+        }
+    }
+}
+
 int main() {
-    LockFreeQueue q;
+    cout << "========== 单线程测试 ==========" << endl;
+    LockFreeQueue q1;
     
     // 单线程测试
-    q.push(1);
-    q.push(2);
-    q.push(3);
+    q1.push(1);
+    q1.push(2);
+    q1.push(3);
     
     int value;
-    while (q.pop(value)) {
+    while (q1.pop(value)) {
         cout << "Pop: " << value << endl;
     }
     
-    cout << "Queue is empty: " << q.empty() << endl;
+    cout << "Queue is empty: " << q1.empty() << endl;
+    cout << endl;
     
-    return 0;
+    cout << "========== 多线程测试 ==========" << endl;
+    
+    // 重置统计变量
+    push_count.store(0);
+    pop_count.store(0);
+    producers_done.store(false);
+    
+    // 测试参数
+    const int NUM_PRODUCERS = 4;      // 生产者线程数
+    const int NUM_CONSUMERS = 4;      // 消费者线程数
+    const int ITEMS_PER_PRODUCER = 1000;  // 每个生产者 push 的数量
+    
+    LockFreeQueue q;
+    vector<thread> producer_threads;
+    vector<thread> consumer_threads;
+    vector<int> consumer_counts(NUM_CONSUMERS, 0);  // 每个消费者 pop 的数量
+    
+    auto start_time = chrono::high_resolution_clock::now();
+    
+    // 启动消费者线程
+    for (int i = 0; i < NUM_CONSUMERS; i++) {
+        consumer_threads.emplace_back([&q, &consumer_counts, i]() {
+            consumer(q, consumer_counts[i]);
+        });
+    }
+    
+    // 启动生产者线程
+    for (int i = 0; i < NUM_PRODUCERS; i++) {
+        producer_threads.emplace_back([&q, i]() {
+            producer(q, i, ITEMS_PER_PRODUCER);
+        });
+    }
+    
+    // 等待所有生产者完成
+    for (auto& t : producer_threads) {
+        t.join();
+    }
+    
+    // 标记生产者完成
+    producers_done.store(true, memory_order_release);
+    
+    // 等待所有消费者完成
+    for (auto& t : consumer_threads) {
+        t.join();
+    }
+    
+    auto end_time = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::milliseconds>(end_time - start_time);
+    
+    // 输出统计信息
+    cout << "测试配置:" << endl;
+    cout << "  生产者线程数: " << NUM_PRODUCERS << endl;
+    cout << "  消费者线程数: " << NUM_CONSUMERS << endl;
+    cout << "  每个生产者 push 数量: " << ITEMS_PER_PRODUCER << endl;
+    cout << "  总 push 数量: " << NUM_PRODUCERS * ITEMS_PER_PRODUCER << endl;
+    cout << endl;
+    
+    cout << "测试结果:" << endl;
+    cout << "  实际 push 数量: " << push_count.load() << endl;
+    cout << "  实际 pop 数量: " << pop_count.load() << endl;
+    cout << "  队列是否为空: " << (q.empty() ? "是" : "否") << endl;
+    cout << "  执行时间: " << duration.count() << " ms" << endl;
+    cout << endl;
+    
+    // 输出每个消费者的 pop 数量
+    cout << "各消费者 pop 数量:" << endl;
+    int total_consumer_pop = 0;
+    for (int i = 0; i < NUM_CONSUMERS; i++) {
+        cout << "  消费者 " << i << ": " << consumer_counts[i] << endl;
+        total_consumer_pop += consumer_counts[i];
+    }
+    cout << "  消费者总计: " << total_consumer_pop << endl;
+    cout << endl;
+    
+    // 验证结果
+    cout << "========== 验证结果 ==========" << endl;
+    bool all_passed = true;
+    
+    int expected_push = NUM_PRODUCERS * ITEMS_PER_PRODUCER;
+    if (push_count.load() != expected_push) {
+        cout << "❌ 失败: push 数量不匹配! 期望: " << expected_push 
+             << ", 实际: " << push_count.load() << endl;
+        all_passed = false;
+    } else {
+        cout << "✅ 通过: push 数量正确" << endl;
+    }
+    
+    if (pop_count.load() != expected_push) {
+        cout << "❌ 失败: pop 数量不匹配! 期望: " << expected_push 
+             << ", 实际: " << pop_count.load() << endl;
+        all_passed = false;
+    } else {
+        cout << "✅ 通过: pop 数量正确" << endl;
+    }
+    
+    if (push_count.load() != pop_count.load()) {
+        cout << "❌ 失败: push 和 pop 数量不一致! push: " << push_count.load()
+             << ", pop: " << pop_count.load() << endl;
+        all_passed = false;
+    } else {
+        cout << "✅ 通过: push 和 pop 数量一致" << endl;
+    }
+    
+    if (!q.empty()) {
+        cout << "❌ 失败: 队列不为空!" << endl;
+        all_passed = false;
+    } else {
+        cout << "✅ 通过: 队列为空" << endl;
+    }
+    
+    if (total_consumer_pop != pop_count.load()) {
+        cout << "❌ 失败: 消费者统计不一致! 总计: " << total_consumer_pop
+             << ", pop_count: " << pop_count.load() << endl;
+        all_passed = false;
+    } else {
+        cout << "✅ 通过: 消费者统计一致" << endl;
+    }
+    
+    cout << endl;
+    if (all_passed) {
+        cout << "🎉 所有测试通过！无锁队列实现正确。" << endl;
+    } else {
+        cout << "⚠️  部分测试失败，请检查实现。" << endl;
+    }
+    
+    return all_passed ? 0 : 1;
 }
