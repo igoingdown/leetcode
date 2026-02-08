@@ -20,13 +20,13 @@ This repository is a comprehensive collection of algorithmic solutions and study
 ### Common Commands
 ```bash
 # Build specific problem
-make -C interviews/001-quant/001-kaidutouzi/
+make -C 500-interview/001-quant/001-kaidutouzi/
 
-# Build all C++ files in directory
-make -C the_cherno/001-test-file-static/
+# Build all C++ files in a module directory
+make -C 301-blogs/
 
 # Clean build artifacts
-make clean -C the_cherno/001-test-file-static/
+make clean -C 500-interview/001-quant/001-kaidutouzi/
 
 # Compile single file
 g++ -std=c++17 -o solution solution.cpp
@@ -112,13 +112,16 @@ echo "test_input" | ./solution
 ### Directory Structure
 ```
 leetcode/
-├── solutions/           # LeetCode problem solutions
-├── interviews/         # Interview-specific problems
-├── books/              # Algorithm book implementations
-├── notes/              # Algorithmic concepts and summaries
-├── sort_algorithms/    # Sorting algorithm implementations
-├── tree_traversal/     # Tree traversal algorithms
-└── the_cherno/         # C++ language feature demonstrations
+├── 100-solutions/      # LeetCode solutions (mainly C++)
+├── 101-notes/          # Algorithm notes (Markdown)
+├── 300-books/          # Book exercises and implementations
+├── 301-blogs/          # Blog/demo code (e.g. the_cherno)
+├── 302-computer_system/# Computer system experiments
+├── 303-system_design/  # System design demos (C)
+├── 304-algorithm/      # Core algorithms (sort, traversal, ACM)
+├── 500-interview/      # Company interview problems
+├── 600-playground/     # Scratch/POC code
+└── images/             # Images used by notes/docs
 ```
 
 ### Configuration Files
@@ -154,6 +157,24 @@ Each solution includes:
 3. **Build Solution**: Use provided Makefiles or direct compilation
 4. **Run Tests**: Execute with sample inputs
 5. **Study Algorithm**: Read inline documentation and complexity analysis
+
+## Directory Conventions
+
+- **Numeric prefixes**: Indicate category/priority. Lower numbers are core study materials, higher numbers are interview-focused or playground.
+- **Language mix**: Most directories are C++; other languages may coexist when relevant.
+- **Failing solutions**: Files with `*_WA_*`, `*_tle`, `*_mle` are kept for learning. Prefer documenting why they fail.
+
+## Naming & Archive Guidelines
+
+- **New solutions**: Use `{id}_{topic}.cpp` (e.g., `104_BFS.cpp`).
+- **Variants**: Use `{id}_{topic}_{variant}.cpp` (e.g., `10_dp.cpp`).
+- **Potential archive**: If a failing solution is no longer needed, move it to `archive/failed/` in a future cleanup pass.
+
+## Roadmap
+
+- Optional: create `archive/failed/` and migrate known failing solutions.
+- Optional: unify test input locations per module.
+- Optional: introduce a root build scaffold (e.g., CMake) for discovery and batch builds.
 
 ## Maintenance
 
